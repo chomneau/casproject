@@ -22,9 +22,9 @@
                         <label for="exampleInputEmail1">Subject to Grade</label>
                         <select name="grade_id" id="" class="form-control" required>
                             <option value="">--select grade--</option>
-                            @if(count($primaryGrade))
-                                @foreach($primaryGrade as $primaryGrades)
-                                    <option value="{{ $primaryGrades->id }} ">{{ $primaryGrades->name }}</option>
+                            @if(count($secondaryGrade))
+                                @foreach($secondaryGrade as $secondaryGrades)
+                                    <option value="{{ $secondaryGrades->id }} ">{{ $secondaryGrades->name }}</option>
                                 @endforeach
                             @endif
                         </select>

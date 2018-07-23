@@ -145,8 +145,8 @@ Route::prefix('admin')->group(function (){
     Route::get('/login', 'auth\AdminLoginController@showLoginForm')->name('admin.login');
     Route::post('/login', 'auth\AdminLoginController@login')->name('admin.login.submit');
 
-    Route::get('/postjob', 'AdminController@showPostjobForm')->name('admin.postjob');
-    Route::post('/postjob', 'AdminController@postjob')->name('admin.postjob.submit');
+    // Route::get('/postjob', 'AdminController@showPostjobForm')->name('admin.postjob');
+    // Route::post('/postjob', 'AdminController@postjob')->name('admin.postjob.submit');
 
 
 //Query subject by grade
@@ -155,7 +155,7 @@ Route::prefix('admin')->group(function (){
     Route::post('/student/score/insert/{student_id}/{grade_id}', 'StudentController@insertScore')->name('student.score.insert');
 //delete data from score table
     Route::get('/score/delete/{id}', 'StudentController@destroyScore')->name('student.score.delete');
-//delete data from score table
+//edit data from score table
     Route::get('score/edit/{score_id}/{grade_id}/{student_id}', 'StudentController@editScore')->name('student.score.edit');
 
 //update score
@@ -167,10 +167,28 @@ Route::prefix('admin')->group(function (){
 
 
 
+// secondary score
+
+Route::get('/score/secondary/{grade_id}/{student_id}', 'SecondaryController@secondaryScore')->name('score.secondary');
+//add subject to secondary score
+Route::get('/secondary/addSubject/{grade_id}/{student_id}', 'SecondaryController@showSecondaryAddSubject')->name('secondary.addSubject');
+Route::post('/secondary/insertSubject/{grade_id}/{student_id}', 'SecondaryController@secondaryAddSubject')->name('secondary.insertSubject');
+//edit data from secondaryScore table
+    Route::get('secondaryScore/edit/{score_id}/{grade_id}/{student_id}', 'SecondaryController@editSecondaryScoreForm')->name('secondary.score.edit');
+    //update score
+    Route::post('secondaryScore/update/{score_id}/{grade_id}/{student_id}', 'SecondaryController@updateSecondaryScore')->name('secondaryScore.update');
+    //delete data from SecondaryScore table
+    Route::get('/secondaryScore/delete/{id}', 'SecondaryController@destroySecondaryScore')->name('secondary.score.delete');
+
+
+
+
   //print section
     Route::get('/selectTranscript/{student_id}', 'TranscriptController@selectTranscript')->name('select.transcript');
     
     Route::get('/selectOption/{student_id}', 'TranscriptController@selectOption')->name('select.option');
+
+
 
 
 
@@ -226,7 +244,8 @@ Route::prefix('admin')->group(function (){
     Route::get('/prek/score', 'PrekController@viewScorePrek')->name('prek.score');
     
 
-    //setting subject for primary and secondary
+//setting subject for primary and secondary
+    
     Route::get('/subject/primary', 'SubjectController@showPrimary')->name('subject.primary');
     Route::post('/subject/primary', 'SubjectController@storePrimary')->name('subject.primary.store');
     Route::get('/subject/primary/delete/{id}', 'SubjectController@destroyPrimary')->name('subject.primary.delete');
@@ -237,13 +256,15 @@ Route::prefix('admin')->group(function (){
 
 
 
-    //company controller
-    Route::resource('/company', 'CompanyController');
-    Route::get('/company/profile/{id}', 'CompanyController@show')->name('admin.company.profile');
-    Route::post('/company/update/{id}', 'CompanyController@update')->name('company.update');
 
-    Route::resource('/company/note', 'NoteController');
-    Route::post('/company/note/{id}', 'NoteController@store')->name('company.note');
+
+    //company controller
+    // Route::resource('/company', 'CompanyController');
+    // Route::get('/company/profile/{id}', 'CompanyController@show')->name('admin.company.profile');
+    // Route::post('/company/update/{id}', 'CompanyController@update')->name('company.update');
+
+    // Route::resource('/company/note', 'NoteController');
+    // Route::post('/company/note/{id}', 'NoteController@store')->name('company.note');
 
 
 

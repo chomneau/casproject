@@ -88,10 +88,10 @@
                                             </td>
 
                                             <td>
-                                                @if(count($primaryGrade))
-                                                    @foreach($primaryGrade as $primaryGrades)
-                                                        @if($subjects->grade_id == $primaryGrades->id)
-                                                            {{ $primaryGrades->name  }}
+                                                @if(count($secondaryGrade))
+                                                    @foreach($secondaryGrade as $secondaryGrades)
+                                                        @if($subjects->grade_id == $secondaryGrades->id)
+                                                            {{ $secondaryGrades->name  }}
                                                         @endif
                                                     @endforeach
                                                 @endif

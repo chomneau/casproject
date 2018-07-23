@@ -23,7 +23,7 @@
                     @endif
                 </ul>
             </li>
-            <li role="presentation" class="dropdown">
+            <!-- <li role="presentation" class="dropdown">
                 <a id="drop4" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
                     <strong>
                         Primary <span class="caret"></span>
@@ -39,19 +39,22 @@
                         @endforeach
                     @endif
                 </ul>
-            </li>
+            </li> -->
 
             <li role="presentation" class="dropdown">
                 <a id="drop4" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
                     <strong>
-                        Secondary <span class="caret"></span>
+                        Primary & Secondary <span class="caret"></span>
                     </strong>
                 </a>
                 <ul id="menu6" class="dropdown-menu animated fadeInDown" role="menu">
                     @if(count($secondaryGrade))
                         @foreach($secondaryGrade as $secondaryGrades)
                             <li role="presentation" style="margin-top: 5px; margin-bottom: 3px">
-                                <a role="menuitem" tabindex="-1" href="{{ $secondaryGrades->id }}" style="font-size: 14px">{{ $secondaryGrades->name }}</a>
+                                
+                                
+                                <a role="menuitem" tabindex="-1" href="{{ route('score.secondary', ['grade_id'=>$secondaryGrades->id, 'student_id'=>$students->id]) }}" style="font-size: 14px">{{ $secondaryGrades->name }}</a>
+
                             </li>
                             <li role="presentation" class="divider"></li>
                         @endforeach
@@ -81,13 +84,13 @@
 
         <a href="{{ route('select.transcript',['student_id'=>$students->id]) }}" class="btn btn-success pull-right">
                     Print Transcript
-                    <i class="glyphicon glyphicon-plus-sign"></i>
+                    <i class="fas fa-print"></i>
                 </a>
 
 
           <a href="{{ route('select.option',['student_id'=>$students->id]) }}" class="btn btn-success pull-right">
                     Print option
-                    <i class="glyphicon glyphicon-plus-sign"></i>
+                    <i class="fas fa-print"></i>
                 </a>      
 
         </ul>

@@ -38,7 +38,7 @@
                         </ul>
                     </li>
                     
-                    <li><a><i class="fa fa-edit"></i> Teachers <span class="fa fa-chevron-down"></span></a>
+                    <li><a><i class="fas fa-users"></i> Teachers <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
                             <li><a href="{{ route('admin.showUsers') }}">View all teachers</a></li>
                             <li><a href="{{ route('admin.register') }}">Create new teacher</a></li>
@@ -47,7 +47,7 @@
                         </ul>
                     </li>
 
-                    <li><a><i class="fa fa-edit"></i> Students <span class="fa fa-chevron-down"></span></a>
+                    <li><a><i class="fas fa-user-graduate f2"></i> Students <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
                             <li><a href="{{ route('student.viewAll') }}">View all students</a></li>
                             <li><a href="{{ route('student.register') }}">Register new student</a></li>
@@ -56,14 +56,23 @@
                         </ul>
                     </li>
 
-                    <li><a><i class="fa fa-edit"></i> Page setting <span class="fa fa-chevron-down"></span></a>
+                    <li><a href="#"><i class="fas fa-book-open"></i> Assignments </a>
+                        <!-- <ul class="nav child_menu">
+                            <li><a href="{{ route('student.viewAll') }}">View all students</a></li>
+                            <li><a href="{{ route('student.register') }}">Register new student</a></li>
+                            {{--<li><a href="{{ route('createjob.index') }}">View all post jobs</a></li>--}}
+
+                        </ul> -->
+                    </li>
+
+                    <!-- <li><a><i class="fas fa-sliders-h"></i> Page setting <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
                             <li><a href="{{ route('about.setting') }}">About</a></li>
                             <li><a href="{{ route('admin.register') }}">Contact</a></li>
                             {{--<li><a href="{{ route('createjob.index') }}">View all post jobs</a></li>--}}
 
                         </ul>
-                    </li>
+                    </li> -->
 
 
 
@@ -74,9 +83,9 @@
                                 <ul class="nav child_menu">
                                     <li class="sub_menu"><a href="{{ route('grade.prek') }}">K & Pre-K</a>
                                     </li>
-                                    <li><a href="{{ route('grade.primary') }}">Primary School</a>
-                                    </li>
-                                    <li><a href="{{ route('grade.secondary') }}">Secondary School</a>
+                                    <!-- <li><a href="{{ route('grade.primary') }}">Primary School</a>
+                                    </li> -->
+                                    <li><a href="{{ route('grade.secondary') }}">Primary & Secondary</a>
                                     </li>
                                     <li><a href="{{ route('grade.index') }}">High School</a>
                                     </li>
@@ -86,7 +95,7 @@
                                 <ul class="nav child_menu">
                                     <li class="sub_menu"><a href="{{ route('subject.prek') }}">K & Pre-K</a>
                                     </li>
-                                    <li><a href="{{ route('subject.primary') }}">Primary to Secondary</a>
+                                    <li><a href="{{ route('subject.primary') }}">Primary & Secondary</a>
                                     </li>
                                     <li><a href="{{ route('subject.index') }}">High Subject</a>
                                     </li>
