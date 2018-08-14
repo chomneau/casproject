@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,12 +12,10 @@
 
     <title>CAS</title>
 
-    <link rel="shortcut icon" href="{{ asset('images/favicon-32x32.png') }}">
+    <link rel="shortcut icon" href="{{ asset('images/logo.png') }}">
 
     <link href="https://fonts.googleapis.com/css?family=Abel|Anton|Squada+One" rel="stylesheet">
-    <link href="{{ asset('css/font-awesome.css') }}" rel="stylesheet">
-
-    {{--Toastr notification--}}
+    <link href="{{ asset('css/font-awesome.css') }}" rel="stylesheet"> {{--Toastr notification--}}
     <link href="{{ asset('css/toastr.min.css') }}" rel="stylesheet">
 
     <!-- Styles -->
@@ -29,19 +28,19 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     {{--Toastr notification--}}
-    <link href="{{ asset('css/toastr.min.css') }}" rel="stylesheet">
-
-    @yield('styles')
+    <link href="{{ asset('css/toastr.min.css') }}" rel="stylesheet"> @yield('styles')
 
 
 </head>
-{{--  #E2EBEF--}}
-<body style="background-color: #F8F4F4 ">
-        {{--@include('inc.navbar')--}}
-   @include('inc.navbar')
-    @yield('content')
+{{-- #E2EBEF--}}
 
-     <!-- @include('inc.footer') -->
+<body style="background-color: #F8F4F4 ">
+    {{--
+    @include('inc.navbar')--}}
+    @include('inc.navbar') @yield('content')
+
+    <!--
+    @include('inc.footer') -->
 
     <!-- Scripts -->
     @yield('scripts')
@@ -49,13 +48,14 @@
     <script src="{{ asset('js/toastr.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap-datepicker.js') }}"></script>
 
-        <script>
-            @if(Session::has('success'))
+    <script>
+        @if(Session::has('success'))
                 toastr.success("{{Session::get('success')}}")
             @endif
 
             //$('#date').datepicker()
-        </script>
+    </script>
 
 </body>
+
 </html>

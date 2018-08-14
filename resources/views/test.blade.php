@@ -1,39 +1,51 @@
+<main class="main-content bgc-grey-100">
+    <div id="mainContent">
+        <div class="container-fluid">
+            <h4 class="c-grey-900 mT-10 mB-30">Basic Tables</h4>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="bgc-white bd bdrs-3 p-20 mB-20">
+                        <h4 class="c-grey-900 mB-20">Simple Table</h4>
+                        <p>Using the most basic table markup, here’s how <code class="highlighter-rouge">.table</code>-based
+                            tables look in Bootstrap. <strong>All table styles are inherited in Bootstrap 4</strong>, meaning
+                            any nested tables will be styled in the same manner as the parent.</p>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">First Name</th>
+                                    <th scope="col">Last Name</th>
+                                    <th scope="col">Username</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>Mark</td>
+                                    <td>Otto</td>
+                                    <td>@mdo</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">2</th>
+                                    <td>Jacob</td>
+                                    <td>Thornton</td>
+                                    <td>@fat</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">3</th>
+                                    <td>Larry</td>
+                                    <td>the Bird</td>
+                                    <td>@twitter</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
 
 
-<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
-<script>
-tinymce.init({ selector:'textarea',
-plugins: "link",
-menu: 'disable',
-plugins: "lists",
-toolbar: "numlist bullist",
-//plugin:"advlist",
-browser_spellcheck: true,
-});
-</script>
 
 
-<form action="{{ route('storedata') }}" method="post">
-    {{ csrf_field() }}
-    <div class="row">
-        {{--<div class="form-group col-md-12">--}}
-            {{--<label for="jobTitle">Job Title</label>--}}
-            {{--<input type="text" name="jobTitle" class="form-control" id="jobTitle" placeholder="Job Title" required autofocus>--}}
-        {{--</div>--}}
-
-        <div class="form-group col-md-12">
-            <label for="jobDescription">Job Description</label>
-            <textarea name="jobDescription" id="jobDescription" cols="15" rows="8" class="form-control" ></textarea>
-        </div>
-
-        <div class="col-md-12">
-            <label for="jobRequirement">Job Requirement</label>
-            <textarea name="jobRequirement" id="jobRequirement" cols="15" rows="8" class="form-control"></textarea>
         </div>
     </div>
-
-
-
-    <textarea name="textarea" id="" cols="70" rows="20"></textarea>
-    <input type="submit" name="submit" value="submit" class="btn btn-primary">
-</form>
+</main>

@@ -9,7 +9,7 @@ use App\User;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+ */
 
 //Route::get('/', function () {
 //    return view('welcome');
@@ -20,18 +20,22 @@ use App\User;
 
 
 
-Route::get('/test', 'FindJobController@testform')->name('testform');
-Route::post('/test', 'FindJobController@storedata')->name('storedata');
-
-
 
 Route::get('/', function () {
     return view('welcome');
 });
 
+//student profile and score view
+Route::get('/studentProfile', 'HomeController@index')->name('home.profile');
+//view prek score for pre-k and k student
+Route::get('/student/prekScore/{grade_id}/{student_id}', 'HomeController@viewPrekScore')->name('student.prekscore');
+//view primary and secondary score student side
+Route::get('/student/Secondary/{grade_id}/{student_id}', 'HomeController@viewSecondaryScore')->name('student.secondary');
+//view high school score student side
+Route::get('/student/highschool/{grade_id}/{student_id}', 'HomeController@viewHighschoolScore')->name('student.highschool');
 
-//search route
-Route::get('/result', 'FindJobController@search')->name('result');
+
+
 //employer login
 Route::get('/employer/login', 'Auth\EmployerLoginController@showLoginForm')->name('employer.login');
 Route::post('/employer/login', 'Auth\EmployerLoginController@employerLogin')->name('employer.login.submit');
@@ -66,28 +70,11 @@ Route::post('/about/setting', 'PagesController@aboutPageSetting')->name('about.p
 
 Route::get('/contact', 'PagesController@getContact');
 
-Route::get('/postjob', 'PagesController@getPostjob');
 
 
-//findjob
-Route::get('/findjob', 'FindJobController@index')->name('findjob');
-Route::get('/singleJob/{id}/{company_id}', 'FindJobController@show')->name('singleJob');
 
-Route::get('/jobByCategory/{id}', 'FindJobController@jobByCategory')->name('jobByCategory');
-Route::get('/allCategory/{id}', 'FindJobController@allCategory')->name('allCategory');
 
-//find by location
-Route::get('/jobByLocation/{id}', 'FindJobController@jobByLocation')->name('jobByLocation');
-Route::get('/allLocation', 'FindJobController@allLocation')->name('allLocation');
 
-Route::get('/jobByIndustry/{id}', 'FindJobController@jobByIndustry')->name('jobByIndustry');
-Route::get('/allIndustry', 'FindJobController@allIndustry')->name('allIndustry');
-
-//Route::get('/home', 'HomeController@index');
-//Route::get('/home/profile', 'HomeController@profile')->name('home.profile');
-//Route::post('/home/profile', 'HomeController@createProfile')->name('home.profile.submit');
-
-Route::get('/home', 'HomeController@index')->name('home.profile');
 
 
 
@@ -122,11 +109,7 @@ Route::get('/education/delete/{id}', 'UserEducationController@destroy')->name('e
 
 
 
-
-
-
-
-Route::prefix('admin')->group(function (){
+Route::prefix('admin')->group(function () {
 
     Route::get('/student/register', 'StudentController@showRegisterForm')->name('student.register');
     Route::post('/student/register', 'StudentController@studentRegister')->name('student.register.create');
@@ -169,10 +152,10 @@ Route::prefix('admin')->group(function (){
 
 // secondary score
 
-Route::get('/score/secondary/{grade_id}/{student_id}', 'SecondaryController@secondaryScore')->name('score.secondary');
+    Route::get('/score/secondary/{grade_id}/{student_id}', 'SecondaryController@secondaryScore')->name('score.secondary');
 //add subject to secondary score
-Route::get('/secondary/addSubject/{grade_id}/{student_id}', 'SecondaryController@showSecondaryAddSubject')->name('secondary.addSubject');
-Route::post('/secondary/insertSubject/{grade_id}/{student_id}', 'SecondaryController@secondaryAddSubject')->name('secondary.insertSubject');
+    Route::get('/secondary/addSubject/{grade_id}/{student_id}', 'SecondaryController@showSecondaryAddSubject')->name('secondary.addSubject');
+    Route::post('/secondary/insertSubject/{grade_id}/{student_id}', 'SecondaryController@secondaryAddSubject')->name('secondary.insertSubject');
 //edit data from secondaryScore table
     Route::get('secondaryScore/edit/{score_id}/{grade_id}/{student_id}', 'SecondaryController@editSecondaryScoreForm')->name('secondary.score.edit');
     //update score
@@ -180,12 +163,23 @@ Route::post('/secondary/insertSubject/{grade_id}/{student_id}', 'SecondaryContro
     //delete data from SecondaryScore table
     Route::get('/secondaryScore/delete/{id}', 'SecondaryController@destroySecondaryScore')->name('secondary.score.delete');
 
+//K and Pre-k Score
 
+    Route::get('/prekscore/view/{grade_id}/{student_id}', 'PrekController@prekScore')->name('prekschool.score');
+//add subject to pre-k and k score
+    Route::get('/prekscore/addSubject/{grade_id}/{student_id}', 'PrekController@showPrekAddSubject')->name('prek.addSubject');
+    Route::post('/prekscore/insertSubject/{grade_id}/{student_id}', 'PrekController@prekAddSubject')->name('prek.insertSubject');
+//edit data from  prekScore table
+    Route::get('prekscore/edit/{score_id}/{grade_id}/{student_id}', 'PrekController@editPrekScoreForm')->name('prek.score.edit');
+//update score
+    Route::post('prekscore/update/{score_id}/{grade_id}/{student_id}', 'PrekController@updatePrekScore')->name('prek.update');
+//delete data from prekScore table
+    Route::get('/prekscore/delete/{id}', 'PrekController@destroyPrekScore')->name('prek.score.delete');
 
 
   //print section
     Route::get('/selectTranscript/{student_id}', 'TranscriptController@selectTranscript')->name('select.transcript');
-    
+
     Route::get('/selectOption/{student_id}', 'TranscriptController@selectOption')->name('select.option');
 
 
@@ -245,26 +239,12 @@ Route::post('/secondary/insertSubject/{grade_id}/{student_id}', 'SecondaryContro
     
 
 //setting subject for primary and secondary
-    
+
     Route::get('/subject/primary', 'SubjectController@showPrimary')->name('subject.primary');
     Route::post('/subject/primary', 'SubjectController@storePrimary')->name('subject.primary.store');
     Route::get('/subject/primary/delete/{id}', 'SubjectController@destroyPrimary')->name('subject.primary.delete');
     Route::get('/subject/primary/edit/{id}', 'SubjectController@editPrimary')->name('subject.primary.edit');
     Route::post('/subject/primary/update/{id}', 'SubjectController@updatePrimary')->name('subject.primary.update');
-
-
-
-
-
-
-
-    //company controller
-    // Route::resource('/company', 'CompanyController');
-    // Route::get('/company/profile/{id}', 'CompanyController@show')->name('admin.company.profile');
-    // Route::post('/company/update/{id}', 'CompanyController@update')->name('company.update');
-
-    // Route::resource('/company/note', 'NoteController');
-    // Route::post('/company/note/{id}', 'NoteController@store')->name('company.note');
 
 
 
@@ -313,6 +293,17 @@ Route::post('/secondary/insertSubject/{grade_id}/{student_id}', 'SecondaryContro
 //    });
 
    // Route::get('/employer', 'EmployerControler@index');
+
+
+   //setting absent for high school
+   Route::get('/absent', 'AbsentController@show')->name('show.absent');
+   Route::post('/absent', 'AbsentController@store')->name('store.absent');
+   Route::get('/absent/delete/{id}', 'AbsentController@destroy')->name('destroy.absent');
+   Route::get('/absent/edit/{id}', 'AbsentController@edit')->name('edit.absent');
+   Route::post('/absent/update/{id}', 'AbsentController@update')->name('update.absent');
+
+   //record student absent
+   Route::get('/absent/show', 'AbsentController@showAbsent')->name('show.absentRecord');
 
 });
 

@@ -10,6 +10,7 @@ use Session;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Foundation\Auth\User;
 
 
 class AdminController extends Controller
@@ -59,24 +60,26 @@ class AdminController extends Controller
     }
 
     //Create user admin method
-    public function store(Request $request){
+    public function store(Request $request)
+    {
         $this->validation($request);
         $admin = Admin::create([
             'name' => $request['name'],
             'email' => $request['email'],
-            'admin'=>0,
+            'admin' => 0,
             'password' => bcrypt($request['password'])
         ]);
 
         AdminProfile::create([
             'admin_id' => $admin->id,
-            'avatar'=>'uploads/logos/1510817755img.png'
+            'avatar' => 'uploads/logos/1510817755img.png'
         ]);
         Session::flash('success', 'You have created a new user');
         return redirect('/admin/allUser');
     }
 
-    public function validation($request){
+    public function validation($request)
+    {
         return $this->validate($request, [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
@@ -105,12 +108,11 @@ class AdminController extends Controller
 
         $adminProfile = Admin::find($id);
 
-        if($request->hasFile('avatar'))
-        {
+        if ($request->hasFile('avatar')) {
             $avatar = $request->avatar;
-            $avatar_new_name = time().$avatar->getClientOriginalName();
+            $avatar_new_name = time() . $avatar->getClientOriginalName();
             $avatar->move('uploads/avatar', $avatar_new_name);
-            $adminProfile->Adminprofile->avatar = 'uploads/avatar/'.$avatar_new_name;
+            $adminProfile->Adminprofile->avatar = 'uploads/avatar/' . $avatar_new_name;
             $adminProfile->Adminprofile->save();
         }
 
@@ -129,7 +131,8 @@ class AdminController extends Controller
     }
 
     //make user as admin
-    public function makeAdmin($id){
+    public function makeAdmin($id)
+    {
         $admin = Admin::find($id);
         $admin->admin = 1;
         $admin->save();
@@ -138,7 +141,8 @@ class AdminController extends Controller
     }
 
     //remove admin permission
-    public function removePermission($id){
+    public function removePermission($id)
+    {
         $admin = Admin::find($id);
         $admin->admin = 0;
         $admin->save();
@@ -147,18 +151,20 @@ class AdminController extends Controller
     }
 
     //delete user
-    public function destroy($id){
+    public function destroy($id)
+    {
         $delete = Admin::find($id);
         $delete->delete();
         Session::flash('success', 'You have deleted user from the list');
         return redirect()->back();
     }
     //update password form
-    public function formUpdatePassword(){
+    public function formUpdatePassword()
+    {
         return view('admin.admin-user.changeUserAdminPassword');
     }
     //update password for employer
-    public function updatePassword( Request $request)
+    public function updatePassword(Request $request)
     {
         $this->validate($request, [
             'password' => 'required|string|min:6|confirmed',

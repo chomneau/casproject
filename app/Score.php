@@ -22,4 +22,6 @@ class Score extends Model
     public function grade(){
         return $this->belongsTo(grade::class);
     }
+
+    
 }

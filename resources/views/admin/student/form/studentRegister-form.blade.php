@@ -65,7 +65,7 @@
 
         <div class="col-md-6 {{ $errors->has('progressiveBookId') ? ' has-error' : '' }}">
             <label for="email">Progressive Book ID</label>
-            <input type="text" name="progressive_book_id" class="form-control" value="{{ old('progressiveBookId') }}" required autofocus placeholder="progressive Book Id" >
+            <input type="text" name="progressive_book_id" class="form-control" value="{{ old('progressiveBookId') }}" 
         </div>
     </div>
 

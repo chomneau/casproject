@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\KLevel;
 use App\KSubject;
-use App\PrimaryLevel;
 use App\PrimarySubject;
 use App\SecondaryLevel;
 use App\Subject;
@@ -26,9 +25,6 @@ class SubjectController extends Controller
         $this->kgrade = KLevel::all();
         View::share('kgrade', $this->kgrade);
 
-        $this->primaryGrade = PrimaryLevel::all();
-        View::share('primaryGrade', $this->primaryGrade);
-
         $this->secondaryGrade = SecondaryLevel::all();
         View::share('secondaryGrade', $this->secondaryGrade);
 
@@ -45,10 +41,10 @@ class SubjectController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name'=>'required',
-            'subject_code'=>'required',
-            'credit'=>'required',
-            'grade_id'=>'required',
+            'name' => 'required',
+            'subject_code' => 'required',
+            'credit' => 'required',
+            'grade_id' => 'required',
 
         ]);
 
@@ -70,12 +66,13 @@ class SubjectController extends Controller
             ->with('subject', $subject);
     }
 
-    public function update(Request $request, $id){
+    public function update(Request $request, $id)
+    {
         $this->validate($request, [
             'name' => 'required',
             'subject_code' => 'required',
-            'credit'=>'required',
-            'grade_id'=>'required',
+            'credit' => 'required',
+            'grade_id' => 'required',
         ]);
         $subject = Subject::find($id);
         $subject->name = $request->name;
@@ -107,9 +104,9 @@ class SubjectController extends Controller
     public function storePrek(Request $request)
     {
         $this->validate($request, [
-            'name'=>'required',
-            'subject_code'=>'required',
-            'grade_id'=>'required',
+            'name' => 'required',
+            'subject_code' => 'required',
+            'grade_id' => 'required',
 
         ]);
 
@@ -130,11 +127,12 @@ class SubjectController extends Controller
             ->with('subject', $subject);
     }
 
-    public function updatePrek(Request $request, $id){
+    public function updatePrek(Request $request, $id)
+    {
         $this->validate($request, [
             'name' => 'required',
             'subject_code' => 'required',
-            'grade_id'=>'required',
+            'grade_id' => 'required',
         ]);
         $subject = KSubject::find($id);
         $subject->name = $request->name;
@@ -163,9 +161,9 @@ class SubjectController extends Controller
     public function storePrimary(Request $request)
     {
         $this->validate($request, [
-            'name'=>'required',
-            'subject_code'=>'required',
-            'grade_id'=>'required',
+            'name' => 'required',
+            'subject_code' => 'required',
+            'grade_id' => 'required',
 
         ]);
 
@@ -186,11 +184,12 @@ class SubjectController extends Controller
             ->with('subject', $subject);
     }
 
-    public function updatePrimary(Request $request, $id){
+    public function updatePrimary(Request $request, $id)
+    {
         $this->validate($request, [
             'name' => 'required',
             'subject_code' => 'required',
-            'grade_id'=>'required',
+            'grade_id' => 'required',
         ]);
         $subject = PrimarySubject::find($id);
         $subject->name = $request->name;

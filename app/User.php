@@ -1,6 +1,7 @@
 <?php
 
 namespace App;
+
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -30,7 +31,8 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function StudentProfile(){
+    public function StudentProfile()
+    {
         return $this->hasOne(StudentProfile::class);
     }
 
@@ -39,20 +41,5 @@ class User extends Authenticatable
         return $this->hasOne('App\Profile');
     }
 
-    //relationship for user experience
-    public function experience(){
-        return $this->hasMany('App\Experience');
-    }
-
-    //relationship for user education (cv)
-
-    public function education(){
-        return $this->hasMany('App\UserEducation');
-    }
-
-    public function uploadcv()
-    {
-        return $this->hasMany(Uploadcv::class);
-    }
 
 }

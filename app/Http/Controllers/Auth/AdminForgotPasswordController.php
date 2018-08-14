@@ -18,9 +18,9 @@ class AdminForgotPasswordController extends Controller
     | your application to your users. Feel free to explore this trait.
     |
     */
-
+    
     use SendsPasswordResetEmails;
-
+    
     /**
      * Create a new controller instance.
      *
@@ -41,4 +41,6 @@ class AdminForgotPasswordController extends Controller
     {
         return view('auth.passwords.email-admin');
     }
+
+    
 }

@@ -49,7 +49,8 @@ crossorigin="anonymous">
                                     {{ csrf_field() }}
                                     <div class="col-md-10">
                                         <label for="exampleInputEmail1">Subject by ({{$grade_id->grade_name}})</label>
-                                        <select name="subject_id" class="col-md-12 form-control">
+                                        <select name="subject_id" class="col-md-12 form-control" required>
+                                            <option value="">please select subject</option>
                                             @if(count($subjects))
                                                 @foreach($subjects as $subject)
                                                     <option value="{{ $subject->id }}">{{ $subject->name }}</option>

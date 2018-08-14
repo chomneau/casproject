@@ -1,116 +1,93 @@
+<!doctype html>
+<html>
 
-@extends('layouts.app')
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ"
+        crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+        crossorigin="anonymous">
+    <style>
+        #loader {
+            transition: all .3s ease-in-out;
+            opacity: 1;
+            visibility: visible;
+            position: fixed;
+            height: 100vh;
+            width: 100%;
+            background: #fff;
+            z-index: 90000
+        }
 
-@section('content')
-@include('user.headBlank')
-<div class="container" style="margin-top: 1em">
-    <div class="row">
-        <div class="col-md-3 pull-left">
-            @include('user.userSidebar')
-        </div>
-        {{--@include('inc.message')--}}
-        <div class="col-md-9 pull-right">
-            {{--start show--}}
-            <div class="well bs-component">
-                {{--<form class="form-horizontal" action="home/profile" method="post">--}}
+        #loader.fadeOut {
+            opacity: 0;
+            visibility: hidden
+        }
 
-                <!-- {!! Form::open( ['action' => 'ProfileController@store', 'class'=>'form-horizontal']) !!} -->
-                <fieldset>
-                    <legend>MY PROFILE</legend>
+        .spinner {
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            top: calc(50% - 20px);
+            left: calc(50% - 20px);
+            background-color: #333;
+            border-radius: 100%;
+            -webkit-animation: sk-scaleout 1s infinite ease-in-out;
+            animation: sk-scaleout 1s infinite ease-in-out
+        }
 
-                        <div class="row">
-                            {{--Left side--}}
-                            <div class="col-md-4 col-sm-12">
-                                <div class="panel-body" >
-                                    <ul id="item-list-display">
+        @-webkit-keyframes sk-scaleout {
+            0% {
+                -webkit-transform: scale(0)
+            }
+            100% {
+                -webkit-transform: scale(1);
+                opacity: 0
+            }
+        }
 
-                                        <li style="font-size: 22px">
-                                                <i class="fa fa-user" aria-hidden="true"></i>
-                                                {{ $user->studentProfile->first_name }} {{ $user->studentProfile->last_name }}
-                                        </li>
-                                        <li class="list-style">
-                                                Sex : <span style="padding-left: 10px">{{ $user->studentProfile->sex }}</span>
-                                        </li>
-                                        <li class="item-list" >
-                                                DOB : <span style="padding-left: 6px">{{ date('M j, Y', strtotime($user->studentProfile->date_of_birth)) }}</span>
+        @keyframes sk-scaleout {
+            0% {
+                -webkit-transform: scale(0);
+                transform: scale(0)
+            }
+            100% {
+                -webkit-transform: scale(1);
+                transform: scale(1);
+                opacity: 0
+            }
+        }
+    </style>
+    <link href="{{ asset('colortheme/style.css') }}" rel="stylesheet">
+</head>
 
-                                                ({{ floor((time() - strtotime($user->studentProfile->date_of_birth)) / 31556926) }} years old)
-                                        </li>
-                                        <li class="item-list" >
-                                            Nationality :  {{$user->studentProfile->nationality}}
-                                        </li>
-
-                                    </ul>
-                                </div>
-
-                            </div>
-                            <div class="col-md-2 col-sm-12"></div>
-                            {{--Right side--}}
-                            <div class="col-md-4 col-sm-12">
-                                <div class="panel-body" >
-                                    <ul id="item-list-display" style="padding-left: 5px; width:350px ">
-
-                                        <li style="font-size: 22px">
-                                            <i class="fa fa-address-book-o" aria-hidden="true"></i>
-                                            Contact
-                                        </li>
-                                        <li>
-                                            <i class="fa fa-mobile fa-lg" aria-hidden="true"></i>
-                                            <span style="padding-left: 13px">{{$user->studentProfile->phone}}</span>
-                                        </li>
-                                        <li>
-                                            <i class="fa fa-envelope-o" aria-hidden="true"></i>
-                                            <span style="padding-left: 10px">{{$user->email}}</span>
-
-                                        </li>
-                                        <li>
-                                            <i class="fa fa-address-book-o" aria-hidden="true"></i>
-                                            <span style="padding-left: 10px">{{$user->studentProfile->address}}</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                        </div>
-
-
-                </fieldset>
-
-                    
-
-
-                {{--CV and COVER LETER--}}
-                <fieldset>
-                <legend>STUDENT SCORE RECORD</legend>
-                <div class="row">
-                    <table class="table table-sm">
-                        <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Grade</th>
-                            <th>Semester</th>
-                            <th>Action</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                       
-                        </tbody>
-                    </table>
-                    {{--end table--}}
-                    </div>
-
-                </fieldset>
-            </div>
-
-
-            {{--@component('components.who')--}}
-            {{--@endcomponent--}}
-            {{--end show--}}
-        </div>
-        {{--@include('inc.logoSlider')--}}
+<body class="app">
+    <div id="loader">
+        <div class="spinner"></div>
     </div>
-</div>
+    <script>
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('loader');
+            setTimeout(() => {
+            loader.classList.add('fadeOut');
+            }, 300);
+        });
+    </script>
 
+    {{-- sidebar --}}
+    @include('end_user.end_user_sidebar')
 
+    <div class="page-container">
+        {{-- top sidebar --}}
+    @include('end_user.end_user_topSidebar')
+    @include('end_user.end_user_pre_score')
+    </div>
 
-@endsection
+    <script type="text/javascript" src="{{ asset('colortheme/vendor.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('colortheme/bundle.js') }}"></script>
+
+</body>
+
+</html>

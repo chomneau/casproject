@@ -9,7 +9,7 @@ use App\Location;
 use Auth;
 use View;
 use Session;
-use App\Uploadcv;
+
 
 
 class ProfileController extends Controller
@@ -48,34 +48,6 @@ class ProfileController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-
-        //return 123;
-
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show()
-    {
-        //return 12345;
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
 
     /**
@@ -106,12 +78,11 @@ class ProfileController extends Controller
 
         $user = Auth::admin();
         //upload image for user
-        if($request->hasFile('photo'))
-        {
+        if ($request->hasFile('photo')) {
             $photo = $request->photo;
-            $photo_new_name = time().$photo->getClientOriginalName();
+            $photo_new_name = time() . $photo->getClientOriginalName();
             $photo->move('uploads/avatar', $photo_new_name);
-            $user->profile->photo = 'uploads/photo/'.$photo_new_name;
+            $user->profile->photo = 'uploads/photo/' . $photo_new_name;
             $user->profile->save();
         }
 
@@ -136,7 +107,7 @@ class ProfileController extends Controller
         //upload cv and cover letter
 
         $uploadCV = new Uploadcv;
-        if($request->hasFile('cv')) {
+        if ($request->hasFile('cv')) {
             $upload = $request->cv;
             $upload_new_name = date('gi') . "_" . $upload->getClientOriginalName();
             //  $fileSize = File::size($upload);
@@ -151,8 +122,7 @@ class ProfileController extends Controller
         $user->save();
         $user->profile->save();
 
-        if($request->has('password'))
-        {
+        if ($request->has('password')) {
             $user->password = bcrypt($request->password);
             $user->save();
         }
@@ -171,29 +141,29 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function uploadCvFunction(Request $request){
-        $this->validate($request, [
-            'upload' => 'required'
-            //'upload' => 'required|mimes:pdf,doc,docx|size:5000'
-        ]);
-        $uploadCV = new Uploadcv;
-        if($request->hasFile('cv'))
-        {
-            $upload = $request->upload;
-            $upload_new_name = date('gi')."_".$upload->getClientOriginalName();
-            //  $fileSize = File::size($upload);
-            $upload->move('uploads/cv', $upload_new_name);
-            $uploadCV->name = $upload_new_name;
-            // $uploadCV->fileSize = $fileSize;
-            $uploadCV->user_id = Auth::user()->id;
-            $uploadCV->save();
-            Session::flash('success', 'You have upload your file successfully!');
-        }else{
-            Session::flash('success', 'You can not upload this file');
-        }
+    // public function uploadCvFunction(Request $request)
+    // {
+    //     $this->validate($request, [
+    //         'upload' => 'required'
+    //         //'upload' => 'required|mimes:pdf,doc,docx|size:5000'
+    //     ]);
+    //     $uploadCV = new Uploadcv;
+    //     if ($request->hasFile('cv')) {
+    //         $upload = $request->upload;
+    //         $upload_new_name = date('gi') . "_" . $upload->getClientOriginalName();
+    //         //  $fileSize = File::size($upload);
+    //         $upload->move('uploads/cv', $upload_new_name);
+    //         $uploadCV->name = $upload_new_name;
+    //         // $uploadCV->fileSize = $fileSize;
+    //         $uploadCV->user_id = Auth::user()->id;
+    //         $uploadCV->save();
+    //         Session::flash('success', 'You have upload your file successfully!');
+    //     } else {
+    //         Session::flash('success', 'You can not upload this file');
+    //     }
 
-        return redirect()->back();
-    }
+    //     return redirect()->back();
+    // }
 
 
 
