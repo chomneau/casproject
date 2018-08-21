@@ -7,7 +7,7 @@
                     <h4 class="modal-title">
                         <i class="fa fa-tasks" aria-hidden="true"></i> Record absent</h4>
                 </div>
-                <form action="{{ route('subject.store') }}" method="post">
+                <form action="{{ route('absentRecord.store') }}" method="post">
                     {{ csrf_field() }}
 
                     <div class="modal-body">

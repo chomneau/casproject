@@ -54,10 +54,10 @@
                                                     <a href="#">Grade :  </a>
                                                     <button type="button" class="btn btn-success btn-xs">
 
-                                                        @if(count($grade))
-                                                            @foreach($grade as $grades)
-                                                                @if($students->grade_id  == $grades->id)
-                                                                    {{ $grades->grade_name }}
+                                                        @if(count($gradeProfile))
+                                                            @foreach($gradeProfile as $grades)
+                                                                @if($students->grade_profile_id  == $grades->id)
+                                                                    {{ $grades->name }}
                                                                 @endif
                                                             @endforeach
                                                         @endif

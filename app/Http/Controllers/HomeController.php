@@ -20,6 +20,7 @@ use Session;
 use App\PrimarySubject;
 use App\PrekScore;
 use App\KSubject;
+use App\GradeProfile;
 
 class HomeController extends Controller
 {
@@ -45,6 +46,10 @@ class HomeController extends Controller
 
         $this->subject = Subject::all();
         View::share('subject', $this->subject);
+
+        $this->gradeProfile = GradeProfile::all();
+        View::share('gradeProfile', $this->gradeProfile);
+
 
     }
 

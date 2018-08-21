@@ -15,6 +15,7 @@ use Session;
 use View;
 use App\AbsentRecord;
 use App\Absent;
+use App\GradeProfile;
 
 
 class StudentController extends Controller
@@ -48,6 +49,9 @@ class StudentController extends Controller
 
         $this->absentRecord = AbsentRecord::all();
         View::share('absentRecord', $this->absentRecord);
+
+        $this->gradeProfile = GradeProfile::all();
+        View::share('gradeProfile', $this->gradeProfile);
     }
 
 
@@ -145,6 +149,8 @@ class StudentController extends Controller
         $user->name = $request->first_name;
         $user->email = $request->email;
         $user->password = bcrypt($request->student_id);
+        $user->student_id = $request->student_id;
+
         $user->save();
 
 
@@ -158,7 +164,7 @@ class StudentController extends Controller
         $student->date_of_birth = $request->date_of_birth;
         $student->place_of_birth = $request->place_of_birth;
         $student->card_id = $request->student_id;
-        $student->grade_id = $request->grade_id;
+        $student->grade_profile_id = $request->grade_id;
         $student->nationality = $request->nationality;
         $student->progressive_book_id = $request->progressive_book_id;
         $student->parents_name = $request->parents_name;
@@ -377,7 +383,7 @@ class StudentController extends Controller
         $student->date_of_birth = $request->date_of_birth;
         $student->place_of_birth = $request->place_of_birth;
         $student->card_id = $request->student_id;
-        $student->grade_id = $request->grade_id;
+        $student->grade_profile_id = $request->grade_id;
         $student->nationality = $request->nationality;
         $student->progressive_book_id = $request->progressive_book_id;
         $student->parents_name = $request->parents_name;
@@ -391,6 +397,7 @@ class StudentController extends Controller
 
         $user = StudentProfile::find($id)->user;
         $user->name = $request->first_name;
+        $user->student_id = $request->student_id;
         $user->password = bcrypt($request->student_id);
         $user->save();
 

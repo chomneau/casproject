@@ -71,11 +71,11 @@
         <div class="col-md-6 {{ $errors->has('grade_id') ? ' has-error' : '' }}">
             <label for="exampleInputEmail1">Grade</label>
             <select name="grade_id" id="" class="form-control" required>
-                @if(count($grade))
-                    @foreach($grade as $grades)
+                @if(count($gradeProfile))
+                    @foreach($gradeProfile as $grades)
                         <option value="{{ $grades->id }}"
-                                @if($student->grade_id  == $grades->id) selected @endif
-                        >{{ $grades->grade_name }}</option>
+                                @if($student->grade_profile_id  == $grades->id) selected @endif
+                        >{{ $grades->name }}</option>
                     @endforeach
                 @endif
 

@@ -16,6 +16,7 @@ use App\SecondaryScore;
 
 use App\PrimarySubject;
 use View;
+use App\GradeProfile;
 
 class SecondaryController extends Controller
 {
@@ -37,6 +38,9 @@ class SecondaryController extends Controller
 
         $this->subject = Subject::all();
         View::share('subject', $this->subject);
+
+        $this->gradeProfile = GradeProfile::all();
+        View::share('gradeProfile', $this->gradeProfile);
     }
 
 

@@ -91,45 +91,55 @@
                 </div>
             </div>
 
-            {{-- record form --}}
+            {{-- Edit form --}}
             <div class="col-md-4 col-sm-6 col-xs-12">
                 <div class="x_panel">
                     <div class="x_title">
-                        <h2>Record absent</h2>
+                        <h2>Edit Record Absent</h2>
 
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
 
-                        <form action="{{ route('store.highSchool.absentRecord',['grade_id'=>$grade_id->id,'id'=>$students->id]) }}" method="post">
+                        <form action="{{ route('update.highSchool.absentRecord',['grade_id'=>$grade_id->id,'id'=>$students->id, 'absentRecord_id'=>$hightSchoolAbsents->id]) }}" method="post">
 
                             {{ csrf_field() }}
 
                             <div class="modal-body">
                                 <label for="exampleInputEmail1">Select absent type</label>
                                 <select name="absent_id" id="" class="form-control" required>
-                                        <option value="">--select absent type--</option>
-                                            @if(count($absent))
-                                                @foreach($absent as $absents)
-                                                    <option value="{{ $absents->id }} ">{{ $absents->absent_type }}</option>
-                                                @endforeach
-                                        @endif
-                                </select>
+                                                <option value="">--select absent type--</option>
+                                                @if(count($absent))
+                                                    @foreach($absent as $absents)
+                                                        <option value="{{ $absents->id }} "
+                                                            @if($hightSchoolAbsents->absent_id == $absents->id) selected @endif>
+                                                            {{ $absents->absent_type }}
+                                                        </option>
+                                                    @endforeach
+                                                @endif
+
+                                                
+                                            </select>
                             </div>
 
                             <div class="modal-body">
                                 <label for="exampleInputEmail1">Absent date</label>
-                                <input type="date" name="absent_date" class="form-control" min="2000-01-01" max="2050-12-01">
+                                <input type="text" name="absent_date" class="form-control" min="2000-01-01" max="2050-12-01" value="{{ $absentRecord->absent_date }}">
                             </div>
                             <div class="modal-body">
                                 <label for="exampleInputEmail1">Reason</label>
                                 <textarea rows="4" cols="50" wrap="hard" name="reason" class="form-control" placeholder="Reason" required autofocus>
-                                    
+                                        
+                                        <?php
+                                        $reason = $absentRecord->reason;
+                                        echo trim($reason)
+                                        ?>
                                 </textarea>
                             </div>
 
                             <div class="modal-footer">
-                                <button type="submit" class="btn btn-primary">Save</button>
+                                <button type="submit" class="btn btn-primary">update</button>
+                                <a href="{{ route('delete.highSchool.absentRecord', ['grade_id'=>$grade_id->id,'id'=>$students->id, 'absentRecord_id'=>$hightSchoolAbsents->id] ) }}" type="submit" class="btn btn-danger">Delete</a>
 
                             </div>
                         </form>

@@ -79,8 +79,8 @@ Route::get('/contact', 'PagesController@getContact');
 
 
 
-Route::get('/home/job', 'HomeController@showJobForm')->name('home.jobform');
-Route::post('/home/job', 'HomeController@createjob')->name('home.jobform.submit');
+// Route::get('/home/job', 'HomeController@showJobForm')->name('home.jobform');
+// Route::post('/home/job', 'HomeController@createjob')->name('home.jobform.submit');
 
 Route::get('/users/logout', 'Auth\LoginController@userLogout')->name('user.logout');
 
@@ -95,16 +95,16 @@ Route::get('/user/uploadcv/delete/{id}', 'UploadCvController@destroy')->name('us
 
 Route::resource('/user', 'ProfileController');
 
-//build CV
-Route::resource('/mycv', 'CvController');
-Route::post('/mycv/update/{id}', 'CvController@update')->name('mycv.update');
-Route::get('/mycv/delete/{id}', 'CvController@destroy')->name('mycv.delete');
+// //build CV
+// Route::resource('/mycv', 'CvController');
+// Route::post('/mycv/update/{id}', 'CvController@update')->name('mycv.update');
+// Route::get('/mycv/delete/{id}', 'CvController@destroy')->name('mycv.delete');
 
 //user education route
 
-Route::resource('/education', 'UserEducationController');
-Route::post('/education/update/{id}', 'UserEducationController@update')->name('education.update');
-Route::get('/education/delete/{id}', 'UserEducationController@destroy')->name('education.delete');
+// Route::resource('/education', 'UserEducationController');
+// Route::post('/education/update/{id}', 'UserEducationController@update')->name('education.update');
+// Route::get('/education/delete/{id}', 'UserEducationController@destroy')->name('education.delete');
 
 
 
@@ -303,7 +303,23 @@ Route::prefix('admin')->group(function () {
    Route::post('/absent/update/{id}', 'AbsentController@update')->name('update.absent');
 
    //record student absent
-   Route::get('/absent/show', 'AbsentController@showAbsent')->name('show.absentRecord');
+   Route::get('/absent/show/{student_id}', 'AbsentController@showAbsent')->name('show.absentRecord');
+   //record high school student absent by grade
+   Route::get('/highSchool/absent/{grade_id}/{student_id}', 'AbsentController@highSchoolAbsent')->name('highSchool.absentRecord');
+  // add new absent route
+   Route::post('/highSchool/absentInsert/{grade_id}/{student_id}', 'AbsentController@storeHighSchoolAbsent')->name('store.highSchool.absentRecord');
+  // Edit absent record for highschool
+     Route::get('/highSchool/absentEdit/{grade_id}/{student_id}/{absentRecord_id}', 'AbsentController@editHighSchoolAbsent')->name('edit.highSchool.absentRecord');
+  //update absent record for highschool
+     Route::post('/highSchool/absentUpdate/{grade_id}/{student_id}/{absentRecord_id}', 'AbsentController@updateHighSchoolAbsent')->name('update.highSchool.absentRecord');
+
+  //update absent record for highschool
+     Route::get('/highSchool/absentDelete/{grade_id}/{student_id}/{absentRecord_id}', 'AbsentController@deleteHighSchoolAbsent')->name('delete.highSchool.absentRecord');
+
+
+
+
+
 
 });
 

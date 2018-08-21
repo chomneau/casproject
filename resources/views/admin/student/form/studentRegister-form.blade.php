@@ -74,9 +74,9 @@
             <label for="exampleInputEmail1">Grade</label>
             <select name="grade_id" id="" class="form-control" required>
                 <option value="">--select grade--</option>
-                @if(count($grade))
-                    @foreach($grade as $grades)
-                        <option value="{{ $grades->id }} ">{{ $grades->grade_name }}</option>
+                @if(count($gradeProfile))
+                    @foreach($gradeProfile as $grades)
+                        <option value="{{ $grades->id }} ">{{ $grades->name }}</option>
                     @endforeach
                 @endif
             </select>

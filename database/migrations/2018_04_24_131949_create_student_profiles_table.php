@@ -23,7 +23,7 @@ class CreateStudentProfilesTable extends Migration
             $table->string('date_of_birth')->nullable();
             $table->string('place_of_birth')->nullable();
             $table->string('card_id')->nullable();
-            $table->string('grade_id')->nullable();
+            $table->integer('grade_profile_id')->nullable();
             $table->integer('student_status_id')->nullable();
             $table->string('nationality')->nullable();
             $table->string('progressive_book_id')->nullable();

@@ -18,6 +18,7 @@ use App\PrimarySubject;
 use View;
 use App\PrekScore;
 use App\KSubject;
+use App\GradeProfile;
 
 class PrekController extends Controller
 {
@@ -36,6 +37,9 @@ class PrekController extends Controller
 
         $this->subject = Subject::all();
         View::share('subject', $this->subject);
+        
+        $this->gradeProfile = GradeProfile::all();
+        View::share('gradeProfile', $this->gradeProfile);
     }
 
     
