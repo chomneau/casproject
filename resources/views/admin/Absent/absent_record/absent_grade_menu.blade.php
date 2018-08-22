@@ -11,14 +11,16 @@
                     </strong>
                 </a>
             <ul id="menu6" class="dropdown-menu animated fadeInDown" role="menu">
-                @if(count($kgrade)) @foreach($kgrade as $kgrades)
-                <li role="presentation" style="margin-top: 5px; margin-bottom: 3px">
-                    <a role="menuitem" tabindex="-1" href="{{ route('prekschool.score', ['grade_id'=>$kgrades->id, 'student_id'=>$students->id]) }}"
-                        style="font-size: 14px">{{ $kgrades->name }}</a>
-                </li>
-                <li role="presentation" class="divider"></li>
+                @if(count($kgrade)) 
+                    @foreach($kgrade as $kgrades)
+                    <li role="presentation" style="margin-top: 5px; margin-bottom: 3px">
+                        <a role="menuitem" tabindex="-1" href="{{ route('prekSchool.absentRecord', ['grade_id'=>$kgrades->id, 'student_id'=>$students->id]) }}"
+                            style="font-size: 14px">{{ $kgrades->name }}</a>
+                    </li>
+                    <li role="presentation" class="divider"></li>
 
-                @endforeach @endif
+                    @endforeach 
+                @endif
             </ul>
         </li>
 
@@ -30,16 +32,18 @@
                     </strong>
                 </a>
             <ul id="menu6" class="dropdown-menu animated fadeInDown" role="menu">
-                @if(count($secondaryGrade)) @foreach($secondaryGrade as $secondaryGrades)
-                <li role="presentation" style="margin-top: 5px; margin-bottom: 3px">
+                @if(count($secondaryGrade)) 
+                    @foreach($secondaryGrade as $secondaryGrades)
+                    <li role="presentation" style="margin-top: 5px; margin-bottom: 3px">
 
 
-                    <a role="menuitem" tabindex="-1" href="{{ route('score.secondary', ['grade_id'=>$secondaryGrades->id, 'student_id'=>$students->id]) }}"
-                        style="font-size: 14px">{{ $secondaryGrades->name }}</a>
+                        <a role="menuitem" tabindex="-1" href="{{ route('secondarySchool.absentRecord', ['grade_id'=>$secondaryGrades->id, 'student_id'=>$students->id]) }}"
+                            style="font-size: 14px">{{ $secondaryGrades->name }}</a>
 
-                </li>
-                <li role="presentation" class="divider"></li>
-                @endforeach @endif
+                    </li>
+                    <li role="presentation" class="divider"></li>
+                    @endforeach 
+                @endif
             </ul>
         </li>
 
@@ -50,13 +54,15 @@
                     </strong>
                 </a>
             <ul id="menu6" class="dropdown-menu animated fadeInDown" role="menu">
-                @if(count($grade)) @foreach($grade as $grades)
-                <li role="presentation" style="margin-top: 5px; margin-bottom: 3px">
-                    <a role="menuitem" tabindex="-1" href="{{ route('highSchool.absentRecord', ['grade_id'=>$grades->id, 'student_id'=>$students->id]) }}"
-                        style="font-size: 14px">{{ $grades->grade_name }}</a>
-                </li>
-                <li role="presentation" class="divider"></li>
-                @endforeach @endif
+                @if(count($grade)) 
+                    @foreach($grade as $grades)
+                    <li role="presentation" style="margin-top: 5px; margin-bottom: 3px">
+                        <a role="menuitem" tabindex="-1" href="{{ route('highSchool.absentRecord', ['grade_id'=>$grades->id, 'student_id'=>$students->id]) }}"
+                            style="font-size: 14px">{{ $grades->grade_name }}</a>
+                    </li>
+                    <li role="presentation" class="divider"></li>
+                    @endforeach 
+                @endif
             </ul>
         </li>
 

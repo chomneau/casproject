@@ -302,7 +302,9 @@ Route::prefix('admin')->group(function () {
    Route::get('/absent/edit/{id}', 'AbsentController@edit')->name('edit.absent');
    Route::post('/absent/update/{id}', 'AbsentController@update')->name('update.absent');
 
-   //record student absent
+   
+
+   //High School student absent
    Route::get('/absent/show/{student_id}', 'AbsentController@showAbsent')->name('show.absentRecord');
    //record high school student absent by grade
    Route::get('/highSchool/absent/{grade_id}/{student_id}', 'AbsentController@highSchoolAbsent')->name('highSchool.absentRecord');
@@ -315,6 +317,45 @@ Route::prefix('admin')->group(function () {
 
   //update absent record for highschool
      Route::get('/highSchool/absentDelete/{grade_id}/{student_id}/{absentRecord_id}', 'AbsentController@deleteHighSchoolAbsent')->name('delete.highSchool.absentRecord');
+
+
+
+
+
+
+  // ******* secondary school student Absent ******* //
+  
+    Route::get('/secondarySchool/absent/{grade_id}/{student_id}', 'AbsentController@secondarySchoolAbsent')->name('secondarySchool.absentRecord'); 
+
+    // add new absent route
+   Route::post('/secondarySchool/absentInsert/{grade_id}/{student_id}', 'AbsentController@storeSecondaryAbsent')->name('store.secondarySchool.absentRecord');
+  // Edit absent record for highschool
+     Route::get('/secondarySchool/absentEdit/{grade_id}/{student_id}/{absentRecord_id}', 'AbsentController@editSecondaryAbsent')->name('edit.secondarySchool.absentRecord');
+  //update absent record for highschool
+     Route::post('/secondarySchool/absentUpdate/{grade_id}/{student_id}/{absentRecord_id}', 'AbsentController@updateSecondaryAbsent')->name('update.secondarySchool.absentRecord');
+
+  //update absent record for highschool
+     Route::get('/secondarySchool/absentDelete/{grade_id}/{student_id}/{absentRecord_id}', 'AbsentController@deleteSecondaryAbsent')->name('delete.SecondarySchool.absentRecord');
+
+
+
+
+
+
+// ******* Primary school student Absent ******* //
+  
+    Route::get('/prekSchool/absent/{grade_id}/{student_id}', 'AbsentController@prekSchoolAbsent')->name('prekSchool.absentRecord'); 
+
+
+// add new absent route
+   Route::post('/prekSchool/absentInsert/{grade_id}/{student_id}', 'AbsentController@storePrekAbsent')->name('store.prekSchool.absentRecord');
+  // Edit absent record for highschool
+     Route::get('/prekSchool/absentEdit/{grade_id}/{student_id}/{absentRecord_id}', 'AbsentController@editPrekAbsent')->name('edit.prekSchool.absentRecord');
+  //update absent record for highschool
+     Route::post('/prekSchool/absentUpdate/{grade_id}/{student_id}/{absentRecord_id}', 'AbsentController@updatePrekAbsent')->name('update.prekSchool.absentRecord');
+
+  //update absent record for highschool
+     Route::get('/prekSchool/absentDelete/{grade_id}/{student_id}/{absentRecord_id}', 'AbsentController@deletePrekAbsent')->name('delete.prekSchool.absentRecord');
 
 
 

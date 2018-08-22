@@ -13,6 +13,8 @@ use App\SecondaryLevel;
 use App\Subject;
 use View;
 use Carbon;
+use App\SecondaryAbsent;
+use App\PrekAbsent;
 
 
 class AbsentController extends Controller
@@ -175,6 +177,204 @@ public function deleteHighSchoolAbsent($grade_id, $student_id, $absentRecord_id)
 
 }
 
+// ******* Secondary School Absent ******* //
+
+public function secondarySchoolAbsent($grade_id, $student_id){
+
+
+    $student = StudentProfile::find($student_id);
+    $grade = SecondaryLevel::find($grade_id);
+    $secondaryAbsent = SecondaryAbsent::where([
+        ['secondary_level_id', $grade_id], 
+        ['student_profile_id', $student_id],
+    ])->get();
+
+    //return $highSchoolAbsent;
+    
+    return view('admin.Absent.absent_record.absent_secondary_index')->with([
+        'grade_id'=>$grade ,
+        'students'=> $student, 
+        'secondaryAbsent'=> $secondaryAbsent
+        ]);
+
+}
+
+
+//insert absent value to secondary student SecondaryAbsent
+public function storeSecondaryAbsent(Request $request, $grade_id, $student_id){
+    $student = StudentProfile::find($student_id);
+    $grade = SecondaryLevel::find($grade_id);
+
+    $secondaryAbsent = new SecondaryAbsent();
+    //absent type is the id of absent table
+    $secondaryAbsent->absent_id = $request->absent_id;
+    $secondaryAbsent->student_profile_id = $student->id;
+    $secondaryAbsent->secondary_level_id = $grade->id;
+    $secondaryAbsent->reason = $request->reason;
+    $secondaryAbsent->absent_date = $request->absent_date;
+    $secondaryAbsent->save();
+
+
+    Session::flash('success', 'You successfully add a new record');
+    return redirect()->back();
+}
+
+public function editSecondaryAbsent($grade_id, $student_id, $secondaryAbsent_id){
+    $student = StudentProfile::find($student_id);
+    $grade = SecondaryLevel::find($grade_id);
+    //find the id of secondaryAbsent record
+    $secondaryAbsent_edit = SecondaryAbsent::find($secondaryAbsent_id);
+
+    $secondaryAbsent = SecondaryAbsent::where([
+        ['secondary_level_id', $grade_id], 
+        ['student_profile_id', $student_id],
+    ])->get();
+
+    return view('admin.Absent.absent_record.absent_secondary_edit')->with([
+        'grade_id'=>$grade ,
+        'students'=> $student, 
+        'secondaryAbsent'=> $secondaryAbsent,
+        'secondaryAbsent_edit'=>$secondaryAbsent_edit
+        ]);
+}
+
+//update absent value to SecondaryAbsent
+public function updateSecondaryAbsent(Request $request, $grade_id, $student_id, $absentRecord_id){
+    $student = StudentProfile::find($student_id);
+    $grade = SecondaryLevel::find($grade_id);
+
+    $secondaryAbsent = SecondaryAbsent::find($absentRecord_id);
+    //absent type is the id of absent table
+    $secondaryAbsent->absent_id = $request->absent_id;
+    $secondaryAbsent->student_profile_id = $student->id;
+    $secondaryAbsent->secondary_level_id = $grade->id;
+    $secondaryAbsent->reason = $request->reason;
+    $secondaryAbsent->absent_date = $request->absent_date;
+    $secondaryAbsent->save();
+
+
+    Session::flash('success', 'You successfully update the record');
+    return redirect()->route('secondarySchool.absentRecord', ['grade_id'=>$grade->id, 'student_id'=>$student->id]);
+}
+
+//delete absent record in SecondaryAbsent
+
+public function deleteSecondaryAbsent($grade_id, $student_id, $absentRecord_id){
+    
+    $student = StudentProfile::find($student_id);
+    $grade = SecondaryLevel::find($grade_id);
+
+    $delete = SecondaryAbsent::find($absentRecord_id);
+    $delete->delete();
+
+    Session::flash('success', 'You successfully deleted a record');
+    return redirect()->route('secondarySchool.absentRecord', ['grade_id'=>$grade->id, 'student_id'=>$student->id]);
+
+
+}
+
+
+
+
+
+
+// ******* K and Pre-k School Absent ******* //
+
+public function prekSchoolAbsent($grade_id, $student_id){
+
+
+    $student = StudentProfile::find($student_id);
+    $grade = KLevel::find($grade_id);
+    $prekAbsent = PrekAbsent::where([
+        ['k_level_id', $grade_id], 
+        ['student_profile_id', $student_id],
+    ])->get();
+
+    //return $highSchoolAbsent;
+    
+    return view('admin.Absent.absent_record.absent_prek_index')->with([
+        'grade_id'=>$grade ,
+        'students'=> $student, 
+        'prekAbsent'=> $prekAbsent
+        ]);
+
+
+}
+
+
+
+//insert absent value to k and Pre-k student SecondaryAbsent
+public function storePrekAbsent(Request $request, $grade_id, $student_id){
+    $student = StudentProfile::find($student_id);
+    $grade = KLevel::find($grade_id);
+
+    $prekAbsent = new PrekAbsent();
+    //absent type is the id of absent table
+    $prekAbsent->absent_id = $request->absent_id;
+    $prekAbsent->student_profile_id = $student->id;
+    $prekAbsent->k_level_id = $grade->id;
+    $prekAbsent->reason = $request->reason;
+    $prekAbsent->absent_date = $request->absent_date;
+    $prekAbsent->save();
+
+
+    Session::flash('success', 'You successfully add a new record');
+    return redirect()->back();
+}
+
+public function editPrekAbsent($grade_id, $student_id, $prekAbsent_id){
+    $student = StudentProfile::find($student_id);
+    $grade = KLevel::find($grade_id);
+    //find the id of prekAbsent record
+    $prekAbsent_edit = PrekAbsent::find($prekAbsent_id);
+
+    $prekAbsent = PrekAbsent::where([
+        ['k_level_id', $grade_id], 
+        ['student_profile_id', $student_id],
+    ])->get();
+
+    return view('admin.Absent.absent_record.absent_prek_edit')->with([
+        'grade_id'=>$grade ,
+        'students'=> $student, 
+        'prekAbsent'=> $prekAbsent,
+        'prekAbsent_edit'=>$prekAbsent_edit
+        ]);
+}
+
+//update absent value to prekAbsent
+public function updatePrekAbsent(Request $request, $grade_id, $student_id, $prekAbsent_id){
+    $student = StudentProfile::find($student_id);
+    $grade = KLevel::find($grade_id);
+
+    $prekAbsent = PrekAbsent::find($prekAbsent_id);
+    //absent type is the id of absent table
+    $prekAbsent->absent_id = $request->absent_id;
+    $prekAbsent->student_profile_id = $student->id;
+    $prekAbsent->k_level_id = $grade->id;
+    $prekAbsent->reason = $request->reason;
+    $prekAbsent->absent_date = $request->absent_date;
+    $prekAbsent->save();
+
+
+    Session::flash('success', 'You successfully update the record');
+    return redirect()->route('prekSchool.absentRecord', ['grade_id'=>$grade->id, 'student_id'=>$student->id]);
+}
+
+//delete absent record in prekAbsent
+
+public function deletePrekAbsent($grade_id, $student_id, $prekAbsent_id){
+    
+    $student = StudentProfile::find($student_id);
+    $grade = KLevel::find($grade_id);
+
+    $delete = PrekAbsent::find($prekAbsent_id);
+    $delete->delete();
+
+    Session::flash('success', 'You successfully deleted a record');
+    return redirect()->route('prekSchool.absentRecord', ['grade_id'=>$grade->id, 'student_id'=>$student->id]);
+
+
+}
 
 
 

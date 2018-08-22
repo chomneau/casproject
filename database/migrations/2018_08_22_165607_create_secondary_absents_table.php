@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAbsentRecordsTable extends Migration
+class CreateSecondaryAbsentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateAbsentRecordsTable extends Migration
      */
     public function up()
     {
-        Schema::create('absent_records', function (Blueprint $table) {
+        Schema::create('secondary_absents', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('absent_id');
             $table->integer('student_profile_id');
-            $table->integer('grade_id');
+            $table->integer('secondary_level_id');
             $table->text('reason');
             $table->Date('absent_date');
             $table->timestamps();
@@ -31,6 +31,6 @@ class CreateAbsentRecordsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('absent_records');
+        Schema::dropIfExists('secondary_absents');
     }
 }
