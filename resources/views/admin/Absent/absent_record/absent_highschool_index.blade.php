@@ -64,7 +64,15 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @if(count($hightSchoolAbsent))@foreach($hightSchoolAbsent as $hightSchoolAbsents)
+                                @if(!count($hightSchoolAbsent))                               
+
+                                <tr class="text-center">
+                                    <td colspan="6"><h4>No record found !</h4> </td> 
+
+                                </tr>
+
+                                @else
+                                @foreach($hightSchoolAbsent as $hightSchoolAbsents)
                                 <tr>
                                     <th scope="row">#</th>
                                     <td>{{ $hightSchoolAbsents->studentProfile->first_name }}</td>
@@ -80,16 +88,85 @@
                                     </td>
                                     <td>{{ Carbon\Carbon::parse($hightSchoolAbsents->absent_date)->format('M d, Y') }}</td>
                                     <td>
-                                        <a href="{{ route('edit.highSchool.absentRecord', ['grade_id'=>$grade_id->id,'id'=>$students->id, 'absentRecord_id'=>$hightSchoolAbsents->id]) }}"><span class="btn btn-sm btn-primary"> Edit </span></a>
+                                        <a href="{{ route('edit.highSchool.absentRecord', ['grade_id'=>$grade_id->id,'id'=>$students->id, 'absentRecord_id'=>$hightSchoolAbsents->id]) }}">
+                                            <span class="btn btn-sm btn-primary"> Edit </span>
+                                        </a>
                                     </td>
                                 </tr>
-                                @endforeach @endif
+                                @endforeach
+
+
+                                @endif
                             </tbody>
                         </table>
 
                     </div>
+
                 </div>
+
+    <div class="x_panel">
+
+        <div class="row tile_count">
+
+            <div class="col-md-4 col-sm-4 col-xs-6 tile_stats_count text-center">
+              <span class="count_top"><i class="fa fa-user"></i> Absent</span>
+                <div class="count">
+                    <!-- total here -->
+                </div>
+              <span class="count_bottom"><i class="green"></i> 
+                <!-- text here -->
+              </span>
             </div>
+
+            <div class="col-md-4 col-sm-4 col-xs-6 tile_stats_count text-center">
+              <span class="count_top"><i class="fa fa-user"></i> Excuse</span>
+              <div class="count">
+                
+                <!-- total here -->
+
+
+              </div>
+              <span class="count_bottom"><i class="green"></i> 
+                <!-- text here -->
+              </span>
+            </div>
+
+            <div class="col-md-4 col-sm-4 col-xs-6 tile_stats_count text-center">
+              <span class="count_top"><i class="fa fa-clock-o"></i> Total Absent</span>
+              <div class="count">
+                
+                <!-- total here -->
+
+              </div>
+                <span class="count_bottom"> 
+            <!-- text here -->
+                </span>
+            </div>
+            
+            
+        </div>
+
+    </div>
+          <!-- /top tiles -->
+
+
+
+
+
+
+
+
+
+            </div>
+
+
+
+
+
+
+
+
+
 
             {{-- record form --}}
             <div class="col-md-4 col-sm-6 col-xs-12">

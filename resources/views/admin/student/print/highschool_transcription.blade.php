@@ -85,8 +85,12 @@
 
 						<div class="col-sm-6 col-md-6" style="margin-left: -35px">
 							<ul style="list-style: none;">
-								<li>Name : <strong>{{ $student->last_name}} {{ $student->first_name}}</strong></li>
-								<li>Progressive Book ID : <strong>{{$student->progressive_book_id}}</strong></li>
+								<li>Name : <strong>{{ $student->last_name}} 
+									{{ $student->first_name}}</strong>
+								</li>
+								<li>Progressive Book ID : 
+									<strong>{{$student->progressive_book_id}}</strong>
+								</li>
                                 <li>Date of Birth : <strong>{{ $student->date_of_birth }}</strong></li>
                                 <li>Admission Date: <strong>{{ $student->created_at->format('M d, Y') }}</strong></li>
                                 <li>Completion Date: Jan 16, 2018</li>
@@ -130,113 +134,38 @@
 			    <!--Table body-->
 			    <tbody>
 
-			    	@if(count($score))
-			    	@foreach($score as $scores)
-			        <tr>
-			            
-			            <td>{{$scores->subject->name}}</td>
-			            <td>{{ $scores->subject->credit}}</td>
-			            <td> 
+			    	@if(count($semester_1))
+				    	@foreach($semester_1 as $score_s1)
 
-			            	{{ $scores->gpa_quarter_1 }}
-							<!-- {{ ($scores->quarter_1 += $scores->quarter_2)/2 }} -->
+					    	@foreach($grade as $grades)
 
-							<!-- <?php
-			            	$GPA = ($scores->quarter_1 += $scores->quarter_2)/2;
-			            	if($GPA >= 93 && $GPA <=100){			           
-			            		echo "A";
-			            	}elseif ($GPA >= 90 && $GPA <=92 ) {
-			            		echo "A-";			            	
-			            	}elseif ($GPA >= 87 && $GPA <=89 ) {
-			            		echo "B+";			            	
-			            	}elseif ($GPA >= 83 && $GPA <=86 ) {
-			            		echo "B";			            
-			            	}elseif ($GPA >= 80 && $GPA <=82 ) {
-			            		echo "B-";
-			            	}elseif ($GPA >= 77 && $GPA <=79 ) {
-			            		echo "C+";
-			            	}elseif ($GPA >= 73 && $GPA <=76 ) {
-			            		echo "C";
-			            	}elseif ($GPA >= 70 && $GPA <=72 ) {
-			            		echo "C-";
-			            	}elseif ($GPA >= 67 && $GPA <=69 ) {
-			            		echo "D+";
-			            	}elseif ($GPA >= 63 && $GPA <=66 ) {
-			            		echo "D";
-			            	}elseif ($GPA >= 60 && $GPA <=62 ) {
-			            		echo "D-";
-			            	}elseif ($GPA >= 0 && $GPA <=59 ) {
-			            		echo "F";
-			            	}
+						    	@if($score_s1->grade_id == $grades->id)
 
-							
-			            	
-			            	?> -->
-			             
+							    	
+							        <tr>
+							            
+							            <td>{{$score_s1->subject->name}}</td>
+							            <td>{{ $score_s1->subject->credit}}</td>
+							            <td> 
 
+							            	{{ $score_s1->gpa_quarter_1 }}
+							            
 
+							            </td>
+							            <td>
+											4.0
+											
+							            </td>
 
-			            </td>
-			            <td>
-							<?php 
+							        </tr>
+							        
+									
+						        
+						        @endif
 
-							if( $scores->gpa_quarter_1 === "A" ){
-
-								echo $scores->Subject->credit*4;
-
-							}elseif ($scores->gpa_quarter_1 === "A-") {
-
-								echo $scores->Subject->credit*3.7;
-
-							}elseif ($scores->gpa_quarter_1 === "B+") {
-
-								echo $scores->Subject->credit*3.3;
-
-							}elseif ($scores->gpa_quarter_1 === "B") {
-
-								echo $scores->Subject->credit*3.0;
-
-							}elseif ($scores->gpa_quarter_1 === "B-") {
-
-								echo $scores->Subject->credit*2.7;
-
-							}elseif ($scores->gpa_quarter_1 === "C+") {
-
-								echo $scores->Subject->credit*2.3;
-
-							}elseif ($scores->gpa_quarter_1 === "C") {
-
-								echo $scores->Subject->credit*2.0;
-
-							}elseif ($scores->gpa_quarter_1 === "C-") {
-
-								echo $scores->Subject->credit*1.7;
-
-							}elseif ($scores->gpa_quarter_1 === "D+") {
-
-								echo $scores->Subject->credit*1.3;
-
-							}elseif ($scores->gpa_quarter_1 === "D") {
-
-								echo $scores->Subject->credit*1.0;
-
-							}elseif ($scores->gpa_quarter_1 === "D-") {
-
-								echo $scores->Subject->credit*0.7;
-
-							}elseif ($scores->gpa_quarter_1 === "F") {
-
-								echo $scores->Subject->credit*0.0;
-
-							}
-
-
-							?>
-							
-			            </td>
-			        </tr>
-			        
-			        @endforeach
+					        @endforeach
+				        
+				        @endforeach
 			        @endif
 
 			        
@@ -273,34 +202,39 @@
 
 			    <!--Table body-->
 			    <tbody>
-			        <tr>
-			            
-			            <td>English</td>
-			            <td>0.50</td>
-			            <td>A-</td>
-			            <td>1.85</td>
-			        </tr>
-			        <tr>
-			            
-			            <td>Physic</td>
-			            <td>0.50</td>
-			            <td>A-</td>
-			            <td>1.85</td>
-			        </tr>
-			        <tr>
-			            
-			            <td>Geo</td>
-			            <td>0.50</td>
-			            <td>A-</td>
-			            <td>1.85</td>
-			        </tr>
-			        <tr>
-			            
-			            <td>History</td>
-			            <td>0.50</td>
-			            <td>A-</td>
-			            <td>1.85</td>
-			        </tr>
+			        @if(count($semester_2))
+				    	@foreach($semester_2 as $score_s2)
+
+					    	@foreach($grade as $grades)
+
+						    	@if($score_s2->grade_id == $grades->id)
+
+							    	
+							        <tr>
+							            
+							            <td>{{$score_s2->subject->name}}</td>
+							            <td>{{ $score_s2->subject->credit}}</td>
+							            <td> 
+
+							            	{{ $score_s2->gpa_quarter_1 }}
+							            
+
+							            </td>
+							            <td>
+											4.0
+											
+							            </td>
+
+							        </tr>
+							        
+									
+						        
+						        @endif
+
+					        @endforeach
+				        
+				        @endforeach
+			        @endif
 			    </tbody>
 			    <!--Table body-->
 

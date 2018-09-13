@@ -20,7 +20,7 @@
                             <img class="w-2r bdrs-50p" src="{{ asset($students->photo) }}" alt=""></div>
                         <div class="peer">
                             <span class="fsz-sm c-grey-900">
-                                {{ auth()->user()->name }} <i class="fa fa-angle-down" aria-hidden="true"></i>
+                                {{ auth()->user()->studentProfile->first_name }} <i class="fa fa-angle-down" aria-hidden="true"></i>
                             </span>
                         </div>
                     </a>
@@ -39,13 +39,14 @@
                             </a>
                         </li>
                         <li></li>
-                        {{--
+                        <li role="separator" class="divider"></li>
+                        
                         <li>
-                            <a href="email.html" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700">
-                                <i class="ti-email mR-10"></i> 
-                                <span>Messages</span>
+                            <a href="{{ route('student.passwordFrom', ['id'=>auth()->user()->id])}}" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700">
+                                <i class="fa fa-unlock" style="color:#55CBF2"></i>
+                                <span>password</span>
                             </a>
-                        </li> --}}
+                        </li> 
                         <li role="separator" class="divider"></li>
                         <li style="margin-top: 10px; margin-bottom:6px">
                             <a href="{{ route('user.logout') }}" onclick="event.preventDefault();

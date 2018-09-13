@@ -111,70 +111,9 @@
                     </div>
 
                 </div>
-                {{--</div><div class="col-xs-10">--}}
-                {{--<!-- Tab panes -->--}}
-                {{--<div class="tab-content">--}}
-                {{--<div class="tab-pane active" id="home">--}}
-                {{--<div class="tab-pane" id="table">--}}
+               
                 {{--<table id="datatable-fixed-header" class="table table-striped table-bordered">--}}
-                {{--<thead>--}}
-                {{--<tr>--}}
-                {{--<th>Student ID</th>--}}
-                {{--<th>Subject</th>--}}
-                {{--<th>Grade</th>--}}
-                {{--<th>Quarter 1</th>--}}
-                {{--<th>Quarter 2</th>--}}
-                {{--<th>Quarter 3</th>--}}
-                {{--<th>Quarter 4</th>--}}
-                {{--<th>Semester 1</th>--}}
-                {{--<th>Semester 2</th>--}}
-                {{--</tr>--}}
-                {{--</thead>--}}
-
-
-                {{--<tbody>--}}
-                {{--@if(count($scores))--}}
-                {{--@foreach($scores as $score)--}}
-                {{--<tr>--}}
-                {{--<td>{{ $score->student_id }}</td>--}}
-
-                {{-- display subject name --}}
-                {{--@if(count($subject))--}}
-                {{--@foreach ($subject as $subjects)--}}
-                {{--@if($score->subject_id == $subjects->id)--}}
-                {{--<td>{{ $subjects->name }}</td>--}}
-                {{--@endif--}}
-                {{--@endforeach--}}
-                {{--@endif--}}
-                {{--display grade name--}}
-                {{--@if(count($grade))--}}
-                {{--@foreach ($grade as $grades)--}}
-                {{--@if($score->grade_id == $grades->id)--}}
-                {{--<td>{{ $grades->grade_name }}</td>--}}
-                {{--@endif--}}
-                {{--@endforeach--}}
-                {{--@endif--}}
-
-                {{--<td>{{ $score->quater_1 }}</td>--}}
-                {{--<td>{{ $score->quater_2 }}</td>--}}
-                {{--<td>{{ $score->quater_3 }}</td>--}}
-                {{--<td>{{ $score->quater_4 }}</td>--}}
-                {{--Semeter 1--}}
-                {{--<td>{{ $score->quater_1 += $score->quater_2 }}</td>--}}
-                {{--Semeter 2--}}
-                {{--<td>{{ $score->quater_3 += $score->quater_4 }}</td>--}}
-
-                {{--</tr>--}}
-                {{--@endforeach--}}
-                {{--@endif--}}
-                {{--</tbody>--}}
-                {{--</table>--}}
-
-                {{--</div>--}}
-                {{--</div>--}}
-
-                {{--</div>--}}
-                {{--</div>--}}
+               
 
                 <div class="clearfix"></div>
 

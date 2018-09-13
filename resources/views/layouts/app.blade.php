@@ -37,7 +37,8 @@
 <body style="background-color: #F8F4F4 ">
     {{--
     @include('inc.navbar')--}}
-    @include('inc.navbar') @yield('content')
+    @include('inc.navbar') 
+    @yield('content')
 
     <!--
     @include('inc.footer') -->

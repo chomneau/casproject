@@ -35,6 +35,12 @@ Route::get('/student/Secondary/{grade_id}/{student_id}', 'HomeController@viewSec
 Route::get('/student/highschool/{grade_id}/{student_id}', 'HomeController@viewHighschoolScore')->name('student.highschool');
 
 
+//update admin password for student
+
+    Route::get('/student/updatePassword/{id}', 'HomeController@passwordForm')->name('student.passwordFrom');
+    Route::post('student/updatePassword/{id}', 'HomeController@updatePassword')->name('student.updatePassword');
+
+
 
 //employer login
 Route::get('/employer/login', 'Auth\EmployerLoginController@showLoginForm')->name('employer.login');
@@ -125,6 +131,12 @@ Route::prefix('admin')->group(function () {
 
 
 
+    //change student password
+    Route::post('/student/changePassword/{id}', 'StudentController@changeStudentPassword')->name('student.changePassword');  
+    Route::get('/student/changePassword/{id}', 'StudentController@passwordForm')->name('student.changePassword');   
+
+
+
     Route::get('/login', 'auth\AdminLoginController@showLoginForm')->name('admin.login');
     Route::post('/login', 'auth\AdminLoginController@login')->name('admin.login.submit');
 
@@ -175,15 +187,6 @@ Route::prefix('admin')->group(function () {
     Route::post('prekscore/update/{score_id}/{grade_id}/{student_id}', 'PrekController@updatePrekScore')->name('prek.update');
 //delete data from prekScore table
     Route::get('/prekscore/delete/{id}', 'PrekController@destroyPrekScore')->name('prek.score.delete');
-
-
-  //print section
-    Route::get('/selectTranscript/{student_id}', 'TranscriptController@selectTranscript')->name('select.transcript');
-
-    Route::get('/selectOption/{student_id}', 'TranscriptController@selectOption')->name('select.option');
-
-
-
 
 
 
@@ -360,9 +363,36 @@ Route::prefix('admin')->group(function () {
 
 
 
+  //print section
+    Route::get('/selectTranscript/{student_id}', 'TranscriptController@selectTranscript')->name('select.transcript');
 
 
-});
+    Route::get('/selectOption/{student_id}', 'TranscriptController@selectOption')->name('select.option');
+
+//K and Pre-K print view
+    Route::get('/printView/prek/{student_id}', 'TranscriptController@prekPrintView')->name('prek.printview');
+
+    //high School print view
+    Route::get('/printView/secondaryschool/{student_id}', 'TranscriptController@secondarySchoolPrintView')->name('secondaryschool.printview');
+
+    //high School transcript print view
+    Route::get('/printView/highschool/{student_id}', 'TranscriptController@highSchoolPrintView')->name('highschool.transcript');
+
+    //high school yearly report
+    Route::get('/yearlyReport/highschool/{student_id}', 'TranscriptController@yearlyReportHighSchool')->name('yearlyReport.highSchool');
+
+    //show transption form 
+    Route::get('/transcript/student/{student_id}', 'TranscriptController@transcript')->name('transcript');
+
+
+   
+
+
+
+
+
+
+});//end admin
 
 
 

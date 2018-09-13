@@ -16,6 +16,8 @@ use View;
 use App\AbsentRecord;
 use App\Absent;
 use App\GradeProfile;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Hash;
 
 
 class StudentController extends Controller
@@ -199,6 +201,8 @@ class StudentController extends Controller
         $score->student_profile_id = $studentprofile->id;
         $score->grade_id = $grade->id;
         $score->subject_id = $request->subject_id;
+
+
         
 //        $score->quarter_1 = $request->quarter1;
 //        $score->quarter_2 = $request->quarter2;
@@ -268,63 +272,96 @@ class StudentController extends Controller
         $score->quarter_3 = $request->quarter3;
         $score->quarter_4 = $request->quarter4;
 
+        if($score->subject_id = $score->subject->id){
+            $score->credit = $score->subject->credit;
+            $score->save();
+        }
+
+        
+
         $GPA_1 = ($score->quarter_1 + $score->quarter_2) / 2;
 
 
         if ($GPA_1 >= 93 && $GPA_1 <= 100) {
-            echo "A";
+            $score->gpa_quarter_1 = "A";
+            $score->pts_1 = $score->subject->credit*4;
         } elseif ($GPA_1 >= 90 && $GPA_1 <= 92) {
             $score->gpa_quarter_1 = "A-";
+            $score->pts_1 = $score->subject->credit*3.70;
         } elseif ($GPA_1 >= 87 && $GPA_1 <= 89) {
             $score->gpa_quarter_1 = "B+";
+            $score->pts_1 = $score->subject->credit*3.30;
         } elseif ($GPA_1 >= 83 && $GPA_1 <= 86) {
             $score->gpa_quarter_1 = "B";
+            $score->pts_1 = $score->subject->credit*3.00;
         } elseif ($GPA_1 >= 80 && $GPA_1 <= 82) {
             $score->gpa_quarter_1 = "B-";
+            $score->pts_1 = $score->subject->credit*2.70;
         } elseif ($GPA_1 >= 77 && $GPA_1 <= 79) {
             $score->gpa_quarter_1 = "C+";
+            $score->pts_1 = $score->subject->credit*2.30;
         } elseif ($GPA_1 >= 73 && $GPA_1 <= 76) {
             $score->gpa_quarter_1 = "C";
+            $score->pts_1 = $score->subject->credit*2.00;
         } elseif ($GPA_1 >= 70 && $GPA_1 <= 72) {
             $score->gpa_quarter_1 = "C-";
+            $score->pts_1 = $score->subject->credit*1.70;
         } elseif ($GPA_1 >= 67 && $GPA_1 <= 69) {
             $score->gpa_quarter_1 = "D+";
+            $score->pts_1 = $score->subject->credit*1.30;
         } elseif ($GPA_1 >= 63 && $GPA_1 <= 66) {
             $score->gpa_quarter_1 = "D";
+            $score->pts_1 = $score->subject->credit*1.00;
         } elseif ($GPA_1 >= 60 && $GPA_1 <= 62) {
             $score->gpa_quarter_1 = "D-";
+            $score->pts_1 = $score->subject->credit*0.70;
         } elseif ($GPA_1 >= 0 && $GPA_1 <= 59) {
             $score->gpa_quarter_1 = "F";
+            $score->pts_1 = $score->subject->credit*0.0;
         } else {
             $error = "invalid input";
         }
 
+
+
         $GPA_2 = ($score->quarter_3 + $score->quarter_4) / 2;
 
         if ($GPA_2 >= 93 && $GPA_2 <= 100) {
-            echo "A";
+            $score->gpa_quarter_2 = "A";
+            $score->pts_2 = $score->subject->credit*4;
         } elseif ($GPA_2 >= 90 && $GPA_2 <= 92) {
             $score->gpa_quarter_2 = "A-";
+            $score->pts_2 = $score->subject->credit*3.70;
         } elseif ($GPA_2 >= 87 && $GPA_2 <= 89) {
             $score->gpa_quarter_2 = "B+";
+            $score->pts_2 = $score->subject->credit*3.30;
         } elseif ($GPA_2 >= 83 && $GPA_2 <= 86) {
             $score->gpa_quarter_2 = "B";
+            $score->pts_2 = $score->subject->credit*3.00;
         } elseif ($GPA_2 >= 80 && $GPA_2 <= 82) {
             $score->gpa_quarter_2 = "B-";
+            $score->pts_2 = $score->subject->credit*2.70;
         } elseif ($GPA_2 >= 77 && $GPA_2 <= 79) {
             $score->gpa_quarter_2 = "C+";
+            $score->pts_2 = $score->subject->credit*2.30;
         } elseif ($GPA_2 >= 73 && $GPA_2 <= 76) {
             $score->gpa_quarter_2 = "C";
+            $score->pts_2 = $score->subject->credit*2.00;
         } elseif ($GPA_2 >= 70 && $GPA_2 <= 72) {
             $score->gpa_quarter_2 = "C-";
+            $score->pts_2 = $score->subject->credit*1.70;
         } elseif ($GPA_2 >= 67 && $GPA_2 <= 69) {
             $score->gpa_quarter_2 = "D+";
+            $score->pts_2 = $score->subject->credit*1.30;
         } elseif ($GPA_2 >= 63 && $GPA_2 <= 66) {
             $score->gpa_quarter_2 = "D";
+            $score->pts_2 = $score->subject->credit*1.00;
         } elseif ($GPA_2 >= 60 && $GPA_2 <= 62) {
             $score->gpa_quarter_2 = "D-";
+            $score->pts_2 = $score->subject->credit*0.70;
         } elseif ($GPA_2 >= 0 && $GPA_2 <= 59) {
             $score->gpa_quarter_2 = "F";
+            $score->pts_2 = $score->subject->credit*0.0;
         } else {
             $error = "invalid input";
         }
@@ -429,5 +466,59 @@ class StudentController extends Controller
         Session::flash('success', 'You successfully Deleted a Grade!');
         return redirect()->back();
     }
+
+    //change student password
+
+    public function changeStudentPassword(Request $request, $student_id){
+
+        $this->validate($request, [
+            'password' => 'required|string|min:6|confirmed',
+        ]);
+
+        $student = StudentProfile::find($student_id);
+
+
+
+        $user = user::find($student->user->id);
+
+
+        if (Input::get('password') == Input::get('password_confirmation')) {
+            
+            $user->password = bcrypt(Input::get('password'));
+            
+            $user->save();
+
+            Session::flash('success', 'Password changed successfully!');
+
+            return redirect()->route('student.detail', ['id' => $student->id]);
+
+        } else {
+            Session::flash('error', 'password is not match! Try Again');
+
+            return redirect()->back();
+        }
+
+
+
+    }
+
+    public function passwordForm($student_id){
+
+        $student = StudentProfile::find($student_id);
+        
+        return view('admin.student.changePassword')->with('students', $student);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 }
 

@@ -37,6 +37,25 @@
                         <div class="col-md-12 " style="margin-top: 2em">
                             <div class="col-md-2">
                                 <img src="{{ asset($students->photo) }}" alt="user profile" width="150" height="150">
+                                
+                               <!--  <a href="#" class="btn btn-primary btn-sm" style="margin-top: 10px; margin-left: 10px" data-toggle="modal" data-target="#password" >
+                                    <span><i class="fas fa-unlock"></i></span> Change Password
+                                </a> -->
+
+
+                                <a href="{{ route('student.changePassword', ['student_id'=>$students->id])}}" class="btn btn-primary btn-sm" style="margin-top: 10px; margin-left: 10px"  >
+                                    <span><i class="fas fa-unlock"></i></span> Change Password
+                                </a>
+
+
+                                <div class="help-block col-md-8 offset-md-2">
+                                    @if(Session::has('error'))
+                                        <strong style="color: red;" >{{Session::get('error')}}</strong>
+                                    @endif
+
+                                </div>
+
+                               
 
                             </div>
 

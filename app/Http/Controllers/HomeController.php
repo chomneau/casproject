@@ -21,6 +21,8 @@ use App\PrimarySubject;
 use App\PrekScore;
 use App\KSubject;
 use App\GradeProfile;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Hash;
 
 class HomeController extends Controller
 {
@@ -116,5 +118,43 @@ class HomeController extends Controller
             ]);
     
     }
+
+    public function passwordForm($id){
+
+        $student = StudentProfile::find($id);
+
+       
+
+        return view('end_user.end_user_change_password')
+                    ->with('students', $student);
+        
+    }
+
+
+    public function updatePassword(Request $request, $id)
+    {
+       // return 12345;
+        $this->validate($request, [
+            'password' => 'required|string|min:6|confirmed',
+        ]);
+
+        $student = StudentProfile::find($id);
+
+        $user = User::findOrFail($id);
+
+        if (Hash::check(Input::get('oldPassword'), $user['password']) && Input::get('password') == Input::get('password_confirmation')) {
+            $user->password = bcrypt(Input::get('password'));
+            $user->save();
+
+            Session::flash('success', 'Password changed successfully!');
+            return redirect('/studentProfile')->with('students', $student);
+        } else {
+            Session::flash('error', 'Your current password not match! Try Again');
+            return redirect()->back();
+        }
+
+    }
+
+
 
 }

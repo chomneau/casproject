@@ -25,4 +25,6 @@ class SecondaryScore extends Model
     public function secondaryLevel(){
         return $this->belongsTo(SecondaryLevel::class);
     }
+
+    
 }

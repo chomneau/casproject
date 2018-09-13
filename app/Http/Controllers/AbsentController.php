@@ -92,17 +92,69 @@ class AbsentController extends Controller
 public function highSchoolAbsent($grade_id, $student_id){
     $student = StudentProfile::find($student_id);
     $grade = Grade::find($grade_id);
+    
     $highSchoolAbsent = AbsentRecord::where([
         ['grade_id', $grade_id], 
         ['student_profile_id', $student_id],
-    ])->get();
+    ])->orderBy('created_at', 'Desc')->get();
 
-    //return $highSchoolAbsent;
+
+    // $absent_type = Absent::all();
+    // //return $highSchoolAbsent;
+    // foreach ($highSchoolAbsent as $value) {
+    //     # code...
+    //     if($value->absent_id == $absent_type->id){
+    //         $value->absent_id->coun();
+    //     }
+    // }
+
+
+    // $absent = AbsentRecord::where([
+    //     ['grade_id', $grade_id], 
+    //     ['student_profile_id', $student_id], ['absent_id', 1],
+    // ])->count();
+
+    // $excuse = AbsentRecord::where([
+    //     ['grade_id', $grade_id], 
+    //     ['student_profile_id', $student_id], ['absent_id', 2],
+    // ])->count();
+
+    // $totalExcuse;
+    // $totalAbsent;
+
+    // if($totalExcuse >= 3){
+    //     $excuse = $totalExcuse/3;
+    // }elseif($totalExcuse<3){
+    //     $totalExcuse;
+    // }
+
+
+    // $allTotalAbsent = $totalAbsent+$excuse;
+    
+
+
+
+
+    // if($excuse >= 3){
+    //     $totalExcuse = $excuse/3;
+    // }elseif($excuse<3){
+    //     $excuse;
+    // }
+
+
+    // $totalAbsent = $absent+$totalExcuse;
+    
+
+
+
     
     return view('admin.Absent.absent_record.absent_highschool_index')->with([
         'grade_id'=>$grade ,
         'students'=> $student, 
-        'hightSchoolAbsent'=> $highSchoolAbsent
+        'hightSchoolAbsent'=> $highSchoolAbsent,
+        // 'allTotalAbsent'=>$allTotalAbsent,
+        // 'totalAbsent'=>$totalAbsent,
+        // 'excuse'=>$totalExcuse
         ]);
 }
 
@@ -128,17 +180,22 @@ public function storeHighSchoolAbsent(Request $request, $grade_id, $student_id){
 public function editHighSchoolAbsent($grade_id, $student_id, $absentRecord_id){
     $student = StudentProfile::find($student_id);
     $grade = Grade::find($grade_id);
+    
     $absentRecord = AbsentRecord::find($absentRecord_id);
+    
     $highSchoolAbsent = AbsentRecord::where([
         ['grade_id', $grade_id], 
         ['student_profile_id', $student_id],
-    ])->get();
+    ])->orderBy('created_at', 'Desc')->get();
+
+    
 
     return view('admin.Absent.absent_record.absent_highschool_edit')->with([
         'grade_id'=>$grade ,
         'students'=> $student, 
         'hightSchoolAbsent'=> $highSchoolAbsent,
-        'absentRecord'=>$absentRecord
+        'absentRecord'=>$absentRecord,
+        
         ]);
 }
 
@@ -187,7 +244,7 @@ public function secondarySchoolAbsent($grade_id, $student_id){
     $secondaryAbsent = SecondaryAbsent::where([
         ['secondary_level_id', $grade_id], 
         ['student_profile_id', $student_id],
-    ])->get();
+    ])->orderBy('created_at', 'Desc')->get();
 
     //return $highSchoolAbsent;
     
@@ -228,7 +285,7 @@ public function editSecondaryAbsent($grade_id, $student_id, $secondaryAbsent_id)
     $secondaryAbsent = SecondaryAbsent::where([
         ['secondary_level_id', $grade_id], 
         ['student_profile_id', $student_id],
-    ])->get();
+    ])->orderBy('created_at', 'Desc')->get();
 
     return view('admin.Absent.absent_record.absent_secondary_edit')->with([
         'grade_id'=>$grade ,
@@ -288,7 +345,7 @@ public function prekSchoolAbsent($grade_id, $student_id){
     $prekAbsent = PrekAbsent::where([
         ['k_level_id', $grade_id], 
         ['student_profile_id', $student_id],
-    ])->get();
+    ])->orderBy('created_at', 'Desc')->get();
 
     //return $highSchoolAbsent;
     
@@ -331,7 +388,7 @@ public function editPrekAbsent($grade_id, $student_id, $prekAbsent_id){
     $prekAbsent = PrekAbsent::where([
         ['k_level_id', $grade_id], 
         ['student_profile_id', $student_id],
-    ])->get();
+    ])->orderBy('created_at', 'Desc')->get();
 
     return view('admin.Absent.absent_record.absent_prek_edit')->with([
         'grade_id'=>$grade ,

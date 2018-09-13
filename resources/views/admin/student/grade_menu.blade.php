@@ -50,26 +50,28 @@
                     </strong>
                 </a>
             <ul id="menu6" class="dropdown-menu animated fadeInDown" role="menu">
-                @if(count($grade)) @foreach($grade as $grades)
+                @if(count($grade)) 
+                @foreach($grade as $grades)
                 <li role="presentation" style="margin-top: 5px; margin-bottom: 3px">
                     <a role="menuitem" tabindex="-1" href="{{ route('score.view', ['grade_id'=>$grades->id, 'student_id'=>$students->id]) }}"
                         style="font-size: 14px">{{ $grades->grade_name }}</a>
                 </li>
                 <li role="presentation" class="divider"></li>
-                @endforeach @endif
+                @endforeach 
+                @endif
             </ul>
         </li>
 
 
 
-        <a href="{{ route('select.transcript',['student_id'=>$students->id]) }}" class="btn btn-success pull-right">
+        <a href="{{ route('transcript',['student_id'=>$students->id]) }}" class="btn btn-primary pull-right">
                     Print Transcript
                     <i class="fas fa-print"></i>
                 </a>
 
 
         <a href="{{ route('select.option',['student_id'=>$students->id]) }}" class="btn btn-success pull-right">
-                    Print option
+                    Print Yearly Report
                     <i class="fas fa-print"></i>
                 </a>
 

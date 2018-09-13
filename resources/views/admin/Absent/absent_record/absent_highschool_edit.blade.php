@@ -64,7 +64,8 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @if(count($hightSchoolAbsent))@foreach($hightSchoolAbsent as $hightSchoolAbsents)
+                                @if(count($hightSchoolAbsent))
+                                @foreach($hightSchoolAbsent as $hightSchoolAbsents)
                                 <tr>
                                     <th scope="row">#</th>
                                     <td>{{ $hightSchoolAbsents->studentProfile->first_name }}</td>
@@ -91,6 +92,16 @@
                 </div>
             </div>
 
+
+
+
+
+
+
+
+
+            
+
             {{-- Edit form --}}
             <div class="col-md-4 col-sm-6 col-xs-12">
                 <div class="x_panel">
@@ -112,11 +123,13 @@
                                                 @if(count($absent))
                                                     @foreach($absent as $absents)
                                                         <option value="{{ $absents->id }} "
-                                                            @if($hightSchoolAbsents->absent_id == $absents->id) selected @endif>
+                                                            @if($absentRecord->absent_id == $absents->id) selected @endif>
                                                             {{ $absents->absent_type }}
                                                         </option>
                                                     @endforeach
                                                 @endif
+
+                                                
 
                                                 
                                             </select>

@@ -36,14 +36,14 @@
                                         <a href="#">Grade :  </a>
                                         <button type="button" class="btn btn-success btn-xs">
 
-                                                                                            @if(count($gradeProfile))
-                                                                                                @foreach($gradeProfile as $grades)
-                                                                                                    @if($students->grade_profile_id  == $grades->id)
-                                                                                                        {{ $grades->name }}
-                                                                                                    @endif
-                                                                                                @endforeach
-                                                                                            @endif
-                                                                                            </button>
+                                            @if(count($gradeProfile))
+                                                @foreach($gradeProfile as $grades)
+                                                    @if($students->grade_profile_id  == $grades->id)
+                                                        {{ $grades->name }}
+                                                    @endif
+                                                @endforeach
+                                            @endif
+                                        </button>
 
                                     </li>
                                     <li style="margin-bottom: 8px"><i class="fa fa-credit-card"></i>
@@ -84,8 +84,8 @@
 
                                     <li style="margin-bottom: 8px"><i class="fa fa-calendar"></i>
                                         <a href="#">Age :
-                                                                                            {{ floor((time() - strtotime( $students->parents_dob )) / 31556926) }} years old
-                                                                                            </a>
+                                            {{ floor((time() - strtotime( $students->parents_dob )) / 31556926) }} years old
+                                        </a>
                                     </li>
 
                                     <li style="margin-bottom: 8px"><i class="fa fa-phone"></i>
