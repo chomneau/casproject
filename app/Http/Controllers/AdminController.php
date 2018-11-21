@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Foundation\Auth\User;
+use App\StudentProfile;
+use App\Teacher;
 
 
 class AdminController extends Controller
@@ -32,7 +34,22 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admin.index');
+        $countAllStudent = StudentProfile::all()->count();
+        $countFemaleStudent = StudentProfile::where('gender','Female')->count();
+        $counMaleStudent = StudentProfile::where('gender','Male')->count();
+        //teacher
+        $totalTeacher = Teacher::all()->count();
+        $counMaleTeacher = Teacher::where('gender','Male')->count();
+        $counFemaleTeacher = Teacher::where('gender','Female')->count();
+        
+        return view('admin.index')->with([
+            'countAllStudent'=>$countAllStudent,
+            'countFemaleStudent'=>$countFemaleStudent,
+            'counMaleStudent'=>$counMaleStudent,
+            'counMaleTeacher'=>$counMaleTeacher,
+            'counFemaleTeacher'=>$counFemaleTeacher,
+            'totalTeacher'=>$totalTeacher,
+            ]);
     }
 //    public function showPostjobForm()
 //    {
@@ -183,6 +200,21 @@ class AdminController extends Controller
             return redirect()->back();
         }
     }
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+    
 
 
 }

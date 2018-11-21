@@ -157,12 +157,13 @@
 			        <tr>
 			            
 			            <th>Subject</th>
-			            <th>1<sup>st</sup> Quarter</th>
-			            <th>2<sup>nd</sup> Quarter</th>
-			            <th>1<sup>st</sup> Semester</th>
-			            <th>3<sup>rd</sup> Quarter</th>
-			            <th>4<sup>th</sup> Quarter</th>
-			            <th>2<sup>nd</sup> Semester</th>
+						{{--<th>2<sup>nd</sup> Q2</th>--}}
+			            <th>Q1</th>
+			            <th>Q2</th>
+			            <th>S1</th>
+			            <th>Q3</th>
+			            <th>Q4</th>
+			            <th>S2</th>
 			           
 			        </tr>
 			    </thead>
@@ -170,9 +171,12 @@
 
 			    <!--Table body-->
 			    <tbody>
+				<tr>
+					<td style="font-weight: Bold">PERSONAL PLANNING - Intellectual Development</td>
+				</tr>
 
-			    	@if(count($kscore))
-				    	@foreach($kscore as $score_s1)
+			    	@if(count($subject_code_PPI))
+				    	@foreach($subject_code_PPI as $score_s1)
 
 					    	@foreach($kgrade as $grades)
 
@@ -200,11 +204,8 @@
 							            <td style="font-size: 12px; font-weight: bold"> 
 
 							            	{{ ceil(($score_s1->quarter_3+$score_s1->quarter_4)/2) }}
-							            
 
 							            </td>
-
-							            
 
 							        </tr>
 							        
@@ -217,6 +218,393 @@
 				        
 				        @endforeach
 			        @endif
+
+				{{--English Language arts-Intellectual Development--}}
+
+				<tr>
+					<td style="font-weight: Bold">ENGLISH LANGUAGE ARTS - Intellectual Development</td>
+				</tr>
+
+				@if(count($subject_code_ELAI))
+					@foreach($subject_code_ELAI as $score_s1)
+
+						@foreach($kgrade as $grades)
+
+							@if($score_s1->k_level_id == $grades->id)
+
+
+								<tr>
+
+
+									<td style="font-size: 12px; font-weight: bold">{{$score_s1->KSubject->name}}</td>
+									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_1}}</td>
+
+									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_2}}</td>
+									<td style="font-size: 12px; font-weight: bold">
+
+										{{ ceil(($score_s1->quarter_1+$score_s1->quarter_2)/2) }}
+
+
+									</td>
+
+									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_3}}</td>
+
+									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_4}}</td>
+
+									<td style="font-size: 12px; font-weight: bold">
+
+										{{ ceil(($score_s1->quarter_3+$score_s1->quarter_4)/2) }}
+
+									</td>
+
+								</tr>
+
+
+
+
+							@endif
+
+						@endforeach
+
+					@endforeach
+				@endif
+
+				{{--Khmer Language arts-Intellectual Development--}}
+
+				<tr>
+					<td style="font-weight: Bold">KHMER LANGUAGE ARTS - Intellectual Development</td>
+				</tr>
+
+				@if(count($subject_code_KLAI))
+					@foreach($subject_code_KLAI as $score_s1)
+
+						@foreach($kgrade as $grades)
+
+							@if($score_s1->k_level_id == $grades->id)
+
+
+								<tr>
+
+
+									<td style="font-size: 12px; font-weight: bold">{{$score_s1->KSubject->name}}</td>
+									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_1}}</td>
+
+									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_2}}</td>
+									<td style="font-size: 12px; font-weight: bold">
+
+										{{ ceil(($score_s1->quarter_1+$score_s1->quarter_2)/2) }}
+
+
+									</td>
+
+									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_3}}</td>
+
+									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_4}}</td>
+
+									<td style="font-size: 12px; font-weight: bold">
+
+										{{ ceil(($score_s1->quarter_3+$score_s1->quarter_4)/2) }}
+
+									</td>
+
+								</tr>
+
+
+
+
+							@endif
+
+						@endforeach
+
+					@endforeach
+				@endif
+
+				{{--Mathematics-Intellectual Development--}}
+
+				<tr>
+					<td style="font-weight: Bold">MATHEMATICS - Intellectual Development</td>
+				</tr>
+
+				@if(count($subject_code_MI))
+					@foreach($subject_code_MI as $score_s1)
+
+						@foreach($kgrade as $grades)
+
+							@if($score_s1->k_level_id == $grades->id)
+
+
+								<tr>
+
+
+									<td style="font-size: 12px; font-weight: bold">{{$score_s1->KSubject->name}}</td>
+									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_1}}</td>
+
+									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_2}}</td>
+									<td style="font-size: 12px; font-weight: bold">
+
+										{{ ceil(($score_s1->quarter_1+$score_s1->quarter_2)/2) }}
+
+
+									</td>
+
+									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_3}}</td>
+
+									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_4}}</td>
+
+									<td style="font-size: 12px; font-weight: bold">
+
+										{{ ceil(($score_s1->quarter_3+$score_s1->quarter_4)/2) }}
+
+									</td>
+
+								</tr>
+
+							@endif
+
+						@endforeach
+
+					@endforeach
+				@endif
+
+				{{--SOCIAL STUDIES-Intellectual Development--}}
+
+				<tr>
+					<td style="font-weight: Bold">SOCIAL STUDIES - Intellectual Development</td>
+				</tr>
+
+				@if(count($subject_code_SSI))
+					@foreach($subject_code_SSI as $score_s1)
+
+						@foreach($kgrade as $grades)
+
+							@if($score_s1->k_level_id == $grades->id)
+
+
+								<tr>
+
+
+									<td style="font-size: 12px; font-weight: bold">{{$score_s1->KSubject->name}}</td>
+									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_1}}</td>
+
+									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_2}}</td>
+									<td style="font-size: 12px; font-weight: bold">
+
+										{{ ceil(($score_s1->quarter_1+$score_s1->quarter_2)/2) }}
+
+
+									</td>
+
+									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_3}}</td>
+
+									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_4}}</td>
+
+									<td style="font-size: 12px; font-weight: bold">
+
+										{{ ceil(($score_s1->quarter_3+$score_s1->quarter_4)/2) }}
+
+									</td>
+
+								</tr>
+
+
+
+
+							@endif
+
+						@endforeach
+
+					@endforeach
+				@endif
+
+				{{--SCIENCE-Intellectual Development--}}
+
+				<tr>
+					<td style="font-weight: Bold">SCIENCE - Intellectual Development</td>
+				</tr>
+
+				@if(count($subject_code_SI))
+					@foreach($subject_code_SI as $score_s1)
+
+						@foreach($kgrade as $grades)
+
+							@if($score_s1->k_level_id == $grades->id)
+
+
+								<tr>
+
+
+									<td style="font-size: 12px; font-weight: bold">{{$score_s1->KSubject->name}}</td>
+									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_1}}</td>
+
+									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_2}}</td>
+									<td style="font-size: 12px; font-weight: bold">
+
+										{{ ceil(($score_s1->quarter_1+$score_s1->quarter_2)/2) }}
+
+
+									</td>
+
+									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_3}}</td>
+
+									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_4}}</td>
+
+									<td style="font-size: 12px; font-weight: bold">
+
+										{{ ceil(($score_s1->quarter_3+$score_s1->quarter_4)/2) }}
+
+									</td>
+
+								</tr>
+
+							@endif
+
+						@endforeach
+
+					@endforeach
+				@endif
+
+
+				<tr>
+					<td style="font-weight: Bold">FINE ARTS - Aesthetic and Artistic Development</td>
+				</tr>
+
+				@if(count($subject_code_FAA))
+					@foreach($subject_code_FAA as $score_s1)
+
+						@foreach($kgrade as $grades)
+
+							@if($score_s1->k_level_id == $grades->id)
+
+
+								<tr>
+
+
+									<td style="font-size: 12px; font-weight: bold">{{$score_s1->KSubject->name}}</td>
+									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_1}}</td>
+
+									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_2}}</td>
+									<td style="font-size: 12px; font-weight: bold">
+
+										{{ ceil(($score_s1->quarter_1+$score_s1->quarter_2)/2) }}
+
+
+									</td>
+
+									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_3}}</td>
+
+									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_4}}</td>
+
+									<td style="font-size: 12px; font-weight: bold">
+
+										{{ ceil(($score_s1->quarter_3+$score_s1->quarter_4)/2) }}
+
+									</td>
+
+								</tr>
+
+							@endif
+
+						@endforeach
+
+					@endforeach
+				@endif
+
+				{{--PHYSICAL EDUCATION -Physical Development--}}
+
+				<tr>
+					<td style="font-weight: Bold">PHYSICAL EDUCATION - Physical Development</td>
+				</tr>
+
+				@if(count($subject_code_PEP))
+					@foreach($subject_code_PEP as $score_s1)
+
+						@foreach($kgrade as $grades)
+
+							@if($score_s1->k_level_id == $grades->id)
+
+
+								<tr>
+
+
+									<td style="font-size: 12px; font-weight: bold">{{$score_s1->KSubject->name}}</td>
+									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_1}}</td>
+
+									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_2}}</td>
+									<td style="font-size: 12px; font-weight: bold">
+
+										{{ ceil(($score_s1->quarter_1+$score_s1->quarter_2)/2) }}
+
+
+									</td>
+
+									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_3}}</td>
+
+									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_4}}</td>
+
+									<td style="font-size: 12px; font-weight: bold">
+
+										{{ ceil(($score_s1->quarter_3+$score_s1->quarter_4)/2) }}
+
+									</td>
+
+								</tr>
+
+							@endif
+
+						@endforeach
+
+					@endforeach
+				@endif
+
+				{{--SOCIAL RESPONSIBILITY-Social and Emotional Development--}}
+
+				<tr>
+					<td style="font-weight: Bold">SOCIAL RESPONSIBILITY-Social and Emotional Development</td>
+				</tr>
+
+				@if(count($subject_code_SRS))
+					@foreach($subject_code_SRS as $score_s1)
+
+						@foreach($kgrade as $grades)
+
+							@if($score_s1->k_level_id == $grades->id)
+
+
+								<tr>
+
+
+									<td style="font-size: 12px; font-weight: bold">{{$score_s1->KSubject->name}}</td>
+									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_1}}</td>
+
+									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_2}}</td>
+									<td style="font-size: 12px; font-weight: bold">
+
+										{{ ceil(($score_s1->quarter_1+$score_s1->quarter_2)/2) }}
+
+
+									</td>
+
+									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_3}}</td>
+
+									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_4}}</td>
+
+									<td style="font-size: 12px; font-weight: bold">
+
+										{{ ceil(($score_s1->quarter_3+$score_s1->quarter_4)/2) }}
+
+									</td>
+
+								</tr>
+
+							@endif
+
+						@endforeach
+
+					@endforeach
+				@endif
+				<tr>
+					<td></td>
+				</tr>
 
 			        <tr>
 						<td style="font-size: 12px; font-weight: bold">Days Present</td>
@@ -252,124 +640,22 @@
 			</table>
 			<!--Table-->
 
-
-
-			
 		</div>
 
-
-		
 
 <div class="row" style="margin-top: 5em">
 		<div class="col-md-1"></div>
-		<div class="col-md-10 border border-secondary" >
-			<table class="table table-borderless table-sm" style="font-size: 10px ">
-				<thead>
-					<tr>Grading Equivalence and Symbols Used</tr>
-			        <tr>
-			        	<th>Description of Grades</th>
-			        	<th>Letter Grade</th>			            
-			        	<th>Grade Points</th>			            
-			        	<th>Percentage</th>			            
-			            
-			        </tr>
-			    </thead>
-				<tbody>
-					<tr>
-						<td><b>Excellent</b></td>
-						<td>A</td>
-						<td>4.00</td>
-						<td>93-100%</td>
-					</tr>
-					<tr>
-						<td></td>	
-						<td>A-</td>
-						<td>3.70</td>
-						<td>90-92%</td>
-						
-					</tr>
-					<tr>
-						<td><b>Good</b></td>
-						<td>B+</td>
-						<td>3.30</td>
-						<td>87-89%</td>
-					</tr>
-					<tr>	
-						<td></td>
-						<td>B</td>
-						<td>3.00</td>
-						<td>83-86%</td>
-					</tr>
-					<tr>
-						<td></td>
-						<td>B-</td>
-						<td>2.70</td>
-						<td>80-82%</td>
-					</tr>
-					<tr>
-						<td><b>Satisfactory</b></td>
-						<td>C+</td>
-						<td>2.30</td>
-						<td>77-79%</td>
-					</tr>
-					<tr>
-						<td></td>
-						<td>C</td>
-						<td>2.00</td>
-						<td>73-76%</td>
-					</tr>
-					<tr>
-						<td></td>
-						<td>C-</td>
-						<td>1.70</td>
-						<td>70-72%</td>
-					</tr>
-					<tr>
-						<td><b>Poor</b></td>
-						<td>D+</td>
-						<td>1.30</td>
-						<td>67-69%</td>
-					</tr>
-					<tr>
-						<td></td>
-						<td>D</td>
-						<td>1.00</td>
-						<td>63-66%</td>
-					</tr>
-					<tr>
-						<td></td>
-						<td>D-</td>
-						<td>0.70</td>
-						<td>60-62%</td>
-					</tr>
-					<tr>
-						<td><b>Fail</b></td>
-						<td>F</td>
-						<td>0.00</td>
-						<td>0.00 - 59%</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
+
 	<div class="col-md-1"></div>
 
 
-	<div class="col-md-6 offset-3 mt-4">
-		<p class="text-uppercase text-center" style="font-size: 12px">****** any entry below this lines in not valid ******* </p>
+	<div class="col-md-12">
+		<p class="text-uppercase text-center" style="font-size: 12px; margin-left: 15em">****** any entry below this lines in not valid ******* </p>
 	</div>
-
-	
-
 
 
 	</div>
 
-
-
-
-	
-		
-			
 				<div class="col-md-10 offset-1" style="margin-top: 8em">
 					<div class="row">
 						<div class="col-md-4 pull-left text-center">
@@ -417,6 +703,9 @@
 
 </body>
 </html>
+
+
+
 
 
 

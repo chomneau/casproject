@@ -53,13 +53,13 @@
                                                 <a href="#">Grade :  </a>
                                                 <button type="button" class="btn btn-success btn-xs">
 
-                                                        @if(count($grade))
-                                                            @foreach($grade as $grades)
-                                                                @if($students->grade_id  == $grades->id)
-                                                                    {{ $grades->grade_name }}
-                                                                @endif
-                                                            @endforeach
-                                                        @endif
+                                                    @if(count($gradeProfile))
+                                                        @foreach($gradeProfile as $grades)
+                                                            @if($students->grade_profile_id  == $grades->id)
+                                                                {{ $grades->name }}
+                                                            @endif
+                                                        @endforeach
+                                                    @endif
                                                     </button>
 
                                             </li>
@@ -93,7 +93,7 @@
                                                 <h4>Parents info</h4>
                                             </li>
                                             <li style="margin-bottom: 8px"><i class="glyphicon glyphicon-user"></i>
-                                                <a href="#">parents'name : {{ $students->parents_name }}</a>
+                                                <a href="#">Parents'name : {{ $students->parents_name }}</a>
                                             </li>
                                             <li style="margin-bottom: 8px"><i class="fa fa-briefcase"></i>
                                                 <a href="#">Occupation : {{ $students->occupation }} </a>
@@ -110,7 +110,7 @@
                                             </li>
 
                                             <li style="margin-bottom: 8px"><i class="fa fa-envelope"></i>
-                                                <a href="#">email : {{ $students->email }} </a>
+                                                <a href="#">Email : {{ $students->email }} </a>
                                             </li>
                                             <li style="margin-bottom: 8px"><i class="glyphicon glyphicon-home"></i>
                                                 <a href="#">Address : {{ $students->address }}</a>

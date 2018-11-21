@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class AbsentRecord extends Model
 {
-    public function Absent(){
-        return $this->belongsTo(Absent::class);
-    }
+//    public function absent(){
+//        return $this->belongsTo(Absent::class);
+//    }
 
     public function grade(){
         return $this->belongsTo(Grade::class);

@@ -23,9 +23,9 @@ class RedirectIfAuthenticated
                     return redirect()->route('admin.dashboard');
                 }
                 break;
-            case 'employer':
+            case 'teacher':
                 if(Auth::guard($guard)->check()){
-                    return redirect()->route('employer.dashboard');
+                    return redirect()->route('teacher.profile');
                 }
                 break;
             default:

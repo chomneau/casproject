@@ -70,7 +70,7 @@
                                     <th scope="row">#</th>
                                     <td>{{ $hightSchoolAbsents->studentProfile->first_name }}</td>
                                     <td>{{ $hightSchoolAbsents->Grade->grade_name }}</td>
-                                    <td>{{ $hightSchoolAbsents->Absent->absent_type }}</td>
+                                    <td>{{ $hightSchoolAbsents->absent_type }}</td>
                                     <td>{{ substr($hightSchoolAbsents->reason, 0, 25)}}
                                         <?php
                                             $reason = $hightSchoolAbsents->reason;
@@ -112,27 +112,29 @@
                     </div>
                     <div class="x_content">
 
-                        <form action="{{ route('update.highSchool.absentRecord',['grade_id'=>$grade_id->id,'id'=>$students->id, 'absentRecord_id'=>$hightSchoolAbsents->id]) }}" method="post">
+                        <form action="{{ route('update.highSchool.absentRecord',['grade_id'=>$grade_id->id,'student_id'=>$students->id, 'absentRecord_id'=>$absentRecord->id]) }}" method="post">
 
                             {{ csrf_field() }}
 
                             <div class="modal-body">
                                 <label for="exampleInputEmail1">Select absent type</label>
-                                <select name="absent_id" id="" class="form-control" required>
-                                                <option value="">--select absent type--</option>
-                                                @if(count($absent))
-                                                    @foreach($absent as $absents)
-                                                        <option value="{{ $absents->id }} "
-                                                            @if($absentRecord->absent_id == $absents->id) selected @endif>
-                                                            {{ $absents->absent_type }}
-                                                        </option>
-                                                    @endforeach
-                                                @endif
+                                <select name="absent_type" id="" class="form-control" required>
+                                                {{--<option value="">--select absent type--</option>--}}
+                                                {{--@if(count($absent))--}}
+                                                    {{--@foreach($absent as $absents)--}}
+                                                        {{--<option value="{{ $absents->id }} "--}}
+                                                            {{--@if($absentRecord->absent_id == $absents->id) selected @endif>--}}
+                                                            {{--{{ $absents->absent_type }}--}}
+                                                        {{--</option>--}}
+                                                    {{--@endforeach--}}
+                                                {{--@endif--}}
+                                    <option value="{{ $absentRecord->absent_type }}">{{ $absentRecord->absent_type }} </option>
+                                    <option value="Unexcused">Unexcused</option>
+                                    <option value="Excused">Excused</option>
+                                    <option value="Tardy">Tardy</option>
 
                                                 
-
-                                                
-                                            </select>
+                            </select>
                             </div>
 
                             <div class="modal-body">
@@ -142,17 +144,15 @@
                             <div class="modal-body">
                                 <label for="exampleInputEmail1">Reason</label>
                                 <textarea rows="4" cols="50" wrap="hard" name="reason" class="form-control" placeholder="Reason" required autofocus>
-                                        
-                                        <?php
-                                        $reason = $absentRecord->reason;
-                                        echo trim($reason)
-                                        ?>
+                                    {!! $absentRecord->reason !!}
                                 </textarea>
                             </div>
 
+
+
                             <div class="modal-footer">
                                 <button type="submit" class="btn btn-primary">update</button>
-                                <a href="{{ route('delete.highSchool.absentRecord', ['grade_id'=>$grade_id->id,'id'=>$students->id, 'absentRecord_id'=>$hightSchoolAbsents->id] ) }}" type="submit" class="btn btn-danger">Delete</a>
+                                <a href="{{ route('delete.highSchool.absentRecord', ['grade_id'=>$grade_id->id,'student_id'=>$students->id, 'absentRecord_id'=>$absentRecord->id] ) }}" type="submit" class="btn btn-danger">Delete</a>
 
                             </div>
                         </form>

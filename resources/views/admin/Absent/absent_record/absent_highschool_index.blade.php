@@ -77,7 +77,7 @@
                                     <th scope="row">#</th>
                                     <td>{{ $hightSchoolAbsents->studentProfile->first_name }}</td>
                                     <td>{{ $hightSchoolAbsents->Grade->grade_name }}</td>
-                                    <td>{{ $hightSchoolAbsents->Absent->absent_type }}</td>
+                                    <td>{{ $hightSchoolAbsents->absent_type }}</td>
                                     <td>{{ substr($hightSchoolAbsents->reason, 0, 25)}}
                                         <?php
                                             $reason = $hightSchoolAbsents->reason;
@@ -88,7 +88,7 @@
                                     </td>
                                     <td>{{ Carbon\Carbon::parse($hightSchoolAbsents->absent_date)->format('M d, Y') }}</td>
                                     <td>
-                                        <a href="{{ route('edit.highSchool.absentRecord', ['grade_id'=>$grade_id->id,'id'=>$students->id, 'absentRecord_id'=>$hightSchoolAbsents->id]) }}">
+                                        <a href="{{ route('edit.highSchool.absentRecord', ['grade_id'=>$grade_id->id,'student_id'=>$students->id, 'absentRecord_id'=>$hightSchoolAbsents->id]) }}">
                                             <span class="btn btn-sm btn-primary"> Edit </span>
                                         </a>
                                     </td>
@@ -108,21 +108,25 @@
 
         <div class="row tile_count">
 
-            <div class="col-md-4 col-sm-4 col-xs-6 tile_stats_count text-center">
-              <span class="count_top"><i class="fa fa-user"></i> Absent</span>
+            <div class="col-md-3 col-sm-3 col-xs-6 tile_stats_count text-center">
+              <span class="count_top"><i class="fa fa-user"></i> Unexcused</span>
                 <div class="count">
                     <!-- total here -->
+                    {{ $unexcused }}
+
+
                 </div>
               <span class="count_bottom"><i class="green"></i> 
                 <!-- text here -->
               </span>
             </div>
 
-            <div class="col-md-4 col-sm-4 col-xs-6 tile_stats_count text-center">
-              <span class="count_top"><i class="fa fa-user"></i> Excuse</span>
+            <div class="col-md-3 col-sm-3 col-xs-6 tile_stats_count text-center">
+              <span class="count_top"><i class="fa fa-user"></i> Excused</span>
               <div class="count">
                 
                 <!-- total here -->
+                  {{ $excused }}
 
 
               </div>
@@ -131,11 +135,26 @@
               </span>
             </div>
 
-            <div class="col-md-4 col-sm-4 col-xs-6 tile_stats_count text-center">
+            <div class="col-md-3 col-sm-3 col-xs-6 tile_stats_count text-center">
+                <span class="count_top"><i class="fa fa-user"></i> Tardy</span>
+                <div class="count">
+
+                    <!-- total here -->
+                    {{ $tardy }}
+
+
+                </div>
+                <span class="count_bottom"><i class="green"></i>
+                    <!-- text here -->
+              </span>
+            </div>
+
+            <div class="col-md-3 col-sm-3 col-xs-6 tile_stats_count text-center">
               <span class="count_top"><i class="fa fa-clock-o"></i> Total Absent</span>
               <div class="count">
                 
                 <!-- total here -->
+                  {{ floor($totalAbsent) }}
 
               </div>
                 <span class="count_bottom"> 
@@ -149,24 +168,7 @@
     </div>
           <!-- /top tiles -->
 
-
-
-
-
-
-
-
-
             </div>
-
-
-
-
-
-
-
-
-
 
             {{-- record form --}}
             <div class="col-md-4 col-sm-6 col-xs-12">
@@ -184,13 +186,17 @@
 
                             <div class="modal-body">
                                 <label for="exampleInputEmail1">Select absent type</label>
-                                <select name="absent_id" id="" class="form-control" required>
+                                <select name="absent_type" id="" class="form-control" required>
                                         <option value="">--select absent type--</option>
-                                            @if(count($absent))
-                                                @foreach($absent as $absents)
-                                                    <option value="{{ $absents->id }} ">{{ $absents->absent_type }}</option>
-                                                @endforeach
-                                        @endif
+
+                                    <option value="Unexcused">Unexcused</option>
+                                    <option value="Excused">Excused</option>
+                                    <option value="Tardy">Tardy</option>
+                                            {{--@if(count($absent))--}}
+                                                {{--@foreach($absent as $absents)--}}
+                                                    {{--<option value="{{ $absents->id }} ">{{ $absents->absent_type }}</option>--}}
+                                                {{--@endforeach--}}
+                                            {{--@endif--}}
                                 </select>
                             </div>
 

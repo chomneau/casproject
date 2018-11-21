@@ -42,27 +42,6 @@ Route::get('/student/highschool/{grade_id}/{student_id}', 'HomeController@viewHi
 
 
 
-//employer login
-Route::get('/employer/login', 'Auth\EmployerLoginController@showLoginForm')->name('employer.login');
-Route::post('/employer/login', 'Auth\EmployerLoginController@employerLogin')->name('employer.login.submit');
-//employer register
-Route::get('/employer/register', 'Auth\EmployerRegisterController@showEmployerRegisterForm')->name('employer.register');
-Route::post('/employer/register', 'Auth\EmployerRegisterController@employerRegister')->name('employer.register.submit');
-Route::get('/employer/{id}', 'EmployerController@index')->name('employer.profile');
-Route::get('/employer', 'EmployerController@index')->name('employer.dashboard');
-
-Route::get('/employer/viewAllJobs', 'EmployerController@employeeAllJobs')->name('employer.viewAllJobs');
-Route::get('/employer/edit/{id}', 'EmployerController@edit')->name('employer.edit');
-Route::post('/employer/update/{id}', 'EmployerController@update')->name('employer.update');
-//change password for employer
-Route::get('/employer/changepassword/{id}', 'EmployerController@showPassForm')->name('employer.showPasswordForm');
-Route::post('/employer/changepassword/{id}', 'EmployerController@updatePassword')->name('employer.changePassword');
-
-//create job by employer
-Route::get('employer/createjob/post/{id}', 'EmployerJobController@create')->name('employer.createjob.create');
-Route::post('employer/createjob/{id}', 'EmployerJobController@store')->name('employer.createjob.postjob');
-Route::get('employer/createjob/edit/{id}/{company_id}', 'EmployerJobController@edit')->name('employer.createjob.edit');
-Route::post('employer/createjob/update/{id}/{company_id}', 'EmployerJobController@update')->name('employer.createjob.update');
 
 
 
@@ -93,10 +72,8 @@ Route::get('/users/logout', 'Auth\LoginController@userLogout')->name('user.logou
 //user route controller
 Route::get('/user/profile', 'ProfileController@index')->name('user.profile');
 Route::post('/user/profile/update', 'ProfileController@update')->name('user.profile.update');
-//upload CV
-Route::get('/user/uploadcv', 'UploadCvController@uploadCv')->name('user.uploadcv');
-Route::post('/user/uploadcvFunction', 'UploadCvController@uploadCvFunction')->name('user.uploadcvFunction');
-Route::get('/user/uploadcv/delete/{id}', 'UploadCvController@destroy')->name('user.cv.delete');
+
+
 
 
 Route::resource('/user', 'ProfileController');
@@ -119,7 +96,13 @@ Route::prefix('admin')->group(function () {
 
     Route::get('/student/register', 'StudentController@showRegisterForm')->name('student.register');
     Route::post('/student/register', 'StudentController@studentRegister')->name('student.register.create');
+
     Route::get('/student/viewStudent', 'StudentController@viewStudent')->name('student.viewAll');
+    //view student by grade
+    Route::get('/student/byGrade', 'StudentController@viewByGrade')->name('student.byGrade');
+
+    //view detail grade
+    Route::get('/student/detailByGrade/{grade_profile_id}', 'StudentController@viewAllStudentByGrade')->name('view.allStudent.byGrade');
     //view student detail
     Route::get('/student/detail/{student_id}', 'StudentController@studentDetail')->name('student.detail');
     //show student edit form
@@ -146,8 +129,12 @@ Route::prefix('admin')->group(function () {
 
 //Query subject by grade
     Route::get('/student/score/{grade_id}/{student_id}', 'StudentController@SubjectByGrade')->name('subject.score');
+    //show all subjects form to add to score table in high school student
+    Route::get('/student/score/highSchool/{grade_id}/{student_id}', 'StudentController@showHighScoreForm')->name('subject.highschool.showAllscore');
 //insert data to score table
     Route::post('/student/score/insert/{student_id}/{grade_id}', 'StudentController@insertScore')->name('student.score.insert');
+    //insert all subject to high school student
+    Route::post('/student/allSubjects/insert/{student_id}/{grade_id}', 'StudentController@insertAllSubjectsToScore')->name('student.allSubjects.insert');
 //delete data from score table
     Route::get('/score/delete/{id}', 'StudentController@destroyScore')->name('student.score.delete');
 //edit data from score table
@@ -167,7 +154,13 @@ Route::prefix('admin')->group(function () {
     Route::get('/score/secondary/{grade_id}/{student_id}', 'SecondaryController@secondaryScore')->name('score.secondary');
 //add subject to secondary score
     Route::get('/secondary/addSubject/{grade_id}/{student_id}', 'SecondaryController@showSecondaryAddSubject')->name('secondary.addSubject');
+    //add add subject at one time
+    Route::get('/secondary/addAllSubject/{grade_id}/{student_id}', 'SecondaryController@showSecondaryAddAllSubject')->name('secondary.addAllSubject');
+
+
     Route::post('/secondary/insertSubject/{grade_id}/{student_id}', 'SecondaryController@secondaryAddSubject')->name('secondary.insertSubject');
+    //insert all subject to secondary score
+    Route::post('/secondary/insertAllSubject/{grade_id}/{student_id}', 'SecondaryController@secondaryInsertAllSubject')->name('secondary.insertAllSubject');
 //edit data from secondaryScore table
     Route::get('secondaryScore/edit/{score_id}/{grade_id}/{student_id}', 'SecondaryController@editSecondaryScoreForm')->name('secondary.score.edit');
     //update score
@@ -180,7 +173,15 @@ Route::prefix('admin')->group(function () {
     Route::get('/prekscore/view/{grade_id}/{student_id}', 'PrekController@prekScore')->name('prekschool.score');
 //add subject to pre-k and k score
     Route::get('/prekscore/addSubject/{grade_id}/{student_id}', 'PrekController@showPrekAddSubject')->name('prek.addSubject');
+//add all subject to pre-k and k score table at one time
+    Route::get('/prekscore/AllSubjects/{grade_id}/{student_id}', 'PrekController@showAllPrekSubject')->name('show.prek.allsubject');
+
+    //add all subject to pre-k and k score table at one time
+    Route::post('/prekscore/insertAllSubjects/{grade_id}/{student_id}', 'PrekController@insertAllPrekSubject')->name('prek.insert.allSubject');
+
     Route::post('/prekscore/insertSubject/{grade_id}/{student_id}', 'PrekController@prekAddSubject')->name('prek.insertSubject');
+
+
 //edit data from  prekScore table
     Route::get('prekscore/edit/{score_id}/{grade_id}/{student_id}', 'PrekController@editPrekScoreForm')->name('prek.score.edit');
 //update score
@@ -378,6 +379,9 @@ Route::prefix('admin')->group(function () {
     //high School transcript print view
     Route::get('/printView/highschool/{student_id}', 'TranscriptController@highSchoolPrintView')->name('highschool.transcript');
 
+    //CGPA for high school transcript
+    Route::get('/transcript/cgpa/{student_id}', 'TranscriptController@highSchoolCGPA')->name('cgpa.school');
+
     //high school yearly report
     Route::get('/yearlyReport/highschool/{student_id}', 'TranscriptController@yearlyReportHighSchool')->name('yearlyReport.highSchool');
 
@@ -385,14 +389,166 @@ Route::prefix('admin')->group(function () {
     Route::get('/transcript/student/{student_id}', 'TranscriptController@transcript')->name('transcript');
 
 
-   
+    //search student
+
+    Route::get('/student/search', 'StudentController@searchStudent')->name('student.search');
+
+
+    //teacher section ****************************************************************
+
+    
+
+    // Route::get('/teacher/dashboard', 'TeacherController@index')->name('teacher.dashboard');
+
+    //show all teacher
+    Route::get('/teacher/showAll', 'TeacherController@show')->name('teacher.showAll');
+
+    //register new teacher from
+    Route::get('/teacher/register', 'TeacherController@register')->name('teacher.register');
+
+    //register new teacher 
+    Route::post('/teacher/store/{id}', 'TeacherController@store')->name('teacher.store');
+    //get edit form for teacher
+    Route::get('/teacher/edit/{admin_id}/{teacher_id}', 'TeacherController@edit')->name('teacher.edit');
+
+
+    //register new teacher 
+    Route::post('/teacher/update/{admin_id}/{teacher_id}', 'TeacherController@update')->name('teacher.update');
+
+    Route::get('/teacher/delete/{admin_id}/{teacher_id}', 'TeacherController@delete')->name('teacher.delete');
 
 
 
+  
 
 
 
 });//end admin
+
+//teacher
+
+Route::prefix('teacher')->group(function () {
+
+    //Change teacher password form
+    Route::get('/changePassword/{teacher_id}', 'TeacherProfileController@changePassword')->name('teacher.changePassword');
+
+    //change password method
+    Route::post('/changePassword/{teacher_id}', 'TeacherProfileController@updatePassword')->name('teacher.changePassword.update');
+
+    Route::get('/', 'TeacherProfileController@index');
+    Route::get('/profile', 'TeacherProfileController@index')->name('teacher.profile');
+
+    Route::get('/login', 'Auth\TeacherLoginController@showLoginForm')->name('teacher.login');
+    Route::post('/login', 'Auth\TeacherLoginController@teacherLogin')->name('teacher.login.submit');
+
+    Route::get('/logout', 'Auth\TeacherLoginController@logout')->name('teacher.logout');
+
+
+    //view all student
+    Route::get('/viewStudent/{teacher_id}', 'TeacherProfileController@viewStudent')->name('teacher.student.viewAll');
+
+
+    //add subject to pre-k and k score
+    Route::get('/prekscore/addSubject/{teacher_id}/{grade_id}/{student_id}', 'TeacherProfileController@showPrekAddSubject')->name('teacher.prek.addSubject');
+
+    //view student detail
+    Route::get('/student/detail/{teacher_id}/{student_id}', 'TeacherProfileController@studentDetail')->name('teacher.student.detail');
+
+    //K and Pre-k Score
+    Route::get('/prekscore/view/{teacher_id}/{grade_id}/{student_id}', 'TeacherProfileController@prekScore')->name('teacher.prekschool.score');
+
+    Route::post('/prekscore/insertSubject/{teacher_id}/{grade_id}/{student_id}', 'TeacherProfileController@prekAddSubject')->name('teacher.prek.insertSubject');
+//Prek-edit subject score form
+    Route::get('/prekscore/EditSubject/{teacher_id}/{score_id}/{grade_id}/{student_id}', 'TeacherProfileController@prekEditSubject')->name('teacher.prek.editSubject');
+
+    //Prek-update subject score
+    Route::post('/prekscore/EditSubject/{teacher_id}/{score_id}/{grade_id}/{student_id}', 'TeacherProfileController@updatePrekScore')->name('teacher.prek.updateSubject');
+
+    //Delete Prek Subject Score
+
+    Route::get('/prekscore/Subject/delete/{id}', 'TeacherProfileController@DeletePrekScore')->name('teacher.prek.Subject.delete');
+
+
+    
+
+
+
+    // secondary score (teacher panel)
+    Route::get('/score/secondary/{teacher_id}/{grade_id}/{student_id}', 'TeacherProfileController@secondaryScore')->name('teacher.score.secondary');
+
+    //add subject to secondary score form (teacher panel)
+    Route::get('/secondary/addSubject/{teacher_id}/{grade_id}/{student_id}', 'TeacherProfileController@showSecondaryAddSubject')->name('teacher.secondary.addSubject');
+
+    //insert subject to secondary score table (teacher panel)
+    Route::post('/secondary/insertSubject/{teacher_id}/{grade_id}/{student_id}', 'TeacherProfileController@secondaryAddSubject')->name('teacher.secondary.insertSubject');
+
+    //delete data from SecondaryScore table
+    Route::get('/secondaryScore/delete/{id}', 'TeacherProfileController@destroySecondaryScore')->name('teacher.secondary.score.delete');
+
+
+
+
+
+    //View high school student score
+    Route::get('/score/{teacher_id}/{grade_id}/{student_id}', 'TeacherProfileController@viewScore')->name('teacher.score.view');
+
+    //show subjects form to add to score table
+    Route::get('/student/score/{teacher_id}/{grade_id}/{student_id}', 'TeacherProfileController@SubjectByGrade')->name('teacher.subject.score');
+
+    //insert subject to score table for high school
+    Route::post('/score/insert/{teacher_id}/{student_id}/{grade_id}', 'TeacherProfileController@insertScore')->name('teacher.score.insert');
+
+    //edit data from score table (teacher panel)
+    Route::get('score/edit/{teacher_id}/{score_id}/{grade_id}/{student_id}', 'TeacherProfileController@editScore')->name('teacher.student.score.edit');
+
+    //delete data from score table (teacher panel)
+    Route::get('/score/delete/{id}', 'TeacherProfileController@destroyScore')->name('teacher.score.delete');
+
+    //update score (teacher panel)
+    Route::post('score/update/{teacher_id}/{score_id}/{grade_id}/{student_id}', 'TeacherProfileController@updateScore')->name('teacher.score.update');
+
+
+    //edit data from secondaryScore table (teacher panel)
+    Route::get('secondaryScore/edit/{teacher_id}/{score_id}/{grade_id}/{student_id}', 'TeacherProfileController@editSecondaryScoreForm')->name('teacher.secondary.score.edit');
+    //update secondary score student
+    Route::post('secondaryScore/update/{teacher_id}/{score_id}/{grade_id}/{student_id}', 'TeacherProfileController@updateSecondaryScore')->name('teacher.secondaryScore.update');
+
+
+
+    //assignment section
+
+    Route::get('assignment/view/{teacher_id}', 'AssignmentController@showAssignment')->name('teacher.assignment.show');
+
+    Route::get('assignment/create/{teacher_id}', 'AssignmentController@createAssignmentForm')->name('teacher.assignment.create');
+    Route::post('assignment/create/{teacher_id}', 'AssignmentController@createAssignment')->name('teacher.assignment.post');
+
+    Route::get('assignment/detail/{teacher_id}/{assignment_id}', 'AssignmentController@assignmentDetail')->name('teacher.assignment.detail');
+    Route::get('assignment/edit/{teacher_id}/{assignment_id}', 'AssignmentController@assignmentEdit')->name('teacher.assignment.edit');
+    Route::get('assignment/delete/{assignment_id}', 'AssignmentController@assignmentDelete')->name('teacher.assignment.delete');
+    Route::post('assignment/update/{teacher_id}/{assignment_id}', 'AssignmentController@assignmentUpdate')->name('teacher.assignment.update');
+
+
+
+    //view student by Grade
+    Route::get('/student/byGrade/{teacher_id}', 'TeacherProfileController@viewByGrade')->name('teacher.student.byGrade');
+
+    //view detail grade
+
+    // Route::get('/student/detailByGrade/{grade_profile_id}/{teacher_id}', 'TeacherProfileController@viewStudentByGrade')->name('teacher.viewStudent.byGrade');
+
+    Route::get('/student/byGrade/detail/{grade_profile_id}/{teacher_id}', 'TeacherProfileController@studentByGrade')->name('teacher.viewStudent.byGrade');
+
+
+});
+//show assignment in user profile
+Route::get('student/assignment/show/{student_id}', 'HomeController@studentAssignmentShow')->name('student.assignment.show');
+//show detail assignment in student profile
+Route::get('student/assignment/detail/{student_id}/{assignment_id}', 'HomeController@assignmentDetail')->name('student.assignment.detail');
+
+
+
+
+
 
 
 

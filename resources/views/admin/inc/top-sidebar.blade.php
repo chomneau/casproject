@@ -44,20 +44,20 @@
                 </li>
                 {{--@endif--}}
 
-                @elseif(Auth::guard('employer')->check())
+                @elseif(Auth::guard('teacher')->check())
                         <li class="">
                             <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                <img src="{{ asset($company->logo) }}" alt="admin">{{ Auth::user()->name }}
+                                <img src="{{ asset(Auth()->user()->photo) }}" alt="admin">{{ Auth::user()->name }}
                                 <span class=" fa fa-angle-down"></span>
                             </a>
                             <ul class="dropdown-menu dropdown-usermenu pull-right">
                                 <li>
 
-                                    <a href="/employer/{{ Auth()->user()->id }}">
+                                    <a href="#">
                                         <i class="fa fa-user" aria-hidden="true"></i>
                                         Profile</a></li>
                                 <li>
-                                    <a href="{{ route('employer.showPasswordForm', ['id'=> Auth::user()->id]) }}">
+                                    <a href="{{ route('teacher.changePassword', ['teacher_id'=>Auth::user()->id]) }}">
                                         <i class="fa fa-lock" aria-hidden="true"></i>
                                         <span>Change password</span>
                                     </a>

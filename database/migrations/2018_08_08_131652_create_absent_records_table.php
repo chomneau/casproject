@@ -15,7 +15,7 @@ class CreateAbsentRecordsTable extends Migration
     {
         Schema::create('absent_records', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('absent_id');
+            $table->integer('absent_type');
             $table->integer('student_profile_id');
             $table->integer('grade_id');
             $table->text('reason');

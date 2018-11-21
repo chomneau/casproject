@@ -18,6 +18,7 @@ use App\Absent;
 use App\GradeProfile;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Hash;
+use App\Teacher;
 
 
 class StudentController extends Controller
@@ -32,6 +33,7 @@ class StudentController extends Controller
     public function __construct()
     {
         $this->middleware('auth:admin');
+        
 
         $this->grade = Grade::all();
         View::share('grade', $this->grade);
@@ -62,7 +64,8 @@ class StudentController extends Controller
 
     public function viewStudent()
     {
-        $student = StudentProfile::all();
+        $student = StudentProfile::orderBy('last_name','ASC')
+            ->paginate(15);
 
        // $grade = Grade::all();
 
@@ -71,6 +74,36 @@ class StudentController extends Controller
            // ->with('grade', $grade)
 
     }
+
+    //view student by Grade
+    public function viewByGrade(){
+
+       $viewByGrade = GradeProfile::all();
+
+        return view('admin.student.view_by_grade')->with([
+           'viewByGrade'=>$viewByGrade,
+           ]);
+    }
+
+    public function viewAllStudentByGrade($grade_profile_id){
+        $viewStudentByGrade = StudentProfile::withCount('GradeProfile')->where(['grade_profile_id'=>$grade_profile_id])->get();
+        $countStudentByGrade = StudentProfile::withCount('GradeProfile')->where(['grade_profile_id'=>$grade_profile_id])->count();
+        $countMaleStudentByGrade = StudentProfile::withCount('GradeProfile')->where(['grade_profile_id'=>$grade_profile_id, 'gender'=>'Male'])->count();
+        $countFemaleStudentByGrade = StudentProfile::withCount('GradeProfile')->where(['grade_profile_id'=>$grade_profile_id, 'gender'=>'Female'])->count();
+
+        $grade = StudentProfile::find($grade_profile_id);
+
+      //  return $countStudentByGrade->count();
+        return view('admin.student.view_allStudent_byGrade')->with([
+            'viewStudentByGrade'=>$viewStudentByGrade,
+            'countStudentByGrade'=>$countStudentByGrade,
+            'countMaleStudentByGrade'=>$countMaleStudentByGrade,
+            'countFemaleStudentByGrade'=>$countFemaleStudentByGrade,
+            'grade'=>$grade
+        ]);
+    }
+
+
 
     //view student detail
     public function studentDetail($id)
@@ -97,6 +130,19 @@ class StudentController extends Controller
                 'grade_id' => $grade
             ]);
     }
+    //show all subject form to add to score table for high school student
+    public function showHighScoreForm($grade_id, $student_id)
+    {
+        $subject = Subject::where('grade_id', $grade_id)->get();
+        $student = StudentProfile::find($student_id);
+        $grade = Grade::find($grade_id);
+        return view('admin.student.high_school.add_all_subject_to_highschool_form')
+            ->with([
+                'subjects' => $subject,
+                'students' => $student,
+                'grade_id' => $grade
+            ]);
+    }
 
     public function viewScore($grade_id, $student_id)
     {
@@ -116,12 +162,11 @@ class StudentController extends Controller
             ]);
     }
 
-
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
-     */
+     **/
 
     public function showRegisterForm()
     {
@@ -138,23 +183,19 @@ class StudentController extends Controller
             'date_of_birth' => 'required',
             'student_id' => 'required',
             'nationality' => 'required',
-
-            'parents_name' => 'required',
-
-            'phone' => 'required',
-
+            'father_name' => 'required',
+            'father_phone' => 'required',
             'address' => 'required',
-
         ]);
 
         $user = new User();
+
         $user->name = $request->first_name;
-        $user->email = $request->email;
+        $user->email = $request->father_email;
         $user->password = bcrypt($request->student_id);
         $user->student_id = $request->student_id;
 
         $user->save();
-
 
         //$user = Auth::user();
         $student = new StudentProfile();
@@ -169,11 +210,23 @@ class StudentController extends Controller
         $student->grade_profile_id = $request->grade_id;
         $student->nationality = $request->nationality;
         $student->progressive_book_id = $request->progressive_book_id;
-        $student->parents_name = $request->parents_name;
-        $student->parents_dob = $request->parents_dob;
-        $student->occupation = $request->occupation;
-        $student->phone = $request->phone;
-        $student->email = $request->email;
+
+
+        $student->father_name = $request->father_name;
+        $student->mother_name = $request->mother_name;
+
+        $student->father_phone = $request->father_phone;
+        $student->mother_phone = $request->mother_phone;
+
+        $student->father_occupation = $request->father_occupation;
+        $student->mother_occupation = $request->mother_occupation;
+
+
+        
+        $student->father_email = $request->father_email;
+        $student->mother_email = $request->mother_email;
+
+
         $student->address = $request->address;
         $student->user_id = $user->id;
         $student->save();
@@ -202,20 +255,30 @@ class StudentController extends Controller
         $score->grade_id = $grade->id;
         $score->subject_id = $request->subject_id;
 
-
-        
-//        $score->quarter_1 = $request->quarter1;
-//        $score->quarter_2 = $request->quarter2;
-//        $score->quarter_3 = $request->quarter3;
-//        $score->quarter_4 = $request->quarter4;
-
         $score->save();
         Session::flash('success', 'You have successfully inserted your student score');
         //return redirect()->back();
         return redirect()->route('score.view', ['grade_id' => $grade->id, 'student_id' => $studentprofile->id]);
     }
+    //insert all subject to score table for high school student
+    public function insertAllSubjectsToScore(Request $request, $student_id, $grade_id)
+    {
+        $studentprofile = StudentProfile::find($student_id);
+        $grade = Grade::find($grade_id);
+        $input = Input::all();
+        foreach ($input['subject_id'] as $index=>$value){
+            $score = new Score();
+            $score->student_profile_id = $studentprofile->id;
+            $score->grade_id = $grade->id;
+            $score->subject_id = $value;
+            $score->save();
+        }
 
-    
+        Session::flash('success', 'You have successfully inserted all subject to student');
+        //return redirect()->back();
+        return redirect()->route('score.view', ['grade_id' => $grade->id, 'student_id' => $studentprofile->id]);
+    }
+
     //Edit student score
     public function editScore($score_id, $grade_id, $student_id)
     {
@@ -322,8 +385,6 @@ class StudentController extends Controller
             $error = "invalid input";
         }
 
-
-
         $GPA_2 = ($score->quarter_3 + $score->quarter_4) / 2;
 
         if ($GPA_2 >= 93 && $GPA_2 <= 100) {
@@ -402,18 +463,12 @@ class StudentController extends Controller
             'date_of_birth' => 'required',
             'student_id' => 'required',
             'nationality' => 'required',
-            'progressive_book_id' => 'required',
-            'parents_name' => 'required',
-            'occupation' => 'required',
-            'phone' => 'required',
-            'email' => 'required|email',
             'address' => 'required',
         ]);
 
         //$user = Auth::user();
         $student = StudentProfile::find($id);
 
-        $student->photo = 'uploads/photo/1510817755img.png';
         $student->first_name = $request->first_name;
         $student->last_name = $request->last_name;
         $student->gender = $request->gender;
@@ -422,12 +477,20 @@ class StudentController extends Controller
         $student->card_id = $request->student_id;
         $student->grade_profile_id = $request->grade_id;
         $student->nationality = $request->nationality;
-        $student->progressive_book_id = $request->progressive_book_id;
-        $student->parents_name = $request->parents_name;
-        $student->parents_dob = $request->parents_dob;
-        $student->occupation = $request->occupation;
-        $student->phone = $request->phone;
-        $student->email = $request->email;
+        $student->status = $request->status;
+
+        $student->father_name = $request->father_name;
+        $student->mother_name = $request->mother_name;
+
+        $student->father_phone = $request->father_phone;
+        $student->mother_phone = $request->mother_phone;
+
+        $student->father_occupation = $request->father_occupation;
+        $student->mother_occupation = $request->mother_occupation;
+
+        
+        $student->father_email = $request->father_email;
+        $student->mother_email = $request->mother_email;
         $student->address = $request->address;
        // $student->user_id = $user->id;
         $student->save();
@@ -435,6 +498,7 @@ class StudentController extends Controller
         $user = StudentProfile::find($id)->user;
         $user->name = $request->first_name;
         $user->student_id = $request->student_id;
+        $user->email = $request->father_email;
         $user->password = bcrypt($request->student_id);
         $user->save();
 
@@ -454,11 +518,11 @@ class StudentController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
+     * Remove the specified resource from storage
      * @param  int  $id
      * @return \Illuminate\Http\Response
-     */
+     **/
+
     public function deleteStudent($id)
     {
         $student = StudentProfile::find($id);
@@ -477,10 +541,7 @@ class StudentController extends Controller
 
         $student = StudentProfile::find($student_id);
 
-
-
         $user = user::find($student->user->id);
-
 
         if (Input::get('password') == Input::get('password_confirmation')) {
             
@@ -494,12 +555,8 @@ class StudentController extends Controller
 
         } else {
             Session::flash('error', 'password is not match! Try Again');
-
             return redirect()->back();
         }
-
-
-
     }
 
     public function passwordForm($student_id){
@@ -507,6 +564,18 @@ class StudentController extends Controller
         $student = StudentProfile::find($student_id);
         
         return view('admin.student.changePassword')->with('students', $student);
+    }
+
+    //search student
+
+    public function searchStudent(){
+        $student = StudentProfile::where('card_id','like', '%'. request('query') .  '%')
+            ->orWhere('first_name','like', '%'. request('query') .  '%')
+            ->orWhere('father_phone','like', '%'. request('query') .  '%')
+            ->orWhere('mother_phone','like', '%'. request('query') .  '%')
+            ->paginate(10);
+        return view('admin.student.search_student')->with('student', $student)
+            ->with('studentName', 'Search results :' .request('query'));
     }
 
 

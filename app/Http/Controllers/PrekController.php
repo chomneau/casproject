@@ -12,6 +12,7 @@ use App\Subject;
 use Illuminate\Support\Facades\Auth;
 use App\User;
 use Session;
+use Illuminate\Support\Facades\Input;
 
 
 use App\PrimarySubject;
@@ -77,6 +78,43 @@ class PrekController extends Controller
                 'grade_id' => $grade
             ]);
     }
+
+    //show all subject to add_subject prekScore table show form
+    public function showAllPrekSubject($grade_id, $student_id)
+    {
+        $subject = KSubject::where('grade_id', $grade_id)->get();
+        $countSubject = $subject->count();
+        $student = StudentProfile::find($student_id);
+        $grade = KLevel::find($grade_id);
+        return view('admin.student.pre_school.preschool_add_allsubject_to_grade')
+            ->with([
+                'subjects' => $subject,
+                'students' => $student,
+                'grade_id' => $grade,
+                'countSubject'=>$countSubject
+            ]);
+    }
+
+    //insert all subject to prekscore table
+    public function insertAllPrekSubject(Request $request, $grade_id, $student_id){
+
+        $studentprofile = StudentProfile::find($student_id);
+        $grade = KLevel::find($grade_id);
+
+        $input = Input::all();
+        foreach ($input['subject_id'] as $index=>$value) {
+            $score = new PrekScore();
+            $score->student_profile_id = $studentprofile->id;
+            $score->k_level_id = $grade->id;
+            $score->k_subject_id = $value;
+            $score->subject_code = $request->subject_code[$index];
+            $score->save();
+        }
+
+            Session::flash('success', 'You have successfully inserted your student score');
+            return redirect()->route('prekschool.score', ['grade_id' => $grade->id, 'student_id' => $studentprofile->id]);
+    }
+
 
     //add subject to table
 

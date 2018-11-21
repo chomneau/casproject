@@ -34,7 +34,7 @@ class SubjectController extends Controller
 
     public function index()
     {
-        $subject = Subject::all();
+        $subject = Subject::orderBy('grade_id', 'ASC')->get();
         return view('admin.subject.index')->with('subject', $subject);
     }
 
@@ -97,7 +97,7 @@ class SubjectController extends Controller
     //setting Subject for K and Pre-k ===================================================
     public function showPrek()
     {
-        $subject = KSubject::all();
+        $subject = KSubject::orderBy('id', 'ASC')->get();
         return view('admin.subject.pre_k_subject.index')->with('subject', $subject);
     }
 
@@ -154,7 +154,7 @@ class SubjectController extends Controller
     //setting Subject for Primary and Secondary ===================================================
     public function showPrimary()
     {
-        $subject = PrimarySubject::all();
+        $subject = PrimarySubject::orderBy('grade_id', 'ASC')->get();
         return view('admin.subject.primary_subject.index')->with('subject', $subject);
     }
 

@@ -18,6 +18,7 @@ class CreatePrekScoresTable extends Migration
             $table->integer('student_profile_id');
             $table->integer('k_level_id');
             $table->integer('k_subject_id');
+            $table->string('subject_code');
             $table->decimal('quarter_1', 6,2)->nullable();
             $table->decimal('quarter_2', 6,2)->nullable();
             $table->decimal('semester_1', 6,2)->nullable();

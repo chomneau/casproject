@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Auth;
 use App\User;
-use App\Profile;
 use Illuminate\Foundation\Http\Middleware\ValidatePostSize;
 use Illuminate\Http\Request;
 use App\Location;
@@ -23,6 +22,8 @@ use App\KSubject;
 use App\GradeProfile;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Hash;
+use App\Assignment;
+use App\Teacher;
 
 class HomeController extends Controller
 {
@@ -153,6 +154,22 @@ class HomeController extends Controller
             return redirect()->back();
         }
 
+    }
+
+    public function studentAssignmentShow($student_id){
+        $student = StudentProfile::find($student_id);
+        $gradeID = $student->grade_profile_id;
+        $assignment = Assignment::where('grade_profile_id', $gradeID)->orderBy('created_at', 'DECS')->get();
+
+      //  return $assignment;
+        return view('end_user.assignment_index')->with(['students'=> $student, 'assignment'=>$assignment]);
+    }
+
+    public function assignmentDetail($student_id, $assignment_id){
+        $student = StudentProfile::find($student_id);
+        $assignment = Assignment::find($assignment_id);
+
+        return view('end_user.assignment_detail')->with(['students'=> $student, 'assignments'=>$assignment]);
     }
 
 

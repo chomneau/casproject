@@ -45,7 +45,7 @@
             <div class="col-md-8 col-sm-6 col-xs-12">
                 <div class="x_panel">
                     <div class="x_title">
-                        <h2>Absent Record's {{ $students->first_name }} {{ $students->last_name}} in : {{ $grade_id->grade_name}}
+                        <h2>Absent Record's {{ $students->first_name }} {{ $students->last_name}} in : {{ $grade_id->name}}
                         </h2>
 
                         <div class="clearfix"></div>
@@ -70,7 +70,7 @@
                                     <th scope="row">#</th>
                                     <td>{{ $secondaryAbsents->studentProfile->first_name }}</td>
                                     <td>{{ $secondaryAbsents->SecondaryLevel->name }}</td>
-                                    <td>{{ $secondaryAbsents->Absent->absent_type }}</td>
+                                    <td>{{ $secondaryAbsents->absent_type }}</td>
                                     <td>{{ substr($secondaryAbsents->reason, 0, 25)}}
                                         <?php
                                             $reason = $secondaryAbsents->reason;
@@ -109,16 +109,21 @@
 
                             <div class="modal-body">
                                 <label for="exampleInputEmail1">Select absent type</label>
-                                <select name="absent_id" id="" class="form-control" required>
-                                                <option value="">--select absent type--</option>
-                                                @if(count($absent))
-                                                    @foreach($absent as $absents)
-                                                        <option value="{{ $absents->id }} "
-                                                            @if($secondaryAbsent_edit->absent_id == $absents->id) selected @endif>
-                                                            {{ $absents->absent_type }}
-                                                        </option>
-                                                    @endforeach
-                                                @endif
+                                <select name="absent_type" id="" class="form-control" required>
+                                                {{--<option value="">--select absent type--</option>--}}
+                                                {{--@if(count($absent))--}}
+                                                    {{--@foreach($absent as $absents)--}}
+                                                        {{--<option value="{{ $absents->id }} "--}}
+                                                            {{--@if($secondaryAbsent_edit->absent_id == $absents->id) selected @endif>--}}
+                                                            {{--{{ $absents->absent_type }}--}}
+                                                        {{--</option>--}}
+                                                    {{--@endforeach--}}
+                                                {{--@endif--}}
+
+                                    <option value="{{ $secondaryAbsent_edit->absent_type}}">{{ $secondaryAbsent_edit->absent_type }} </option>
+                                    <option value="Unexcused">Unexcused</option>
+                                    <option value="Excused">Excused</option>
+                                    <option value="Tardy">Tardy</option>
 
                                                 
                                             </select>
@@ -127,7 +132,7 @@
                             <div class="modal-body">
                                 <label for="exampleInputEmail1">Absent date</label>
                                 <input type="text" name="absent_date" class="form-control" min="2000-01-01" max="2050-12-01" value="
-                                {{ $secondaryAbsents->absent_date }} " >
+                                {{ $secondaryAbsent_edit->absent_date }} " >
                             </div>
                             <div class="modal-body">
                                 <label for="exampleInputEmail1">Reason</label>
@@ -142,7 +147,7 @@
 
                             <div class="modal-footer">
                                 <button type="submit" class="btn btn-primary">update</button>
-                                <a href="{{ route('delete.SecondarySchool.absentRecord', ['grade_id'=>$grade_id->id,'id'=>$students->id, 'absentRecord_id'=>$secondaryAbsents->id] ) }}" type="submit" class="btn btn-danger">Delete</a>
+                                <a href="{{ route('delete.SecondarySchool.absentRecord', ['grade_id'=>$grade_id->id,'id'=>$students->id, 'absentRecord_id'=>$secondaryAbsent_edit->id] ) }}" type="submit" class="btn btn-danger">Delete</a>
 
                             </div>
                         </form>

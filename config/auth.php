@@ -44,9 +44,9 @@ return [
             'driver' => 'session',
             'provider' => 'admins',
         ],
-        'employer' => [
+        'teacher' => [
             'driver' => 'session',
-            'provider' => 'employers',
+            'provider' => 'teachers',
         ],
 
         'api' => [
@@ -85,9 +85,9 @@ return [
             'driver' => 'eloquent',
             'model' => App\Admin::class,
         ],
-        'employers' => [
+        'teachers' => [
             'driver' => 'eloquent',
-            'model' => App\Employer::class,
+            'model' => App\Teacher::class,
         ],
 
         // 'users' => [
@@ -122,8 +122,8 @@ return [
             'table' => 'password_resets',
             'expire' => 30,
         ],
-        'employers' => [
-            'provider' => 'employers',
+        'teachers' => [
+            'provider' => 'teachers',
             'table' => 'password_resets',
             'expire' => 30,
         ],

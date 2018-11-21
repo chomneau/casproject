@@ -4,6 +4,7 @@
     <!-- page content -->
     <div class="right_col" role="main">
         <div class="">
+
             <div class="page-title">
                 <div class="title_left">
                     <h3>Student Profile
@@ -15,8 +16,6 @@
                         </span>
                     </h3>
                 </div>
-
-
             </div>
 
             <div class="clearfix"></div>
@@ -30,7 +29,6 @@
                             <div class="col-md-12 " style="margin-top: 2em">
                                 <div class="col-md-2">
                                     <img src="{{ asset($students->photo) }}" alt="user profile" width="150" height="150">
-
                                 </div>
 
                                 <div class="col-md-5">
@@ -53,14 +51,8 @@
                                                 <li style="margin-bottom: 8px"><i class="fa fa-list-ul"></i>
                                                     <a href="#">Grade :  </a>
                                                     <button type="button" class="btn btn-success btn-xs">
+                                                        {{ $students->gradeProfile->name }}
 
-                                                        @if(count($grade))
-                                                            @foreach($grade as $grades)
-                                                                @if($students->grade_id  == $grades->id)
-                                                                    {{ $grades->grade_name }}
-                                                                @endif
-                                                            @endforeach
-                                                        @endif
                                                     </button>
 
                                                 </li>
@@ -84,8 +76,6 @@
                                 </div>
 
                                 <div class="col-md-5">
-
-
                                     <div class="studentDetail">
                                         <div class="dashboard-widget-content">
 
@@ -139,58 +129,138 @@
                                     <h2>High School Transcript</h2>
                                     <div class="clearfix"></div>
                                   </div>
+                                      <form action="{{ route('highschool.transcript', ['student_id'=>$students->id]) }}" method="GET">
+                                          {{ csrf_field() }}
+                                            <div class="tab-content">
+                                                <div class="tab-pane active" id="home">
+
+                                                    @if(count($grade))
+                                                        @foreach($grade as $grades)
 
 
+                                                            <div class="checkbox">
+                                                                <label>
+                                                                  <input type="radio" name="grade" id ="radio" class="flat" value="{{$grades->id}}">
 
-                                  <form action="{{ route('highschool.transcript', ['student_id'=>$students->id]) }}" method="GET">
+                                                                  {{ $grades->grade_name }}
+
+                                                                </label>
+                                                            </div>
 
 
+                                                        @endforeach
+
+                                                    @endif
+
+                                                </div>
+
+                                                <div class="pull-right">
+                                                    <input type="submit" value="print view" id="submit_yearly" class="btn btn-success btn-sm">
+                                                </div>
+
+                                            </div>
+                                        <!-- end form -->
+
+                                      </form>
+                                </div>
+                            </div>
+
+
+                        {{--CGPA for Hight school--}}
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <div class="x_panel">
+                                <div class="x_title">
+                                    <h2>High School Transcript</h2>
+                                    <div class="clearfix"></div>
+
+                                </div>
+                                <form action="{{ route('cgpa.school', ['student_id'=>$students->id]) }}" method="GET">
+                                    {{ csrf_field() }}
                                     <div class="tab-content">
                                         <div class="tab-pane active" id="home">
+
+                                        <label for="checkall">
+                                            <input type="checkbox" id="checkall" > Check all
+                                        </label>
+                                        <hr>
 
                                             @if(count($grade))
                                                 @foreach($grade as $grades)
 
-                                                    
                                                     <div class="checkbox">
                                                         <label>
-                                                          <input type="radio" name="grade[]" class="flat" value="{{$grades->id}}"> 
+                                                            <input type="checkbox" class="checkItem" 
+                                                            name="grade[]"  value="{{$grades->id}}"  >
 
-                                                          {{ $grades->grade_name }}
+                                                            {{ $grades->grade_name }}
 
                                                         </label>
                                                     </div>
-                                                    
+
 
                                                 @endforeach
-                                                
+
                                             @endif
 
                                         </div>
 
                                         <div class="pull-right">
-                                            <input type="submit" value="print view" class="btn btn-success btn-sm">
+                                            <input type="submit" value="print view" id="submit" class="btn btn-success btn-sm">
                                         </div>
 
-                                    </div> 
+                                    </div>
                                     <!-- end form -->
-                                </from>
 
-                                </div>
-                            </div> 
-
-
-
-
-
-
+                                </form>
+                            </div>
+                        </div>
+                        {{--end CGPA--}}
 
                     </div>
 
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- /page content -->
+
+
+  
+
+
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+ 
+
+	<!-- <script type="text/javascript">
+		$("#checkall").change(function(){
+			$(".checkItem").prop("checked", $(this).prop("checked"))
+		})
+	</script> -->
+
+<script>
+    $(document).ready(function () {
+    var ckbox = $('#checkall');
+    var radio = $('#radio');
+    $("#submit").hide();
+   
+
+    $('#checkall').on('click',function () {
+        if (ckbox.is(':checked')) {
+            $(".checkItem").prop("checked", true);
+            $("#submit").show();
+            $(".checkItem").disable();
+        } else {
+            $(".checkItem").prop("checked", false);
+            $("#submit").hide();
+        }
+    });
+
+});
+    
+    <!-- /page content -->
+
+</script>
 
 @endsection

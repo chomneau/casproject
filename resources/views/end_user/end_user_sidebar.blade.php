@@ -102,6 +102,35 @@
                     @endforeach @endif
                 </ul>
             </li>
+
+            <li class="nav-item dropdown"><a class="dropdown-toggle" href="javascript:void(0);"><span class="icon-holder">
+                    <i class="fas fa-book-reader"></i> </span><span class="title">
+                Assignment</span> <span class="arrow"><i  style="color:#55CBF2" class="fas fa-angle-right"></i></span></a>
+                <ul class="dropdown-menu">
+
+                    <li>
+                        <a href="{{ route('student.assignment.show', ['student_id'=>$students->id]) }}">Assignment</a>
+                    </li>
+
+                    {{--@if(count($grade))--}}
+                        {{--@foreach($grade as $grades)--}}
+
+                        {{--<li class="nav-item dropdown">--}}
+                            {{--<a href="{{ route('student.highschool', ['grade_id'=>$grades->id, 'student_id'=>$students->id]) }}">--}}
+                            {{--<span>--}}
+                                {{--{{ $grades->grade_name }}--}}
+                            {{--</span>--}}
+                                {{--<span class="arrow">--}}
+                                {{--<i style="color:#55CBF2" class="ti-angle-right"></i>--}}
+                            {{--</span>--}}
+                            {{--</a>--}}
+                        {{--</li>--}}
+
+                    {{--@endforeach--}}
+                    {{--@endif--}}
+                </ul>
+            </li>
+
         </ul>
     </div>
 </div>

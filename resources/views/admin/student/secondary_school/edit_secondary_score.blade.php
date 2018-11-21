@@ -25,6 +25,8 @@
                     </div>
                     <div class="x_content">
 
+
+                    @if(Auth::guard('admin')->check())
                         <form role="form" class="form-group" action="{{ route('secondaryScore.update', ['score_id'=>$scores->id, 'grade_id'=>$grade_id->id,'student_id'=>$students->id]) }}"
                             method="post">
                             {{csrf_field()}}
@@ -32,7 +34,7 @@
                             <table id="datatable-fixed-header" class="table table-striped table-bordered">
                                 <thead>
                                     <tr>
-                                        <th>Student ID</th>
+                                        
                                         <th>Subject</th>
                                         <th>Grade</th>
                                         <th>Quarter 1</th>
@@ -45,7 +47,7 @@
 
 
                                 <tbody>
-                                    <td>{{ $scores->studentprofile->card_id }}</td>
+                                    
 
 
                                     <td>{{ $scores->primarySubject->name }}</td>
@@ -67,6 +69,53 @@
 
                         </form>
 
+
+                        @elseif(Auth::guard('teacher')->check())
+
+                            <form role="form" class="form-group" action="{{ route('teacher.secondaryScore.update', ['teacher_id'=>$teacher->id, 'score_id'=>$scores->id, 'grade_id'=>$grade_id->id,'student_id'=>$students->id]) }}"
+                            method="post">
+                            {{csrf_field()}}
+
+                            <table id="datatable-fixed-header" class="table table-striped table-bordered">
+                                <thead>
+                                    <tr>
+                                        
+                                        <th>Subject</th>
+                                        <th>Grade</th>
+                                        <th>Quarter 1</th>
+                                        <th>Quarter 2</th>
+                                        <th>Quarter 3</th>
+                                        <th>Quarter 4</th>
+
+                                    </tr>
+                                </thead>
+
+
+                                <tbody>
+                                    
+
+
+                                    <td>{{ $scores->primarySubject->name }}</td>
+                                    <td>{{ $scores->SecondaryLevel->name }}</td>
+
+
+
+                                    <td width="30px"><input type="text" name="quarter1" value="{{$scores->quarter_1}}" class="form-control-sm"></td>
+                                    <td width="15%"><input type="text" name="quarter2" value="{{$scores->quarter_2}}" class="form-control-sm"></td>
+                                    <td width="15%"><input type="text" name="quarter3" value="{{$scores->quarter_3}}" class="form-control-sm"></td>
+                                    <td width="15%"><input type="text" name="quarter4" value="{{$scores->quarter_4}}" class="form-control-sm"></td>
+
+
+
+                                </tbody>
+                            </table>
+
+                            <input type="submit" class="btn btn-success" value="Update now">
+
+                        </form>
+
+                        @endif
+
                     </div>
                 </div>
             </div>
@@ -74,4 +123,6 @@
     </div>
 </div>
 <!-- /page content -->
+
+
 @endsection

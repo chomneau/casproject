@@ -30,7 +30,7 @@
                                         <div class="tab-content">
                                             <div class="tab-pane active" role="tabpanel" id="step1">
                                                 @include('admin.student.form.studentRegister-form')
-                                                {{--@include('auth.register')--}}
+                                               
                                                 <ul class="list-inline pull-right">
                                                     <li><button type="submit" class="btn btn-primary" style=" margin-top: 10px;margin-right: -5px">Register Now</button></li>
                                                 </ul>

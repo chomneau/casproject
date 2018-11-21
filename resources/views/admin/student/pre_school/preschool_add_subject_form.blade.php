@@ -40,7 +40,7 @@
             </div>
             <div class="x_content">
 
-
+                @if(Auth::guard('admin')->check())
                 <div class="row">
                     <form action="{{ route('prek.insertSubject', ['grade_id'=>$grade_id->id, 'student_id'=>$students->id]) }}" method="post">
                         {{ csrf_field() }}
@@ -62,6 +62,34 @@
                         </div>
                     </form>
                 </div>
+
+                @elseif(Auth::guard('teacher')->check())
+
+                    <div class="row">
+                        <form action="{{ route('teacher.prek.insertSubject', ['teacher_id'=>$teacher->id,'grade_id'=>$grade_id->id, 'student_id'=>$students->id]) }}" method="post">
+                            {{ csrf_field() }}
+                            <div class="col-md-10">
+                                <label for="exampleInputEmail1">Subject by ({{$grade_id->name}})</label>
+                                <select name="subject_id" class="col-md-12 form-control" required>
+                                    <option value="">please select subject</option>
+                                    @if(count($subjects))
+                                        @foreach($subjects as $subject)
+                                            <option value="{{ $subject->id }}">{{ $subject->name }}</option>
+                                        @endforeach
+                                    @endif
+                                </select>
+                            </div>
+
+                            <div class="col-md-2" style="margin-top: 20px">
+
+                                <button type="submit" class="btn btn-success"><i class="glyphicon glyphicon-plus-sign"></i> Add now</button>
+                            </div>
+                        </form>
+                    </div>
+
+
+
+                @endif
 
                 <!-- start project list -->
                 <!-- end project list -->

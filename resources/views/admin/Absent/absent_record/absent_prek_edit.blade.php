@@ -45,7 +45,7 @@
             <div class="col-md-8 col-sm-6 col-xs-12">
                 <div class="x_panel">
                     <div class="x_title">
-                        <h2>Absent Record's {{ $students->first_name }} {{ $students->last_name}} in : {{ $grade_id->grade_name}}
+                        <h2>Absent Record's {{ $students->first_name }} {{ $students->last_name}} in : {{ $grade_id->name}}
                         </h2>
 
                         <div class="clearfix"></div>
@@ -70,7 +70,7 @@
                                     <th scope="row">#</th>
                                     <td>{{ $prekAbsents->studentProfile->first_name }}</td>
                                     <td>{{ $prekAbsents->KLevel->name }}</td>
-                                    <td>{{ $prekAbsents->Absent->absent_type }}</td>
+                                    <td>{{ $prekAbsents->absent_type }}</td>
                                     <td>{{ substr($prekAbsents->reason, 0, 25)}}
                                         <?php
                                             $reason = $prekAbsents->reason;
@@ -109,16 +109,21 @@
 
                             <div class="modal-body">
                                 <label for="exampleInputEmail1">Select absent type</label>
-                                <select name="absent_id" id="" class="form-control" required>
-                                                <option value="">--select absent type--</option>
-                                                @if(count($absent))
-                                                    @foreach($absent as $absents)
-                                                        <option value="{{ $absents->id }} "
-                                                            @if($prekAbsent_edit->absent_id == $absents->id) selected @endif>
-                                                            {{ $absents->absent_type }}
-                                                        </option>
-                                                    @endforeach
-                                                @endif
+                                <select name="absent_type" id="" class="form-control" required>
+                                                {{--<option value="">--select absent type--</option>--}}
+                                                {{--@if(count($absent))--}}
+                                                    {{--@foreach($absent as $absents)--}}
+                                                        {{--<option value="{{ $absents->id }} "--}}
+                                                            {{--@if($prekAbsent_edit->absent_id == $absents->id) selected @endif>--}}
+                                                            {{--{{ $absents->absent_type }}--}}
+                                                        {{--</option>--}}
+                                                    {{--@endforeach--}}
+                                                {{--@endif--}}
+
+                                    <option value="{{ $prekAbsent_edit->absent_type }}">{{ $prekAbsent_edit->absent_type }} </option>
+                                    <option value="Unexcused">Unexcused</option>
+                                    <option value="Excused">Excused</option>
+                                    <option value="Tardy">Tardy</option>
 
                                                 
                                             </select>
@@ -127,7 +132,7 @@
                             <div class="modal-body">
                                 <label for="exampleInputEmail1">Absent date</label>
                                 <input type="text" name="absent_date" class="form-control" min="2000-01-01" max="2050-12-01" value="
-                                {{ $prekAbsents->absent_date }} " >
+                                {{ $prekAbsent_edit->absent_date }} " >
                             </div>
                             <div class="modal-body">
                                 <label for="exampleInputEmail1">Reason</label>
@@ -137,12 +142,14 @@
                                         $reason = $prekAbsent_edit->reason;
                                         echo trim($reason)
                                         ?>
+
+
                                 </textarea>
                             </div>
 
                             <div class="modal-footer">
                                 <button type="submit" class="btn btn-primary">update</button>
-                                <a href="{{ route('delete.prekSchool.absentRecord', ['grade_id'=>$grade_id->id,'id'=>$students->id, 'prekAbsent_id'=>$prekAbsents->id] ) }}" type="submit" class="btn btn-danger">Delete</a>
+                                <a href="{{ route('delete.prekSchool.absentRecord', ['grade_id'=>$grade_id->id,'id'=>$students->id, 'prekAbsent_id'=>$prekAbsent_edit->id] ) }}" type="submit" class="btn btn-danger">Delete</a>
 
                             </div>
                         </form>

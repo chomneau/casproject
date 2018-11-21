@@ -99,62 +99,48 @@ public function highSchoolAbsent($grade_id, $student_id){
     ])->orderBy('created_at', 'Desc')->get();
 
 
-    // $absent_type = Absent::all();
-    // //return $highSchoolAbsent;
-    // foreach ($highSchoolAbsent as $value) {
-    //     # code...
-    //     if($value->absent_id == $absent_type->id){
-    //         $value->absent_id->coun();
-    //     }
-    // }
+
+ $unexcused = AbsentRecord::where([
+     ['grade_id', $grade_id],
+     ['student_profile_id', $student_id],
+     ['absent_type', 'Unexcused']
+    ])->count();
+$excused = AbsentRecord::where([
+     ['grade_id', $grade_id],
+     ['student_profile_id', $student_id],
+     ['absent_type', 'Excused']
+    ])->count();
+$tardy = AbsentRecord::where([
+     ['grade_id', $grade_id],
+     ['student_profile_id', $student_id],
+     ['absent_type', 'Tardy']
+    ])->count();
 
 
-    // $absent = AbsentRecord::where([
-    //     ['grade_id', $grade_id], 
-    //     ['student_profile_id', $student_id], ['absent_id', 1],
-    // ])->count();
-
-    // $excuse = AbsentRecord::where([
-    //     ['grade_id', $grade_id], 
-    //     ['student_profile_id', $student_id], ['absent_id', 2],
-    // ])->count();
 
     // $totalExcuse;
-    // $totalAbsent;
+     $absent_tardy = 0;
 
-    // if($totalExcuse >= 3){
-    //     $excuse = $totalExcuse/3;
-    // }elseif($totalExcuse<3){
-    //     $totalExcuse;
-    // }
+     if($tardy >= 3){
+         $absent_tardy = $tardy/3;
+     }elseif($tardy<3){
+         $absent_tardy;
+     }
 
 
-    // $allTotalAbsent = $totalAbsent+$excuse;
+     $total_All_Absent = $absent_tardy+$excused+$unexcused;
     
-
-
-
-
-    // if($excuse >= 3){
-    //     $totalExcuse = $excuse/3;
-    // }elseif($excuse<3){
-    //     $excuse;
-    // }
-
-
-    // $totalAbsent = $absent+$totalExcuse;
-    
-
 
 
     
     return view('admin.Absent.absent_record.absent_highschool_index')->with([
         'grade_id'=>$grade ,
-        'students'=> $student, 
+        'students'=> $student,
         'hightSchoolAbsent'=> $highSchoolAbsent,
-        // 'allTotalAbsent'=>$allTotalAbsent,
-        // 'totalAbsent'=>$totalAbsent,
-        // 'excuse'=>$totalExcuse
+        'unexcused'=>$unexcused,
+        'totalAbsent'=>$total_All_Absent,
+        'excused'=>$excused,
+        'tardy'=>$tardy
         ]);
 }
 
@@ -165,7 +151,7 @@ public function storeHighSchoolAbsent(Request $request, $grade_id, $student_id){
 
     $highSchoolAbsent = new AbsentRecord();
     //absent type is the id of absent table
-    $highSchoolAbsent->absent_id = $request->absent_id;
+    $highSchoolAbsent->absent_type = $request->absent_type;
     $highSchoolAbsent->student_profile_id = $student->id;
     $highSchoolAbsent->grade_id = $grade->id;
     $highSchoolAbsent->reason = $request->reason;
@@ -204,15 +190,14 @@ public function updateHighSchoolAbsent(Request $request, $grade_id, $student_id,
     $student = StudentProfile::find($student_id);
     $grade = Grade::find($grade_id);
 
-    $highSchoolAbsent = AbsentRecord::find($absentRecord_id);
+    $highSchoolAbsent = AbsentRecord::findOrFail($absentRecord_id);
     //absent type is the id of absent table
-    $highSchoolAbsent->absent_id = $request->absent_id;
+    $highSchoolAbsent->absent_type = $request->absent_type;
     $highSchoolAbsent->student_profile_id = $student->id;
     $highSchoolAbsent->grade_id = $grade->id;
     $highSchoolAbsent->reason = $request->reason;
     $highSchoolAbsent->absent_date = $request->absent_date;
     $highSchoolAbsent->save();
-
 
     Session::flash('success', 'You successfully update the record');
     return redirect()->route('highSchool.absentRecord', ['grade_id'=>$grade->id, 'student_id'=>$student->id]);
@@ -246,15 +231,53 @@ public function secondarySchoolAbsent($grade_id, $student_id){
         ['student_profile_id', $student_id],
     ])->orderBy('created_at', 'Desc')->get();
 
+
+
+    $unexcused = SecondaryAbsent::where([
+        ['secondary_level_id', $grade_id],
+        ['student_profile_id', $student_id],
+        ['absent_type', 'Unexcused']
+    ])->count();
+    $excused = SecondaryAbsent::where([
+        ['secondary_level_id', $grade_id],
+        ['student_profile_id', $student_id],
+        ['absent_type', 'Excused']
+    ])->count();
+    $tardy = SecondaryAbsent::where([
+        ['secondary_level_id', $grade_id],
+        ['student_profile_id', $student_id],
+        ['absent_type', 'Tardy']
+    ])->count();
+
+
+    $absent_tardy = 0;
+
+    if($tardy >= 3){
+        $absent_tardy = $tardy/3;
+    }elseif($tardy<3){
+        $absent_tardy;
+    }
+
+
+    $total_All_Absent = $absent_tardy+$excused+$unexcused;
+
+
+
     //return $highSchoolAbsent;
     
     return view('admin.Absent.absent_record.absent_secondary_index')->with([
         'grade_id'=>$grade ,
         'students'=> $student, 
-        'secondaryAbsent'=> $secondaryAbsent
+        'secondaryAbsent'=> $secondaryAbsent,
+        'unexcused'=>$unexcused,
+        'totalAbsent'=>$total_All_Absent,
+        'excused'=>$excused,
+        'tardy'=>$tardy
         ]);
 
 }
+
+
 
 
 //insert absent value to secondary student SecondaryAbsent
@@ -264,7 +287,7 @@ public function storeSecondaryAbsent(Request $request, $grade_id, $student_id){
 
     $secondaryAbsent = new SecondaryAbsent();
     //absent type is the id of absent table
-    $secondaryAbsent->absent_id = $request->absent_id;
+    $secondaryAbsent->absent_type = $request->absent_type;
     $secondaryAbsent->student_profile_id = $student->id;
     $secondaryAbsent->secondary_level_id = $grade->id;
     $secondaryAbsent->reason = $request->reason;
@@ -302,7 +325,7 @@ public function updateSecondaryAbsent(Request $request, $grade_id, $student_id, 
 
     $secondaryAbsent = SecondaryAbsent::find($absentRecord_id);
     //absent type is the id of absent table
-    $secondaryAbsent->absent_id = $request->absent_id;
+    $secondaryAbsent->absent_type = $request->absent_type;
     $secondaryAbsent->student_profile_id = $student->id;
     $secondaryAbsent->secondary_level_id = $grade->id;
     $secondaryAbsent->reason = $request->reason;
@@ -345,14 +368,50 @@ public function prekSchoolAbsent($grade_id, $student_id){
     $prekAbsent = PrekAbsent::where([
         ['k_level_id', $grade_id], 
         ['student_profile_id', $student_id],
+
     ])->orderBy('created_at', 'Desc')->get();
 
     //return $highSchoolAbsent;
-    
+
+
+    $unexcused = PrekAbsent::where([
+        ['k_level_id', $grade_id],
+        ['student_profile_id', $student_id],
+        ['absent_type', 'Unexcused']
+    ])->count();
+    $excused = PrekAbsent::where([
+        ['k_level_id', $grade_id],
+        ['student_profile_id', $student_id],
+        ['absent_type', 'Excused']
+    ])->count();
+    $tardy = PrekAbsent::where([
+        ['k_level_id', $grade_id],
+        ['student_profile_id', $student_id],
+        ['absent_type', 'Tardy']
+    ])->count();
+
+
+    $absent_tardy = 0;
+
+    if($tardy >= 3){
+        $absent_tardy = $tardy/3;
+    }elseif($tardy<3){
+        $absent_tardy;
+    }
+
+
+    $total_All_Absent = $absent_tardy+$excused+$unexcused;
+
+
+
     return view('admin.Absent.absent_record.absent_prek_index')->with([
         'grade_id'=>$grade ,
         'students'=> $student, 
-        'prekAbsent'=> $prekAbsent
+        'prekAbsent'=> $prekAbsent,
+        'unexcused'=>$unexcused,
+        'totalAbsent'=>$total_All_Absent,
+        'excused'=>$excused,
+        'tardy'=>$tardy
         ]);
 
 
@@ -367,7 +426,7 @@ public function storePrekAbsent(Request $request, $grade_id, $student_id){
 
     $prekAbsent = new PrekAbsent();
     //absent type is the id of absent table
-    $prekAbsent->absent_id = $request->absent_id;
+    $prekAbsent->absent_type = $request->absent_type;
     $prekAbsent->student_profile_id = $student->id;
     $prekAbsent->k_level_id = $grade->id;
     $prekAbsent->reason = $request->reason;
@@ -405,7 +464,7 @@ public function updatePrekAbsent(Request $request, $grade_id, $student_id, $prek
 
     $prekAbsent = PrekAbsent::find($prekAbsent_id);
     //absent type is the id of absent table
-    $prekAbsent->absent_id = $request->absent_id;
+    $prekAbsent->absent_type = $request->absent_type;
     $prekAbsent->student_profile_id = $student->id;
     $prekAbsent->k_level_id = $grade->id;
     $prekAbsent->reason = $request->reason;

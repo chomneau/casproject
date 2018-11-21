@@ -30,13 +30,13 @@
                                             <div class="tab-content">
                                                 <div class="tab-pane active" role="tabpanel" id="step1">
                                                     @include('admin.student.form.edit_student_form')
-                                                    {{--@include('auth.register')--}}
+                                                    
                                                     <ul class="list-inline pull-right">
                                                         <li><button type="submit" class="btn btn-primary" style=" margin-top: 10px;margin-right: -5px">Update Now</button></li>
                                                     </ul>
                                                 </div>
 
-                                                {{--end step 4--}}
+                                                
                                                 <div class="clearfix"></div>
                                             </div>
                                             {{--<input type="submit" name="submit">--}}

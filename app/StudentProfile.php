@@ -21,4 +21,13 @@ class StudentProfile extends Model
     public function Score(){
         return $this->hasMany(Score::class);
     }
+
+
+    public function Assignment(){
+        return $this->hasMany(Assignment::class);
+    }
+
+    public function GradeProfile(){
+        return $this->belongsTo(GradeProfile::class);
+    }
 }

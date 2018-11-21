@@ -120,7 +120,7 @@
 				
 			<table class="table table-sm">
 				<!--Table head-->
-				<h6><span class="badge badge-primary badge-pill">1</span> First Semester : 
+				<h6><span class="badge badge-primary badge-pill">1-A</span> First Semester : 
 
 				@foreach($semester_1 as $score_s1)
 
@@ -384,13 +384,8 @@
 		<p class="text-uppercase text-center" style="font-size: 12px">****** any entry below this lines in not valid ******* </p>
 	</div>
 
-	
-
-
 
 	</div>
-
-
 
 
 	<div class="col-md-10 offset-1" style="margin-top: 8em">

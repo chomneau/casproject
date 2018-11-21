@@ -43,7 +43,7 @@
                 </div>
 
             </div>
-    @include( 'admin.Absent.absent_record.absent_chart')
+    {{--@include( 'admin.Absent.absent_record.absent_chart')--}}
         </div>
 
         <!-- /page content -->

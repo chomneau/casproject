@@ -13,14 +13,14 @@
                             <table id="datatable-fixed-header" class="table table-striped table-bordered">
                                 <thead>
                                     <tr>
-                                        <th>Student ID</th>
-                                        <th>Subject</th>
+                                        
+                                        <th>Subject Name</th>
                                         <th>Grade</th>
-                                        <th>Quarter 1</th>
-                                        <th>Quarter 2</th>
-                                        <th>S1 GPA</th>
-                                        <th>Quarter 3</th>
-                                        <th>Quarter 4</th>
+                                        <th>1<sup>st</sup> Quarter</th>
+                                        <th>2<sup>nd</sup> Quarter</th>
+                                        <th> S1 GPA</th>
+                                        <th>3<sup>rd</sup> Quarter </th>
+                                        <th>4<sup>th</sup> Quarter </th>
 
                                         <th>S2 GPA</th>
                                         <th>Yearly</th>
@@ -31,16 +31,34 @@
 
 
                                 <tbody>
-                                    @if(count($scores)) @foreach($scores as $score)
+                                    @if(count($scores)) 
+                                    @foreach($scores as $score)
                                     <tr>
-                                        <td>{{ $score->studentProfile->card_id }}</td>
+                                        
 
-                                        {{--display subject name--}} @if(count($subject)) @foreach ($subject as $subjects) @if($score->subject_id == $subjects->id)
-                                        <td>{{ $subjects->name }}</td>
-                                        @endif @endforeach @endif {{--display grade name--}} @if(count($grade)) @foreach ($grade as $grades) @if($score->grade_id
-                                        == $grades->id)
-                                        <td>{{ $grades->grade_name }}</td>
-                                        @endif @endforeach @endif
+                                        {{--display subject name--}} 
+
+                                        @if(count($subject)) 
+
+                                            @foreach ($subject as $subjects) 
+
+                                                @if($score->subject_id == $subjects->id)
+                                                    <td>{{ $subjects->name }}</td>
+                                                @endif 
+
+                                            @endforeach 
+
+                                        @endif 
+                                        {{--display grade name--}} 
+
+                                        @if(count($grade)) 
+                                            @foreach ($grade as $grades) 
+                                                @if($score->grade_id
+                                                == $grades->id)
+                                                <td>{{ $grades->grade_name }}</td>
+                                                @endif 
+                                            @endforeach 
+                                        @endif
 
                                         <td>{{ $score->quarter_1 }}</td>
                                         <td>{{ $score->quarter_2 }}</td>
@@ -57,29 +75,81 @@
                                             }}
                                         </td>
                                         <td>
+                                    
+                                        @if(Auth::guard('admin')->check())
+                                            
 
                                             <span>
-                                                    <a href="{{ route('student.score.edit',['score_id'=>$score->id, 'grade_id'=>$grade_id->id,'student_id'=>$students->id]) }}" class="btn btn-default btn-sm">Edit</a>
-                                                </span>
+                                                <a href="{{ route('student.score.edit',['score_id'=>$score->id, 'grade_id'=>$grade_id->id,'student_id'=>$students->id]) }}" class="btn btn-default btn-sm">Edit</a>
+                                            </span>
                                             <span>
-                                                    <a href="{{ route('student.score.delete', ['score_id'=>$score->id]) }}" class="btn btn-danger btn-sm">Delete</a>
-                                                </span>
+                                                <a href="{{ route('student.score.delete', ['score_id'=>$score->id]) }}" class="btn btn-danger btn-sm">Delete</a>
+                                            </span>
+
+
+                                        @elseif(Auth::guard('teacher')->check())
+
+                                            <span>
+                                                <a href="{{ route('teacher.student.score.edit',['teacher_id'=>$teacher->id, 'score_id'=>$score->id, 'grade_id'=>$grade_id->id,'student_id'=>$students->id]) }}" class="btn btn-default btn-sm">Edit</a>
+                                            </span>
+                                            <span>
+                                                <a href="{{ route('teacher.score.delete', ['score_id'=>$score->id]) }}" class="btn btn-danger btn-sm">Delete</a>
+                                            </span>
+                                        
+
+                                        @endif
+
+
+
+
                                         </td>
                                     </tr>
-                                    @if ($url = Session::get('backUrl'))
-                                    <a href="$url">Back to List</a> @endif @endforeach @endif
+                                    
+
+                                    
+                                    @endforeach 
+                                    @endif
                                 </tbody>
                             </table>
 
                             <div>
+                                
+                                @if(Auth::guard('admin')->check())
                                 <span>
-                                    {{--<a href="{{ route('subject.score', ['grade_id'=>$grade_id->id,'student_id'=>$students->id]) }}" data-toggle="modal" data-target="#add-subject-from" class="btn btn-success">--}}
+                                     
                                     <a href="{{ route('subject.score', ['grade_id'=>$grade_id->id,'student_id'=>$students->id]) }}" class="btn btn-success">
-                                        {{--{{ route('subject.score', ['grade_id'=>$grade_id->id,'student_id'=>$students->id]) }}--}}
+                                        
                                         Add subjects
                                     </a>
-                                </span> {{--
-    @include('admin.student.high_school.add_subject_form')--}}
+                                </span>
+
+                                <span>
+
+                                    <a href="{{ route('subject.highschool.showAllscore', ['grade_id'=>$grade_id->id,'student_id'=>$students->id]) }}" class="btn btn-primary">
+
+                                        Add all subjects
+                                    </a>
+                                </span>
+
+                                @elseif(Auth::guard('teacher')->check())
+
+                                <span>
+                                     
+                                    <a href="{{ route('teacher.subject.score', 
+                                        [ 
+                                        'teacher_id'=>$teacher->id,
+                                        'grade_id'=>$grade_id->id,
+                                        'student_id'=>$students->id
+                                        ]) 
+                                    }}" class="btn btn-success">
+                                        
+                                        Add subjects
+                                    </a>
+                                </span> 
+
+                                @endif
+
+                                
                             </div>
 
                         </div>

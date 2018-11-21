@@ -5,18 +5,16 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Grade;
 use App\KLevel;
-use App\Score;
 use App\SecondaryLevel;
 use App\Subject;
-use Illuminate\Support\Facades\Auth;
 use App\StudentProfile;
-use App\User;
 use Session;
 use App\SecondaryScore;
 
 use App\PrimarySubject;
 use View;
 use App\GradeProfile;
+use Illuminate\Support\Facades\Input;
 
 class SecondaryController extends Controller
 {
@@ -78,6 +76,20 @@ class SecondaryController extends Controller
             ]);
     }
 
+    //add subject to score table show form
+    public function showSecondaryAddAllSubject($grade_id, $student_id)
+    {
+        $subject = PrimarySubject::where('grade_id', $grade_id)->get();
+        $student = StudentProfile::find($student_id);
+        $grade = SecondaryLevel::find($grade_id);
+        return view('admin.student.secondary_school.secondary_add_all_subject_form')
+            ->with([
+                'subjects' => $subject,
+                'students' => $student,
+                'grade_id' => $grade
+            ]);
+    }
+
 //add subject to table
 
     public function secondaryAddSubject(Request $request, $grade_id, $student_id)
@@ -88,17 +100,33 @@ class SecondaryController extends Controller
         $score->student_profile_id = $studentprofile->id;
         $score->secondary_level_id = $grade->id;
         $score->primary_subject_id = $request->subject_id;
-        
-//        $score->quarter_1 = $request->quarter1;
-//        $score->quarter_2 = $request->quarter2;
-//        $score->quarter_3 = $request->quarter3;
-//        $score->quarter_4 = $request->quarter4;
 
         $score->save();
 
        //echo "done";
 
         Session::flash('success', 'You have successfully inserted your student score');
+        //return redirect()->back();
+        return redirect()->route('score.secondary', ['grade_id' => $grade->id, 'student_id' => $studentprofile->id]);
+    }
+
+    public function secondaryInsertAllSubject(Request $request, $grade_id, $student_id)
+    {
+        $studentprofile = StudentProfile::find($student_id);
+        $grade = SecondaryLevel::find($grade_id);
+
+        $input = Input::all();
+        foreach ($input['subject_id'] as $index=>$value) {
+            $score = new SecondaryScore();
+            $score->student_profile_id = $studentprofile->id;
+            $score->secondary_level_id = $grade->id;
+            $score->primary_subject_id = $value;
+
+            $score->save();
+        }
+       //echo "done";
+
+        Session::flash('success', 'You have successfully inserted subject to your student');
         //return redirect()->back();
         return redirect()->route('score.secondary', ['grade_id' => $grade->id, 'student_id' => $studentprofile->id]);
     }

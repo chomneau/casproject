@@ -37,10 +37,6 @@
                         <div class="col-md-12 " style="margin-top: 2em">
                             <div class="col-md-2">
                                 <img src="{{ asset($students->photo) }}" alt="user profile" width="150" height="150">
-                                
-                               <!--  <a href="#" class="btn btn-primary btn-sm" style="margin-top: 10px; margin-left: 10px" data-toggle="modal" data-target="#password" >
-                                    <span><i class="fas fa-unlock"></i></span> Change Password
-                                </a> -->
 
 
                                 <a href="{{ route('student.changePassword', ['student_id'=>$students->id])}}" class="btn btn-primary btn-sm" style="margin-top: 10px; margin-left: 10px"  >
@@ -59,7 +55,7 @@
 
                             </div>
 
-                            <div class="col-md-5">
+                            <div class="col-md-3">
 
                                 <div class="x_content" style="margin-top: -10px">
                                     <div class="dashboard-widget-content">
@@ -109,43 +105,84 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-5">
-
+                            <div class="col-md-3">
 
                                 <div class="studentDetail">
                                     <div class="dashboard-widget-content">
 
                                         <ul style="margin-top: 5px; list-style: none; font-size: 14px">
                                             <li>
-                                                <h4>Parents info</h4>
+                                                <h4>Father info</h4>
                                             </li>
                                             <li style="margin-bottom: 8px"><i class="glyphicon glyphicon-user"></i>
-                                                <a href="#">parents'name : {{ $students->parents_name }}</a>
+                                                <a href="#">Father s'name : {{ $students->father_name }}</a>
                                             </li>
                                             <li style="margin-bottom: 8px"><i class="fa fa-briefcase"></i>
-                                                <a href="#">Occupation : {{ $students->occupation }} </a>
+                                                <a href="#">Occupation : {{ $students->father_occupation }} </a>
                                             </li>
 
-                                            <li style="margin-bottom: 8px"><i class="fa fa-calendar"></i>
+                                            <!-- <li style="margin-bottom: 8px"><i class="fa fa-calendar"></i>
                                                 <a href="#">Age :
                                                             {{ floor((time() - strtotime( $students->parents_dob )) / 31556926) }} years old
                                                             </a>
-                                            </li>
+                                            </li> -->
 
                                             <li style="margin-bottom: 8px"><i class="fa fa-phone"></i>
-                                                <a href="#">Phone : {{ $students->phone }} </a>
+                                                <a href="#">Phone : {{ $students->father_phone }} </a>
                                             </li>
 
                                             <li style="margin-bottom: 8px"><i class="fa fa-envelope"></i>
-                                                <a href="#">email : {{ $students->email }} </a>
+                                                <a href="#">Email : {{ $students->father_email }} </a>
                                             </li>
-                                            <li style="margin-bottom: 8px"><i class="glyphicon glyphicon-home"></i>
-                                                <a href="#">Address : {{ $students->address }}</a>
-                                            </li>
+                                            
                                         </ul>
                                     </div>
                                 </div>
+
                             </div>
+
+                            <div class="col-md-3">
+
+                                <div class="studentDetail">
+                                    <div class="dashboard-widget-content">
+
+                                        <ul style="margin-top: 5px; list-style: none; font-size: 14px">
+                                            <li>
+                                                <h4>Mother info</h4>
+                                            </li>
+                                            <li style="margin-bottom: 8px"><i class="glyphicon glyphicon-user"></i>
+                                                <a href="#">Mother s'name : {{ $students->mother_name }}</a>
+                                            </li>
+                                            <li style="margin-bottom: 8px"><i class="fa fa-briefcase"></i>
+                                                <a href="#">Occupation : {{ $students->mother_occupation }} </a>
+                                            </li>
+
+                                            
+
+                                            <li style="margin-bottom: 8px"><i class="fa fa-phone"></i>
+                                                <a href="#">Phone : {{ $students->mother_phone }} </a>
+                                            </li>
+
+                                            <li style="margin-bottom: 8px"><i class="fa fa-envelope"></i>
+                                                <a href="#">Email : {{ $students->mother_email }} </a>
+                                            </li>
+
+                                            <li style="margin-bottom: 8px"><i class="fa fa-home"></i>
+                                                <a href="#">Address : {{ $students->address }} </a>
+                                            </li>
+                                            
+                                        </ul>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+
+
+
+
+
                             <br />
                         </div>
                         {{--end of col-container container--}}
@@ -157,8 +194,11 @@
 
                         <div class="clearfix"></div>
                     </div>
-    @include('admin.student.grade_menu') {{--
-    @include('admin.student.score')--}}
+
+
+            @include('admin.student.grade_menu')
+                
+
                 </div>
 
             </div>

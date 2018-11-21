@@ -38,35 +38,7 @@ class EmployerController extends Controller
     public function __construct()
     {
         $this->middleware('auth:employer');
-        $this->category = Category::all();
-        View::share('category', $this->category);
-
-        $this->industryType = IndustryType::all();
-        View::share('industryType', $this->industryType);
-
-        $this->location = Location::all();
-        View::share('location', $this->location);
-
-        $this->companyType = companyType::all();
-        View::share('companyType', $this->companyType);
-
-        $this->employeeSize = EmployeeNumber::all();
-        View::share('employeeSize', $this->employeeSize);
-
-        $this->contractType = ContractType::all();
-        View::share('contractType', $this->contractType);
-
-        $this->salaryRange = SalaryRange::orderBy('name', 'Asc')->get();
-        View::share('salaryRange', $this->salaryRange);
-
-        $this->level = Level::all();
-        View::share('level', $this->level);
-
-        $this->degree = Degree::all();
-        View::share('degree', $this->degree);
-
-        $this->preExperience = PreferredExperience::all();
-        View::share('preExperience', $this->preExperience);
+        
 
 //        $this->company = Company::all();
 //        View::share('company', $this->company);

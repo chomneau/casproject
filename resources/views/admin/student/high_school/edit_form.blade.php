@@ -4,23 +4,6 @@
     <div class="x_panel">
 
         <div class="x_content">
-        {{--<div class="col-xs-2">--}}
-        <!-- required for floating -->
-            <!-- Nav tabs -->
-            {{--<ul class="nav nav-tabs tabs-left">--}}
-            {{--@if(count($grade))--}}
-            {{--@foreach($grade as $grades)--}}
-            {{--@if($students->grade_id == $grades->id )--}}
-            {{--<li>--}}
-            {{--<a href="{{ route('subject.score', ['grade_id'=>$grades->id,'student_id'=>$students->id]) }}">--}}
-            {{--{{ $grades->grade_name }}--}}
-            {{--</a>--}}
-            {{--</li>--}}
-            {{--@endif--}}
-            {{--@endforeach--}}
-            {{--@endif--}}
-            {{--</ul>--}}
-            {{--</div>--}}
 
             <div class="col-xs-12">
                 <!-- Tab panes -->
