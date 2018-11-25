@@ -27,6 +27,7 @@ class SubjectController extends Controller
 
         $this->secondaryGrade = SecondaryLevel::all();
         View::share('secondaryGrade', $this->secondaryGrade);
+        
 
 
     }
