@@ -157,12 +157,12 @@
 			        <tr>
 			            
 			            <th>Subject</th>
-			            <th>1<sup>st</sup> Quarter</th>
-			            <th>2<sup>nd</sup> Quarter</th>
-			            <th>1<sup>st</sup> Semester</th>
-			            <th>3<sup>rd</sup> Quarter</th>
-			            <th>4<sup>th</sup> Quarter</th>
-			            <th>2<sup>nd</sup> Semester</th>
+			            <th>1<sup>st</sup> Q</th>
+			            <th>2<sup>nd</sup> Q</th>
+			            <th>1<sup>st</sup> S</th>
+			            <th>3<sup>rd</sup> Q</th>
+			            <th>4<sup>th</sup> Q</th>
+			            <th>2<sup>nd</sup> S</th>
 			           
 			        </tr>
 			    </thead>
@@ -182,24 +182,27 @@
 							        <tr>
 
 							            
-							            <td style="font-size: 12px; font-weight: bold">{{$score_s1->subject->name}}</td>
-							            <td style="font-size: 12px; ">{{ $score_s1->quarter_1}}</td>
+							            <td style="font-size: 12px; font-weight: bold" >{{$score_s1->subject->name}}</td>
+							            <td style="font-size: 12px; " class="text-center">{{ $score_s1->quarter_1}}</td>
 
-							            <td style="font-size: 12px; ">{{ $score_s1->quarter_2}}</td>
-							            <td style="font-size: 12px; font-weight: bold"> 
+							            <td style="font-size: 12px; " class="text-center">{{ $score_s1->quarter_2}}</td>
+							            <td style="font-size: 12px; font-weight: bold" class="text-center"> 
 
-							            	{{ ceil(($score_s1->quarter_1+$score_s1->quarter_2)/2) }}
+							            	{{ number_format(ceil(($score_s1->quarter_1+$score_s1->quarter_2)/2), 2, '.', ',') }} 
+
+														<!-- number_format($number, 2, '.', ',') -->
 							            
 
 							            </td>
 
-							            <td style="font-size: 12px; ">{{ $score_s1->quarter_3}}</td>
+							            <td style="font-size: 12px; " class="text-center">{{ $score_s1->quarter_3}}</td>
 
-							            <td style="font-size: 12px; ">{{ $score_s1->quarter_4}}</td>
+							            <td style="font-size: 12px; " class="text-center">{{ $score_s1->quarter_4}}</td>
 
-							            <td style="font-size: 12px; font-weight: bold"> 
+							            <td style="font-size: 12px; font-weight: bold" class="text-center"> 
 
-							            	{{ ceil(($score_s1->quarter_3+$score_s1->quarter_4)/2) }}
+							            	
+														{{ number_format(ceil(($score_s1->quarter_3+$score_s1->quarter_4)/2), 2, '.', ',') }} 
 							            
 
 							            </td>
