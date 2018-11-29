@@ -88,9 +88,7 @@
 								<li>Name : <strong>{{ $student->last_name}} 
 									{{ $student->first_name}}</strong>
 								</li>
-								<li>Progressive Book ID : 
-									<strong>{{$student->progressive_book_id}}</strong>
-								</li>
+								
                                 <li>Date of Birth : <strong>{{ $student->date_of_birth }}</strong></li>
                                 <li>Admission Date: <strong>{{ $student->created_at->format('M d, Y') }}</strong></li>
                                 <li>Completion Date: Jan 16, 2018</li>

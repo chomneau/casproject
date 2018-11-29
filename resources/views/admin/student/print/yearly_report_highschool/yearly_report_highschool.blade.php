@@ -103,9 +103,9 @@
 							</ul>
 						</div>	
           
-	                    <!-- Split button -->
+	              <!-- Split button -->
 	               
-                    </div>
+            </div>
 					
 
 				</div>
@@ -157,12 +157,13 @@
 			        <tr>
 			            
 			            <th>Subject</th>
-			            <th>1<sup>st</sup> Q</th>
-			            <th>2<sup>nd</sup> Q</th>
-			            <th>1<sup>st</sup> S</th>
-			            <th>3<sup>rd</sup> Q</th>
-			            <th>4<sup>th</sup> Q</th>
-			            <th>2<sup>nd</sup> S</th>
+			            <th class="text-center">1<sup>st</sup> Q</th>
+			            <th class="text-center">2<sup>nd</sup> Q</th>
+			            <th class="text-center">1<sup>st</sup> S</th>
+			            <th class="text-center">3<sup>rd</sup> Q</th>
+			            <th class="text-center">4<sup>th</sup> Q</th>
+			            <th class="text-center">2<sup>nd</sup> S</th>
+									<th class="text-center">Yearly</th>
 			           
 			        </tr>
 			    </thead>
@@ -206,6 +207,8 @@
 							            
 
 							            </td>
+													<td style="font-size: 12px; font-weight: bold"  class="text-center">{{ number_format(ceil(($score_s1->quarter_1+$score_s1->quarter_2+$score_s1->quarter_3+$score_s1->quarter_4)/4), 2, '.', ',') }} 
+													</td>
 
 							            
 
@@ -231,6 +234,9 @@
 							
 						</td>
 
+						<td style="font-size: 12px" contenteditable="true">
+							
+						</td>
 						<td style="font-size: 12px" contenteditable="true">
 							
 						</td>

@@ -157,13 +157,13 @@
 			        <tr>
 			            
 			            <th>Subject</th>
-			            <th>1<sup>st</sup> Q(%)</th>
-			            <th>2<sup>nd</sup> Q(%)</th>
-			            <th>1<sup>st</sup> S(%)</th>
-			            <th>3<sup>rd</sup> Q(%)</th>
-			            <th>4<sup>th</sup> Q(%)</th>
-			            <th>2<sup>nd</sup> S(%)</th>
-			            <th> Yearly(%)</th>
+			            <th>1<sup>st</sup> Quarter</th>
+			            <th>2<sup>nd</sup> Quarter</th>
+			            <th>1<sup>st</sup> Semester</th>
+			            <th>3<sup>rd</sup> Quarter</th>
+			            <th>4<sup>th</sup> Quarter</th>
+			            <th>2<sup>nd</sup> Semester</th>
+			            <th> Yearly</th>
 
 			           
 			        </tr>

@@ -160,10 +160,10 @@
 						{{--<th>2<sup>nd</sup> Q2</th>--}}
 			            <th>Q1</th>
 			            <th>Q2</th>
-			            <th>S1</th>
+			            
 			            <th>Q3</th>
 			            <th>Q4</th>
-			            <th>S2</th>
+			            
 			           
 			        </tr>
 			    </thead>
@@ -190,22 +190,22 @@
 							            <td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_1}}</td>
 
 							            <td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_2}}</td>
-							            <td style="font-size: 12px; font-weight: bold"> 
+							            
+													<!-- <td style="font-size: 12px; font-weight: bold"> 
 
 							            	{{ ceil(($score_s1->quarter_1+$score_s1->quarter_2)/2) }}
 							            
-
-							            </td>
+							            </td> -->
 
 							            <td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_3}}</td>
 
 							            <td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_4}}</td>
 
-							            <td style="font-size: 12px; font-weight: bold"> 
+							            <!-- <td style="font-size: 12px; font-weight: bold"> 
 
 							            	{{ ceil(($score_s1->quarter_3+$score_s1->quarter_4)/2) }}
 
-							            </td>
+							            </td> -->
 
 							        </tr>
 							        

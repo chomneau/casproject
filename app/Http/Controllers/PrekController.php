@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\studentProfile;
+use App\StudentProfile;
 use App\Grade;
 use App\KLevel;
 use App\Score;
