@@ -82,25 +82,44 @@
 						</div>
 					</div>
 					
-					<div class="row" style="margin-top: -7em;">
+					<div class="row" style="margin-top: -6em;">
 
-						<div class="col-sm-6 col-md-6" style="margin-left: -35px">
-							<ul style="list-style: none;">
-								<li>Student's Name : <strong>{{ $student->last_name}} 
-									{{ $student->first_name}}</strong>
-								</li>
+						<div class="col-sm-6 col-md-5" style="margin-left: -35px">
 
-								<li>Student ID : 
-									<strong>
-										{{ $student->card_id }} 
-									</strong>
-								</li>
-								
-                                
-                                <li>Admission Date: <strong>{{ $student->created_at->format('M d, Y') }}</strong></li>
-                                <li>Completion Date: Jan 16, 2018</li>
+							
+							<div class="table-responsive" style="margin-left: 2em">
+							  <table class="table table-sm table-borderless">
+							    
+							    <tbody>
+							      <tr>
+							        <th scope="row">Student Name</th>
+							        <td>:</td>
+							        <td>
+							        	{{ $student->last_name}} 
+										{{ $student->first_name}}
+									</td>
+							        
+							        
+							        
+							      </tr>
+							      <tr>
+							        <th scope="row">
+							        	Student ID
+							        </th>
+							        <td>:</td>
+							        <td>
+							        	{{ $student->card_id }}
+							        </td>
+							        
+							        
+							      </tr>
+							      
+							      
+							    </tbody>
+							  </table>
+							</div>
 
-							</ul>
+
 						</div>	
           
 	                    <!-- Split button -->
@@ -129,7 +148,7 @@
 
 					@if ($loop->first) 
 					
-						Grde : {{ $score_s1->KLevel->name }}
+						Grade : {{ $score_s1->KLevel->name }}
 						 
 
 					@endif
@@ -240,22 +259,13 @@
 									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_1}}</td>
 
 									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_2}}</td>
-									<td style="font-size: 12px; font-weight: bold">
-
-										{{ ceil(($score_s1->quarter_1+$score_s1->quarter_2)/2) }}
-
-
-									</td>
+									
 
 									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_3}}</td>
 
 									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_4}}</td>
 
-									<td style="font-size: 12px; font-weight: bold">
-
-										{{ ceil(($score_s1->quarter_3+$score_s1->quarter_4)/2) }}
-
-									</td>
+									
 
 								</tr>
 
@@ -290,22 +300,13 @@
 									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_1}}</td>
 
 									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_2}}</td>
-									<td style="font-size: 12px; font-weight: bold">
-
-										{{ ceil(($score_s1->quarter_1+$score_s1->quarter_2)/2) }}
-
-
-									</td>
+									
 
 									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_3}}</td>
 
 									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_4}}</td>
 
-									<td style="font-size: 12px; font-weight: bold">
-
-										{{ ceil(($score_s1->quarter_3+$score_s1->quarter_4)/2) }}
-
-									</td>
+									
 
 								</tr>
 
@@ -340,22 +341,13 @@
 									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_1}}</td>
 
 									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_2}}</td>
-									<td style="font-size: 12px; font-weight: bold">
-
-										{{ ceil(($score_s1->quarter_1+$score_s1->quarter_2)/2) }}
-
-
-									</td>
+									
 
 									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_3}}</td>
 
 									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_4}}</td>
 
-									<td style="font-size: 12px; font-weight: bold">
-
-										{{ ceil(($score_s1->quarter_3+$score_s1->quarter_4)/2) }}
-
-									</td>
+									
 
 								</tr>
 
@@ -387,22 +379,13 @@
 									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_1}}</td>
 
 									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_2}}</td>
-									<td style="font-size: 12px; font-weight: bold">
-
-										{{ ceil(($score_s1->quarter_1+$score_s1->quarter_2)/2) }}
-
-
-									</td>
+									
 
 									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_3}}</td>
 
 									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_4}}</td>
 
-									<td style="font-size: 12px; font-weight: bold">
-
-										{{ ceil(($score_s1->quarter_3+$score_s1->quarter_4)/2) }}
-
-									</td>
+									
 
 								</tr>
 
@@ -437,22 +420,13 @@
 									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_1}}</td>
 
 									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_2}}</td>
-									<td style="font-size: 12px; font-weight: bold">
-
-										{{ ceil(($score_s1->quarter_1+$score_s1->quarter_2)/2) }}
-
-
-									</td>
+									
 
 									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_3}}</td>
 
 									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_4}}</td>
 
-									<td style="font-size: 12px; font-weight: bold">
-
-										{{ ceil(($score_s1->quarter_3+$score_s1->quarter_4)/2) }}
-
-									</td>
+									
 
 								</tr>
 
@@ -483,23 +457,13 @@
 									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_1}}</td>
 
 									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_2}}</td>
-									<td style="font-size: 12px; font-weight: bold">
-
-										{{ ceil(($score_s1->quarter_1+$score_s1->quarter_2)/2) }}
-
-
-									</td>
+									
 
 									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_3}}</td>
 
 									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_4}}</td>
 
-									<td style="font-size: 12px; font-weight: bold">
-
-										{{ ceil(($score_s1->quarter_3+$score_s1->quarter_4)/2) }}
-
-									</td>
-
+									
 								</tr>
 
 							@endif
@@ -530,22 +494,13 @@
 									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_1}}</td>
 
 									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_2}}</td>
-									<td style="font-size: 12px; font-weight: bold">
-
-										{{ ceil(($score_s1->quarter_1+$score_s1->quarter_2)/2) }}
-
-
-									</td>
+									
 
 									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_3}}</td>
 
 									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_4}}</td>
 
-									<td style="font-size: 12px; font-weight: bold">
-
-										{{ ceil(($score_s1->quarter_3+$score_s1->quarter_4)/2) }}
-
-									</td>
+									
 
 								</tr>
 
@@ -577,22 +532,13 @@
 									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_1}}</td>
 
 									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_2}}</td>
-									<td style="font-size: 12px; font-weight: bold">
-
-										{{ ceil(($score_s1->quarter_1+$score_s1->quarter_2)/2) }}
-
-
-									</td>
+									
 
 									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_3}}</td>
 
 									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_4}}</td>
 
-									<td style="font-size: 12px; font-weight: bold">
-
-										{{ ceil(($score_s1->quarter_3+$score_s1->quarter_4)/2) }}
-
-									</td>
+									
 
 								</tr>
 
@@ -622,12 +568,7 @@
 						<td style="font-size: 12px" contenteditable="true">
 							
 						</td>
-						<td style="font-size: 12px" contenteditable="true">
-							
-						</td>
-						<td style="font-size: 12px" contenteditable="true">
-							
-						</td>
+						
 						
 					</tr>
 

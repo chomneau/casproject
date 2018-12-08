@@ -82,30 +82,71 @@
 						</div>
 					</div>
 					
-					<div class="row" style="margin-top: -7em;">
+					<div class="row" style="margin-top: -6em;">
 
-						<div class="col-sm-6 col-md-6" style="margin-left: -35px">
-							<ul style="list-style: none;">
-								<li>Student's Name : <strong>{{ $student->last_name}} 
-									{{ $student->first_name}}</strong>
-								</li>
+						<div class="col-sm-6 col-md-5" style="margin-left: -35px">
 
-								<li>Student ID : 
-									<strong>
-										{{ $student->card_id }} 
-									</strong>
-								</li>
-								
-                                
-                                <li>Admission Date: <strong>{{ $student->created_at->format('M d, Y') }}</strong></li>
-                                <li>Completion Date: Jan 16, 2018</li>
+							
+							<div class="table-responsive" style="margin-left: 2em">
+							  <table class="table table-sm table-borderless">
+							    
+							    <tbody>
+							      <tr>
+							        <th scope="row">Student Name</th>
+							        <td>:</td>
+							        <td>
+							        	{{ $student->last_name}} 
+										{{ $student->first_name}}
+									</td>
+							        
+							        
+							        
+							      </tr>
+							      <tr>
+							        <th scope="row">
+							        	Date of Birth
+							        </th>
+							        <td>:</td>
+							        <td>
+							        	<?php 
 
-							</ul>
+							        		$date = strtotime($student->date_of_birth);
+
+											echo $newformat = date('d-M-Y', $date);
+							        	 ?>
+							        </td>
+							        
+							        
+							      </tr>
+							      <tr>
+							        <th scope="row">
+							        	Admission Date
+							        </th>
+							        <td>:</td>
+							        <td contenteditable="true">
+
+							        	{{ date_format($student->updated_at, 'd-M-Y') }}</td>
+							        							        
+							      </tr>
+							      <tr>
+							        <th scope="row">
+							        	Completion Date
+							        </th>
+							        <td>:</td>
+							        <td contenteditable="true">{{ date_format($student->updated_at, 'd-M-Y')  }}</td>
+							        
+							        
+							      </tr>
+							    </tbody>
+							  </table>
+							</div>
+
+
 						</div>	
           
-	              <!-- Split button -->
+	                    <!-- Split button -->
 	               
-            </div>
+                    </div>
 					
 
 				</div>
@@ -156,14 +197,14 @@
 			    <thead>
 			        <tr>
 			            
-			            <th>Subject</th>
-			            <th class="text-center">1<sup>st</sup> Q</th>
-			            <th class="text-center">2<sup>nd</sup> Q</th>
-			            <th class="text-center">1<sup>st</sup> S</th>
-			            <th class="text-center">3<sup>rd</sup> Q</th>
-			            <th class="text-center">4<sup>th</sup> Q</th>
-			            <th class="text-center">2<sup>nd</sup> S</th>
-									<th class="text-center">Yearly</th>
+			            <th class="text-center" style="font-size: 13px">Subject</th>
+			            <th class="text-center" style="font-size: 13px">1<sup>st</sup> Quarter</th>
+			            <th class="text-center" style="font-size: 13px">2<sup>nd</sup> Quarter</th>
+			            <th class="text-center" style="font-size: 13px">1<sup>st</sup> Semester</th>
+			            <th class="text-center" style="font-size: 13px">3<sup>rd</sup> Quarter</th>
+			            <th class="text-center" style="font-size: 13px">4<sup>th</sup> Quarter</th>
+			            <th class="text-center" style="font-size: 13px">2<sup>nd</sup> Semester</th>
+									
 			           
 			        </tr>
 			    </thead>
@@ -183,32 +224,40 @@
 							        <tr>
 
 							            
-							            <td style="font-size: 12px; font-weight: bold" >{{$score_s1->subject->name}}</td>
-							            <td style="font-size: 12px; " class="text-center">{{ $score_s1->quarter_1}}</td>
+							            <td style="font-size: 12px; font-weight: bold" >		{{$score_s1->subject->name}}
+							            </td>
+							            <td style="font-size: 12px; " class="text-center">
+							            	{{ $score_s1->quarter_1}}
+							            </td>
 
-							            <td style="font-size: 12px; " class="text-center">{{ $score_s1->quarter_2}}</td>
+							            <td style="font-size: 12px; " class="text-center">
+							            	{{ $score_s1->quarter_2}}
+							            </td>
 							            <td style="font-size: 12px; font-weight: bold" class="text-center"> 
 
-							            	{{ number_format(ceil(($score_s1->quarter_1+$score_s1->quarter_2)/2), 2, '.', ',') }} 
+		{{ number_format(ceil(($score_s1->quarter_1+$score_s1->quarter_2)/2), 2, '.', ',') }} 
 
 														<!-- number_format($number, 2, '.', ',') -->
 							            
 
 							            </td>
 
-							            <td style="font-size: 12px; " class="text-center">{{ $score_s1->quarter_3}}</td>
+							            <td style="font-size: 12px; " class="text-center">
+							            	{{ $score_s1->quarter_3}}
+							            </td>
 
-							            <td style="font-size: 12px; " class="text-center">{{ $score_s1->quarter_4}}</td>
+							            <td style="font-size: 12px; " class="text-center">
+							            	{{ $score_s1->quarter_4}}
+							            </td>
 
 							            <td style="font-size: 12px; font-weight: bold" class="text-center"> 
 
 							            	
-														{{ number_format(ceil(($score_s1->quarter_3+$score_s1->quarter_4)/2), 2, '.', ',') }} 
+		{{ number_format(ceil(($score_s1->quarter_3+$score_s1->quarter_4)/2), 2, '.', ',') }} 
 							            
 
 							            </td>
-													<td style="font-size: 12px; font-weight: bold"  class="text-center">{{ number_format(ceil(($score_s1->quarter_1+$score_s1->quarter_2+$score_s1->quarter_3+$score_s1->quarter_4)/4), 2, '.', ',') }} 
-													</td>
+										
 
 							            
 
@@ -230,25 +279,25 @@
 							
 						</td>
 
-						<td style="font-size: 12px" contenteditable="true">
+						<td class="text-center" style="font-size: 12px" contenteditable="true">
 							
 						</td>
 
-						<td style="font-size: 12px" contenteditable="true">
+						<td class="text-center" style="font-size: 12px" contenteditable="true">
 							
 						</td>
-						<td style="font-size: 12px" contenteditable="true">
+						<td class="text-center" style="font-size: 12px" contenteditable="true">
 							
 						</td>
-						<td style="font-size: 12px" contenteditable="true">
+						<td class="text-center" style="font-size: 12px" contenteditable="true">
 							
 						</td>
-						<td style="font-size: 12px" contenteditable="true">
+						<td class="text-center" style="font-size: 12px" contenteditable="true">
 							
 						</td>
-						<td style="font-size: 12px" contenteditable="true">
-							
-						</td>
+						
+
+						
 						
 					</tr>
 
@@ -260,6 +309,8 @@
 
 			</table>
 			<!--Table-->
+
+			
 
 
 

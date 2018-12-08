@@ -115,7 +115,7 @@
                                                 <h4>Father info</h4>
                                             </li>
                                             <li style="margin-bottom: 8px"><i class="glyphicon glyphicon-user"></i>
-                                                <a href="#">Father s'name : {{ $students->father_name }}</a>
+                                                <a href="#">Father's name : {{ $students->father_name }}</a>
                                             </li>
                                             <li style="margin-bottom: 8px"><i class="fa fa-briefcase"></i>
                                                 <a href="#">Occupation : {{ $students->father_occupation }} </a>
@@ -151,7 +151,7 @@
                                                 <h4>Mother info</h4>
                                             </li>
                                             <li style="margin-bottom: 8px"><i class="glyphicon glyphicon-user"></i>
-                                                <a href="#">Mother s'name : {{ $students->mother_name }}</a>
+                                                <a href="#">Mother's name : {{ $students->mother_name }}</a>
                                             </li>
                                             <li style="margin-bottom: 8px"><i class="fa fa-briefcase"></i>
                                                 <a href="#">Occupation : {{ $students->mother_occupation }} </a>
@@ -186,7 +186,7 @@
 
 
                         <div class="x_title">
-                            <h2>{{ $students->first_name }}'s Score Record </h2>
+                            <h3>Yearly Report </h3>
 
                             <div class="clearfix"></div>
                         </div>

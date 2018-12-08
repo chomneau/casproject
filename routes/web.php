@@ -1,4 +1,4 @@
-<?php
+ <?php
 use App\User;
 /*
 |--------------------------------------------------------------------------
@@ -387,6 +387,11 @@ Route::prefix('admin')->group(function () {
 
     //show transption form 
     Route::get('/transcript/student/{student_id}', 'TranscriptController@transcript')->name('transcript');
+
+    //CGPA for Grade 9 to 10 
+    Route::get('/transcript910/student/{student_id}', 'TranscriptController@transcript910')->name('transcript910');
+    //CGPA for Grade 9 to 11 
+    Route::get('/transcript911/student/{student_id}', 'TranscriptController@transcript911')->name('transcript911');
 
 
     //search student

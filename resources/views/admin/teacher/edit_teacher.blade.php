@@ -23,7 +23,7 @@
                             
 
                                         <div class="form-group{{ $errors->has('photo') ? ' has-error' : '' }}" >
-                                            <label for="name" class="col-md-6 col-md-offset-2 control-label">upload Photo</label>
+                                            <label for="name" class="col-md-6 col-md-offset-2 control-label">Upload Photo</label>
                                             <div class="col-md-8 col-md-offset-2" style="margin-bottom: 20px">
                                                 <input type="file" name="photo" class="form-control" value="{{ old('photo') }}"  autofocus placeholder="teacher photo" >
 
@@ -160,7 +160,7 @@
                                         <div class="col-md-8 col-lg-offset-2 {{ $errors->has('address') ? ' has-error' : '' }}" style="margin-bottom: 50px">
                                             <button class="btn btn-success">
                                                 <strong><i class="fa fa-user-plus" aria-hidden="true"></i></strong>
-                                                update Now
+                                                Update Now
                                             </button>
 
                                             <a href="{{ route('teacher.delete', ['admin_id'=>$admin->id, 'teacher_id'=>$teacher->id]) }}" class="btn btn-danger">

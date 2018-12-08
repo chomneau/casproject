@@ -38,6 +38,35 @@
                 box-shadow: 0;
             }
         }
+        input[type=text] {
+		  border: none;
+		  background-color: none;
+		  outline: 0;
+		  font-size: 16px;
+		  width: 150px;
+		  height: 30px;
+		  margin-left: 12em;
+		  margin-top: 2.8em;
+
+		}
+
+		input[type=text]:focus {
+		  border: none;
+		  background-color: none;
+		  outline: 0;
+		  width: 150px;
+		  height: 30px;
+		}
+
+		.center { 
+		  height: 30px;
+		  width: 150px; 
+		  overflow: auto;
+		  margin: auto; 
+		  position: absolute;
+		  top: 0; left: 0; bottom: 0; right: 0; 
+		}
+
 	</style>
 
 </head>
@@ -59,22 +88,22 @@
 
 	                    <div class="col-sm-6 col-md-8 text-right " style="margin-top: 10px; padding-right: 30px" >
 	                        <h4>CAMBODIA ADVENTIST SCHOOL</h4>
-	                        <h5>TRANSCRIPT OF SECONDARY ACADEMI</h5>
+	                        <h5>TRANSCRIPT OF SECONDARY ACADEMIC</h5>
 	                        <h6>INTERNATIONAL PROGRAM</h6>
 						</div>
 
 					</div>
-					<div class="row" style="margin-top: -25px">
+					<div class="row" style="margin-top: -18px">
 						<div class="col-sm-6 col-md-12 text-right" >
-							<small><cite title="San Francisco, USA">#419, St. Rada, Phum Tum Nub,<br> Sangkat Phnom Penh Thmey, Khan Sensok,<br> Phnom Penh, Cambodia <i class="glyphicon glyphicon-map-marker">
-			                   </i></cite></small>
+							<title="San Francisco, USA">#419, St. Rada, Phum Tum Nub,<br> Sangkat Phnom Penh Thmey, Khan Sensok,<br> Phnom Penh, Cambodia <i class="glyphicon glyphicon-map-marker">
+			                   </i></cite>
 			                   <p>
 			                   	<i class="glyphicon glyphicon-gift"></i>Tel : (855)12 946 041
 			                   	<br>
 			                       <i class="glyphicon glyphicon-envelope"></i>Email : info@cas.edu.kh
 			                       <br />
 			                       <i class="glyphicon glyphicon-globe"></i>
-			                       <a href="http://cas.edu.kh">website : www.cas.edu.kh
+			                       <a href="https://cas.edu.kh">website : www.cas.edu.kh
 			                       </a>
 			                       <br />
 			                   </p>
@@ -82,19 +111,66 @@
 						</div>
 					</div>
 					
-					<div class="row" style="margin-top: -7em;">
+					<div class="row" style="margin-top: -6em;">
 
-						<div class="col-sm-6 col-md-6" style="margin-left: -35px">
-							<ul style="list-style: none;">
-								<li>Name : <strong>{{ $student->last_name}} 
-									{{ $student->first_name}}</strong>
-								</li>
-								
-                                <li>Date of Birth : <strong>{{ $student->date_of_birth }}</strong></li>
-                                <li>Admission Date: <strong>{{ $student->created_at->format('M d, Y') }}</strong></li>
-                                <!-- <li>Completion Date: Jan 16, 2018</li> -->
+						<div class="col-sm-6 col-md-5" style="margin-left: -35px">
 
-							</ul>
+							
+							<div class="table-responsive" style="margin-left: 2em">
+							  <table class="table table-sm table-borderless">
+							    
+							    <tbody>
+							      <tr>
+							        <th scope="row">Student Name</th>
+							        <td>:</td>
+							        <td>
+							        	{{ $student->last_name}} 
+										{{ $student->first_name}}
+									</td>
+							        
+							        
+							        
+							      </tr>
+							      <tr>
+							        <th scope="row">
+							        	Date of Birth
+							        </th>
+							        <td>:</td>
+							        <td>
+							        	<?php 
+
+							        		$date = strtotime($student->date_of_birth);
+
+											echo $newformat = date('d-M-Y', $date);
+							        	 ?>
+							        </td>
+							        
+							        
+							      </tr>
+							      <tr>
+							        <th scope="row">
+							        	Admission Date
+							        </th>
+							        <td>:</td>
+							        <td contenteditable="true">
+
+							        	{{ date_format($student->updated_at, 'd-M-Y') }}</td>
+							        							        
+							      </tr>
+							      <tr>
+							        <th scope="row">
+							        	Completion Date
+							        </th>
+							        <td>:</td>
+							        <td contenteditable="true">{{ date_format($student->updated_at, 'd-M-Y')  }}</td>
+							        
+							        
+							      </tr>
+							    </tbody>
+							  </table>
+							</div>
+
+
 						</div>	
           
 	                    <!-- Split button -->
@@ -111,7 +187,7 @@
 
 			</div>
 
-			<div class="row">
+			<div class="row" style="margin-top: 3em">
 
 			<div class="col-md-6 ">
 
@@ -169,7 +245,8 @@
 							        <tr>
 							            
 							            <td style="font-size: 12px; font-weight: bold">{{$score_s1->Subject->name}}</td>
-							            <td style="font-size: 12px; font-weight: bold">{{ $score_s1->Subject->credit}}</td>
+							            <td style="font-size: 12px; font-weight: bold">
+							            	{{ ($score_s1->Subject->credit)/2 }}</td>
 							            <td style="font-size: 12px; font-weight: bold"> 
 
 							            	{{ $score_s1->gpa_quarter_1 }}
@@ -198,7 +275,15 @@
 						<th style="font-size: 12px; font-weight: bold">{{ $credit_grade_9 }}</th>
 						<th style="font-size: 12px; font-weight: bold"> SEMESTER GPA</th>
 						<th style="font-size: 12px; font-weight: bold">
-							{{ number_format($sum_pts_1_grade_9/$credit_grade_9, 2, '.', '') }}
+
+							@if($credit_grade_9 <= 0)
+								<span>0.00</span>
+							@else
+								
+								{{ number_format($sum_pts_1_grade_9/$credit_grade_9, 2, '.', '') }}
+
+							@endif
+							
 
 							
 						</th>
@@ -271,7 +356,8 @@
 							        <tr>
 							            
 							            <td style="font-size: 12px; font-weight: bold">{{$score_s1->Subject->name}}</td>
-							            <td style="font-size: 12px; font-weight: bold">{{ $score_s1->Subject->credit}}</td>
+							            <td style="font-size: 12px; font-weight: bold">
+							            	{{ ($score_s1->Subject->credit)/2 }}</td>
 							            <td style="font-size: 12px; font-weight: bold" > 
 
 							            	{{ $score_s1->gpa_quarter_2 }}
@@ -309,7 +395,15 @@
 
 						<th style="font-size: 12px; font-weight: bold">SEMESTER GPA</th>
 						<th style="font-size: 12px; font-weight: bold">
-						{{ number_format($sum_pts_2_grade_9/$credit_grade_9, 2, '.', '') }}</th>
+							
+							@if($credit_grade_9 <= 0)
+								<span>0.00</span>
+							@else
+								
+								{{ number_format($sum_pts_2_grade_9/$credit_grade_9, 2, '.', '') }}
+
+							@endif
+						</th>
 
 						
 					</tr>
@@ -379,7 +473,8 @@
 							        <tr>
 							            
 							            <td style="font-size: 12px; font-weight: bold">{{$score_s1->Subject->name}}</td>
-							            <td style="font-size: 12px; font-weight: bold">{{ $score_s1->Subject->credit}}</td>
+							            <td style="font-size: 12px; font-weight: bold">
+							            	{{ ($score_s1->Subject->credit)/2 }}</td>
 							            <td style="font-size: 12px; font-weight: bold"> 
 
 							            	{{ $score_s1->gpa_quarter_1 }}
@@ -408,7 +503,15 @@
 						<th style="font-size: 12px; font-weight: bold">{{ $credit_grade_10 }}</th>
 						<th style="font-size: 12px; font-weight: bold"> SEMESTER GPA</th>
 						<th style="font-size: 12px; font-weight: bold">
+
+						@if($credit_grade_10 <= 0)
+							<span>0.00</span>
+						@else
+							
 							{{ number_format($sum_pts_1_grade_10/$credit_grade_10, 2, '.', '') }}
+
+						@endif
+							
 
 							
 						</th>
@@ -481,7 +584,8 @@
 							        <tr>
 							            
 							            <td style="font-size: 12px; font-weight: bold">{{$score_s1->Subject->name}}</td>
-							            <td style="font-size: 12px; font-weight: bold">{{ $score_s1->Subject->credit}}</td>
+							            <td style="font-size: 12px; font-weight: bold">
+							            	{{ ($score_s1->Subject->credit)/2 }}</td>
 							            <td style="font-size: 12px; font-weight: bold" > 
 
 							            	{{ $score_s1->gpa_quarter_2 }}
@@ -519,7 +623,16 @@
 
 						<th style="font-size: 12px; font-weight: bold">SEMESTER GPA</th>
 						<th style="font-size: 12px; font-weight: bold">
-						{{ number_format($sum_pts_2_grade_10/$credit_grade_10, 2, '.', '') }}</th>
+
+						@if($credit_grade_10 <= 0)
+							<span>0.00</span>
+						@else
+							
+							{{ number_format($sum_pts_2_grade_10/$credit_grade_10, 2, '.', '') }}
+
+						@endif
+						
+						</th>
 
 						
 					</tr>
@@ -540,7 +653,7 @@
 
 <!-------------------------- start Grade 11------------------------------------->
 
-<!-- Grade 10 -->
+<!-- Grade 11 -->
 <div class="row">
 
 <div class="col-md-6 ">
@@ -598,7 +711,7 @@
 								<tr>
 									
 									<td style="font-size: 12px; font-weight: bold">{{$score_s1->Subject->name}}</td>
-									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->Subject->credit}}</td>
+									<td style="font-size: 12px; font-weight: bold">{{ ($score_s1->Subject->credit)/2 }}</td>
 									<td style="font-size: 12px; font-weight: bold"> 
 
 										{{ $score_s1->gpa_quarter_1 }}
@@ -624,10 +737,19 @@
 
 				<tr>
 					<th style="font-size: 12px; font-weight: bold">SEMESTER CREDIT</th>
-					<th style="font-size: 12px; font-weight: bold">{{ $credit_grade_10 }}</th>
+					<th style="font-size: 12px; font-weight: bold">{{ $credit_grade_11 }}</th>
 					<th style="font-size: 12px; font-weight: bold"> SEMESTER GPA</th>
 					<th style="font-size: 12px; font-weight: bold">
-						{{ number_format($sum_pts_1_grade_10/$credit_grade_10, 2, '.', '') }}
+
+					@if($credit_grade_11 <= 0)
+						<span>0.00</span>
+					@else
+						
+						{{ number_format($sum_pts_1_grade_11/$credit_grade_11, 2, '.', '') }}
+
+					@endif
+
+						
 
 						
 					</th>
@@ -700,7 +822,8 @@
 								<tr>
 									
 									<td style="font-size: 12px; font-weight: bold">{{$score_s1->Subject->name}}</td>
-									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->Subject->credit}}</td>
+									<td style="font-size: 12px; font-weight: bold">
+										{{ ($score_s1->Subject->credit)/2}}</td>
 									<td style="font-size: 12px; font-weight: bold" > 
 
 										{{ $score_s1->gpa_quarter_2 }}
@@ -738,7 +861,15 @@
 
 					<th style="font-size: 12px; font-weight: bold">SEMESTER GPA</th>
 					<th style="font-size: 12px; font-weight: bold">
-					{{ number_format($sum_pts_2_grade_11/$credit_grade_11, 2, '.', '') }}</th>
+
+					@if($credit_grade_11 <= 0)
+						<span>0.00</span>
+					@else
+						
+						{{ number_format($sum_pts_2_grade_11/$credit_grade_11, 2, '.', '') }}
+
+					@endif
+					</th>
 
 					
 				</tr>
@@ -822,7 +953,8 @@
 								<tr>
 									
 									<td style="font-size: 12px; font-weight: bold">{{$score_s1->Subject->name}}</td>
-									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->Subject->credit}}</td>
+									<td style="font-size: 12px; font-weight: bold">
+										{{ ($score_s1->Subject->credit)/2}}</td>
 									<td style="font-size: 12px; font-weight: bold"> 
 
 										{{ $score_s1->gpa_quarter_1 }}
@@ -850,7 +982,15 @@
 					<th style="font-size: 12px; font-weight: bold">{{ $credit_grade_12 }}</th>
 					<th style="font-size: 12px; font-weight: bold"> SEMESTER GPA</th>
 					<th style="font-size: 12px; font-weight: bold">
+
+					@if($credit_grade_12 <= 0)
+						<span>0.00</span>
+					@else
+						
 						{{ number_format($sum_pts_1_grade_12/$credit_grade_12, 2, '.', '') }}
+
+					@endif
+						
 
 						
 					</th>
@@ -923,7 +1063,8 @@
 								<tr>
 									
 									<td style="font-size: 12px; font-weight: bold">{{$score_s1->Subject->name}}</td>
-									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->Subject->credit}}</td>
+									<td style="font-size: 12px; font-weight: bold">
+										{{ ($score_s1->Subject->credit)/2}}</td>
 									<td style="font-size: 12px; font-weight: bold" > 
 
 										{{ $score_s1->gpa_quarter_2 }}
@@ -961,7 +1102,15 @@
 
 					<th style="font-size: 12px; font-weight: bold">SEMESTER GPA</th>
 					<th style="font-size: 12px; font-weight: bold">
-					{{ number_format($sum_pts_2_grade_12/$credit_grade_12, 2, '.', '') }}</th>
+					
+					@if($credit_grade_12 <= 0)
+						<span>0.00</span>
+					@else
+
+						{{ number_format($sum_pts_2_grade_12/$credit_grade_12, 2, '.', '') }}
+
+					@endif
+					</th>
 
 					
 				</tr>
@@ -975,7 +1124,7 @@
 		
 
 
-<!-- end grade 10 -->
+<!-- end grade 12 -->
 
 
 	</div>
@@ -988,7 +1137,13 @@
 					<th>{{ $total_credit }}</th>
 					
 					<th colspan="2" class="pull-right">CUMULATIVE  GPA</th>			            
-					<th>{{ number_format($CGPA, 2, '.', ' ') }}</th>
+					<th>
+						@if($CGPA > 0 )
+							{{ number_format($CGPA, 2, '.', ' ')}}
+						@else
+							<span>0.00</span>
+						@endif
+					</th>
 				</tr>
 			</thead>
 		</table>
@@ -1074,7 +1229,11 @@
 
 
 	<div class="col-md-6 offset-3 mt-4">
-		<p class="text-uppercase text-center" style="font-size: 12px">****** any entry below this lines in not valid ******* </p>
+		
+		<p class="text-uppercase text-center" style="font-size: 12px">
+			****** any entry below this lines in not valid ******* 
+		</p>
+
 	</div>
 
 

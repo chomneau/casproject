@@ -66,7 +66,7 @@
                                     <th>Student id</th>
                                     <th>Grade</th>
                                     <th>Parents Contact</th>
-                                    <th>status</th>
+                                    <th>Status</th>
 
                                     <th style="width: 20%">Action</th>
                                 </tr>

@@ -158,7 +158,8 @@
 							        <tr>
 							            
 							            <td style="font-size: 12px; font-weight: bold">{{$score_s1->subject->name}}</td>
-							            <td style="font-size: 12px; font-weight: bold">{{ $score_s1->subject->credit}}</td>
+							            <td style="font-size: 12px; font-weight: bold">
+							            	{{ ($score_s1->subject->credit)/2 }}</td>
 							            <td style="font-size: 12px; font-weight: bold"> 
 
 							            	{{ $score_s1->gpa_quarter_1 }}
@@ -251,7 +252,8 @@
 							        <tr>
 							            
 							            <td style="font-size: 12px; font-weight: bold">{{$score_s1->subject->name}}</td>
-							            <td style="font-size: 12px; font-weight: bold">{{ $score_s1->subject->credit}}</td>
+							            <td style="font-size: 12px; font-weight: bold">
+							            	{{ ($score_s1->subject->credit)/2 }}</td>
 							            <td style="font-size: 12px; font-weight: bold" > 
 
 							            	{{ $score_s1->gpa_quarter_2 }}
@@ -302,6 +304,23 @@
 
 
 			</div>
+
+			<table class="table table-sm">
+			<thead>
+				<tr>
+										
+					<th colspan="2" class="pull-right">CUMULATIVE  CREDIT</th>
+					<th>
+						{{ $credit*2 }}
+					</th>
+					
+					<th colspan="2" class="pull-right">CUMULATIVE  GPA</th>			            
+					<th>
+						{{ number_format((($sum_pts_2/$credit)+($sum_pts_1/$credit))/2, 2, '.', '')  }}
+					</th>
+				</tr>
+			</thead>
+		</table>
 		</div>
 
 <div class="row mt-4">
