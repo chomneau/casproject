@@ -63,8 +63,16 @@
         </div>
 
         <div class="col-md-6 {{ $errors->has('progressiveBookId') ? ' has-error' : '' }}">
-            <label for="email">Progressive Book ID</label>
-            <input type="text" name="progressive_book_id" class="form-control" value="{{ old('progressiveBookId') }}" 
+            <label for="email">Status</label>
+
+            <select name="status" id="" class="form-control" required>
+                <option value="Select Status"></option>
+                <option value="New">New</option>
+                <option value="Old">Old</option>
+                <option value="Graduated">Graduated</option>
+                <option value="Quit">Quit</option>
+            </select>
+            
         </div>
     </div>
 

@@ -209,7 +209,7 @@ class StudentController extends Controller
         $student->card_id = $request->student_id;
         $student->grade_profile_id = $request->grade_id;
         $student->nationality = $request->nationality;
-        $student->progressive_book_id = $request->progressive_book_id;
+        $student->status = $request->status;
 
 
         $student->father_name = $request->father_name;
