@@ -191,7 +191,7 @@ class StudentController extends Controller
         $user = new User();
 
         $user->name = $request->first_name;
-        $user->email = $request->father_email;
+        $user->email = $request->student_id."@cas.edu.kh";
         $user->password = bcrypt($request->student_id);
         $user->student_id = $request->student_id;
 
@@ -463,7 +463,7 @@ class StudentController extends Controller
             'date_of_birth' => 'required',
             'student_id' => 'required',
             'nationality' => 'required',
-            'address' => 'required',
+            //'address' => 'required',
         ]);
 
         //$user = Auth::user();
@@ -498,7 +498,7 @@ class StudentController extends Controller
         $user = StudentProfile::find($id)->user;
         $user->name = $request->first_name;
         $user->student_id = $request->student_id;
-        $user->email = $request->father_email;
+        $user->email = $request->student_id."@cas.edu.kh";
         $user->password = bcrypt($request->student_id);
         $user->save();
 
