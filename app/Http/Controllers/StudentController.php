@@ -183,9 +183,9 @@ class StudentController extends Controller
             'date_of_birth' => 'required',
             'student_id' => 'required',
             'nationality' => 'required',
-            'father_name' => 'required',
-            'father_phone' => 'required',
-            'address' => 'required',
+            //'father_name' => 'required',
+            //'father_phone' => 'required',
+           // 'address' => 'required',
         ]);
 
         $user = new User();
