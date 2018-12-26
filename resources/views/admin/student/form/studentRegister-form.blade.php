@@ -102,11 +102,11 @@
     <div class="row">
         <div class="col-md-6 {{ $errors->has('father_name') ? ' has-error' : '' }}">
             <label for="email">Father's name</label>
-            <input type="text" name="father_name" class="form-control" value="{{ old('father_name') }}" required autofocus placeholder="Father's name" >
+            <input type="text" name="father_name" class="form-control" value="{{ old('father_name') }}"  autofocus placeholder="Father's name" >
         </div>
         <div class="col-md-6 {{ $errors->has('career') ? ' has-error' : '' }}">
             <label for="occupation">Father's occupation</label>
-            <input type="text" name="father_occupation" class="form-control" value="{{ old('occupation') }}" required autofocus placeholder="Father's occupation" >
+            <input type="text" name="father_occupation" class="form-control" value="{{ old('occupation') }}"  autofocus placeholder="Father's occupation" >
         </div>
 
     </div>
@@ -114,11 +114,11 @@
     <div class="row">
         <div class="col-md-6 {{ $errors->has('mother_name') ? ' has-error' : '' }}">
             <label for="email">Mother's name</label>
-            <input type="text" name="mother_name" class="form-control" value="{{ old('mother_name') }}" required autofocus placeholder="mother name" >
+            <input type="text" name="mother_name" class="form-control" value="{{ old('mother_name') }}"  autofocus placeholder="mother name" >
         </div>
         <div class="col-md-6 {{ $errors->has('mother_occupation') ? ' has-error' : '' }}">
             <label for="occupation">Mother's occupation</label>
-            <input type="text" name="mother_occupation" class="form-control" value="{{ old('mother_occupation') }}" required autofocus placeholder="mother's occupation" >
+            <input type="text" name="mother_occupation" class="form-control" value="{{ old('mother_occupation') }}"  autofocus placeholder="mother's occupation" >
         </div>
 
     </div>
@@ -127,12 +127,12 @@
         
         <div class="col-md-6 {{ $errors->has('father_phone') ? ' has-error' : '' }}">
             <label for="exampleInputEmail1">Father's mobile number</label>
-            <input type="text" name="father_phone" class="form-control" value="{{ old('father_phone') }}" required autofocus placeholder="father phone" >
+            <input type="text" name="father_phone" class="form-control" value="{{ old('father_phone') }}"  autofocus placeholder="father phone" >
         </div>
 
         <div class="col-md-6 {{ $errors->has('mother_phone') ? ' has-error' : '' }}">
             <label for="mother_phone">Mother's mobile number</label>
-            <input type="text" name="mother_phone" class="form-control" value="{{ old('mother_phone') }}" required autofocus placeholder="Mother phone" >
+            <input type="text" name="mother_phone" class="form-control" value="{{ old('mother_phone') }}"  autofocus placeholder="Mother phone" >
         </div>
 
     </div>
@@ -157,7 +157,7 @@
 
         <div class="col-md-12 {{ $errors->has('address') ? ' has-error' : '' }}">
             <label for="exampleInputEmail1">Address</label>
-            <input type="text" name="address" class="form-control" value="{{ old('address') }}" required autofocus placeholder="Current address">
+            <input type="text" name="address" class="form-control" value="{{ old('address') }}"  autofocus placeholder="Current address">
         </div>
     </div>
 
