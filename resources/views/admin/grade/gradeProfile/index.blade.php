@@ -50,7 +50,7 @@
                                 Add new
                                 <i class="glyphicon glyphicon-plus-sign"></i>
                             </a>
-                            @include('admin.grade.grade_profile.grade_profile_store')
+                            @include('admin.grade.gradeProfile.grade_profile_store')
                             <div class="clearfix"></div>
                         </div>
                         <div class="x_content">

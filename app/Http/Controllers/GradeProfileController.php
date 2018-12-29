@@ -15,7 +15,7 @@ class GradeProfileController extends Controller
 
     public function index(){
     	$gradeProfile = GradeProfile::all();
-    	return view('Admin.grade.grade_profile.grade_profile_index')
+    	return view('Admin.grade.gradeProfile.index')
     	->with('gradeProfile', $gradeProfile);
     }
 
@@ -41,7 +41,7 @@ class GradeProfileController extends Controller
 //edit gradeprofile
     public function edit($id){
     	$gradeprofile = GradeProfile::find($id);
-    	return view('admin.grade.grade_profile.grade_profile_edit')
+    	return view('admin.grade.gradeProfile.grade_profile_edit')
     	->with('gradeprofile', $gradeprofile);
     }
 
