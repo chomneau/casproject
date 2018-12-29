@@ -65,7 +65,7 @@ class StudentController extends Controller
     public function viewStudent()
     {
         $student = StudentProfile::orderBy('last_name','ASC')
-            ->paginate(15);
+            ->paginate(10);
 
        // $grade = Grade::all();
 
@@ -260,6 +260,7 @@ class StudentController extends Controller
         //return redirect()->back();
         return redirect()->route('score.view', ['grade_id' => $grade->id, 'student_id' => $studentprofile->id]);
     }
+    
     //insert all subject to score table for high school student
     public function insertAllSubjectsToScore(Request $request, $student_id, $grade_id)
     {

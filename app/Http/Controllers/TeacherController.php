@@ -24,7 +24,7 @@ class TeacherController extends Controller
 
     public function show(){
 
-    	$teacher = Teacher::orderBy('created_at', 'DECS')->get();
+    	$teacher = Teacher::orderBy('first_name', 'ASC')->get();
     	return view('admin.teacher.all_teacher')->with('teacher', $teacher);
     }
 

@@ -95,13 +95,14 @@
                                 </ul>
                             </li>
 
-                            {{--<li><a>Absent<span class="fa fa-chevron-down"></span></a>--}}
-                                {{--<ul class="nav child_menu">--}}
-                                    {{--<li class="sub_menu"><a href="{{ route('show.absent') }}">Absent Type</a>--}}
-                                    {{--</li>--}}
+                            <li>
+                                <a>Grade Profile<span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li class="sub_menu"><a href="{{ route('gradeprofile.index') }}">Grade Profile</a>
+                                    </li>
 
-                                {{--</ul>--}}
-                            {{--</li>--}}
+                                </ul>
+                            </li>
 
 
                         </ul>

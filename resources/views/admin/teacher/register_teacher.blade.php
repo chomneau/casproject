@@ -86,9 +86,9 @@
 
 
                                         <div class="form-group{{ $errors->has('skill') ? ' has-error' : '' }}" >
-                                            <label for="name" class="col-md-6 col-md-offset-2 control-label">Skill</label>
+                                            <label for="name" class="col-md-6 col-md-offset-2 control-label">Position</label>
                                             <div class="col-md-8 col-md-offset-2" style="margin-bottom: 20px">
-                                                <input id="name" type="text" class="form-control" name="skill" value="{{ old('skill') }}" placeholder="skill" required autofocus>
+                                                <input id="name" type="text" class="form-control" name="skill" value="{{ old('skill') }}" placeholder="Position ex.teacher, finance ..." required autofocus>
 
                                                 @if ($errors->has('skill'))
                                                     <span class="help-block">

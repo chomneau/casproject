@@ -199,6 +199,19 @@ Route::prefix('admin')->group(function () {
     Route::get('/grade/delete/{id}', 'GradeController@destroy')->name('grade.delete');
     Route::get('/grade/edit/{id}', 'GradeController@edit')->name('grade.edit');
     Route::post('/grade/update/{id}', 'GradeController@update')->name('grade.update');
+
+//Grade profile for setting in register and updade student profile
+
+     Route::get('/gradeprofile', 'GradeProfileController@index')->name('gradeprofile.index');
+     Route::post('/gradeprofile/store', 'GradeProfileController@store')->name('gradeprofile.store');
+     Route::get('/gradeprofile/edit/{id}', 'GradeProfileController@edit')->name('gradeprofile.edit');
+     Route::get('/gradeprofile/delete/{id}', 'GradeProfileController@delete')->name('gradeprofile.delete');
+     Route::post('/gradeprofile/update/{id}', 'GradeProfileController@update')->name('gradeprofile.update');
+
+
+
+
+
 //setting grade for K and pre-k
     Route::get('/prek', 'GradeController@showPrek')->name('grade.prek');
     Route::post('/prekt', 'GradeController@storePrek')->name('grade.prek.store');
