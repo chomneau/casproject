@@ -15,7 +15,7 @@ class GradeProfileController extends Controller
 
     public function index(){
     	$gradeProfile = GradeProfile::all();
-    	return view('Admin.grade.gradeProfile.index')
+    	return view('admin.grade.gradeProfile.index')
     	->with('gradeProfile', $gradeProfile);
     }
 
