@@ -21,7 +21,7 @@
                                         <th>4<sup>th</sup> Quarter </th>
 
                                         <th>S2 GPA</th>
-                                        <th>Yearly</th>
+                                        
                                         <th>Action</th>
 
                                     </tr>
@@ -96,9 +96,7 @@
                                         {{--Semester 2--}}
                                         <td class="text-center" style="font-weight: bold">{{ $score->gpa_quarter_2 }}</td>
 
-                                        <td class="text-center" style="font-weight: bold">{{ ($score->quarter_1 += $score->quarter_2 += $score->quarter_3 += $score->quarter_4)/4
-                                            }}
-                                        </td>
+                                        
                                         <td>
                                     
                                         @if(Auth::guard('admin')->check())
@@ -108,14 +106,14 @@
                                                 <a href="{{ route('student.score.edit',['score_id'=>$score->id, 'grade_id'=>$grade_id->id,'student_id'=>$students->id]) }}" class="btn btn-default btn-sm">Edit</a>
                                             </span>
                                             <span>
-                                                <a href="{{ route('student.score.delete', ['score_id'=>$score->id]) }}" class="btn btn-danger btn-sm">Delete</a>
+                                                <a href="{{ route('student.score.delete', ['score_id'=>$score->id]) }}" class="btn btn-danger btn-sm">Delete Me</a>
                                             </span>
 
 
                                         @elseif(Auth::guard('teacher')->check())
 
                                             <span>
-                                                <a href="{{ route('teacher.student.score.edit',['teacher_id'=>$teacher->id, 'score_id'=>$score->id, 'grade_id'=>$grade_id->id,'student_id'=>$students->id]) }}" class="btn btn-default btn-sm">Edit</a>
+                                                <a href="{{ route('teacher.student.score.edit',['teacher_id'=>$teacher->id, 'score_id'=>$score->id, 'grade_id'=>$grade_id->id,'student_id'=>$students->id]) }}" class="btn btn-default btn-sm">Edit </a>
                                             </span>
                                             <!-- <span>
                                                 <a href="{{ route('teacher.score.delete', ['score_id'=>$score->id]) }}" class="btn btn-danger btn-sm">Delete</a>
@@ -123,8 +121,6 @@
                                         
 
                                         @endif
-
-
 
 
                                         </td>
@@ -170,6 +166,7 @@
                                         
                                         Add a subject
                                     </a> -->
+                                    
                                 </span> 
 
                                 @endif
