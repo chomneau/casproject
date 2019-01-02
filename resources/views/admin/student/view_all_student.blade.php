@@ -92,7 +92,7 @@
                                             <td>
                                                 {{ $students->card_id }}
                                             </td>
-                                            <td>{{ $students->gradeProfile->name }}</td>
+                                            <td>{{ $students->GradeProfile->name }}</td>
                                             <td> {{ $students->father_phone }} | {{ $students->mother_phone }} </td>
                                             <td class="project_progress">
                                                 {{ $students->status }}
