@@ -104,39 +104,17 @@
 							      </tr>
 							      <tr>
 							        <th scope="row">
-							        	Date of Birth
+							        	Student ID
 							        </th>
 							        <td>:</td>
 							        <td>
-							        	<?php 
-
-							        		$date = strtotime($student->date_of_birth);
-
-											echo $newformat = date('d-M-Y', $date);
-							        	 ?>
+							        	{{ $student->card_id }}
 							        </td>
 							        
 							        
 							      </tr>
-							      <tr>
-							        <th scope="row">
-							        	Admission Date
-							        </th>
-							        <td>:</td>
-							        <td contenteditable="true">
-
-							        	{{ date_format($student->updated_at, 'd-M-Y') }}</td>
-							        							        
-							      </tr>
-							      <tr>
-							        <th scope="row">
-							        	Completion Date
-							        </th>
-							        <td>:</td>
-							        <td contenteditable="true">{{ date_format($student->updated_at, 'd-M-Y')  }}</td>
-							        
-							        
-							      </tr>
+							      
+							      
 							    </tbody>
 							  </table>
 							</div>
@@ -403,7 +381,7 @@
 						<td>60-62%</td>
 					</tr>
 					<tr>
-						<td><b>Fail</b></td>
+						<td><b>Failed</b></td>
 						<td>F</td>
 						<td>0.00</td>
 						<td>0.00 - 59%</td>

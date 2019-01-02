@@ -62,7 +62,7 @@
                                     <th style="width: 1%">#</th>
                                     <th style="width: 20%">Grade Profile</th>
                                     <th>Created_at</th>
-                                    <th>updated_at</th>
+                                    <th>Updated_at</th>
                                     <th style="width: 20%">#Action</th>
                                 </tr>
                                 </thead>

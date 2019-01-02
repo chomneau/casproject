@@ -132,6 +132,17 @@
 							        
 							      </tr>
 							      <tr>
+							        <th scope="row">Student ID</th>
+							        <td>:</td>
+							        <td>
+							        	{{ $student->card_id}} 
+										
+									</td>
+							        
+							        
+							        
+							      </tr>
+							      <tr>
 							        <th scope="row">
 							        	Date of Birth
 							        </th>
@@ -1217,7 +1228,7 @@
 						<td>60-62%</td>
 					</tr>
 					<tr>
-						<td><b>Fail</b></td>
+						<td><b>Failed</b></td>
 						<td>F</td>
 						<td>0.00</td>
 						<td>0.00-59%</td>

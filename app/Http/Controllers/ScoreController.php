@@ -33,7 +33,7 @@ class ScoreController extends Controller
         $this->secondaryGrade = SecondaryLevel::all();
         View::share('secondaryGrade', $this->secondaryGrade);
 
-        $this->subject = Subject::all();
+        $this->subject = Subject::all()->orderBy('name', 'ASC');
         View::share('subject', $this->subject);
     }
 
