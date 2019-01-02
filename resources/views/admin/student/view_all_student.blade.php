@@ -69,7 +69,7 @@
                                     <th style="width: 20%">Student name</th>
                                     <th style="width: 10%">Gender</th>
                                     <th>Student id</th>
-                                    <th>Grade Name</th>
+                                    <!-- grade name -->
                                     <th>Parents Contact</th>
                                     <th>Status</th>
 
@@ -92,7 +92,8 @@
                                             <td>
                                                 {{ $students->card_id }}
                                             </td>
-                                            <td>{{ $students->grade_profile_id }}</td>
+                                            
+                                            <!-- grade profile name -->
                                             <td> {{ $students->father_phone }} | {{ $students->mother_phone }} </td>
                                             <td class="project_progress">
                                                 {{ $students->status }}
