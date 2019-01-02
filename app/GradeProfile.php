@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class GradeProfile extends Model
 {
-    public function studentProfile(){
+    public function StudentProfile(){
     	return $this->hasMany(StudentProfile::class);
     }
 
