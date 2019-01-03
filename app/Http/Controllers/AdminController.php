@@ -36,19 +36,32 @@ class AdminController extends Controller
     {
         $countAllStudent = StudentProfile::all()->count();
         $countFemaleStudent = StudentProfile::where('gender','Female')->count();
-        $counMaleStudent = StudentProfile::where('gender','Male')->count();
+        $countMaleStudent = StudentProfile::where('gender','Male')->count();
+
+        $countQuit = StudentProfile::where('status', 'Quit')->count();
+
+        $countGraduationStudent = StudentProfile::where('status', 'Graduated')->count();
+        $countNewStudent = StudentProfile::where('status', 'New')->count();
+
+
         //teacher
-        $totalTeacher = Teacher::all()->count();
-        $counMaleTeacher = Teacher::where('gender','Male')->count();
-        $counFemaleTeacher = Teacher::where('gender','Female')->count();
+        $totalStaff = Teacher::all()->count();
+        $countMaleStaff = Teacher::where('gender','Male')->count();
+        $countFemaleStaff = Teacher::where('gender','Female')->count();
+
         
         return view('admin.index')->with([
             'countAllStudent'=>$countAllStudent,
             'countFemaleStudent'=>$countFemaleStudent,
-            'counMaleStudent'=>$counMaleStudent,
-            'counMaleTeacher'=>$counMaleTeacher,
-            'counFemaleTeacher'=>$counFemaleTeacher,
-            'totalTeacher'=>$totalTeacher,
+            'countMaleStudent'=>$countMaleStudent,
+
+            'countQuitStudent'=>$countQuit,
+            'countNewStudent'=>$countNewStudent,
+            'countGraduationStudent'=>$countGraduationStudent,
+            
+            'countMaleStaff'=>$countMaleStaff,
+            'countFemaleStaff'=>$countFemaleStaff,
+            'totalStaff'=>$totalStaff,
             ]);
     }
 //    public function showPostjobForm()

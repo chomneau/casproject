@@ -16,11 +16,10 @@
                                     <th scope="col">Grade</th>
                                     <th scope="col">Quarter 1</th>
                                     <th scope="col">Quarter 2</th>
-                                    <th scope="col">Semester 1</th>
+                                    
                                     <th scope="col">Quarter 3</th>
                                     <th scope="col">Quarter 4</th>
-                                    <th scope="col">Semester 2</th>
-                                    <th scope="col">Yearly</th>
+                                    
                                 </tr>
                             </thead>
                             <tbody>
@@ -32,11 +31,10 @@
                                     <td>{{ $prekScore->KLevel->name }}</td>
                                     <td>{{ $prekScore->quarter_1 }}</td>
                                     <td>{{ $prekScore->quarter_2 }}</td>
-                                    <td>{{ $prekScore->semester_1 }}</td>
+                                    
                                     <td>{{ $prekScore->quarter_3 }}</td>
                                     <td>{{ $prekScore->quarter_4 }}</td>
-                                    <td>{{ $prekScore->semester_1 }}</td>
-                                    <td>{{ $prekScore->yearly }}</td>
+                                            
 
                                 </tr>
                                 @endforeach @endif

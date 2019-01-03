@@ -29,18 +29,7 @@
                   <div class="x_content">
                     <div class="row">
                       <div class="col-md-12 col-sm-12 col-xs-12 text-center">
-                        <ul class="pagination pagination-split">
-                          <li><a href="#">A</a></li>
-                          <li><a href="#">B</a></li>
-                          <li><a href="#">C</a></li>
-                          <li><a href="#">D</a></li>
-                          <li><a href="#">E</a></li>
-                          <li>...</li>
-                          <li><a href="#">W</a></li>
-                          <li><a href="#">X</a></li>
-                          <li><a href="#">Y</a></li>
-                          <li><a href="#">Z</a></li>
-                        </ul>
+                        
                       </div>
 
                       <div class="clearfix"></div>
@@ -71,11 +60,36 @@
 
                               	</tr>
                               	<tr>
-                              		<td>Skill</td>
+                              		<td>Position</td>
                               		<td> :</td>
-                              		<td>{{ $teachers->skill}}</td>
+                              		<td>{{ $teachers->position}}</td>
 
                               	</tr>
+                                <tr>
+                                  <td>Degree</td>
+                                  <td> :</td>
+                                  <td>{{ $teachers->degree}}</td>
+
+                                </tr>
+
+                                <tr>
+                                  <td>Homeroom Teacher for</td>
+                                  <td> :</td>
+                                  <td>
+                                      @foreach($gradeProfile as $gradeProfiles)
+
+                                        @if($teachers->grade_profile_id == $gradeProfiles->id)
+
+                                          {{ $gradeProfiles->name }}
+
+                                        @endif
+
+                                      @endforeach  
+
+                                      
+                                    </td>
+
+                                </tr>
 
                               	<tr>
                               		<td style="border-bottom: 0 ">Phone</td>
@@ -94,7 +108,7 @@
                               </table>
                             </div>
                             <div class="right col-xs-5 text-center pull-right" style="margin-top: 30px;">
-                              <img src="{{ asset($teachers->photo) }}" alt="" class="img-circle img-responsive" width="150px" height="150px;" style="margin-left: 10px">
+                              <img src="{{ asset($teachers->photo) }}" alt="" class="img-circle" width="150" height="150" style="margin-left: 10px">
                             </div>
                             
                           </div>

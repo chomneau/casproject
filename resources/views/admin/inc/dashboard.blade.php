@@ -5,12 +5,12 @@
     <div class="row tile_count">
         <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
             <span class="count_top"><i class="fa fa-user"></i> Total Students</span>
-            <div class="count">{{ $countAllStudent }}</div>
+            <div class="count">{{ $countAllStudent-$countQuitStudent }}</div>
             
         </div>
         <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
             <span class="count_top"><i class="fa fa-clock-o"></i> Total Males </span>
-            <div class="count">{{ $counMaleStudent }}</div>
+            <div class="count">{{ $countMaleStudent }}</div>
             
         </div>
         <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
@@ -20,29 +20,58 @@
         </div>
         <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
             <span class="count_top"><i class="fa fa-user"></i> Total Staff</span>
-            <div class="count">{{ $totalTeacher}}</div>
+            <div class="count">{{ $totalStaff}}</div>
           
         </div>
         <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-            <span class="count_top"><i class="fa fa-user"></i> Male Teachers</span>
-            <div class="count">{{ $counMaleTeacher}}</div>
+            <span class="count_top"><i class="fa fa-user"></i> Male Staff</span>
+            <div class="count">{{ $countMaleStaff}}</div>
             
         </div>
         <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-            <span class="count_top"><i class="fa fa-user"></i> Female Teachers</span>
-            <div class="count">{{ $counFemaleTeacher}}</div>
+            <span class="count_top"><i class="fa fa-user"></i> Female Staff</span>
+            <div class="count">{{ $countFemaleStaff }}</div>
             
         </div>
         
         <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
             <span class="count_top"><i class="fa fa-user"></i> Total Quit</span>
-            <div class="count">0.00</div>
+            <div class="count">
+                {{ $countQuitStudent }}
+            </div>
             
         </div>
+
+        <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+            <span class="count_top"><i class="fa fa-user"></i> Total Graduation</span>
+            <div class="count">
+                {{ $countGraduationStudent }}
+            </div>
+            
+        </div>
+
+        <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+            <span class="count_top"><i class="fa fa-user"></i> Total New Students</span>
+            <div class="count">
+                {{ $countNewStudent }}
+            </div>
+            
+        </div>
+        
+
+        
     </div>
+
+    <div class="clearfix"></div>
 
 
     <!-- /top tiles -->
+
+
+
+    <!-- /top tiles -->
+
+    
 
 
 

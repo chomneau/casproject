@@ -149,9 +149,7 @@
                             <i class="fas fa-user-graduate"></i> Students <span class="fa fa-chevron-down"></span>
                         </a>
                         <ul class="nav child_menu">
-                            <li>
-                            <a href="{{ route('teacher.student.viewAll', ['teacher_id'=>Auth()->user()->id ]) }}">View all students</a>
-                            </li>
+                            
 
                             <li>
                             <a href="{{ route('teacher.student.byGrade', ['teacher_id'=>Auth()->user()->id ]) }}">View Student by Grade</a>

@@ -101,19 +101,65 @@
 
 
 
-                                        <div class="form-group{{ $errors->has('skill') ? ' has-error' : '' }}" >
-                                            <label for="name" class="col-md-6 col-md-offset-2 control-label">Skill</label>
+                                        <div class="form-group{{ $errors->has('position') ? ' has-error' : '' }}" >
+                                            <label for="name" class="col-md-6 col-md-offset-2 control-label">Position</label>
                                             <div class="col-md-8 col-md-offset-2" style="margin-bottom: 20px">
-                                                <input id="name" type="text" class="form-control" name="skill" 
-                                                value="{{ $teacher->skill }}" placeholder="skill" required autofocus>
+                                                <input id="name" type="text" class="form-control" name="position" 
+                                                value="{{ $teacher->position }}" placeholder="position" required autofocus>
 
-                                                @if ($errors->has('skill'))
+                                                @if ($errors->has('position'))
                                                     <span class="help-block">
-                                                        <strong>{{ $errors->first('skill') }}</strong>
+                                                        <strong>{{ $errors->first('position') }}</strong>
                                                     </span>
                                                 @endif
                                             </div>
                                         </div>
+
+                                        <div class="form-group{{ $errors->has('degree') ? ' has-error' : '' }}" >
+                                            <label for="name" class="col-md-6 col-md-offset-2 control-label">Degree</label>
+                                            <div class="col-md-8 col-md-offset-2" style="margin-bottom: 20px">
+                                                <input id="name" type="text" class="form-control" name="degree" 
+                                                value="{{ $teacher->degree }}" placeholder="degree" required autofocus>
+
+                                                @if ($errors->has('degree'))
+                                                    <span class="help-block">
+                                                        <strong>{{ $errors->first('degree') }}</strong>
+                                                    </span>
+                                                @endif
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group{{ $errors->has('homeRoomTeacher') ? ' has-error' : '' }}" >
+                                            <label for="name" class="col-md-6 col-md-offset-2 control-label">Homeroom Teacher For*:</label>
+                                            <div class="col-md-8 col-md-offset-2" style="margin-bottom: 20px">
+
+                                                <select name="homeRoomTeacher" id="" class="form-control">
+
+                                                    
+
+                                                    @if(count($gradeProfile))
+                                                        @foreach($gradeProfile as $grades)
+                                                            <option value="{{ $grades->id }}"
+                                                                    @if($teacher->grade_profile_id  == $grades->id) selected 
+                                                                    @endif
+                                                            >{{ $grades->name }}</option>
+                                                        @endforeach
+                                                    @endif
+
+                                                    <option value="Non-Teacher">Non-Teacher</option>
+                                                    
+
+                                                </select>
+                                                
+
+                                                @if ($errors->has('homeRoomTeacher'))
+                                                    <span class="help-block">
+                                                        <strong>{{ $errors->first('homeRoomTeacher') }}</strong>
+                                                    </span>
+                                                @endif
+                                            </div>
+                                        </div>
+
 
                                         <div class="form-group{{ $errors->has('phone') ? ' has-error' : '' }}" >
                                             <label for="name" class="col-md-6 col-md-offset-2 control-label">Telephone</label>

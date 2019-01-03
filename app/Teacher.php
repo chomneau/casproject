@@ -18,7 +18,8 @@ class Teacher extends Authenticatable
         'email', 
         'gender', 
         'date_of_birth', 
-        'skill', 
+        'position', 
+        'degree', 
         'password', 
         
     ];
@@ -32,6 +33,12 @@ class Teacher extends Authenticatable
     public function Assignment(){
 
         return $this->hasMany(Assignment::class);
+
+    }
+
+    public function GradeProfile(){
+
+        return $this->belongsTo(GradeProfile::class);
 
     }
 

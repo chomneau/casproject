@@ -36,18 +36,22 @@
                                 <div class="row">
                                     @foreach($viewByGrade as $viewByGrades)
 
-                                    <div class="col-md-3 col-lg-3" style="padding-left: 3em; padding-right: 3em">
-                                        <a href="{{ route('view.allStudent.byGrade', ['grade_profile_id'=>$viewByGrades->id]) }}" >
-                                        <div class="panel panel-primary">
-                                            <div class="panel-body">
-                                                <h3 class="text-center">{{ $viewByGrades->name }}</h3>
+                                    
+
+                                        <div class="col-md-3 col-lg-3" style="padding-left: 3em; padding-right: 3em">
+                                            <a href="{{ route('view.allStudent.byGrade', ['grade_profile_id'=>$viewByGrades->id]) }}" >
+                                            <div class="panel panel-primary">
+                                                <div class="panel-body">
+                                                    <h3 class="text-center">{{ $viewByGrades->name }}</h3>
+                                                </div>
+
+                                                    <div class="panel-footer text-center">View this Grade</div>
+
                                             </div>
-
-                                                <div class="panel-footer text-center">View this Grade</div>
-
+                                            </a>
                                         </div>
-                                        </a>
-                                    </div>
+
+                                   
 
 
                                     @endforeach
@@ -99,17 +103,17 @@
                                 <div class="clearfix"></div>
 
                                 <div class="row">
-                                    @foreach($viewByGrade as $viewByGrades)
+                                    
 
                                     <div class="col-md-3 col-lg-3" style="padding-left: 3em; padding-right: 3em">
                                         <a href="{{ route('teacher.viewStudent.byGrade', [
-                                        'grade_profile_id'=>$viewByGrades->id,
+                                        'grade_profile_id'=>$viewByGrade->id,
                                         'teacher_id'=>$teacher->id
                                         
                                         ]) }}" >
                                         <div class="panel panel-primary">
                                             <div class="panel-body">
-                                                <h3 class="text-center">{{ $viewByGrades->name }}</h3>
+                                                <h3 class="text-center">{{ $viewByGrade->name }}</h3>
                                             </div>
 
                                                 <div class="panel-footer text-center">View this Grade</div>
@@ -119,7 +123,7 @@
                                     </div>
 
 
-                                    @endforeach
+                                    
                                 </div>
 
 

@@ -70,19 +70,30 @@ class TeacherProfileController extends Controller
         $teacher = Teacher::find(Auth()->user()->id);
         $countAllStudent = StudentProfile::all()->count();
         $countFemaleStudent = StudentProfile::where('gender','Female')->count();
-        $counMaleStudent = StudentProfile::where('gender','Male')->count();
+        $countMaleStudent = StudentProfile::where('gender','Male')->count();
         //teacher
-        $totalTeacher = Teacher::all()->count();
-        $counMaleTeacher = Teacher::where('gender','Male')->count();
-        $counFemaleTeacher = Teacher::where('gender','Female')->count();
+        $totalStaff = Teacher::all()->count();
+        $countMaleStaff = Teacher::where('gender','Male')->count();
+        $countFemaleStaff = Teacher::where('gender','Female')->count();
+
+        $countQuit = StudentProfile::where('status', 'Quit')->count();
+
+        $countGraduationStudent = StudentProfile::where('status', 'Graduated')->count();
+        $countNewStudent = StudentProfile::where('status', 'New')->count();
+
         
         return view('admin.index')->with([
             'countAllStudent'=>$countAllStudent,
             'countFemaleStudent'=>$countFemaleStudent,
-            'counMaleStudent'=>$counMaleStudent,
-            'counMaleTeacher'=>$counMaleTeacher,
-            'counFemaleTeacher'=>$counFemaleTeacher,
-            'totalTeacher'=>$totalTeacher,
+            'countMaleStudent'=>$countMaleStudent,
+            'countMaleStaff'=>$countMaleStaff,
+            'countFemaleStaff'=>$countFemaleStaff,
+            'totalStaff'=>$totalStaff,
+            
+            'countQuitStudent'=>$countQuit,
+            'countNewStudent'=>$countNewStudent,
+            'countGraduationStudent'=>$countGraduationStudent,
+
             'teacher'=>$teacher
             ]);
 
@@ -652,9 +663,10 @@ class TeacherProfileController extends Controller
     //view student by Grade
     public function viewByGrade($teacher_id){
         $teacher = Teacher::find($teacher_id);
+        $grade_profile_id = $teacher->grade_profile_id;
 
-        
-        $viewByGrade = GradeProfile::all();
+       
+        $viewByGrade = GradeProfile::find($grade_profile_id);
          return view('admin.student.view_by_grade')->with([
             'viewByGrade'=>$viewByGrade,
             'teacher'=>$teacher

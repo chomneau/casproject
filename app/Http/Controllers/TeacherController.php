@@ -8,6 +8,8 @@ use App\Teacher;
 use App\Admin;
 use Session;
 use Illuminate\Support\Facades\Hash;
+use App\GradeProfile;
+use View;
 
 class TeacherController extends Controller
 {
@@ -15,6 +17,9 @@ class TeacherController extends Controller
 	public function __construct()
     {
         $this->middleware('auth:admin');
+
+        $this->gradeProfile = GradeProfile::all();
+        View::share('gradeProfile', $this->gradeProfile);
     }
 
 
@@ -41,7 +46,7 @@ class TeacherController extends Controller
             'last_name' => 'required|string|max:255',
             'gender' => 'required|string|max:255',
             'date_of_birth' => 'required|date',
-            'skill' => 'required|string',
+            'position' => 'required|string',
             'phone' => 'required|string|min:9',
 
             'email' => 'required|string|email|max:255|unique:users',
@@ -59,12 +64,14 @@ class TeacherController extends Controller
         $admin = Admin::find($id);
 
         $teacher = new Teacher;
+        $teacher->grade_profile_id = $request->homeRoomTeacher;
         $teacher->photo = 'uploads/photo/1510817755img.png';
         $teacher->first_name = $request->first_name;
         $teacher->last_name = $request->last_name;
         $teacher->gender = $request->gender;
         $teacher->date_of_birth = $request->date_of_birth;
-        $teacher->skill = $request->skill;
+        $teacher->position = $request->position;
+        $teacher->degree = $request->degree;
         $teacher->phone = $request->phone;
         $teacher->email = $request->email;
         $teacher->password = bcrypt($request['password']);
@@ -95,7 +102,7 @@ class TeacherController extends Controller
             'last_name' => 'required|string|max:255',
             'gender' => 'required|string|max:255',
             'date_of_birth' => 'required|date',
-            'skill' => 'required|string',
+            'position' => 'required|string',
             'phone' => 'required|string|min:9',
 			
             'email' => 'required|string|email|max:255|unique:users',
@@ -115,11 +122,14 @@ class TeacherController extends Controller
 
         $teacher = Teacher::findOrFail($teacher_id);
 
+        $teacher->grade_profile_id = $request->homeRoomTeacher;
+
         $teacher->first_name = $request->first_name;
         $teacher->last_name = $request->last_name;
         $teacher->gender = $request->gender;
         $teacher->date_of_birth = $request->date_of_birth;
-        $teacher->skill = $request->skill;
+        $teacher->position = $request->position;
+        $teacher->degree = $request->degree;
         $teacher->phone = $request->phone;
         $teacher->email = $request->email;
         
