@@ -19,7 +19,7 @@
             
         </div>
         <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-            <span class="count_top"><i class="fa fa-user"></i> Total Teachers</span>
+            <span class="count_top"><i class="fa fa-user"></i> Total Staff</span>
             <div class="count">{{ $totalTeacher}}</div>
           
         </div>
@@ -33,7 +33,15 @@
             <div class="count">{{ $counFemaleTeacher}}</div>
             
         </div>
+        
+        <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+            <span class="count_top"><i class="fa fa-user"></i> Total Quit</span>
+            <div class="count">0.00</div>
+            
+        </div>
     </div>
+
+
     <!-- /top tiles -->
 
 
