@@ -563,6 +563,29 @@ Route::get('student/assignment/show/{student_id}', 'HomeController@studentAssign
 //show detail assignment in student profile
 Route::get('student/assignment/detail/{student_id}/{assignment_id}', 'HomeController@assignmentDetail')->name('student.assignment.detail');
 
+/////////////////////////////////absent//////////////////////////////////
+
+//view student 
+Route::get('student/absent/{student_id}', 'HomeController@viewStudentAbsent')->name('student.showAbsent');
+
+//view student absent by Grade in PREK
+Route::get('student/prek/absentByGrade/{grade_id}/{student_id}', 'HomeController@prekAbsentByGrade')->name('prek.absentByGrade');
+
+//view student absent by Grade in Secondary
+Route::get('student/secondary/absentByGrade/{grade_id}/{student_id}', 'HomeController@secondaryAbsentByGrade')->name('secondary.absentByGrade');
+
+//View student absent by Grade HighSchool
+Route::get('student/highSchool/absentByGrade/{grade_id}/{student_id}', 'HomeController@highSchoolAbsentByGrade')->name('highSchool.absentByGrade');
+
+
+//
+
+//View student absent by Grade HighSchool
+Route::get('endUser/teacher/{student_id}', 'HomeController@viewTeacher')->name('endUser.teacher');
+
+//view teacher profile
+Route::get('teacher/profile/{student_id}/{teacher_id}', 'HomeController@teacherProfile')->name('teacher.profile');
+
 
 
 

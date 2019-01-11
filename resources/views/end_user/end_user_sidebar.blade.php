@@ -3,7 +3,7 @@
         <div class="sidebar-logo">
             <div class="peers ai-c fxw-nw">
                 <div class="peer peer-greed">
-                    <a class="sidebar-link td-n" href="index.html">
+                    <a class="sidebar-link td-n" href="{{ route('home.profile') }}">
                         <div class="peers ai-c fxw-nw">
                             <div class="peer">
                                 <div class="logo"><img src="{{ asset('assets/static/images/logo.png') }}" alt=""></div>
@@ -45,18 +45,20 @@
                     </span>
                 </a>
                 <ul class="dropdown-menu">
-                    @if(count($kgrade)) @foreach($kgrade as $kgrades)
-                    <li class="nav-item dropdown">
-                        <a href="{{ route('student.prekscore', ['grade_id'=>$kgrades->id, 'student_id'=>$students->id]) }}">
-                                <span>
-                                    {{ $kgrades->name }}
-                                </span>
-                                <span class="arrow">
-                                    <i style="color:#55CBF2" class="ti-angle-right"></i>
-                                </span>
-                            </a>
-                    </li>
-                    @endforeach @endif
+                    @if(count($kgrade)) 
+                        @foreach($kgrade as $kgrades)
+                        <li class="nav-item dropdown">
+                            <a href="{{ route('student.prekscore', ['grade_id'=>$kgrades->id, 'student_id'=>$students->id]) }}">
+                                    <span>
+                                        {{ $kgrades->name }}
+                                    </span>
+                                    <span class="arrow">
+                                        <i style="color:#55CBF2" class="ti-angle-right"></i>
+                                    </span>
+                                </a>
+                        </li>
+                        @endforeach 
+                    @endif
 
                 </ul>
             </li>
@@ -65,7 +67,9 @@
                 Primary & Secondary</span> <span class="arrow">
                     <i style="color:#55CBF2" class="fas fa-angle-right"></i></span></a>
                 <ul class="dropdown-menu">
-                    @if(count($secondaryGrade)) @foreach($secondaryGrade as $secondaryGrades)
+                    @if(count($secondaryGrade)) 
+
+                    @foreach($secondaryGrade as $secondaryGrades)
 
                     <li class="nav-item dropdown">
                         <a href="{{ route('student.secondary', ['grade_id'=>$secondaryGrades->id, 'student_id'=>$students->id]) }}">
@@ -78,7 +82,8 @@
                         </a>
                     </li>
 
-                    @endforeach @endif
+                    @endforeach 
+                    @endif
                 </ul>
             </li>
             {{-- High school --}}
@@ -86,49 +91,73 @@
                     <i style="color:#55CBF2"  class="fas fa-user-graduate"></i> </span><span class="title">
                 High School</span> <span class="arrow"><i  style="color:#55CBF2" class="fas fa-angle-right"></i></span></a>
                 <ul class="dropdown-menu">
-                    @if(count($grade)) @foreach($grade as $grades)
+                    @if(count($grade)) 
+                        @foreach($grade as $grades)
 
-                    <li class="nav-item dropdown">
-                        <a href="{{ route('student.highschool', ['grade_id'=>$grades->id, 'student_id'=>$students->id]) }}">                            
-                            <span>
-                                {{ $grades->grade_name }}
-                            </span>
-                            <span class="arrow">
-                                <i style="color:#55CBF2" class="ti-angle-right"></i>
-                            </span>
-                        </a>
-                    </li>
+                        <li class="nav-item dropdown">
+                            <a href="{{ route('student.highschool', ['grade_id'=>$grades->id, 'student_id'=>$students->id]) }}">                            
+                                <span>
+                                    {{ $grades->grade_name }}
+                                </span>
+                                <span class="arrow">
+                                    <i style="color:#55CBF2" class="ti-angle-right"></i>
+                                </span>
+                            </a>
+                        </li>
 
-                    @endforeach @endif
+                        @endforeach 
+                    @endif
                 </ul>
             </li>
 
-            <li class="nav-item dropdown"><a class="dropdown-toggle" href="javascript:void(0);"><span class="icon-holder">
-                    <i class="fas fa-book-reader"></i> </span><span class="title">
-                Assignment</span> <span class="arrow"><i  style="color:#55CBF2" class="fas fa-angle-right"></i></span></a>
-                <ul class="dropdown-menu">
+            <li class="nav-item dropdown">
+                <a href="{{ route('student.assignment.show', ['student_id'=>$students->id]) }}">
+                    <span class="icon-holder">
+                        <i style="color:#55CBF2" class="fas fa-bookmark"></i>
+                    </span>
+                    <span class="title">
+                        Assignment
+                    </span> 
+                    <span class="arrow">
+                        <i  style="color:#55CBF2" class="fas fa-angle-right"></i>
+                    </span>
+                </a>
 
-                    <li>
-                        <a href="{{ route('student.assignment.show', ['student_id'=>$students->id]) }}">Assignment</a>
-                    </li>
+                
+            </li>
 
-                    {{--@if(count($grade))--}}
-                        {{--@foreach($grade as $grades)--}}
+            <li class="nav-item dropdown">
+                <a href="{{ route('student.showAbsent', ['student_id'=>$students->id]) }}">
 
-                        {{--<li class="nav-item dropdown">--}}
-                            {{--<a href="{{ route('student.highschool', ['grade_id'=>$grades->id, 'student_id'=>$students->id]) }}">--}}
-                            {{--<span>--}}
-                                {{--{{ $grades->grade_name }}--}}
-                            {{--</span>--}}
-                                {{--<span class="arrow">--}}
-                                {{--<i style="color:#55CBF2" class="ti-angle-right"></i>--}}
-                            {{--</span>--}}
-                            {{--</a>--}}
-                        {{--</li>--}}
 
-                    {{--@endforeach--}}
-                    {{--@endif--}}
-                </ul>
+                    <span class="icon-holder">
+                        <i style="color:#55CBF2" class="far fa-calendar-times"></i>
+                    </span>
+                    <span class="title">
+                        Absent Record
+                    </span> 
+                    <span class="arrow">
+                        <i  style="color:#55CBF2" class="fas fa-angle-right"></i>
+                    </span>
+                </a>
+                
+            </li>
+
+            <li class="nav-item dropdown">
+                <a href="{{ route('endUser.teacher', ['student_id'=>$students->id]) }}">
+
+
+                    <span class="icon-holder">
+                        <i style="color:#55CBF2" class="fas fa-user-tie"></i>
+                    </span>
+                    <span class="title">
+                        Teachers
+                    </span> 
+                    <span class="arrow">
+                        <i  style="color:#55CBF2" class="fas fa-angle-right"></i>
+                    </span>
+                </a>
+                
             </li>
 
         </ul>

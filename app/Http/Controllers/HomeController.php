@@ -24,6 +24,10 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Hash;
 use App\Assignment;
 use App\Teacher;
+use App\PrekAbsent;
+use App\SecondaryAbsent;
+use App\AbsentRecord;
+
 
 class HomeController extends Controller
 {
@@ -171,6 +175,233 @@ class HomeController extends Controller
 
         return view('end_user.assignment_detail')->with(['students'=> $student, 'assignments'=>$assignment]);
     }
+
+
+////////////////////////////////////////////////////////////////////////////////////
+
+//view student
+
+    public function viewStudentAbsent($student_id){
+
+        $student = StudentProfile::find($student_id);
+        return view('end_user.student_absent')->with('students', $student);
+
+    }
+
+//student absent by grade
+    public function prekAbsentByGrade( $grade_id, $student_id ){
+
+    $student = StudentProfile::find($student_id);
+
+    $grade = KLevel::find($grade_id);
+
+    $prekAbsent = PrekAbsent::where([
+        ['k_level_id', $grade_id], 
+        ['student_profile_id', $student_id],
+
+    ])->orderBy('created_at', 'Desc')->get();
+
+    
+
+
+    $unexcused = PrekAbsent::where([
+        ['k_level_id', $grade_id],
+        ['student_profile_id', $student_id],
+        ['absent_type', 'Unexcused']
+    ])->count();
+    $excused = PrekAbsent::where([
+        ['k_level_id', $grade_id],
+        ['student_profile_id', $student_id],
+        ['absent_type', 'Excused']
+    ])->count();
+    $tardy = PrekAbsent::where([
+        ['k_level_id', $grade_id],
+        ['student_profile_id', $student_id],
+        ['absent_type', 'Tardy']
+    ])->count();
+
+
+    $absent_tardy = 0;
+
+    if($tardy >= 3){
+        $absent_tardy = $tardy/3;
+    }elseif($tardy<3){
+        $absent_tardy;
+    }
+
+
+    $total_All_Absent = $absent_tardy+$excused+$unexcused;
+
+
+
+    return view('end_user.absent_result_byGrade')->with([
+        'grade_id'=>$grade ,
+        'students'=> $student, 
+        'prekAbsent'=> $prekAbsent,
+        'unexcused'=>$unexcused,
+        'totalAbsent'=>$total_All_Absent,
+        'excused'=>$excused,
+        'tardy'=>$tardy
+        ]);
+
+
+    }
+
+
+    // ******* Secondary School Absent ******* //
+
+public function secondaryAbsentByGrade($grade_id, $student_id){
+
+
+    $student = StudentProfile::find($student_id);
+    $grade = SecondaryLevel::find($grade_id);
+    $secondaryAbsent = SecondaryAbsent::where([
+        ['secondary_level_id', $grade_id], 
+        ['student_profile_id', $student_id],
+    ])->orderBy('created_at', 'Desc')->get();
+
+
+
+    $unexcused = SecondaryAbsent::where([
+        ['secondary_level_id', $grade_id],
+        ['student_profile_id', $student_id],
+        ['absent_type', 'Unexcused']
+    ])->count();
+    $excused = SecondaryAbsent::where([
+        ['secondary_level_id', $grade_id],
+        ['student_profile_id', $student_id],
+        ['absent_type', 'Excused']
+    ])->count();
+    $tardy = SecondaryAbsent::where([
+        ['secondary_level_id', $grade_id],
+        ['student_profile_id', $student_id],
+        ['absent_type', 'Tardy']
+    ])->count();
+
+
+    $absent_tardy = 0;
+
+    if($tardy >= 3){
+        $absent_tardy = $tardy/3;
+    }elseif($tardy<3){
+        $absent_tardy;
+    }
+
+
+    $total_All_Absent = $absent_tardy+$excused+$unexcused;
+
+
+
+    //return $highSchoolAbsent;
+    
+    return view('end_user.absent_result_byGrade')->with([
+        'grade_id'=>$grade ,
+        'students'=> $student, 
+        'secondaryAbsent'=> $secondaryAbsent,
+        'unexcused'=>$unexcused,
+        'totalAbsent'=>$total_All_Absent,
+        'excused'=>$excused,
+        'tardy'=>$tardy
+        ]);
+
+}
+
+// highschool absent record
+public function highSchoolAbsentByGrade($grade_id, $student_id){
+
+    $grade = Grade::find($grade_id);
+    $student = StudentProfile::find($student_id);
+    
+    $highSchoolAbsent = AbsentRecord::where([
+        ['grade_id', $grade_id], 
+        ['student_profile_id', $student_id],
+    ])->orderBy('created_at', 'Desc')->get();
+
+
+
+ $unexcused = AbsentRecord::where([
+     ['grade_id', $grade_id],
+     ['student_profile_id', $student_id],
+     ['absent_type', 'Unexcused']
+    ])->count();
+$excused = AbsentRecord::where([
+     ['grade_id', $grade_id],
+     ['student_profile_id', $student_id],
+     ['absent_type', 'Excused']
+    ])->count();
+$tardy = AbsentRecord::where([
+     ['grade_id', $grade_id],
+     ['student_profile_id', $student_id],
+     ['absent_type', 'Tardy']
+    ])->count();
+
+
+
+    // $totalExcuse;
+     $absent_tardy = 0;
+
+     if($tardy >= 3){
+         $absent_tardy = $tardy/3;
+     }elseif($tardy<3){
+         $absent_tardy;
+     }
+
+
+     $total_All_Absent = $absent_tardy+$excused+$unexcused;
+    
+
+
+    
+    return view('end_user.absent_result_byGrade')->with([
+        'grade_id'=>$grade ,
+        'students'=> $student,
+        'hightSchoolAbsent'=> $highSchoolAbsent,
+        'unexcused'=>$unexcused,
+        'totalAbsent'=>$total_All_Absent,
+        'excused'=>$excused,
+        'tardy'=>$tardy
+        ]);
+}
+
+
+
+//**********View Teacher*******************//
+
+    public function viewTeacher($student_id){
+        
+        $student = StudentProfile::find($student_id);
+    
+        $teacher = Teacher::orderBy('first_name', 'ASC')->get();
+        return view('end_user.view_all_teacher_index')->with([
+
+            'students'=> $student,
+            'teacher'=>$teacher
+        
+        ]);
+    }
+
+
+  //**********View Teacher profile *******************// 
+  
+  public function teacherProfile($student_id, $teacher_id){
+
+        $student = StudentProfile::find($student_id);
+
+        $teacher = Teacher::find($teacher_id);
+
+        return view('end_user.profile_teacher')->with([
+
+            'students'=>$student,
+            'teachers'=>$teacher
+
+        ]);
+
+  } 
+
+
+
+
+
 
 
 

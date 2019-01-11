@@ -1,14 +1,17 @@
-<main class="main-content bgc-grey-100">
+<main class="main-content bgc-grey-100" >
     <div id="mainContent">
-        <div class="container-fluid">
+        <div class="container-fluid" >
 
             <div class="row">
                 <div class="col-md-12">
-                    <div class="bgc-white bd bdrs-3 p-20 mB-20">
+                    <div class="bgc-white bd bdrs-3 p-40 mB-20" style="margin-bottom: 3em;">
                         <h4 class="c-grey-900 mB-20">Student Score Record</h4>
-                        {{--
-                        <p>Using the most basic table markup, here’s how </p> --}}
-                        <table class="table">
+                        
+                        <div class="table-wrapper-scroll-y">
+                            
+
+                        
+                        <table class="table table-bordered table-striped" >
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
@@ -42,6 +45,8 @@
 
                             </tbody>
                         </table>
+
+                        </div>
                     </div>
                 </div>
             </div>

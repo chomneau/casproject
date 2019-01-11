@@ -135,7 +135,7 @@
 
                             <div class="text-right">
                             {!! $student->links() !!}
-                        </div>
+                            </div>
 
                         </div>
                     </div>

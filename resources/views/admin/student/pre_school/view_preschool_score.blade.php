@@ -19,11 +19,11 @@
                                         <th>Grade</th>
                                         <th>Quarter 1</th>
                                         <th>Quarter 2</th>
-                                        <th>Semester 1</th>
+                                        
                                         <th>Quarter 3</th>
                                         <th>Quarter 4</th>
-                                        <th>Semester 2</th>
-                                        <th>Yearly</th>
+                                        
+                                        
 
                                         <th>Action</th>
 
@@ -32,13 +32,15 @@
 
 
                                 <tbody>
-                                    @if(count($prekScores)) @foreach($prekScores as $score)
+                                    @if(count($prekScores)) 
+
+                                    @foreach($prekScores as $score)
                                     <tr>
                                         {{--<td>{{ $score->studentProfile->card_id }}</td>--}}
 
 
 
-                                        <td>{{ $score->KSubject->name}}</td>
+                                        <td>{{ $score->KSubject->name }}</td>
 
 
 
@@ -47,11 +49,11 @@
 
                                         <td>{{ $score->quarter_1 }}</td>
                                         <td>{{ $score->quarter_2 }}</td>
-                                        <td>{{ $score->semester_1 }}</td>
+                                       
                                         <td>{{ $score->quarter_3 }}</td>
                                         <td>{{ $score->quarter_4 }}</td>
-                                        <td>{{ $score->semester_2 }}</td>
-                                        <td>{{ $score->yearly }}</td>
+                                       
+                                       
 
                                         {{--Semester 1--}}
 
@@ -65,7 +67,7 @@
                                         </td>
                                     </tr>
 
-                                    @endforeach
+                                        @endforeach
                                     @endif
                                 </tbody>
                             </table>

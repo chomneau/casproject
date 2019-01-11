@@ -134,7 +134,7 @@
                                                         @endforeach
                                                     @endif
 
-                                                    <option value="Non-Teacher">Non-Teacher</option>
+                                                    <option value="Subject Teacher">Subject-Teacher</option>
                                                     
 
                                                 </select>

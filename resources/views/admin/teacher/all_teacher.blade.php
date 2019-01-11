@@ -38,11 +38,11 @@
 					@foreach($teacher as $teachers)
 						
 
-                      <div class="col-md-6 col-sm-6 col-xs-12 profile_details">
+                      <div class="col-md-6 col-sm-6 col-xs-12 profile_details" style="padding-left: 15px">
                         <div class="well profile_view">
                           <div class="col-sm-12">
                             
-                            <div class="left col-xs-7">
+                            <div class="left col-xs-6">
                             	<table class="table borderless" >
                             	<tbody>
                               		<h2>{{ $teachers->first_name }} {{ $teachers->last_name }}</h2>
