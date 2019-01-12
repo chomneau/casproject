@@ -414,7 +414,22 @@ $tardy = AbsentRecord::where([
   }
 
 
+  //**********View all staff *******************// 
 
+  public function staffProfile($student_id, $staff_id){
+
+        $student = StudentProfile::find($student_id);
+
+        $staff = Admin::find($staff_id);
+
+        return view('end_user.profile_staff')->with([
+
+            'students'=>$student,
+            'staff'=>$staff
+
+        ]);
+
+    }
 
 
 

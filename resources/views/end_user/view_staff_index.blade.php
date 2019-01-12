@@ -62,7 +62,7 @@
 
                                                 </p>
                                                 <p>
-                                                    <a href="{{ route('teacher.profile', ['student_id'=>$students->id, 'staff_id'=>$staffs->id] )}}" class="btn btn-info ">
+                                                    <a href="{{ route('staff.profile', ['student_id'=>$students->id, 'staff_id'=>$staffs->id] )}}" class="btn btn-info ">
 
                                                         View Profile
 

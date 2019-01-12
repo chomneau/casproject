@@ -589,6 +589,9 @@ Route::get('teacher/profile/{student_id}/{teacher_id}', 'HomeController@teacherP
 //view all staff profile
 Route::get('endUser/staff/{student_id}', 'HomeController@viewStaff')->name('view.staff');
 
+//staff profile detail
+Route::get('staff/profile/{student_id}/{staff_id}', 'HomeController@staffProfile')->name('staff.profile');
+
 
 
 
