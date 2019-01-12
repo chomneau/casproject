@@ -17,6 +17,7 @@ class CreateAdminProfilesTable extends Migration
             $table->increments('id');
             $table->integer('admin_id');
             $table->string('avatar');
+            $table->string('position');
             $table->string('address')->nullable();
             $table->string('phone')->nullable();
             $table->text('about')->nullable();

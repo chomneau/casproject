@@ -15,7 +15,7 @@
                     <div class="panel col-md-8 col-md-offset-2">
                         <div class="page-title">
                             <div class="text-center">
-                                <h3>Create New User</h3>
+                                <h3>Create New Staff</h3>
                             </div>
                         </div>
 

@@ -584,7 +584,10 @@ Route::get('student/highSchool/absentByGrade/{grade_id}/{student_id}', 'HomeCont
 Route::get('endUser/teacher/{student_id}', 'HomeController@viewTeacher')->name('endUser.teacher');
 
 //view teacher profile
-Route::get('teacher/profile/{student_id}/{teacher_id}', 'HomeController@teacherProfile')->name('teacher.profile');
+Route::get('teacher/profile/{student_id}/{teacher_id}', 'HomeController@teacherProfile')->name('endUser.teacher.profile');
+
+//view all staff profile
+Route::get('endUser/staff/{student_id}', 'HomeController@viewStaff')->name('view.staff');
 
 
 

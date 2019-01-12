@@ -160,6 +160,24 @@
                 
             </li>
 
+<!-- staff -->
+            <li class="nav-item dropdown">
+                <a href="{{ route('view.staff', ['student_id'=>$students->id]) }}">
+
+
+                    <span class="icon-holder">
+                        <i style="color:#55CBF2" class="fas fa-user-tie"></i>
+                    </span>
+                    <span class="title">
+                        Staffs
+                    </span> 
+                    <span class="arrow">
+                        <i  style="color:#55CBF2" class="fas fa-angle-right"></i>
+                    </span>
+                </a>
+                
+            </li>
+
         </ul>
     </div>
 </div>
