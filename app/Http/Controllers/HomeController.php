@@ -28,6 +28,7 @@ use App\PrekAbsent;
 use App\SecondaryAbsent;
 use App\AbsentRecord;
 use App\Admin;
+use App\Staff;
 
 
 class HomeController extends Controller
@@ -404,7 +405,7 @@ $tardy = AbsentRecord::where([
   public function viewStaff($student_id){
     $student = StudentProfile::find($student_id);
     
-        $staff = Admin::orderBy('name', 'ASC')->get();
+        $staff = Staff::orderBy('first_name', 'ASC')->get();
         return view('end_user.view_staff_index')->with([
 
             'students'=> $student,
@@ -420,7 +421,7 @@ $tardy = AbsentRecord::where([
 
         $student = StudentProfile::find($student_id);
 
-        $staff = Admin::find($staff_id);
+        $staff = Staff::find($staff_id);
 
         return view('end_user.profile_staff')->with([
 

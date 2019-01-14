@@ -51,12 +51,13 @@
                                         <div class="card">
                                             <canvas class="header-bg" width="250" height="70" id="header-blur"></canvas>
                                             <div class="avatar">
-                                                <img src="{{ asset($staffs->Adminprofile->avatar) }}" alt="" />
+                                                <img src="{{ asset($staffs->photo) }}" alt="" />
                                             </div>
                                             <div class="content">
                                                 <p> 
                                                     <span class="font-weight-bold">
-                                                        {{ $staffs->name }} 
+                                                        {{ $staffs->first_name }} 
+                                                        {{ $staffs->last_name }} 
                                                         
                                                     </span>  
 

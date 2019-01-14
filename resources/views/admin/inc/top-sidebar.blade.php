@@ -47,13 +47,13 @@
                 @elseif(Auth::guard('teacher')->check())
                         <li class="">
                             <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                <img src="{{ asset(Auth()->user()->photo) }}" alt="admin">{{ Auth::user()->name }}
+                                <img src="{{ asset(Auth()->user()->photo) }}" alt="admin">{{ Auth::user()->first_name }}
                                 <span class=" fa fa-angle-down"></span>
                             </a>
                             <ul class="dropdown-menu dropdown-usermenu pull-right">
                                 <li>
 
-                                    <a href="#">
+                                    <a href="{{route('teacher.profile', ['teacher_id'=>Auth::user()->id])}}">
                                         <i class="fa fa-user" aria-hidden="true"></i>
                                         Profile</a></li>
                                 <li>

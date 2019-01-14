@@ -46,6 +46,15 @@
                         </ul>
                     </li>
 
+
+                    <li><a><i class="fas fa-users"></i> Staffs <span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu">
+                            <li><a href="{{ route('admin.showStaff') }}">View all Staffs</a></li>
+                            <li><a href="{{ route('admin.createStaff') }}">Create new Staff</a></li>
+                            
+                        </ul>
+                    </li>
+
                     <li><a><i class="fas fa-user-graduate f2"></i> Students <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
                             <li><a href="{{ route('student.viewAll') }}">View all students</a></li>
@@ -126,7 +135,8 @@
                 <img src="{{ asset(Auth()->user()->photo) }}" alt="..." class="img-circle profile_img">
             </div>
             <div class="profile_info">
-                <span>Welcome,{{ Auth()->user()->name }}</span>
+                <span>Welcome,</span>
+                <h2>{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}</h2>
                 
             </div>
         </div>
@@ -139,7 +149,7 @@
                 <ul class="nav side-menu">
                     <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
-                            <li><a href="/teacher">Teacher Profile</a></li>
+                            <li><a href="{{route('teacher.profile', ['teacher_id'=>Auth::user()->id])}}">Teacher Profile</a></li>
                             
                         </ul>
                     </li>
@@ -149,7 +159,11 @@
                             <i class="fas fa-user-graduate"></i> Students <span class="fa fa-chevron-down"></span>
                         </a>
                         <ul class="nav child_menu">
-                            
+
+                            <li>
+                                <a href="{{ route('teacher.viewAllStudents', ['teacher_id'=>Auth()->user()->id ]) }}">View All Student</a>
+                            </li>
+
 
                             <li>
                             <a href="{{ route('teacher.student.byGrade', ['teacher_id'=>Auth()->user()->id ]) }}">View Student by Grade</a>

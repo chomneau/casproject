@@ -123,8 +123,24 @@ Route::prefix('admin')->group(function () {
     Route::get('/login', 'auth\AdminLoginController@showLoginForm')->name('admin.login');
     Route::post('/login', 'auth\AdminLoginController@login')->name('admin.login.submit');
 
-    // Route::get('/postjob', 'AdminController@showPostjobForm')->name('admin.postjob');
-    // Route::post('/postjob', 'AdminController@postjob')->name('admin.postjob.submit');
+
+//***********staff**************************//
+
+     Route::get('/showStaff', 'StaffController@showStaff')->name('admin.showStaff');
+     
+     Route::get('/createStaff', 'StaffController@createStaff')->name('admin.createStaff');
+
+     //store staff to table route
+     Route::post('/storeStaff/{id}', 'StaffController@storeStaff')->name('admin.storeStaff');
+
+    // view profile
+     Route::get('/staffDetail/{id}', 'StaffController@staffDetail')->name('admin.staffDetail');
+     //edit staff profile
+     Route::get('/staff/edit/{id}', 'StaffController@staffEdit')->name('admin.staff.edit');
+     //staff update info
+     Route::post('/staff/update/{id}', 'StaffController@staffUpdate')->name('admin.staff.update');
+     //delete staff 
+     Route::get('/staff/delete/{id}', 'StaffController@staffDelete')->name('admin.staff.delete');
 
 
 //Query subject by grade
@@ -447,6 +463,9 @@ Route::prefix('admin')->group(function () {
 
 Route::prefix('teacher')->group(function () {
 
+
+
+
     //Change teacher password form
     Route::get('/changePassword/{teacher_id}', 'TeacherProfileController@changePassword')->name('teacher.changePassword');
 
@@ -454,7 +473,7 @@ Route::prefix('teacher')->group(function () {
     Route::post('/changePassword/{teacher_id}', 'TeacherProfileController@updatePassword')->name('teacher.changePassword.update');
 
     Route::get('/', 'TeacherProfileController@index');
-    Route::get('/profile', 'TeacherProfileController@index')->name('teacher.profile');
+    Route::get('/profile/{teacher_id}', 'TeacherProfileController@teacherProfile')->name('teacher.profile');
 
     Route::get('/login', 'Auth\TeacherLoginController@showLoginForm')->name('teacher.login');
     Route::post('/login', 'Auth\TeacherLoginController@teacherLogin')->name('teacher.login.submit');
@@ -471,6 +490,10 @@ Route::prefix('teacher')->group(function () {
 
     //view student detail
     Route::get('/student/detail/{teacher_id}/{student_id}', 'TeacherProfileController@studentDetail')->name('teacher.student.detail');
+    
+    //view student profile only
+
+    Route::get('/studentProfile/detail/{teacher_id}/{student_id}', 'TeacherProfileController@onlyStudentProfile')->name('teacher.studentProfile.detail');
 
     //K and Pre-k Score
     Route::get('/prekscore/view/{teacher_id}/{grade_id}/{student_id}', 'TeacherProfileController@prekScore')->name('teacher.prekschool.score');
@@ -549,6 +572,9 @@ Route::prefix('teacher')->group(function () {
 
     //view student by Grade
     Route::get('/student/byGrade/{teacher_id}', 'TeacherProfileController@viewByGrade')->name('teacher.student.byGrade');
+
+    //view all student but only profile not score
+    Route::get('/viewAllStudents/{teacher_id}', 'TeacherProfileController@viewAllStudents')->name('teacher.viewAllStudents');
 
     //view detail grade
 

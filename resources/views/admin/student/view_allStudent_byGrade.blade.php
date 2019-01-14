@@ -204,6 +204,9 @@
 
                                         </tr>
                                     @endforeach
+
+                                    @else
+                                    <p>you are not Homeroom Teacher</p>
                                 @endif
 
                                 </tbody>

@@ -105,7 +105,10 @@
                                 <div class="row">
                                     
 
-                                    <div class="col-md-3 col-lg-3" style="padding-left: 3em; padding-right: 3em">
+                                    
+                                        
+
+                                        <div class="col-md-3 col-lg-3" style="padding-left: 3em; padding-right: 3em">
                                         <a href="{{ route('teacher.viewStudent.byGrade', [
                                         'grade_profile_id'=>$viewByGrade->id,
                                         'teacher_id'=>$teacher->id
@@ -120,6 +123,8 @@
 
                                         </div>
                                         </a>
+
+                                        
                                     </div>
 
 

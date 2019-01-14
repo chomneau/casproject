@@ -84,7 +84,17 @@
 
                                         @endif
 
-                                      @endforeach  
+                                      @endforeach 
+
+
+
+                                          {{ $teachers->grade_profile_id }}
+
+
+                                        
+
+                                      
+
 
                                       
                                     </td>

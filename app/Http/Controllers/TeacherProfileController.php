@@ -97,8 +97,14 @@ class TeacherProfileController extends Controller
             'teacher'=>$teacher
             ]);
 
-
         
+    }
+
+    //teacher profile
+
+    public function teacherProfile($teacher_id){
+        $teacher = Teacher::find($teacher_id);
+        return view('admin.teacher.teacher_profile')->with('teacher', $teacher);
     }
 
 
@@ -132,6 +138,19 @@ class TeacherProfileController extends Controller
                 ]);
     }
 
+
+//view student detail only profile not score
+    public function onlyStudentProfile($teacher_id, $student_id)
+    {
+        $student = StudentProfile::find($student_id);
+        $teacher = Teacher::find($teacher_id); 
+    
+        return view('admin.student.only_student_profile')
+            ->with([
+                'students'=>$student, 
+               'teacher'=>$teacher
+                ]);
+    }
 
     //score for k and pre_k 
 
@@ -665,13 +684,36 @@ class TeacherProfileController extends Controller
         $teacher = Teacher::find($teacher_id);
         $grade_profile_id = $teacher->grade_profile_id;
 
-       
-        $viewByGrade = GradeProfile::find($grade_profile_id);
-         return view('admin.student.view_by_grade')->with([
+        
+
+            $viewByGrade = GradeProfile::find($grade_profile_id);
+            return view('admin.student.view_by_grade')->with([
             'viewByGrade'=>$viewByGrade,
-            'teacher'=>$teacher
+            'teacher'=>$teacher,
+            
             ]);
+        
+       
+        
+         
      }
+
+    //view all students but not score
+    
+    public function viewAllStudents($teacher_id){
+
+        $student = StudentProfile::orderBy('first_name', 'ASC')->orderBy('grade_profile_id', 'ASC')
+            ->paginate(10);
+
+        $teacher = Teacher::find($teacher_id);    
+
+        return view('admin.student.view_allStudent_byTeacher')
+            ->with(['student'=>$student, 'teacher'=>$teacher]);
+
+    } 
+
+
+
 
      public function StudentByGrade($grade_profile_id, $teacher_id){
 
@@ -680,8 +722,6 @@ class TeacherProfileController extends Controller
         $countStudentByGrade = StudentProfile::withCount('GradeProfile')->where(['grade_profile_id'=>$grade_profile_id])->count();
         $countMaleStudentByGrade = StudentProfile::withCount('GradeProfile')->where(['grade_profile_id'=>$grade_profile_id, 'gender'=>'Male'])->count();
         $countFemaleStudentByGrade = StudentProfile::withCount('GradeProfile')->where(['grade_profile_id'=>$grade_profile_id, 'gender'=>'Female'])->count();
-
-
 
 
   

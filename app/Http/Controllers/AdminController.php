@@ -102,8 +102,14 @@ class AdminController extends Controller
 
         AdminProfile::create([
             'admin_id' => $admin->id,
-            'avatar' => 'uploads/logos/1510817755img.png'
+            'avatar' => 'uploads/logos/1510817755img.png',
+            'position'=>$request['position'],
+            'degree'=>$request['degree'],
+            'date_of_birth'=>$request['date_of_birth'],
+
+
         ]);
+        
         Session::flash('success', 'You have created a new user');
         return redirect('/admin/allUser');
     }
@@ -114,6 +120,8 @@ class AdminController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
+            'position'=>'required',
+            'degree'=>'required'
         ]);
     }
 

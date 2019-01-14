@@ -32,36 +32,36 @@
 
                         <div class="row">
                             <div class="col-md-4">
-                                <img src="{{ asset($staff->Adminprofile->avatar) }}" width="300" height="300" style="border-radius:50%; border: 6px solid rgb(113, 222, 222); margin-top: 25px; margin-left: 20px" alt="profile" />
+                                <img src="{{ asset($staff->photo) }}" width="300" height="300" style="border-radius:50%; border: 6px solid rgb(113, 222, 222); margin-top: 25px; margin-left: 20px" alt="profile" />
                             </div>
 
                             <div class="col-md-8">
                                 <table class="table borderless font-weight-bold" >
                                         <tbody>
-                                            <h2>{{ $staff->name }} </h2>
+                                            <h2>{{ $staff->first_name }} {{ $staff->last_name}} </h2>
                                         </tbody>
                                         <tr>
                                             <td>Date of Birth</td>
                                             <td> :</td>
-                                            <td></td>
+                                            <td>{{ $staff->date_of_birth }}</td>
 
                                         </tr>
                                         <tr>
                                             <td>Gender</td>
                                             <td> :</td>
-                                            <td></td>
+                                            <td>{{$staff->gender}}</td>
 
                                         </tr>
                                         <tr>
                                             <td>Position</td>
                                             <td> :</td>
-                                            <td>{{ $staff->Adminprofile->position}}</td>
+                                            <td>{{ $staff->position}}</td>
 
                                         </tr>
                                         <tr>
                                           <td>Degree</td>
                                           <td> :</td>
-                                          <td></td>
+                                          <td>{{ $staff->degree }}</td>
 
                                         </tr>
 
@@ -70,7 +70,7 @@
                                         <tr>
                                             <td style="border-bottom: 0 ">Phone</td>
                                             <td> :</td>
-                                            <td>{{ $staff->Adminprofile->phone}}</td>
+                                            <td>{{ $staff->phone}}</td>
 
                                         </tr>
 
