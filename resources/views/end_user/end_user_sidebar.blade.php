@@ -169,7 +169,7 @@
                         <i style="color:#55CBF2" class="fas fa-user-tie"></i>
                     </span>
                     <span class="title">
-                        Staffs
+                        Staff
                     </span> 
                     <span class="arrow">
                         <i  style="color:#55CBF2" class="fas fa-angle-right"></i>

@@ -497,22 +497,4 @@ public function deletePrekAbsent($grade_id, $student_id, $prekAbsent_id){
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

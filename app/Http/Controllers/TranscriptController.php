@@ -533,18 +533,296 @@ public function yearlyReportHighSchool(Request $request, $student_id)
     ]);
     
     }
+
+
+    //CGPA grade 10 to 11
+    public function transcript1011(Request $request, $student_id){
+
+        $checked_id = $request->input('grade');
+        $student = StudentProfile::find($student_id);
+
+        $collection = collect($checked_id);
+
+        
+        $grade_10 = $collection->slice(1,1); //get 2
+        $grade_11 = $collection->slice(2,1); //get 3
         
 
+        $score_grade_10 = Score::where('student_profile_id', $student_id)->where('grade_id', $grade_10)->get();
+        $score_grade_11 = Score::where('student_profile_id', $student_id)->where('grade_id', $grade_11)->get();
+    
+
+
+          
+
+            //grade 10
+
+            $credit_grade_10 = ($score_grade_10->sum('credit'))/2;
+    
+            $sum_pts_1_grade_10 = $score_grade_10->sum('pts_1');
+    
+            $sum_pts_2_grade_10 = $score_grade_10->sum('pts_2');
+
+           
+
+            
+
+
+        // Grade 11
+            $credit_grade_11 = ($score_grade_11->sum('credit'))/2;
+    
+            $sum_pts_1_grade_11 = $score_grade_11->sum('pts_1');
+    
+            $sum_pts_2_grade_11 = $score_grade_11->sum('pts_2');
+
+          
+            
+
+        // Calulate CGPA
+           
+                $CGPA = (
+                    
+                    $sum_pts_1_grade_10/$credit_grade_10 +
+                    $sum_pts_2_grade_10/$credit_grade_10 +
+                    $sum_pts_1_grade_11/$credit_grade_11 +
+                    $sum_pts_2_grade_11/$credit_grade_11 
+                    
+                    )/4;
+
+           
+        //total all credit for student
+        $total_credit = $credit_grade_10*2 + $credit_grade_11*2;
+
+           
+
+            
+
+    return view('admin.student.print.yearly_report_highschool.cgpa_1011_transcript')->with([
+        'student'=> $student,
+        
+        'score_grade_10'=>$score_grade_10,
+        'score_grade_11'=>$score_grade_11,
+        
+        
+
+        'sum_pts_1_grade_10' => $sum_pts_1_grade_10,
+        'sum_pts_2_grade_10' => $sum_pts_2_grade_10,
+        'credit_grade_10'=>$credit_grade_10,
+
+        'sum_pts_1_grade_11' => $sum_pts_1_grade_11,
+        'sum_pts_2_grade_11' => $sum_pts_2_grade_11,
+        'credit_grade_11'=>$credit_grade_11,
+
+        
+        
+        // total all credit and GPA
+
+        'CGPA'=>$CGPA,
+        'total_credit' =>$total_credit
+
+    ]);
+    
+    }
+
+    //CGPA transcript for Grade 11 - 12
+
+    public function transcript1112( Request $request, $student_id){
+
+    $checked_id = $request->input('grade');
+    $student = StudentProfile::find($student_id);
+
+    $collection = collect($checked_id);
+
+    
+    $grade_11 = $collection->slice(2,1); //get 3
+    $grade_12 = $collection->slice(3,1); //get 4
+
+    
+    $score_grade_11 = Score::where('student_profile_id', $student_id)->where('grade_id', $grade_11)->get();
+    $score_grade_12 = Score::where('student_profile_id', $student_id)->where('grade_id', $grade_12)->get();
+
+         
+
+
+        // Grade 11
+            $credit_grade_11 = $score_grade_11->sum('credit')/2;
+    
+            $sum_pts_1_grade_11 = $score_grade_11->sum('pts_1');
+    
+            $sum_pts_2_grade_11 = $score_grade_11->sum('pts_2');
+
+          
+            
+
+        // Grade 12
+            $credit_grade_12 = $score_grade_12->sum('credit')/2;
+    
+            $sum_pts_1_grade_12 = $score_grade_12->sum('pts_1');
+    
+            $sum_pts_2_grade_12 = $score_grade_12->sum('pts_2');
+
+           
+
+            
+
+        // Calulate CGPA
+           
+                $CGPA = (
+                    
+                    $sum_pts_1_grade_11/$credit_grade_11 +
+                    $sum_pts_2_grade_11/$credit_grade_11 +
+                    $sum_pts_1_grade_12/$credit_grade_12 +
+                    $sum_pts_2_grade_12/$credit_grade_12
+                    )/4;
+
+           
+        
+        
+        //total all credit for student
+        $total_credit = $credit_grade_11*2 + $credit_grade_12*2;
+
+           // return $grade_9."-".$grade_10."-".$grade_11."-".$grade_12;
+           // return $score_grade_11->Subject->name;
+
+            // foreach($score_grade_11 as $score_grade_11s){
+            //    return $score_grade_11s->subject->name;
+            // }
+
+            
+
+    return view('admin.student.print.yearly_report_highschool.cgpa_1112_transcript')->with([
+        'student'=> $student,
+        
+        'score_grade_11'=>$score_grade_11,
+        'score_grade_12'=>$score_grade_12,
+
+        
+
+        'sum_pts_1_grade_11' => $sum_pts_1_grade_11,
+        'sum_pts_2_grade_11' => $sum_pts_2_grade_11,
+        'credit_grade_11'=>$credit_grade_11,
+
+        'sum_pts_1_grade_12' => $sum_pts_1_grade_12,
+        'sum_pts_2_grade_12' => $sum_pts_2_grade_12,
+        'credit_grade_12'=>$credit_grade_12,
+        
+        // total all credit and GPA
+
+        'CGPA'=>$CGPA,
+        'total_credit' =>$total_credit
+
+    ]);
+    }
+
+
+    //CGPA transcript for grade 10 to 12
+
+    public function transcript1012( Request $request, $student_id){
+
+    $checked_id = $request->input('grade');
+    $student = StudentProfile::find($student_id);
+
+    $collection = collect($checked_id);
+
+    
+    $grade_10 = $collection->slice(1,1); //get 2
+    $grade_11 = $collection->slice(2,1); //get 3
+    $grade_12 = $collection->slice(3,1); //get 4
+
+    
+    $score_grade_10 = Score::where('student_profile_id', $student_id)->where('grade_id', $grade_10)->get();
+    $score_grade_11 = Score::where('student_profile_id', $student_id)->where('grade_id', $grade_11)->get();
+    $score_grade_12 = Score::where('student_profile_id', $student_id)->where('grade_id', $grade_12)->get();
+
+        
+
+          
+
+            //grade 10
+
+            $credit_grade_10 = $score_grade_10->sum('credit')/2;
+    
+            $sum_pts_1_grade_10 = $score_grade_10->sum('pts_1');
+    
+            $sum_pts_2_grade_10 = $score_grade_10->sum('pts_2');
+
+           
+
+            
+
+
+        // Grade 11
+            $credit_grade_11 = $score_grade_11->sum('credit')/2;
+    
+            $sum_pts_1_grade_11 = $score_grade_11->sum('pts_1');
+    
+            $sum_pts_2_grade_11 = $score_grade_11->sum('pts_2');
+
+          
+            
+
+        // Grade 12
+            $credit_grade_12 = $score_grade_12->sum('credit')/2;
+    
+            $sum_pts_1_grade_12 = $score_grade_12->sum('pts_1');
+    
+            $sum_pts_2_grade_12 = $score_grade_12->sum('pts_2');
+
+           
+
+            
+
+        // Calulate CGPA
+           
+                $CGPA = (
+                    
+                    $sum_pts_1_grade_10/$credit_grade_10 +
+                    $sum_pts_2_grade_10/$credit_grade_10 +
+                    $sum_pts_1_grade_11/$credit_grade_11 +
+                    $sum_pts_2_grade_11/$credit_grade_11 +
+                    $sum_pts_1_grade_12/$credit_grade_12 +
+                    $sum_pts_2_grade_12/$credit_grade_12
+                    )/6;
+
+           
+        
+        
+        //total all credit for student
+        $total_credit = $credit_grade_10*2 + $credit_grade_11*2 + $credit_grade_12*2;
 
 
 
+            
 
+    return view('admin.student.print.yearly_report_highschool.cgpa_1012_transcript')->with([
+        'student'=> $student,
+        
+        'score_grade_10'=>$score_grade_10,
+        'score_grade_11'=>$score_grade_11,
+        'score_grade_12'=>$score_grade_12,
 
+        
 
+        'sum_pts_1_grade_10' => $sum_pts_1_grade_10,
+        'sum_pts_2_grade_10' => $sum_pts_2_grade_10,
+        'credit_grade_10'=>$credit_grade_10,
 
+        'sum_pts_1_grade_11' => $sum_pts_1_grade_11,
+        'sum_pts_2_grade_11' => $sum_pts_2_grade_11,
+        'credit_grade_11'=>$credit_grade_11,
 
+        'sum_pts_1_grade_12' => $sum_pts_1_grade_12,
+        'sum_pts_2_grade_12' => $sum_pts_2_grade_12,
+        'credit_grade_12'=>$credit_grade_12,
+        
+        // total all credit and GPA
 
+        'CGPA'=>$CGPA,
+        'total_credit' =>$total_credit
 
+    ]);
+    }
+        
 
 
 

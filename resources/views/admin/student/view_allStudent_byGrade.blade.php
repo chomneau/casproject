@@ -77,7 +77,9 @@
                                         <tr>
                                             <td>#</td>
                                             <td>
-                                                <a> {{ $viewStudentByGrades->first_name }} {{ $viewStudentByGrades->last_name }}</a>
+                                                <a> 
+                                                    {{ $viewStudentByGrades->last_name }}, 
+                                                    {{ $viewStudentByGrades->first_name }} </a>
                                                 <br />
                                                 <small>Created {{ $viewStudentByGrades->created_at->diffForHumans() }}</small>
                                             </td>

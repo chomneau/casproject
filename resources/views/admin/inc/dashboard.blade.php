@@ -5,7 +5,7 @@
     <div class="row tile_count">
         <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
             <span class="count_top"><i class="fa fa-user"></i> Total Students</span>
-            <div class="count">{{ $countAllStudent-$countQuitStudent }}</div>
+            <div class="count">{{ $countAllStudent-$countQuitStudent-$countGraduationStudent }}</div>
             
         </div>
         <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
@@ -20,17 +20,17 @@
         </div>
         <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
             <span class="count_top"><i class="fa fa-user"></i> Total Staff</span>
-            <div class="count">{{ $totalStaff}}</div>
+            <div class="count">{{ $totalTeacher+$allStaff }}</div>
           
         </div>
         <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
             <span class="count_top"><i class="fa fa-user"></i> Male Staff</span>
-            <div class="count">{{ $countMaleStaff}}</div>
+            <div class="count">{{ $countMaleTeacher + $countMaleStaff }}</div>
             
         </div>
         <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
             <span class="count_top"><i class="fa fa-user"></i> Female Staff</span>
-            <div class="count">{{ $countFemaleStaff }}</div>
+            <div class="count">{{ $countFemaleTeacher+$countFemaleStaff }}</div>
             
         </div>
         

@@ -127,15 +127,17 @@
 							        	{{ $student->last_name}} 
 										{{ $student->first_name}}
 									</td>
-									<tr>
-								        <th scope="row">Student ID</th>
-								        <td>:</td>
-								        <td>
-								        	{{ $student->card_id}} 
-											
-										</td>
-     
-							      	</tr>
+							        
+							        
+							        
+							      </tr>
+							      <tr>
+							        <th scope="row">Student ID</th>
+							        <td>:</td>
+							        <td>
+							        	{{ $student->card_id}} 
+										
+									</td>
 							        
 							        
 							        
@@ -196,241 +198,7 @@
 
 			</div>
 
-			<div class="row" style="margin-top: 3em">
-
-			<div class="col-md-6 ">
-
-				
-			<table class="table table-sm">
-				<!--Table head-->
-				<h6><span class="badge badge-primary badge-pill">1</span> First Semester : 
-
-                    @foreach($score_grade_9 as $score_s1)
-
-                        @if ($loop->first) 
-                        
-                            {{ $score_s1->created_at->format('Y') }} - 
-                            {{ $score_s1->created_at->format('Y')+1 }} 
-
-                        @endif
-
-                    @endforeach
-
-                    <span style="color:#5d95ef" class="pull-right">
-                    @foreach($score_grade_9 as $score_s1)
-
-                        @if ($loop->first) 
-                            {{ $score_s1->grade->grade_name }} 
-                        @endif
-
-                    @endforeach
-
-                </span>
-
-
-				</h6>
-			    <thead>
-			        <tr>
-			            
-			            <th>Subject</th>
-			            <th>CRED</th>
-			            <th>GRD</th>			            
-			            <th>PTS</th>
-			        </tr>
-			    </thead>
-			    <!--Table head-->
-
-			    <!--Table body-->
-			    <tbody>
-
-			    	@if(count($score_grade_9))
-				    	@foreach($score_grade_9 as $score_s1)
-
-					    	@foreach($grade as $grades)
-
-						    	@if($score_s1->grade_id == $grades->id)
-
-							    	
-							        <tr>
-							            
-							            <td style="font-size: 12px; font-weight: bold">	
-							            	
-							            	{{$score_s1->Subject->name}}
-							            
-							            </td>
-							            <td style="font-size: 12px; font-weight: bold">
-
-							            	{{ ($score_s1->Subject->credit)/2 }}
-
-							            </td>
-							            <td style="font-size: 12px; font-weight: bold"> 
-
-							            	{{ $score_s1->gpa_quarter_1 }}
-							            
-
-							            </td>
-							            <td style="font-size: 12px; font-weight: bold">
-											
-											{{ $score_s1->pts_1 }}
-											
-							            </td>
-
-							        </tr>
-							        					
-						        
-						        @endif
-
-					        @endforeach
-				        
-				        @endforeach
-			        @endif
-
-			        <tr>
-						<th style="font-size: 12px; font-weight: bold">SEMESTER CREDIT</th>
-						<th style="font-size: 12px; font-weight: bold">
-							{{ $credit_grade_9 }}
-						</th>
-						<th style="font-size: 12px; font-weight: bold"> SEMESTER GPA</th>
-						<th style="font-size: 12px; font-weight: bold">
-
-							@if($credit_grade_9 <= 0)
-								<span>0.00</span>
-							@else
-								
-								{{ number_format($sum_pts_1_grade_9/$credit_grade_9, 2, '.', '') }}
-
-							@endif
-							
-
-							
-						</th>
-					</tr>
-
-			        
-
-			        
-			    </tbody>
-			    <!--Table body-->
-
-			</table>
-			<!--Table-->
-
-
-
-			
-		</div>
-
-
-		<div class="col-md-6 ">
-
-				
-			<table class="table table-sm">
-				<!--Table head-->
-				<h6><span class="badge badge-primary badge-pill">2</span> Second Semester : 
-				
-				@foreach($score_grade_9 as $score_s1)
-
-					@if ($loop->first) 
-					
-						{{ $score_s1->updated_at->format('Y') }} - 
-						{{ $score_s1->updated_at->format('Y')+1 }} 
-
-					@endif
-
-				@endforeach
-
-                <span style="color:#5d95ef" class="pull-right">
-                    @foreach($score_grade_9 as $score_s1)
-
-                        @if ($loop->first) 
-                            {{ $score_s1->grade->grade_name }} 
-                        @endif
-
-                    @endforeach
-
-				</h6>
-			    <thead>
-			        <tr>
-			            
-			            <th>Subject</th>
-			            <th>CRED</th>
-			            <th>GRD</th>			            
-			            <th>PTS</th>
-			        </tr>
-			    </thead>
-			    <!--Table head-->
-
-			    <!--Table body-->
-			    <tbody>
-			        @if(count($score_grade_9))
-				    	@foreach($score_grade_9 as $score_s1)
-
-					    	@foreach($grade as $grades)
-
-						    	@if($score_s1->grade_id == $grades->id)
-
-							    	
-							        <tr>
-							            
-							            <td style="font-size: 12px; font-weight: bold">{{$score_s1->Subject->name}}</td>
-							            <td style="font-size: 12px; font-weight: bold">
-							            	{{ ($score_s1->Subject->credit)/2}}</td>
-							            <td style="font-size: 12px; font-weight: bold" > 
-
-							            	{{ $score_s1->gpa_quarter_2 }}
-							            
-
-							            </td>
-							            <td style="font-size: 12px; font-weight: bold" >
-											{{ $score_s1->pts_2 }}
-											
-							            </td>
-
-							            
-
-							        </tr>
-							        
-									
-						        
-						        @endif
-
-					        @endforeach
-				        
-				        @endforeach
-			        @endif
-
-
-			        <tr>
-						<th style="font-size: 12px; font-weight: bold">SEMESTER CREDIT</th>
-						<th style="font-size: 12px; font-weight: bold">
-
-							{{ $credit_grade_9 }}
-
-						</th>
-
-
-
-						<th style="font-size: 12px; font-weight: bold">SEMESTER GPA</th>
-						<th style="font-size: 12px; font-weight: bold">
-							
-							@if($credit_grade_9 <= 0)
-								<span>0.00</span>
-							@else
-								
-								{{ number_format($sum_pts_2_grade_9/$credit_grade_9, 2, '.', '') }}
-
-							@endif
-						</th>
-
-						
-					</tr>
-			    </tbody>
-			    <!--Table body-->
-
-			</table>
-			<!--Table-->
-        </div>
-    </div>    
+			 
 
     <!---------------------------- Grade 10 ---------------------------------->
     <div class="row">
@@ -489,16 +257,9 @@
 							    	
 							        <tr>
 							            
+							            <td style="font-size: 12px; font-weight: bold">{{$score_s1->Subject->name}}</td>
 							            <td style="font-size: 12px; font-weight: bold">
-
-							            	{{$score_s1->Subject->name}}
-
-							            </td>
-							            <td style="font-size: 12px; font-weight: bold">
-
-							            	{{ ($score_s1->Subject->credit)/2}}
-
-							            </td>
+							            	{{ ($score_s1->Subject->credit)/2 }}</td>
 							            <td style="font-size: 12px; font-weight: bold"> 
 
 							            	{{ $score_s1->gpa_quarter_1 }}
@@ -524,8 +285,7 @@
 
 			        <tr>
 						<th style="font-size: 12px; font-weight: bold">SEMESTER CREDIT</th>
-						<th style="font-size: 12px; font-weight: bold">
-						{{ $credit_grade_10 }}</th>
+						<th style="font-size: 12px; font-weight: bold">{{ $credit_grade_10 }}</th>
 						<th style="font-size: 12px; font-weight: bold"> SEMESTER GPA</th>
 						<th style="font-size: 12px; font-weight: bold">
 
@@ -608,14 +368,9 @@
 							    	
 							        <tr>
 							            
-							            <td style="font-size: 12px; font-weight: bold">{{$score_s1->Subject->name}}
-
-							            </td>
+							            <td style="font-size: 12px; font-weight: bold">{{$score_s1->Subject->name}}</td>
 							            <td style="font-size: 12px; font-weight: bold">
-
-							            	{{ ($score_s1->Subject->credit)/2}}
-							            </td>
-
+							            	{{ ($score_s1->Subject->credit)/2 }}</td>
 							            <td style="font-size: 12px; font-weight: bold" > 
 
 							            	{{ $score_s1->gpa_quarter_2 }}
@@ -672,10 +427,14 @@
 			</table>
 			<!--Table-->
 
+
+    <!--------------------------------- end grade 10 ------------------------->
+
+
         </div>
 			
 	</div>
-    <!--------------------------------- end grade 10 ------------------------->
+
 
 <!-------------------------- start Grade 11------------------------------------->
 
@@ -736,14 +495,8 @@
 								
 								<tr>
 									
-									<td style="font-size: 12px; font-weight: bold">
-
-										{{$score_s1->Subject->name}}
-
-									</td>
-									<td style="font-size: 12px; font-weight: bold">
-										{{ ($score_s1->Subject->credit)/2}}
-									</td>
+									<td style="font-size: 12px; font-weight: bold">{{$score_s1->Subject->name}}</td>
+									<td style="font-size: 12px; font-weight: bold">{{ ($score_s1->Subject->credit)/2 }}</td>
 									<td style="font-size: 12px; font-weight: bold"> 
 
 										{{ $score_s1->gpa_quarter_1 }}
@@ -769,11 +522,7 @@
 
 				<tr>
 					<th style="font-size: 12px; font-weight: bold">SEMESTER CREDIT</th>
-					<th style="font-size: 12px; font-weight: bold">
-
-					{{ $credit_grade_11 }}
-
-					</th>
+					<th style="font-size: 12px; font-weight: bold">{{ $credit_grade_11 }}</th>
 					<th style="font-size: 12px; font-weight: bold"> SEMESTER GPA</th>
 					<th style="font-size: 12px; font-weight: bold">
 
@@ -857,18 +606,9 @@
 								
 								<tr>
 									
+									<td style="font-size: 12px; font-weight: bold">{{$score_s1->Subject->name}}</td>
 									<td style="font-size: 12px; font-weight: bold">
-
-										{{$score_s1->Subject->name}}
-									
-									</td>
-									
-									<td style="font-size: 12px; font-weight: bold">
-										
-										{{ ($score_s1->Subject->credit)/2}}
-									
-									</td>
-									
+										{{ ($score_s1->Subject->credit)/2}}</td>
 									<td style="font-size: 12px; font-weight: bold" > 
 
 										{{ $score_s1->gpa_quarter_2 }}
@@ -898,7 +638,7 @@
 					<th style="font-size: 12px; font-weight: bold">SEMESTER CREDIT</th>
 					<th style="font-size: 12px; font-weight: bold">
 
-						{{ ($credit_grade_11) }}
+						{{ $credit_grade_11 }}
 
 					</th>
 
@@ -925,12 +665,256 @@
 		<!--Table-->
 
 
-<!-- end grade 11 -->
+<!-- end grade 10 -->
+
+
+	</div>
+		
+</div>
+
+
+
+
+<!------------------------------End Grade 11------------------------------------------>
+
+
+<!--------------------------------Start Grade 12--------------------------------------->
+
+<!-- Grade 10 -->
+<div class="row">
+
+<div class="col-md-6 ">
+
+		<table class="table table-sm">
+			<!--Table head-->
+			<h6><span class="badge badge-primary badge-pill">1</span> First Semester : 
+
+				@foreach($score_grade_12 as $score_s1)
+
+					@if ($loop->first) 
+					
+						{{ $score_s1->created_at->format('Y') }} - 
+						{{ $score_s1->created_at->format('Y')+1 }} 
+
+					@endif
+
+				@endforeach
+
+				<span style="color:#5d95ef" class="pull-right">
+				@foreach($score_grade_12 as $score_s1)
+
+					@if ($loop->first) 
+						{{ $score_s1->grade->grade_name }} 
+					@endif
+
+				@endforeach
+
+			</span>
+
+
+			</h6>
+			<thead>
+				<tr>
+					
+					<th>Subject</th>
+					<th>CRED</th>
+					<th>GRD</th>			            
+					<th>PTS</th>
+				</tr>
+			</thead>
+			<!--Table head-->
+
+			<!--Table body-->
+			<tbody>
+
+				@if(count($score_grade_12))
+					@foreach($score_grade_12 as $score_s1)
+
+						@foreach($grade as $grades)
+
+							@if($score_s1->grade_id == $grades->id)
+
+								
+								<tr>
+									
+									<td style="font-size: 12px; font-weight: bold">{{$score_s1->Subject->name}}</td>
+									<td style="font-size: 12px; font-weight: bold">
+										{{ ($score_s1->Subject->credit)/2}}</td>
+									<td style="font-size: 12px; font-weight: bold"> 
+
+										{{ $score_s1->gpa_quarter_1 }}
+									
+
+									</td>
+									<td style="font-size: 12px; font-weight: bold">
+										{{ $score_s1->pts_1 }}
+										
+									</td>
+
+								</tr>
+								
+								
+							
+							@endif
+
+						@endforeach
+					
+					@endforeach
+				@endif
+
+				<tr>
+					<th style="font-size: 12px; font-weight: bold">SEMESTER CREDIT</th>
+					<th style="font-size: 12px; font-weight: bold">{{ $credit_grade_12 }}</th>
+					<th style="font-size: 12px; font-weight: bold"> SEMESTER GPA</th>
+					<th style="font-size: 12px; font-weight: bold">
+
+					@if($credit_grade_12 <= 0)
+						<span>0.00</span>
+					@else
+						
+						{{ number_format($sum_pts_1_grade_12/$credit_grade_12, 2, '.', '') }}
+
+					@endif
+						
+
+						
+					</th>
+				</tr>
+
+				
+
+				
+			</tbody>
+			<!--Table body-->
+
+		</table>
+		<!--Table-->
+
+
+
+		
+	</div>
+
+
+	<div class="col-md-6 ">
+
+			
+		<table class="table table-sm">
+			<!--Table head-->
+			<h6><span class="badge badge-primary badge-pill">2</span> Second Semester : 
+			
+			@foreach($score_grade_12 as $score_s1)
+
+				@if ($loop->first) 
+				
+					{{ $score_s1->updated_at->format('Y') }} - 
+					{{ $score_s1->updated_at->format('Y')+1 }} 
+
+				@endif
+
+			@endforeach
+
+			<span style="color:#5d95ef" class="pull-right">
+				@foreach($score_grade_12 as $score_s1)
+
+					@if ($loop->first) 
+						{{ $score_s1->grade->grade_name }} 
+					@endif
+
+				@endforeach
+
+			</h6>
+			<thead>
+				<tr>
+					
+					<th>Subject</th>
+					<th>CRED</th>
+					<th>GRD</th>			            
+					<th>PTS</th>
+				</tr>
+			</thead>
+			<!--Table head-->
+
+			<!--Table body-->
+			<tbody>
+				@if(count($score_grade_12))
+					@foreach($score_grade_12 as $score_s1)
+
+						@foreach($grade as $grades)
+
+							@if($score_s1->grade_id == $grades->id)
+
+								
+								<tr>
+									
+									<td style="font-size: 12px; font-weight: bold">{{$score_s1->Subject->name}}</td>
+									<td style="font-size: 12px; font-weight: bold">
+										{{ ($score_s1->Subject->credit)/2}}</td>
+									<td style="font-size: 12px; font-weight: bold" > 
+
+										{{ $score_s1->gpa_quarter_2 }}
+									
+
+									</td>
+									<td style="font-size: 12px; font-weight: bold" >
+										{{ $score_s1->pts_2 }}
+										
+									</td>
+
+									
+
+								</tr>
+								
+								
+							
+							@endif
+
+						@endforeach
+					
+					@endforeach
+				@endif
+
+
+				<tr>
+					<th style="font-size: 12px; font-weight: bold">SEMESTER CREDIT</th>
+					<th style="font-size: 12px; font-weight: bold">
+
+						{{ $credit_grade_12 }}
+
+					</th>
+
+
+
+					<th style="font-size: 12px; font-weight: bold">SEMESTER GPA</th>
+					<th style="font-size: 12px; font-weight: bold">
+					
+					@if($credit_grade_12 <= 0)
+						<span>0.00</span>
+					@else
+
+						{{ number_format($sum_pts_2_grade_12/$credit_grade_12, 2, '.', '') }}
+
+					@endif
+					</th>
+
+					
+				</tr>
+			</tbody>
+			<!--Table body-->
+
+		</table>
+		<!--Table-->
+
+		
+		
+
+
+<!-- end grade 12 -->
 
 
 	</div>
 
-		<table class="table table-sm">
+	<table class="table table-sm">
 			<thead>
 				<tr>
 										
@@ -951,10 +935,7 @@
 		
 </div>
 
-
-
-
-<!------------------------------End Grade 11------------------------------------------>
+<!---------------------------------End Grade 12-------------------------------------->
 
 
 

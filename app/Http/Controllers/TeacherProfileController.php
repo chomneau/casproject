@@ -26,6 +26,7 @@ use App\PrekScore;
 use App\SecondaryScore;
 use App\KSubject;
 use App\PrimarySubject;
+use App\Staff;
 
 
 
@@ -67,34 +68,46 @@ class TeacherProfileController extends Controller
 
     public function index(){
 
-        $teacher = Teacher::find(Auth()->user()->id);
         $countAllStudent = StudentProfile::all()->count();
         $countFemaleStudent = StudentProfile::where('gender','Female')->count();
         $countMaleStudent = StudentProfile::where('gender','Male')->count();
-        //teacher
-        $totalStaff = Teacher::all()->count();
-        $countMaleStaff = Teacher::where('gender','Male')->count();
-        $countFemaleStaff = Teacher::where('gender','Female')->count();
 
         $countQuit = StudentProfile::where('status', 'Quit')->count();
 
         $countGraduationStudent = StudentProfile::where('status', 'Graduated')->count();
         $countNewStudent = StudentProfile::where('status', 'New')->count();
 
+
+        //teacher
+        $totalTeacher = Teacher::all()->count();
+        $countMaleTeacher = Teacher::where('gender','Male')->count();
+        $countFemaleTeacher = Teacher::where('gender','Female')->count();
+
+        //staff
+
+        $allStaff = Staff::all()->count();
+        $countMaleStaff = Staff::where('gender','Male')->count();
+        $countFemaleStaff = Staff::where('gender','Female')->count();
+
         
         return view('admin.index')->with([
             'countAllStudent'=>$countAllStudent,
             'countFemaleStudent'=>$countFemaleStudent,
             'countMaleStudent'=>$countMaleStudent,
-            'countMaleStaff'=>$countMaleStaff,
-            'countFemaleStaff'=>$countFemaleStaff,
-            'totalStaff'=>$totalStaff,
-            
+
             'countQuitStudent'=>$countQuit,
             'countNewStudent'=>$countNewStudent,
             'countGraduationStudent'=>$countGraduationStudent,
+            
+            'countMaleTeacher'=>$countMaleTeacher,
+            'countFemaleTeacher'=>$countFemaleTeacher,
+            'totalTeacher'=>$totalTeacher,
 
-            'teacher'=>$teacher
+            'allStaff'=>$allStaff,
+            'countMaleStaff'=>$countMaleStaff,
+            'countFemaleStaff'=>$countFemaleStaff,
+
+
             ]);
 
         
@@ -102,8 +115,8 @@ class TeacherProfileController extends Controller
 
     //teacher profile
 
-    public function teacherProfile($teacher_id){
-        $teacher = Teacher::find($teacher_id);
+    public function teacherProfile(){
+        $teacher = Teacher::find(Auth::user()->id);
         return view('admin.teacher.teacher_profile')->with('teacher', $teacher);
     }
 

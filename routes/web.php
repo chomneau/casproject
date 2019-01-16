@@ -422,6 +422,15 @@ Route::prefix('admin')->group(function () {
     //CGPA for Grade 9 to 11 
     Route::get('/transcript911/student/{student_id}', 'TranscriptController@transcript911')->name('transcript911');
 
+    //CGPA for Grade 10 to 11 
+    Route::get('/transcript1011/student/{student_id}', 'TranscriptController@transcript1011')->name('transcript1011');
+
+      //CGPA for Grade 11 to 12 
+    Route::get('/transcript1112/student/{student_id}', 'TranscriptController@transcript1112')->name('transcript1112');
+
+    //CGPA for Grade 10 to 12
+    Route::get('/transcript1012/student/{student_id}', 'TranscriptController@transcript1012')->name('transcript1012');
+
 
     //search student
 
@@ -472,8 +481,9 @@ Route::prefix('teacher')->group(function () {
     //change password method
     Route::post('/changePassword/{teacher_id}', 'TeacherProfileController@updatePassword')->name('teacher.changePassword.update');
 
-    Route::get('/', 'TeacherProfileController@index');
-    Route::get('/profile/{teacher_id}', 'TeacherProfileController@teacherProfile')->name('teacher.profile');
+    Route::get('/', 'TeacherProfileController@index')->name('teacher.dashboard');
+
+    Route::get('/profile', 'TeacherProfileController@teacherProfile')->name('teacher.profile');
 
     Route::get('/login', 'Auth\TeacherLoginController@showLoginForm')->name('teacher.login');
     Route::post('/login', 'Auth\TeacherLoginController@teacherLogin')->name('teacher.login.submit');

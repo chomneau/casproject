@@ -199,12 +199,24 @@
                       <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
                         <li role="presentation" class="active"><a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Transcript by Grade</a>
                         </li>
-                        <li role="presentation" class=""><a href="#tab_content2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">CGPA Grade 9 - 10</a>
+                        <li role="presentation" class=""><a href="#tab_content2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">CGPA G 9 - 10</a>
                         </li>
-                        <li role="presentation" class=""><a href="#tab_content3" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false">CGPA Grade 9 - 11</a>
+                        <li role="presentation" class=""><a href="#tab_content3" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false">CGPA G 9 - 11</a>
                         </li>
-                        <li role="presentation" class=""><a href="#tab_content4" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false">CGPA Grade 9 - 12</a>
+                        <li role="presentation" class=""><a href="#tab_content4" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false">CGPA G 9 - 12</a>
                         </li>
+
+                        <li role="presentation" class=""><a href="#tab_content5" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false">CGPA G 10 - 11</a>
+                        </li>
+
+                        <li role="presentation" class=""><a href="#tab_content7" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false">CGPA G 10 - 12</a>
+                        </li>
+
+                        <li role="presentation" class=""><a href="#tab_content6" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false">CGPA G 11 - 12</a>
+                        </li>
+
+
+
                       </ul>
                       <div id="myTabContent" class="tab-content">
 
@@ -416,6 +428,196 @@
 
 
                         </div>
+
+
+                        {{--CGPA 10-11--}}
+
+                        <div role="tabpanel" class="tab-pane fade" id="tab_content5" aria-labelledby="profile-tab">
+                          
+
+                        {{--CGPA for Hight school--}}
+                            <div class="col-md-3 col-sm-6 col-xs-12 pull-right" style="margin-right: 15.5em">
+                                <div class="x_panel">
+                                    <div class="x_title">
+                                        <h2>CGPA Grade 10 - 11</h2>
+                                        <div class="clearfix"></div>
+
+                                    </div>
+                                    <form action="{{ route('transcript1011', ['student_id'=>$students->id]) }}" method="GET">
+                                        {{ csrf_field() }}
+                                        <div class="tab-content">
+                                            <div class="tab-pane active" id="home">
+
+                                            <label for="checkall">
+                                                <input type="checkbox" id="checkall" > Check all
+                                            </label>
+                                            <hr>
+
+                                                @if(count($grade))
+                                                    @foreach($grade as $grades)
+
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input type="checkbox" class="checkItem" 
+                                                                name="grade[]"  value="{{$grades->id}}"  >
+
+                                                                {{ $grades->grade_name }}
+
+                                                            </label>
+                                                        </div>
+
+
+                                                    @endforeach
+
+                                                @endif
+
+                                            </div>
+
+                                            <div class="pull-right" style="margin-top: -80px">
+                                                <input type="submit" value="print view" id="submit" class="btn btn-success ">
+                                            </div>
+
+                                        </div>
+                                        <!-- end form -->
+
+                                    </form>
+                                </div>
+                            </div>
+                        
+
+
+                        </div>
+
+                        {{--end CGPA 10-11 --}}
+
+
+                        {{--CGPA 11-12--}}
+
+                        <div role="tabpanel" class="tab-pane fade" id="tab_content6" aria-labelledby="profile-tab">
+                          
+
+                        {{--CGPA for Hight school--}}
+                            <div class="col-md-3 col-sm-6 col-xs-12 pull-right" style="margin-right: 3.5em">
+                                <div class="x_panel">
+                                    <div class="x_title">
+                                        <h2>CGPA Grade 11 - 12</h2>
+                                        <div class="clearfix"></div>
+
+                                    </div>
+                                    <form action="{{ route('transcript1112', ['student_id'=>$students->id]) }}" method="GET">
+                                        {{ csrf_field() }}
+                                        <div class="tab-content">
+                                            <div class="tab-pane active" id="home">
+
+                                            <label for="checkall">
+                                                <input type="checkbox" id="checkall" > Check all
+                                            </label>
+                                            <hr>
+
+                                                @if(count($grade))
+                                                    @foreach($grade as $grades)
+
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input type="checkbox" class="checkItem" 
+                                                                name="grade[]"  value="{{$grades->id}}"  >
+
+                                                                {{ $grades->grade_name }}
+
+                                                            </label>
+                                                        </div>
+
+
+                                                    @endforeach
+
+                                                @endif
+
+                                            </div>
+
+                                            <div class="pull-right" style="margin-top: -80px">
+                                                <input type="submit" value="print view" id="submit" class="btn btn-success ">
+                                            </div>
+
+                                        </div>
+                                        <!-- end form -->
+
+                                    </form>
+                                </div>
+                            </div>
+                        {{--end CGPA--}}
+
+
+                        </div>
+
+                        {{--end CGPA 10-11 --}}
+
+
+                        {{--CGPA 10-12--}}
+
+                        <div role="tabpanel" class="tab-pane fade" id="tab_content7" aria-labelledby="profile-tab">
+                          
+
+                        {{--CGPA for Hight school--}}
+                            <div class="col-md-3 col-sm-6 col-xs-12 pull-right" style="margin-right: 10.5em">
+                                <div class="x_panel">
+                                    <div class="x_title">
+                                        <h2>CGPA Grade 10 - 12</h2>
+                                        <div class="clearfix"></div>
+
+                                    </div>
+                                    <form action="{{ route('transcript1012', ['student_id'=>$students->id]) }}" method="GET">
+                                        {{ csrf_field() }}
+                                        <div class="tab-content">
+                                            <div class="tab-pane active" id="home">
+
+                                            <label for="checkall">
+                                                <input type="checkbox" id="checkall" > Check all
+                                            </label>
+                                            <hr>
+
+                                                @if(count($grade))
+                                                    @foreach($grade as $grades)
+
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input type="checkbox" class="checkItem" 
+                                                                name="grade[]"  value="{{$grades->id}}"  >
+
+                                                                {{ $grades->grade_name }}
+
+                                                            </label>
+                                                        </div>
+
+
+                                                    @endforeach
+
+                                                @endif
+
+                                            </div>
+
+                                            <div class="pull-right" style="margin-top: -80px">
+                                                <input type="submit" value="print view" id="submit" class="btn btn-success ">
+                                            </div>
+
+                                        </div>
+                                        <!-- end form -->
+
+                                    </form>
+                                </div>
+                            </div>
+                        
+
+
+                        </div>
+
+                        {{--end CGPA 10-12 --}}
+
+
+
+
+
+
+
                       </div>
                     </div>
 

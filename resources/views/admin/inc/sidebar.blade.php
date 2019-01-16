@@ -47,7 +47,7 @@
                     </li>
 
 
-                    <li><a><i class="fas fa-users"></i> Staffs <span class="fa fa-chevron-down"></span></a>
+                    <li><a><i class="fas fa-users"></i> Staff <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
                             <li><a href="{{ route('admin.showStaff') }}">View all Staffs</a></li>
                             <li><a href="{{ route('admin.createStaff') }}">Create new Staff</a></li>
@@ -148,10 +148,19 @@
                 <h3>General</h3>
                 <ul class="nav side-menu">
                     <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
+
                         <ul class="nav child_menu">
-                            <li><a href="{{route('teacher.profile', ['teacher_id'=>Auth::user()->id])}}">Teacher Profile</a></li>
+
+                            <li><a href="{{route('teacher.dashboard')}}">Dashboard</a></li>
+                            <li>
+                                <a href="{{route('teacher.profile', ['teacher_id'=>Auth::user()->id])}}">Teacher Profile
+                                </a>
+                            </li>
                             
                         </ul>
+
+                        
+
                     </li>
 
                     <li>
@@ -169,8 +178,6 @@
                             <a href="{{ route('teacher.student.byGrade', ['teacher_id'=>Auth()->user()->id ]) }}">View Student by Grade</a>
                             </li>
 
-
-                            
 
                         </ul>
                     </li>

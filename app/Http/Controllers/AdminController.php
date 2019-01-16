@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Foundation\Auth\User;
 use App\StudentProfile;
 use App\Teacher;
+use App\Staff;
 
 
 class AdminController extends Controller
@@ -45,9 +46,15 @@ class AdminController extends Controller
 
 
         //teacher
-        $totalStaff = Teacher::all()->count();
-        $countMaleStaff = Teacher::where('gender','Male')->count();
-        $countFemaleStaff = Teacher::where('gender','Female')->count();
+        $totalTeacher = Teacher::all()->count();
+        $countMaleTeacher = Teacher::where('gender','Male')->count();
+        $countFemaleTeacher = Teacher::where('gender','Female')->count();
+
+        //staff
+
+        $allStaff = Staff::all()->count();
+        $countMaleStaff = Staff::where('gender','Male')->count();
+        $countFemaleStaff = Staff::where('gender','Female')->count();
 
         
         return view('admin.index')->with([
@@ -59,9 +66,15 @@ class AdminController extends Controller
             'countNewStudent'=>$countNewStudent,
             'countGraduationStudent'=>$countGraduationStudent,
             
+            'countMaleTeacher'=>$countMaleTeacher,
+            'countFemaleTeacher'=>$countFemaleTeacher,
+            'totalTeacher'=>$totalTeacher,
+
+            'allStaff'=>$allStaff,
             'countMaleStaff'=>$countMaleStaff,
             'countFemaleStaff'=>$countFemaleStaff,
-            'totalStaff'=>$totalStaff,
+
+
             ]);
     }
 //    public function showPostjobForm()
