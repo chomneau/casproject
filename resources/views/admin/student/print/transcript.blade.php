@@ -232,31 +232,42 @@
                                       <form action="{{ route('highschool.transcript', ['student_id'=>$students->id]) }}" method="GET">
                                           {{ csrf_field() }}
                                             <div class="tab-content">
-                                                <div class="tab-pane active" id="home">
 
-                                                    @if(count($grade))
-                                                        @foreach($grade as $grades)
+                                                <div class="row">
+                                                    <div class="col-md-8">
+                                                        
+                                                        <div class="tab-pane active" id="home">
 
-
-                                                            <div class="checkbox">
-                                                                <label>
-                                                                  <input type="radio" name="grade" id ="radio" class="flat" value="{{$grades->id}}">
-
-                                                                  {{ $grades->grade_name }}
-
-                                                                </label>
-                                                            </div>
+                                                            @if(count($grade))
+                                                                @foreach($grade as $grades)
 
 
-                                                        @endforeach
+                                                                    <div class="checkbox">
+                                                                        <label>
+                                                                          <input type="radio" name="grade" id ="radio" class="flat" value="{{$grades->id}}">
 
-                                                    @endif
+                                                                          {{ $grades->grade_name }}
 
+                                                                        </label>
+                                                                    </div>
+
+
+                                                                @endforeach
+
+                                                            @endif
+
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="col-md-4" style="margin-top: 12px">
+                                                        <div class="pull-right">
+                                                            <input type="submit" value="print view" class="btn btn-success btn-sm">
+                                                        </div>
+                                                    </div>
                                                 </div>
 
-                                                <div class="pull-right" style="margin-top: -80px">
-                                                    <input type="submit" value="print view" id="submit_yearly" class="btn btn-success btn-sm">
-                                                </div>
+
+                                                
 
                                             </div>
                                         <!-- end form -->
@@ -278,36 +289,50 @@
                                     <form action="{{ route('transcript910', ['student_id'=>$students->id]) }}" method="GET">
                                         {{ csrf_field() }}
                                         <div class="tab-content">
-                                            <div class="tab-pane active" id="home">
 
-                                            <label for="checkall">
-                                                <input type="checkbox" id="checkall" > Check all
-                                            </label>
-                                            <hr>
 
-                                                @if(count($grade))
-                                                    @foreach($grade as $grades)
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                        
+                                                    <div class="tab-pane active" id="home">
 
-                                                        <div class="checkbox">
-                                                            <label>
-                                                                <input type="checkbox" class="checkItem" 
-                                                                name="grade[]"  value="{{$grades->id}}"  >
+                                                    <label for="checkall">
+                                                        <input type="checkbox" id="checkall" > Check all
+                                                    </label>
+                                                    <hr>
 
-                                                                {{ $grades->grade_name }}
+                                                        @if(count($grade))
+                                                            @foreach($grade as $grades)
 
-                                                            </label>
+                                                                <div class="checkbox">
+                                                                    <label>
+                                                                        <input type="checkbox" class="checkItem" 
+                                                                        name="grade[]"  value="{{$grades->id}}"  >
+
+                                                                        {{ $grades->grade_name }}
+
+                                                                    </label>
+                                                                </div>
+
+
+                                                            @endforeach
+
+                                                        @endif
+
+                                                    </div>
+
+
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="pull-right">
+                                                            <input type="submit" value="print view" class="btn btn-success btn-sm">
                                                         </div>
+                                                    </div>
+                                                </div>
 
 
-                                                    @endforeach
 
-                                                @endif
-
-                                            </div>
-
-                                            <div class="pull-right" style="margin-top: -80px">
-                                                <input type="submit" value="print view" id="submit" class="btn btn-success ">
-                                            </div>
+                                            
 
                                         </div>
                                         <!-- end form -->
@@ -332,36 +357,50 @@
                                     <form action="{{ route('transcript911', ['student_id'=>$students->id]) }}" method="GET">
                                         {{ csrf_field() }}
                                         <div class="tab-content">
-                                            <div class="tab-pane active" id="home">
 
-                                            <label for="checkall">
-                                                <input type="checkbox" id="checkall" > Check all
-                                            </label>
-                                            <hr>
 
-                                                @if(count($grade))
-                                                    @foreach($grade as $grades)
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="tab-pane active" id="home">
 
-                                                        <div class="checkbox">
-                                                            <label>
-                                                                <input type="checkbox" class="checkItem" 
-                                                                name="grade[]"  value="{{$grades->id}}"  >
+                                                        <label for="checkall">
+                                                            <input type="checkbox" id="checkall" > Check all
+                                                        </label>
+                                                        <hr>
 
-                                                                {{ $grades->grade_name }}
+                                                            @if(count($grade))
+                                                                @foreach($grade as $grades)
 
-                                                            </label>
+                                                                    <div class="checkbox">
+                                                                        <label>
+                                                                            <input type="checkbox" class="checkItem" 
+                                                                            name="grade[]"  value="{{$grades->id}}"  >
+
+                                                                            {{ $grades->grade_name }}
+
+                                                                        </label>
+                                                                    </div>
+
+
+                                                                @endforeach
+
+                                                            @endif
+
                                                         </div>
 
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="pull-right">
+                                                            <input type="submit" value="print view" class="btn btn-success btn-sm">
+                                                        </div>
+                                                    </div>
 
-                                                    @endforeach
+                                                </div>{{--end row--}}
 
-                                                @endif
 
-                                            </div>
 
-                                            <div class="pull-right" style="margin-top: -80px">
-                                                <input type="submit" value="print view" id="submit" class="btn btn-success ">
-                                            </div>
+
+                                            
 
                                         </div>
                                         <!-- end form -->
@@ -387,36 +426,49 @@
                                     <form action="{{ route('cgpa.school', ['student_id'=>$students->id]) }}" method="GET">
                                         {{ csrf_field() }}
                                         <div class="tab-content">
-                                            <div class="tab-pane active" id="home">
 
-                                            <label for="checkall">
-                                                <input type="checkbox" id="checkall" > Check all
-                                            </label>
-                                            <hr>
 
-                                                @if(count($grade))
-                                                    @foreach($grade as $grades)
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="tab-pane active" id="home">
 
-                                                        <div class="checkbox">
-                                                            <label>
-                                                                <input type="checkbox" class="checkItem" 
-                                                                name="grade[]"  value="{{$grades->id}}"  >
+                                                        <label for="checkall">
+                                                            <input type="checkbox" id="checkall"> Check all
+                                                        </label>
+                                                        <hr>
 
-                                                                {{ $grades->grade_name }}
+                                                            @if(count($grade))
+                                                                @foreach($grade as $grades)
 
-                                                            </label>
+                                                                    <div class="checkbox">
+                                                                        <label>
+                                                                            <input type="checkbox" class="checkItem" 
+                                                                            name="grade[]"  value="{{$grades->id}}"  >
+
+                                                                            {{ $grades->grade_name }}
+
+                                                                        </label>
+                                                                    </div>
+
+
+                                                                @endforeach
+
+                                                            @endif
+
                                                         </div>
 
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="pull-right">
+                                                            <input type="submit" value="print view" class="btn btn-success btn-sm">
+                                                        </div>
+                                                    </div>
+                                                </div>
 
-                                                    @endforeach
 
-                                                @endif
 
-                                            </div>
 
-                                            <div class="pull-right" style="margin-top: -80px">
-                                                <input type="submit" value="print view" id="submit" class="btn btn-success ">
-                                            </div>
+                                            
 
                                         </div>
                                         <!-- end form -->
@@ -446,36 +498,47 @@
                                     <form action="{{ route('transcript1011', ['student_id'=>$students->id]) }}" method="GET">
                                         {{ csrf_field() }}
                                         <div class="tab-content">
-                                            <div class="tab-pane active" id="home">
 
-                                            <label for="checkall">
-                                                <input type="checkbox" id="checkall" > Check all
-                                            </label>
-                                            <hr>
 
-                                                @if(count($grade))
-                                                    @foreach($grade as $grades)
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="tab-pane active" id="home">
 
-                                                        <div class="checkbox">
-                                                            <label>
-                                                                <input type="checkbox" class="checkItem" 
-                                                                name="grade[]"  value="{{$grades->id}}"  >
-
-                                                                {{ $grades->grade_name }}
-
+                                                            <label for="checkall">
+                                                                <input type="checkbox" id="checkall" > Check all
                                                             </label>
+                                                            <hr>
+
+                                                                @if(count($grade))
+                                                                    @foreach($grade as $grades)
+
+                                                                        <div class="checkbox">
+                                                                            <label>
+                                                                                <input type="checkbox" class="checkItem" 
+                                                                                name="grade[]"  value="{{$grades->id}}"  >
+
+                                                                                {{ $grades->grade_name }}
+
+                                                                            </label>
+                                                                        </div>
+
+
+                                                                    @endforeach
+
+                                                                @endif
+
+                                                            </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="pull-right">
+                                                            <input type="submit" value="print view" class="btn btn-success btn-sm">
                                                         </div>
+                                                    </div>
+                                                </div>
 
 
-                                                    @endforeach
 
-                                                @endif
-
-                                            </div>
-
-                                            <div class="pull-right" style="margin-top: -80px">
-                                                <input type="submit" value="print view" id="submit" class="btn btn-success ">
-                                            </div>
+                                    
 
                                         </div>
                                         <!-- end form -->
@@ -507,36 +570,47 @@
                                     <form action="{{ route('transcript1112', ['student_id'=>$students->id]) }}" method="GET">
                                         {{ csrf_field() }}
                                         <div class="tab-content">
-                                            <div class="tab-pane active" id="home">
 
-                                            <label for="checkall">
-                                                <input type="checkbox" id="checkall" > Check all
-                                            </label>
-                                            <hr>
 
-                                                @if(count($grade))
-                                                    @foreach($grade as $grades)
 
-                                                        <div class="checkbox">
-                                                            <label>
-                                                                <input type="checkbox" class="checkItem" 
-                                                                name="grade[]"  value="{{$grades->id}}"  >
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="tab-pane active" id="home">
 
-                                                                {{ $grades->grade_name }}
-
+                                                            <label for="checkall">
+                                                                <input type="checkbox" id="checkall" > Check all
                                                             </label>
+                                                            <hr>
+
+                                                                @if(count($grade))
+                                                                    @foreach($grade as $grades)
+
+                                                                        <div class="checkbox">
+                                                                            <label>
+                                                                                <input type="checkbox" class="checkItem" 
+                                                                                name="grade[]"  value="{{$grades->id}}"  >
+
+                                                                                {{ $grades->grade_name }}
+
+                                                                            </label>
+                                                                        </div>
+
+
+                                                                    @endforeach
+
+                                                                @endif
+
+                                                            </div>
+
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="pull-right">
+                                                            <input type="submit" value="print view" class="btn btn-success btn-sm">
                                                         </div>
+                                                    </div>
+                                                </div>
 
 
-                                                    @endforeach
-
-                                                @endif
-
-                                            </div>
-
-                                            <div class="pull-right" style="margin-top: -80px">
-                                                <input type="submit" value="print view" id="submit" class="btn btn-success ">
-                                            </div>
 
                                         </div>
                                         <!-- end form -->
@@ -568,36 +642,48 @@
                                     <form action="{{ route('transcript1012', ['student_id'=>$students->id]) }}" method="GET">
                                         {{ csrf_field() }}
                                         <div class="tab-content">
-                                            <div class="tab-pane active" id="home">
 
-                                            <label for="checkall">
-                                                <input type="checkbox" id="checkall" > Check all
-                                            </label>
-                                            <hr>
 
-                                                @if(count($grade))
-                                                    @foreach($grade as $grades)
 
-                                                        <div class="checkbox">
-                                                            <label>
-                                                                <input type="checkbox" class="checkItem" 
-                                                                name="grade[]"  value="{{$grades->id}}"  >
+                                            <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="tab-pane active" id="home">
 
-                                                                {{ $grades->grade_name }}
-
+                                                            <label for="checkall">
+                                                                <input type="checkbox" id="checkall" > Check all
                                                             </label>
+                                                            <hr>
+
+                                                                @if(count($grade))
+                                                                    @foreach($grade as $grades)
+
+                                                                        <div class="checkbox">
+                                                                            <label>
+                                                                                <input type="checkbox" class="checkItem" 
+                                                                                name="grade[]"  value="{{$grades->id}}"  >
+
+                                                                                {{ $grades->grade_name }}
+
+                                                                            </label>
+                                                                        </div>
+
+
+                                                                    @endforeach
+
+                                                                @endif
+
+                                                            </div>
+
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="pull-right">
+                                                            <input type="submit" value="print view" class="btn btn-success btn-sm">
                                                         </div>
+                                                    </div>
+                                                </div>
 
 
-                                                    @endforeach
 
-                                                @endif
-
-                                            </div>
-
-                                            <div class="pull-right" style="margin-top: -80px">
-                                                <input type="submit" value="print view" id="submit" class="btn btn-success ">
-                                            </div>
 
                                         </div>
                                         <!-- end form -->

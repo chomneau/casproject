@@ -38,17 +38,29 @@
 
                                         {{--display subject name--}} 
 
-                                        @if(count($subject)) 
+                                        
+                                            @if(count($subject))
 
                                             @foreach ($subject as $subjects) 
 
                                                 @if($score->subject_id == $subjects->id)
-                                                    <td>{{ $subjects->name }}</td>
+
+                                                    <td>
+                                                        {{ $subjects->name }}
+                                                    </td>
+                                                        
+                                                    
+
                                                 @endif 
 
-                                            @endforeach 
+                                            @endforeach
 
                                         @endif 
+
+                                        
+                                        
+
+                                        
                                         {{--display grade name--}} 
 
                                         @if(count($grade)) 

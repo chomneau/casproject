@@ -28,30 +28,41 @@
                                     
                                     <form action="{{ route('prek.printview', ['student_id'=>$students->id]) }}">
                                         <div class="x_content">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                    <div class="tab-pane active" id="home">                              
+                                                            @if(count($kgrade))
+                                                                @foreach($kgrade as $kgrades)
+                                                                    
+                                                                    <div class="checkbox">
+                                                                        <label>
+                                                                          <input type="radio" name="kgrade[]" class="flat" 
+                                                                          value="{{ $kgrades->id }}"> {{ $kgrades->name }}
+                                                                        </label>
+                                                                    </div>
 
-                                            <div class="form-group">
-                                                <div class="tab-pane active" id="home">                              
-                                                        @if(count($kgrade))
-                                                            @foreach($kgrade as $kgrades)
+                                                                @endforeach
                                                                 
-                                                                <div class="checkbox">
-                                                                    <label>
-                                                                      <input type="radio" name="kgrade[]" class="flat" 
-                                                                      value="{{ $kgrades->id }}"> {{ $kgrades->name }}
-                                                                    </label>
-                                                                </div>
+                                                            @endif
 
-                                                            @endforeach
-                                                            
-                                                        @endif
+                                                    </div>
 
-                                                </div>
-
-                                                <div class="pull-right" style="margin-top: -60px">
-                                                    <input type="submit" value="print view" class="btn btn-primary btn-sm">
-                                                </div>
+                                            
 
                                             </div> 
+
+
+                                                </div>
+                                                <div class="col-md-6" style="margin-top: 20px">
+                                                    <div class="pull-right">
+                                                        <input type="submit" value="print view" class="btn btn-success btn-sm">
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                            
                       
                                         </div>
                                     </form>    
@@ -70,30 +81,48 @@
                                 <form action="{{ route('secondaryschool.printview', ['student_id'=>$students->id]) }}">
 
                                     <div class="tab-content">
-                                        <div class="tab-pane active" id="home">
 
-                                            @if(count($secondaryGrade))
-                                                @foreach($secondaryGrade as $secondaryGrades)
-
-                                                    
-                                                    <div class="checkbox">
-                                                        <label>
-                                                          <input type="radio" name="secondaryGrade[]" class="flat" 
-                                                          value="{{$secondaryGrades->id}}"> {{$secondaryGrades->name}}
-
-                                                        </label>
-                                                    </div>
-                                                    
-
-                                                @endforeach
+                                        <div class="row">
+                                            <div class="col-md-6">
                                                 
-                                            @endif
+                                            <div class="tab-pane active" id="home">
 
+                                                @if(count($secondaryGrade))
+                                                    @foreach($secondaryGrade as $secondaryGrades)
+
+                                                        
+                                                        <div class="checkbox">
+                                                            <label>
+                                                              <input type="radio" name="secondaryGrade[]" class="flat" 
+                                                              value="{{$secondaryGrades->id}}"> {{$secondaryGrades->name}}
+
+                                                            </label>
+                                                        </div>
+                                                        
+
+                                                    @endforeach
+                                                    
+                                                @endif
+
+                                            </div>
+
+
+
+
+
+                                            </div>
+
+                                            <div class="col-md-6" style="margin-top: 10px">
+                                                <div class="pull-right">
+                                                    <input type="submit" value="print view" class="btn btn-success btn-sm">
+                                                </div>
+                                            </div>
                                         </div>
 
-                                        <div class="pull-right" style="margin-top: -10em">
-                                            <input type="submit" value="print view" class="btn btn-primary ">
-                                        </div>
+
+                                        
+
+                                    
 
                                     </div>
                                  <!-- end form -->
@@ -116,31 +145,43 @@
 
                                 {{csrf_field()}}
                                 <div class="tab-content">
-                                    <div class="tab-pane active" id="home">
 
-                                        @if(count($grade))
-                                            @foreach($grade as $grades)
-
-                                                
-                                                <div class="checkbox">
-                                                    <label>
-                                                      <input type="radio" name="grade[]" class="flat" value="{{$grades->id}}"> 
-
-                                                      {{ $grades->grade_name }}
-
-                                                    </label>
-                                                </div>
-                                                
-
-                                            @endforeach
+                                    <div class="row">
+                                        <div class="col-md-6">
                                             
-                                        @endif
+                                            <div class="tab-pane active" id="home">
 
-                                    </div>
+                                                @if(count($grade))
+                                                    @foreach($grade as $grades)
 
-                                    <div class="pull-right">
-                                        <input type="submit" value="print view" class="btn btn-success btn-sm">
+                                                        
+                                                        <div class="checkbox">
+                                                            <label>
+                                                              <input type="radio" name="grade[]" class="flat" value="{{$grades->id}}"> 
+
+                                                              {{ $grades->grade_name }}
+
+                                                            </label>
+                                                        </div>
+                                                        
+
+                                                    @endforeach
+                                                    
+                                                @endif
+
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-6" style="margin-top: 10px">
+                                            
+                                            <div class="pull-right">
+                                                <input type="submit" value="print view" class="btn btn-success btn-sm">
+                                            </div>
+                                        </div>
                                     </div>
+                                    
+
+                                    
 
                                 </div> 
                                 

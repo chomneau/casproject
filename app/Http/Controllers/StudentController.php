@@ -133,7 +133,7 @@ class StudentController extends Controller
     //show all subject form to add to score table for high school student
     public function showHighScoreForm($grade_id, $student_id)
     {
-        $subject = Subject::where('grade_id', $grade_id)->get();
+        $subject = Subject::where('grade_id', $grade_id)->orderBy('name','ASC')->get();
         $student = StudentProfile::find($student_id);
         $grade = Grade::find($grade_id);
         return view('admin.student.high_school.add_all_subject_to_highschool_form')
@@ -499,8 +499,7 @@ class StudentController extends Controller
         $user = StudentProfile::find($id)->user;
         $user->name = $request->first_name;
         $user->student_id = $request->student_id;
-        $user->email = $request->student_id."@cas.edu.kh";
-        $user->password = bcrypt($request->student_id);
+        
         $user->save();
 
         if ($request->hasFile('photo')) {

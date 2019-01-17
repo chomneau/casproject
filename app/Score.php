@@ -15,7 +15,7 @@ class Score extends Model
         return $this->belongsTo(StudentProfile::class);
     }
 
-    public function Subject(){
+    public function subject(){
     	return $this->belongsTo(Subject::class);
     }
 
