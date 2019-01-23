@@ -399,8 +399,10 @@ Route::prefix('admin')->group(function () {
 
     Route::get('/selectOption/{student_id}', 'TranscriptController@selectOption')->name('select.option');
 
-//K and Pre-K print view
+//Pre-K print view
     Route::get('/printView/prek/{student_id}', 'TranscriptController@prekPrintView')->name('prek.printview');
+//Grade K print preview
+    Route::get('/printView/gradek/{student_id}', 'TranscriptController@gradekPrintView')->name('gradek.printview');
 
     //high School print view
     Route::get('/printView/secondaryschool/{student_id}', 'TranscriptController@secondarySchoolPrintView')->name('secondaryschool.printview');

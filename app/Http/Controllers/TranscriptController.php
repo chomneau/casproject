@@ -69,7 +69,7 @@ class TranscriptController extends Controller
     }
 
 
-    //print view for K and Prek
+    //print view for Prek
 
     public function prekPrintView(Request $request, $student_id){
 
@@ -123,6 +123,83 @@ class TranscriptController extends Controller
                         'subject_code_FAA'=>$FAA,
                         'subject_code_PEP'=>$PEP,
                         'subject_code_SRS'=>$SRS,
+
+                    ]);
+        
+
+
+    }
+
+
+    //print view for Grade k
+
+    public function gradekPrintView(Request $request, $student_id){
+
+        $student = StudentProfile::find($student_id);
+
+        $checked_id = $request->input('kgrade');
+
+        $kscore = PrekScore::where('student_profile_id', $student_id)
+        ->whereIn('k_level_id', $checked_id)->get();
+
+        //SD : Spiritual Development
+        $SD = PrekScore::where([['student_profile_id', $student_id], ['subject_code', 'SD']] )
+            ->whereIn('k_level_id', $checked_id)->get();
+        // PD : Personal/Social Development
+        $PD = PrekScore::where([['student_profile_id', $student_id], ['subject_code', 'PD']] )
+            ->whereIn('k_level_id', $checked_id)->get();
+        // ART = Art
+        $ART = PrekScore::where([['student_profile_id', $student_id], ['subject_code', 'ART']] )
+            ->whereIn('k_level_id', $checked_id)->get();
+        // MUSIC: Music
+        $MUSIC = PrekScore::where([['student_profile_id', $student_id], ['subject_code', 'MUSIC']] )
+            ->whereIn('k_level_id', $checked_id)->get();
+        // DERWS: Demontrantes emergent reading and writing skills(English section)
+        $DERWS = PrekScore::where([['student_profile_id', $student_id], ['subject_code', 'DERWS']] )
+            ->whereIn('k_level_id', $checked_id)->get();
+        // EAWSS: Exhibits appropriate word study skills(English section)
+        $EAWSS = PrekScore::where([['student_profile_id', $student_id], ['subject_code', 'EAWSS']] )
+            ->whereIn('k_level_id', $checked_id)->get();
+        // DERWS_KH : Demontrantes emergent reading and writing skills (Khmer Section)
+        $DERWS_KH = PrekScore::where([['student_profile_id', $student_id], ['subject_code', 'DERWS_KH']] )
+            ->whereIn('k_level_id', $checked_id)->get();
+        // EASWSS : Exhibits appropriate word study skills(Khmer section)
+        $EAWSS_KH = PrekScore::where([['student_profile_id', $student_id], ['subject_code', 'EAWSS_KH']] )
+            ->whereIn('k_level_id', $checked_id)->get();
+
+        // MATH : Mathematics (Refer to tracking card)
+        $MATH = PrekScore::where([['student_profile_id', $student_id], ['subject_code', 'MATH']] )
+             ->whereIn('k_level_id', $checked_id)->get();
+
+        // PEDH : Physical Educe do / Health(Refer to tracking card)
+        $PEDH = PrekScore::where([['student_profile_id', $student_id], ['subject_code', 'PEDH']] )
+             ->whereIn('k_level_id', $checked_id)->get();
+        // SCIENCE : Science
+        $SCIENCE = PrekScore::where([['student_profile_id', $student_id], ['subject_code', 'SCIENCE']] )
+             ->whereIn('k_level_id', $checked_id)->get(); 
+
+        // SS : Social Science
+        $SS = PrekScore::where([['student_profile_id', $student_id], ['subject_code', 'SS']] )
+             ->whereIn('k_level_id', $checked_id)->get();          
+
+
+        return view('admin.student.print.gradeK_yearly_report')
+                    ->with([
+
+                        'kscore'=>$kscore,
+                        'student'=>$student,
+                        'subject_code_SD'=>$SD,
+                        'subject_code_PD'=>$PD,
+                        'subject_code_ART'=>$ART,
+                        'subject_code_MUSIC'=>$MUSIC,
+                        'subject_code_DERWS'=>$DERWS,
+                        'subject_code_EAWSS'=>$EAWSS,
+                        'subject_code_DERWS_KH'=>$DERWS_KH,
+                        'subject_code_EAWSS_KH'=>$EAWSS_KH,
+                        'subject_code_MATH'=>$MATH,
+                        'subject_code_PEDH'=>$PEDH,
+                        'subject_code_SCIENCE'=>$SCIENCE,
+                        'subject_code_SS'=>$SS,
 
                     ]);
         

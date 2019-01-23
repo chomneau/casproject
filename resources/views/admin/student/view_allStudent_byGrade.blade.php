@@ -36,7 +36,7 @@
                 <div class="col-md-12">
                     <div class="x_panel">
                         <div class="x_title">
-                            <h2>Total student : {{ $countStudentByGrade }} <span style="margin-left: 2em"> Male:</span> <span class="badge badge-warning" style="color: seashell"> {{ $countMaleStudentByGrade }}</span> <span style="margin-left: 2em"> Femail: </span> <span class="badge" style="color: seashell">{{ $countFemaleStudentByGrade }}</span></h2>
+                            <h2>Total student : {{ $countStudentByGrade }} <span style="margin-left: 2em"> Male:</span> <span class="badge badge-warning" style="color: seashell"> {{ $countMaleStudentByGrade }}</span> <span style="margin-left: 2em"> Female: </span> <span class="badge" style="color: seashell">{{ $countFemaleStudentByGrade }}</span></h2>
                             <ul class="nav navbar-right panel_toolbox">
                                 <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                 </li>

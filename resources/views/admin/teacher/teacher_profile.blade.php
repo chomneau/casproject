@@ -75,11 +75,20 @@
 
                                             </li>
 
-                                            <li style="margin-bottom: 8px"><i class="fa fa-phone"></i>
+                                            <li style="margin-bottom: 8px"><i class="fa fa-mobile"></i>
                                                 <a href="#">Phone : {{ $teacher->phone }} </a>
                                             </li>
 
-                                            <li style="margin-bottom: 8px"><i class="fa fa-credit-email"></i>
+                                            <li style="margin-bottom: 8px"><i class="fa fa-sitemap"></i>
+                                                <a href="#">Position : {{ $teacher->position }} </a>
+                                            </li>
+
+                                            <li style="margin-bottom: 8px"><i class="fa fa-graduation-cap"></i>
+                                                <a href="#">Degree : {{ $teacher->degree }} </a>
+                                            </li>
+
+                                            <li style="margin-bottom: 8px">
+                                                <i class="fa fa-envelope"></i>
                                                 <a href="#">Email : {{ $teacher->email }} </a>
                                             </li>
                                             

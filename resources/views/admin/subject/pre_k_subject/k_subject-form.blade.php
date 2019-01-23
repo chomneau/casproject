@@ -13,10 +13,47 @@
                         <label for="exampleInputEmail1">Subject name</label>
                         <input type="text" name="name" class="form-control" placeholder="Add subject here" required autofocus>
                     </div>
+                    
+
                     <div class="modal-body">
-                        <label for="exampleInputEmail1">Subject code</label>
-                        <input type="text" name="subject_code" class="form-control" placeholder="Add subject code here" required autofocus>
+                        <label for="exampleInputEmail1">Subject Code</label>
+                        <select name="subject_code" id="" class="form-control" required>
+                            <option value="">--select grade--</option>
+                                <optgroup label="Grade Pre-k">
+                                
+                                    <option value="PPI">PPI</option>
+                                    <option value="ELAI">ELAI</option>
+                                    <option value="KLAI">KLAI</option>
+                                    <option value="MI">MI</option>
+                                    <option value="SSI">SSI</option>
+                                    <option value="SI">SI</option>
+                                    <option value="FAA">FAA</option>
+                                    <option value="PEP">PEP</option>
+                                    <option value="SRS">SRS</option>
+
+                                </optgroup>
+
+                                <optgroup label="Grade k">
+                                
+                                    <option value="SD">SD</option>
+                                    <option value="PD">PD</option>
+                                    <option value="ART">ART</option>
+                                    <option value="MUSIC">MUSIC</option>
+                                    <option value="DERWS">DERWS</option>
+                                    <option value="EAWSS">EAWSS</option>
+                                    <option value="DERWS_KH">DERWS_KH</option>
+                                    <option value="EAWSS_KH">EAWSS_KH</option>
+                                    <option value="MATH">MATH</option>
+                                    <option value="PEDH">PEDH</option>
+                                    <option value="SCIENCE">SCIENCE</option>
+                                    <option value="SS">SS</option>
+
+                                </optgroup>
+                        </select>
                     </div>
+
+
+
 
                     <div class="modal-body">
                         <label for="exampleInputEmail1">Subject to Grade</label>
