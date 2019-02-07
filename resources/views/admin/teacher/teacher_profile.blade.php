@@ -50,14 +50,14 @@
 
                                         <ul style="margin-top: 15px; list-style: none; font-size: 14px">
                                             <li style="margin-bottom: 8px"><i class="glyphicon glyphicon-user"></i>
-                                                <a href="#">Name : {{ $teacher->first_name }} {{ $teacher->last_name }}</a>
+                                                <a href="#">Name :  {{ $teacher->last_name }}, {{ $teacher->first_name }}</a>
                                             </li>
                                             <li style="margin-bottom: 8px"><i class="fa fa-transgender"></i>
                                                 <a href="#">Gender : {{ $teacher->gender }} </a>
                                             </li>
 
                                             <li style="margin-bottom: 8px"><i class="fa fa-calendar"></i>
-                                                <a href="#">Date of birth : {{ $teacher->date_of_birth }} </a>
+                                                <a href="#">Date of Birth : {{ $teacher->date_of_birth }} </a>
                                             </li>
 
                                             <li style="margin-bottom: 8px"><i class="fa fa-home"></i>

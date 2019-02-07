@@ -155,7 +155,7 @@
                                                 <td>{{ $subject->id }} <input type="hidden" name="subject_id[]" value="{{ $subject->id }}"></td>
                                                 <td><input type="text" name="subject_name" value="{{ $subject->name }}" style="border:none; font-weight: bold"> </td>
                                                 <td></td>
-                                                <td>{{$grade_id->id}}23</td>
+                                                <td>{{$grade_id->id}}</td>
 
                                             </tr>
 

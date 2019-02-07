@@ -53,12 +53,36 @@
                                         {{ $kgrades->name }}
                                     </span>
                                     <span class="arrow">
-                                        <i style="color:#55CBF2" class="ti-angle-right"></i>
+                                        <i style="color:#55CBF2" class="fa fa-angle-right"></i>
                                     </span>
                                 </a>
                         </li>
                         @endforeach 
                     @endif
+
+                    <li>
+                        <a href="{{ route('student.prek.reportCard', [ 'student_id'=>$students->id])}}">
+                            <span style="font-weight: bold;">
+                                Pre-K Report Card
+                            </span>    
+                            <span class="arrow">
+                                <i style="color:#55CBF2" class="fa fa-angle-right"></i>
+                            </span>
+                            
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{{ route('student.gradeK.reportCard', [ 'student_id'=>$students->id])}}">
+                            <span style="font-weight: bold;">
+                                K Report Card
+                            </span>    
+                            <span class="arrow">
+                                <i style="color:#55CBF2" class="fa fa-angle-right"></i>
+                            </span>
+                            
+                        </a>
+                    </li>
 
                 </ul>
             </li>
@@ -84,6 +108,20 @@
 
                     @endforeach 
                     @endif
+
+                    <li>
+                        <a href="{{ route('student.secondary.reportCard',['student_id'=>$students->id] ) }}">
+                            <span style="font-weight: bold;">
+                                Report Card
+                            </span>    
+                            <span class="arrow">
+                                <i style="color:#55CBF2" class="fa fa-angle-right"></i>
+                            </span>
+                            
+                        </a>
+                    </li>
+
+
                 </ul>
             </li>
             {{-- High school --}}
@@ -100,15 +138,38 @@
                                     {{ $grades->grade_name }}
                                 </span>
                                 <span class="arrow">
-                                    <i style="color:#55CBF2" class="ti-angle-right"></i>
+                                    <i style="color:#55CBF2; font-weight: bold;" class="ti-angle-right"></i>
                                 </span>
                             </a>
                         </li>
 
                         @endforeach 
                     @endif
+                    <li>
+                        <a href="{{ route('student.highschool.reportCard', ['student_id'=>$students->id])}}">
+                            <span style="font-weight: bold;">
+                                Report Card
+                            </span>    
+                            <span class="arrow">
+                                <i style="color:#55CBF2" class="ti-angle-right"></i>
+                            </span>
+                            
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('student.cgpa', [ 'student_id'=>$students->id]) }}">                            
+                                <span style="font-weight: bold;">
+                                    CGPA
+                                </span>
+                                <span class="arrow">
+                                    <i style="color:#55CBF2" class="ti-angle-right"></i>
+                                </span>
+                        </a>
+                    </li>
                 </ul>
             </li>
+
+            
 
             <li class="nav-item dropdown">
                 <a href="{{ route('student.assignment.show', ['student_id'=>$students->id]) }}">

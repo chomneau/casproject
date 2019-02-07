@@ -253,8 +253,6 @@ class TranscriptController extends Controller
         ->where([ ['grade_id', $checked_id]])->orderBy('grade_id', 'ASC')->get();
 
 
-        $credit_sum = Score::where('student_profile_id', $student_id)
-        ->where([ ['grade_id', $checked_id]])->sum('credit');
 
         $sum_pts_1 = Score::where('student_profile_id', $student_id)
         ->where([ ['grade_id', $checked_id]])->sum('pts_1');
@@ -262,23 +260,29 @@ class TranscriptController extends Controller
         $sum_pts_2 = Score::where('student_profile_id', $student_id)
         ->where([ ['grade_id', $checked_id]])->sum('pts_2');
 
-        $credit = $credit_sum/2;
+        $credit_grade = $semester_1->sum('credit')/2;
 
-        //  $date = Score::where('student_profile_id', $student_id)
-        // ->where([ ['grade_id', $checked_id], ['semester', 2] ])->first();
-
-        //$CGPA = ($sum_pts_1+$sum_pts_2)/2;
+        if($credit_grade > 0 && $sum_pts_1 > 0 && $sum_pts_2){
+            $total_credit = $credit_grade*2;
+            $CGPA = ($sum_pts_1/$credit_grade + $sum_pts_2/$credit_grade)/2;
+        }else{
+            $CGPA = 0.00;
+            $total_credit = 0.00;
+        }
 
         
 
         return view('admin.student.print.high_school_print_view')
         ->with([
+
             'semester_1'=>$semester_1,
             'student'=>$student,
-            'credit'=>$credit,
+            'credit_grade'=>$credit_grade,
             'sum_pts_1'=>$sum_pts_1,
             'sum_pts_2'=>$sum_pts_2,
-           // 'CGPA'=>$CGPA,
+
+           'CGPA'=>$CGPA,
+           'total_credit'=>$total_credit,
 
             
         ]);
@@ -326,6 +330,7 @@ public function yearlyReportHighSchool(Request $request, $student_id)
 
         ]);
     }
+        
         //CGPA transcript
 
     public function highSchoolCGPA( Request $request, $student_id){
@@ -384,11 +389,22 @@ public function yearlyReportHighSchool(Request $request, $student_id)
     
             $sum_pts_2_grade_12 = $score_grade_12->sum('pts_2');
 
-           
+           if($credit_grade_9 > 0 
+            && $credit_grade_10 > 0
+            && $credit_grade_11 > 0
+            && $credit_grade_12 > 0
+            && $sum_pts_1_grade_9 > 0
+            && $sum_pts_2_grade_9 > 0
+            && $sum_pts_1_grade_10 > 0
+            && $sum_pts_2_grade_10 > 0
+            && $sum_pts_1_grade_11 > 0
+            && $sum_pts_2_grade_11 > 0
+            && $sum_pts_1_grade_12 > 0
+            && $sum_pts_2_grade_12 > 0
 
-            
+        ){
 
-        // Calulate CGPA
+                // Calulate CGPA
            
                 $CGPA = (
                     $sum_pts_1_grade_9/$credit_grade_9 +
@@ -401,18 +417,15 @@ public function yearlyReportHighSchool(Request $request, $student_id)
                     $sum_pts_2_grade_12/$credit_grade_12
                     )/8;
 
-           
-        
-        
         //total all credit for student
         $total_credit = $credit_grade_9*2 + $credit_grade_10*2 + $credit_grade_11*2 + $credit_grade_12*2;
+        
+        }else{
+            
+            $CGPA = "0.00";
+            $total_credit = "0.00";
 
-           // return $grade_9."-".$grade_10."-".$grade_11."-".$grade_12;
-           // return $score_grade_11->Subject->name;
-
-            // foreach($score_grade_11 as $score_grade_11s){
-            //    return $score_grade_11s->subject->name;
-            // }
+        }
 
             
 
@@ -478,6 +491,13 @@ public function yearlyReportHighSchool(Request $request, $student_id)
     
         $sum_pts_2_grade_10 = $score_grade_10->sum('pts_2');
 
+        if($credit_grade_9 > 0 
+            && $credit_grade_10 > 0
+            && $sum_pts_1_grade_9 > 0
+            && $sum_pts_2_grade_9 > 0
+            && $sum_pts_1_grade_10 > 0
+            && $sum_pts_2_grade_10 > 0){
+
         $CGPA = (
                     $sum_pts_1_grade_9/$credit_grade_9 +
                     $sum_pts_2_grade_9/$credit_grade_9 +
@@ -486,6 +506,15 @@ public function yearlyReportHighSchool(Request $request, $student_id)
                     
                     )/4;
         $total_credit = $credit_grade_9*2 + $credit_grade_10*2;
+        
+        }else{
+            
+            $CGPA = "0.00";
+            $total_credit = "0.00";
+
+        }
+
+        
 
         return view('admin.student.print.yearly_report_highschool.cgpa_910_transcript')->with([
             'student'=> $student,
@@ -560,11 +589,26 @@ public function yearlyReportHighSchool(Request $request, $student_id)
             $sum_pts_2_grade_11 = $score_grade_11->sum('pts_2');
 
           
+        if(
+            $credit_grade_9 > 0 
+            && $credit_grade_10 > 0
+            && $credit_grade_11 > 0
+            
+            && $sum_pts_1_grade_9 > 0
+            && $sum_pts_2_grade_9 > 0
+            && $sum_pts_1_grade_10 > 0
+            && $sum_pts_2_grade_10 > 0
+            && $sum_pts_1_grade_11 > 0
+            && $sum_pts_2_grade_11 > 0
             
 
-        // Calulate CGPA
+        ){
+
+                // Calulate CGPA
            
-                $CGPA = (
+                // Calulate CGPA
+           
+        $CGPA = (
                     $sum_pts_1_grade_9/$credit_grade_9 +
                     $sum_pts_2_grade_9/$credit_grade_9 +
                     $sum_pts_1_grade_10/$credit_grade_10 +
@@ -572,13 +616,22 @@ public function yearlyReportHighSchool(Request $request, $student_id)
                     $sum_pts_1_grade_11/$credit_grade_11 +
                     $sum_pts_2_grade_11/$credit_grade_11 
                     
-                    )/6;
+                )/6;
 
            
         //total all credit for student
         $total_credit = $credit_grade_9*2 + $credit_grade_10*2 + $credit_grade_11*2;
 
            
+        
+        }else{
+            
+            $CGPA = "0.00";
+            $total_credit = "0.00";
+
+        }
+
+        
 
             
 
@@ -652,12 +705,21 @@ public function yearlyReportHighSchool(Request $request, $student_id)
     
             $sum_pts_2_grade_11 = $score_grade_11->sum('pts_2');
 
-          
+        if($credit_grade_10 > 0
+            && $credit_grade_11 > 0
+            
+            
+            && $sum_pts_1_grade_10 > 0
+            && $sum_pts_2_grade_10 > 0
+            && $sum_pts_1_grade_11 > 0
+            && $sum_pts_2_grade_11 > 0
             
 
+        ){
+           
         // Calulate CGPA
            
-                $CGPA = (
+        $CGPA = (
                     
                     $sum_pts_1_grade_10/$credit_grade_10 +
                     $sum_pts_2_grade_10/$credit_grade_10 +
@@ -671,8 +733,15 @@ public function yearlyReportHighSchool(Request $request, $student_id)
         $total_credit = $credit_grade_10*2 + $credit_grade_11*2;
 
            
-
+        
+        }else{
             
+            $CGPA = "0.00";
+            $total_credit = "0.00";
+
+        }
+            
+
 
     return view('admin.student.print.yearly_report_highschool.cgpa_1011_transcript')->with([
         'student'=> $student,
@@ -738,10 +807,20 @@ public function yearlyReportHighSchool(Request $request, $student_id)
     
             $sum_pts_2_grade_12 = $score_grade_12->sum('pts_2');
 
-           
-
+    
+    if($credit_grade_11 > 0
+            && $credit_grade_12 > 0
+            
+            
+            && $sum_pts_1_grade_11 > 0
+            && $sum_pts_2_grade_11 > 0
+            && $sum_pts_1_grade_12 > 0
+            && $sum_pts_2_grade_12 > 0
             
 
+        ){
+           
+        
         // Calulate CGPA
            
                 $CGPA = (
@@ -752,21 +831,21 @@ public function yearlyReportHighSchool(Request $request, $student_id)
                     $sum_pts_2_grade_12/$credit_grade_12
                     )/4;
 
-           
-        
         
         //total all credit for student
         $total_credit = $credit_grade_11*2 + $credit_grade_12*2;
 
-           // return $grade_9."-".$grade_10."-".$grade_11."-".$grade_12;
-           // return $score_grade_11->Subject->name;
-
-            // foreach($score_grade_11 as $score_grade_11s){
-            //    return $score_grade_11s->subject->name;
-            // }
-
+           
+        
+        }else{
             
+            $CGPA = "0.00";
+            $total_credit = "0.00";
 
+        }
+           
+
+        
     return view('admin.student.print.yearly_report_highschool.cgpa_1112_transcript')->with([
         'student'=> $student,
         
@@ -845,10 +924,22 @@ public function yearlyReportHighSchool(Request $request, $student_id)
     
             $sum_pts_2_grade_12 = $score_grade_12->sum('pts_2');
 
-           
-
+        if($credit_grade_10 > 0
+            && $credit_grade_11 > 0
+            && $credit_grade_12 > 0
+            
+            
+            && $sum_pts_1_grade_10 > 0
+            && $sum_pts_2_grade_10 > 0
+            && $sum_pts_1_grade_11 > 0
+            && $sum_pts_2_grade_11 > 0
+            && $sum_pts_1_grade_12 > 0
+            && $sum_pts_2_grade_12 > 0
             
 
+        ){
+           
+        
         // Calulate CGPA
            
                 $CGPA = (
@@ -860,14 +951,23 @@ public function yearlyReportHighSchool(Request $request, $student_id)
                     $sum_pts_1_grade_12/$credit_grade_12 +
                     $sum_pts_2_grade_12/$credit_grade_12
                     )/6;
-
-           
-        
+       
         
         //total all credit for student
         $total_credit = $credit_grade_10*2 + $credit_grade_11*2 + $credit_grade_12*2;
+  
+        
+        }else{
+            
+            $CGPA = "0.00";
+            $total_credit = "0.00";
 
+        }
+           
 
+            
+
+        
 
             
 

@@ -15,7 +15,7 @@
                         <img src="{{ asset($students->photo) }}" alt="user profile" width="150" height="150">
                     </div>
 
-                    <div class="col-lg-3 col-md-3">
+                    <div class="col-lg-4 col-md-4">
 
                         <div class="x_content" style="margin-top: -10px">
                             <div class="dashboard-widget-content">
@@ -25,14 +25,14 @@
                                         <h3>Student's info</h3>
                                     </li>
                                     <li style="margin-bottom: 8px"><i class="fas fa-user-graduate"></i>
-                                        Name : {{ $students->first_name }} {{ $students->last_name }}
+                                        Name : {{ $students->last_name }}, {{ $students->first_name }} 
                                     </li>
                                     <li style="margin-bottom: 8px"><i class="fa fa-transgender"></i>
                                         Gender : {{ $students->gender }} 
                                     </li>
 
                                     <li style="margin-bottom: 8px"><i class="fa fa-calendar"></i>
-                                        Date of birth : {{ $students->date_of_birth }} 
+                                        Date of Birth : {{ $students->date_of_birth }} 
                                     </li>
 
                                     <li style="margin-bottom: 8px"><i class="fa fa-list-ul"></i>
@@ -50,14 +50,16 @@
 
                                     </li>
                                     <li style="margin-bottom: 8px"><i class="fa fa-credit-card"></i>
-                                        Student id : {{ $students->card_id }} 
+                                        Student ID : {{ $students->card_id }} 
                                     </li>
                                     <li style="margin-bottom: 8px"><i class="fa fa-flag"></i>
                                         Nationality : {{ $students->nationality }} 
                                     </li>
 
                                     <li style="margin-bottom: 8px"><i class="fas fa-walking"></i>
-                                        Start date : {{ $students->created_at->format('M d, Y') }}
+                                        Admission Date : {{  
+                                                date('d-M-Y', strtotime($students->start_date))
+                                                }}
                                     </li>
 
 
@@ -111,7 +113,8 @@
                                     <li>
                                         <h3>Mother's info</h3>
                                     </li>
-                                    <li style="margin-bottom: 8px"><i class="fas fa-female"></i>
+                                    <li style="margin-bottom: 8px">
+                                        <i class="fas fa-user-tie"></i>
                                         Mother's name : {{ $students->mother_name }}
                                     </li>
                                     <li style="margin-bottom: 8px"><i class="fa fa-briefcase"></i>

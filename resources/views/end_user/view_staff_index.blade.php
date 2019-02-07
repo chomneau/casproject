@@ -56,8 +56,9 @@
                                             <div class="content">
                                                 <p> 
                                                     <span class="font-weight-bold">
-                                                        {{ $staffs->first_name }} 
-                                                        {{ $staffs->last_name }} 
+                                                         
+                                                        {{ $staffs->last_name }},  
+                                                        {{ $staffs->first_name }}
                                                         
                                                     </span>  
 

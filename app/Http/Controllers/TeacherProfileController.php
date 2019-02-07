@@ -74,8 +74,23 @@ class TeacherProfileController extends Controller
 
         $countQuit = StudentProfile::where('status', 'Quit')->count();
 
+        $countQuit_female = StudentProfile::where('status','Quit')
+        ->where('gender','Female')->count();
+
+        $countQuit_male = StudentProfile::where('status','Quit')
+        ->where('gender','Male')->count(); 
+           
+
         $countGraduationStudent = StudentProfile::where('status', 'Graduated')->count();
+        $countGraduation_male = StudentProfile::where('status', 'Graduated')->where('gender','Male')->count();
+
+        $countGraduation_female = StudentProfile::where('status', 'Graduated')->where('gender','Female')->count();
+
+
+
         $countNewStudent = StudentProfile::where('status', 'New')->count();
+        $countNewStudent_female = StudentProfile::where('status', 'New')->where('gender','Female')->count();
+        $countNewStudent_male = StudentProfile::where('status', 'New')->where('gender','Male')->count();
 
 
         //teacher
@@ -96,8 +111,16 @@ class TeacherProfileController extends Controller
             'countMaleStudent'=>$countMaleStudent,
 
             'countQuitStudent'=>$countQuit,
+            'countQuit_female'=>$countQuit_female,
+            'countQuit_male'=>$countQuit_male,
+
             'countNewStudent'=>$countNewStudent,
+            'countNewStudent_female'=>$countNewStudent_female,
+            'countNewStudent_male'=>$countNewStudent_male,
+
             'countGraduationStudent'=>$countGraduationStudent,
+            'countGraduation_female'=>$countGraduation_female,
+            'countGraduation_male'=>$countGraduation_male,
             
             'countMaleTeacher'=>$countMaleTeacher,
             'countFemaleTeacher'=>$countFemaleTeacher,
@@ -112,6 +135,8 @@ class TeacherProfileController extends Controller
 
         
     }
+
+    
 
     //teacher profile
 

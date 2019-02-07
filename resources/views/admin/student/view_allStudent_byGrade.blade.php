@@ -89,7 +89,8 @@
                                             </td>
                                             <td>{{ $viewStudentByGrades->gradeProfile->name }}</td>
                                             <td class="project_progress">
-                                                {{ $viewStudentByGrades->father_phone }} | {{ $viewStudentByGrades->mother_phone }}
+                                                <i class="fa fa-phone-square"></i>
+                                                {{ $viewStudentByGrades->father_phone }} : {{ $viewStudentByGrades->mother_phone }}
                                             </td>
                                             <td ><span class="btn-sm btn-warning ">{{ $viewStudentByGrades->status }}</span></td>
 
@@ -160,9 +161,9 @@
                                 <thead>
                                 <tr>
                                     <th style="width: 1%">#</th>
-                                    <th style="width: 20%">Student name</th>
+                                    <th style="width: 20%">Student Name</th>
                                     <th style="width: 10%">Gender</th>
-                                    <th>Student id</th>
+                                    <th>Student ID</th>
                                     <th>Grade</th>
                                     <th>Parents Contact</th>
                                     <th>status</th>
@@ -176,7 +177,7 @@
                                         <tr>
                                             <td>#</td>
                                             <td>
-                                                <a>{{ $viewStudentByGrades->last_name }} {{ $viewStudentByGrades->first_name }}</a>
+                                                <a>{{ $viewStudentByGrades->last_name }}, {{ $viewStudentByGrades->first_name }}</a>
                                                 <br />
                                                 <small>Created {{ $viewStudentByGrades->created_at->diffForHumans() }}</small>
                                             </td>

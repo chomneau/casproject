@@ -66,7 +66,7 @@
                                 <thead>
                                 <tr>
                                     <th style="width: 1%">#</th>
-                                    <th style="width: 20%">Student name</th>
+                                    <th style="width: 20%">Student Name</th>
                                     <th style="width: 10%">Gender</th>
                                     <th>Student id</th>
                                     <!-- grade name -->
@@ -82,7 +82,7 @@
                                         <tr>
                                             <td>#</td>
                                             <td>
-                                                <a>{{ $students->first_name }} {{ $students->last_name }} </a>
+                                                <a> {{ $students->last_name }}, {{ $students->first_name }} </a>
                                                 <br />
                                                 <small>Created {{ $students->created_at->diffForHumans() }}</small>
                                             </td>

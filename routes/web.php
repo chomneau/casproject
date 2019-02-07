@@ -20,9 +20,9 @@ use App\User;
 
 
 
-
+//student login form
 Route::get('/', function () {
-    return view('welcome');
+    return view('studentLogin');
 });
 
 //student profile and score view
@@ -93,6 +93,12 @@ Route::resource('/user', 'ProfileController');
 
 
 Route::prefix('admin')->group(function () {
+
+
+    //Report students
+
+    Route::get('/student/reportByYear', 'AdminController@reportByYear')->name('student.reportByYear');
+
 
     Route::get('/student/register', 'StudentController@showRegisterForm')->name('student.register');
     Route::post('/student/register', 'StudentController@studentRegister')->name('student.register.create');
@@ -629,6 +635,65 @@ Route::get('endUser/staff/{student_id}', 'HomeController@viewStaff')->name('view
 
 //staff profile detail
 Route::get('staff/profile/{student_id}/{staff_id}', 'HomeController@staffProfile')->name('staff.profile');
+
+//student CGPA - END USER SIDE
+Route::get('student/cgpa/{student_id}', 'HomeController@studentCGPA')->name('student.cgpa');
+
+//CGPA grade 9 to 10 student side
+Route::get('student/cgpa910/{student_id}', 'HomeController@studentCGPA910')->name('student.cgpa910');
+
+//CGPA Grade 9 to 11
+Route::get('student/cgpa911/{student_id}', 'HomeController@studentCGPA911')->name('student.cgpa911');
+
+//CGPA Grade 9 to 12
+Route::get('student/cgpa912/{student_id}', 'HomeController@studentCGPA912')->name('student.cgpa912');
+
+//CGPA Grade 10 to 11
+Route::get('student/cgpa1011/{student_id}', 'HomeController@studentCGPA1011')->name('student.cgpa1011');
+
+//CGPA Grade 10 to 12
+Route::get('student/cgpa1012/{student_id}', 'HomeController@studentCGPA1012')->name('student.cgpa1012');
+
+//CGPA grade 11 to 12
+Route::get('student/cgpa1112/{student_id}', 'HomeController@studentCGPA1112')->name('student.cgpa1112');
+
+
+//Report Card for Pre-k
+Route::get('student/prek/reportCard/{student_id}', 'HomeController@prekReportCard')->name('student.prek.reportCard');
+
+//report card for pre-k detail print formate 
+Route::get('student/prek/reportCard/detail/{student_id}/{grade_id}', 'HomeController@prekReportCardDetail')->name('student.prek.reportCard.detail');
+
+
+//Report Card for Grade K
+Route::get('student/gradeK/reportCard/{student_id}', 'HomeController@gradeKReportCard')->name('student.gradeK.reportCard');
+//Report Card for Grade K detail printer formate
+Route::get('student/gradeK/reportCard/detail/{student_id}/{grade_id}', 'HomeController@gradeKReportCardDetail')->name('student.gradeK.reportCard.detail');
+
+
+//Report Card for Secondary School
+
+Route::get('student/secondary/reportCard/{student_id}', 'HomeController@secondaryReportCard')->name('student.secondary.reportCard');
+
+//Report Card for Secondary School detail
+Route::get('student/secondary/reportCard/detail/{student_id}/{grade_id}', 'HomeController@secondaryReportCardDetail')->name('student.gradeK.reportCard.detail');
+
+//Report card for High School
+
+Route::get('student/highSchool/reportCard/{student_id}', 'HomeController@highSchoolReportCard')->name('student.highschool.reportCard');
+
+//Report Card for Secondary School detail
+Route::get('student/highSchool/reportCard/detail/{student_id}/{grade_id}', 'HomeController@highschoolReportCardDetail')->name('student.highschool.reportCard.detail');
+
+
+
+
+
+
+
+
+
+
 
 
 

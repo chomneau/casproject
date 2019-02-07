@@ -1,11 +1,4 @@
-{{--
-<script--}} {{--src="https://code.jquery.com/jquery-3.2.1.slim.min.js" --}} {{--integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g="
-    --}} {{--crossorigin="anonymous">--}} {{--
 
-    </script>--}} {{--
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>--}} {{--
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>--}} {{--
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>--}} 
 @extends('admin.admin-layout.main') 
 @section('content')
 
@@ -25,7 +18,10 @@
                     <div class="x_panel">
                         <div class="x_title">
 
-                            <h2> <i class="fa fa-sliders" aria-hidden="true"></i> Update score subject</h2>
+                            <h2> 
+                                <i class="fa fa-sliders" aria-hidden="true"></i> 
+                                Update score subject
+                            </h2>
 
                             
                             <div class="clearfix"></div>

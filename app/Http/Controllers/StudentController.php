@@ -162,87 +162,7 @@ class StudentController extends Controller
             ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     **/
-
-    public function showRegisterForm()
-    {
-        return view('admin.student.studentRegister');
-    }
-
-    public function studentRegister(Request $request)
-    {
-
-        $this->validate($request, [
-            //validate for company table
-            'first_name' => 'required',
-            'last_name' => 'required',
-            'date_of_birth' => 'required',
-            'student_id' => 'required',
-            'nationality' => 'required',
-            //'father_name' => 'required',
-            //'father_phone' => 'required',
-           // 'address' => 'required',
-        ]);
-
-        $user = new User();
-
-        $user->name = $request->first_name;
-        $user->email = $request->student_id."@cas.edu.kh";
-        $user->password = bcrypt($request->student_id);
-        $user->student_id = $request->student_id;
-
-        $user->save();
-
-        //$user = Auth::user();
-        $student = new StudentProfile();
-        //upload image for user
-        $student->photo = 'uploads/photo/1510817755img.png';
-        $student->first_name = $request->first_name;
-        $student->last_name = $request->last_name;
-        $student->gender = $request->gender;
-        $student->date_of_birth = $request->date_of_birth;
-        $student->place_of_birth = $request->place_of_birth;
-        $student->card_id = $request->student_id;
-        $student->grade_profile_id = $request->grade_id;
-        $student->nationality = $request->nationality;
-        $student->status = $request->status;
-
-
-        $student->father_name = $request->father_name;
-        $student->mother_name = $request->mother_name;
-
-        $student->father_phone = $request->father_phone;
-        $student->mother_phone = $request->mother_phone;
-
-        $student->father_occupation = $request->father_occupation;
-        $student->mother_occupation = $request->mother_occupation;
-
-
-        
-        $student->father_email = $request->father_email;
-        $student->mother_email = $request->mother_email;
-
-
-        $student->address = $request->address;
-        $student->user_id = $user->id;
-        $student->save();
-
-        if ($request->hasFile('photo')) {
-            $photo = $request->photo;
-            $photo_new_name = time() . $photo->getClientOriginalName();
-            $photo->move('uploads/photo', $photo_new_name);
-            $student->photo = 'uploads/photo/' . $photo_new_name;
-            $student->save();
-        }
-
-        Session::flash('success', 'You successfully create a student profile');
-        return redirect('admin/student/viewStudent');
-
-    }
+ 
 
 
 
@@ -436,6 +356,91 @@ class StudentController extends Controller
 
     }
 
+
+       /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     **/
+
+    public function showRegisterForm()
+    {
+        return view('admin.student.studentRegister');
+    }
+
+    public function studentRegister(Request $request)
+    {
+
+        $this->validate($request, [
+            //validate for company table
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'date_of_birth' => 'required',
+            'student_id' => 'required',
+            'nationality' => 'required',
+            //'father_name' => 'required',
+            //'father_phone' => 'required',
+           // 'address' => 'required',
+        ]);
+
+        $user = new User();
+
+        $user->name = $request->first_name;
+        $user->email = $request->student_id."@cas.edu.kh";
+        $user->password = bcrypt($request->student_id);
+        $user->student_id = $request->student_id;
+
+        $user->save();
+
+        //$user = Auth::user();
+        $student = new StudentProfile();
+        //upload image for user
+        $student->photo = 'uploads/photo/1510817755img.png';
+        $student->first_name = $request->first_name;
+        $student->last_name = $request->last_name;
+        $student->gender = $request->gender;
+        $student->date_of_birth = $request->date_of_birth;
+        $student->place_of_birth = $request->place_of_birth;
+        $student->card_id = $request->student_id;
+        $student->grade_profile_id = $request->grade_id;
+        $student->nationality = $request->nationality;
+        $student->status = $request->status;
+        $student->start_date = $request->start_date;
+        $student->progressive_book_id = $request->progressive_book_id;
+
+
+        $student->father_name = $request->father_name;
+        $student->mother_name = $request->mother_name;
+
+        $student->father_phone = $request->father_phone;
+        $student->mother_phone = $request->mother_phone;
+
+        $student->father_occupation = $request->father_occupation;
+        $student->mother_occupation = $request->mother_occupation;
+
+
+        
+        $student->father_email = $request->father_email;
+        $student->mother_email = $request->mother_email;
+
+
+        $student->address = $request->address;
+        $student->user_id = $user->id;
+        $student->save();
+
+        if ($request->hasFile('photo')) {
+            $photo = $request->photo;
+            $photo_new_name = time() . $photo->getClientOriginalName();
+            $photo->move('uploads/photo', $photo_new_name);
+            $student->photo = 'uploads/photo/' . $photo_new_name;
+            $student->save();
+        }
+
+        Session::flash('success', 'You successfully create a student profile');
+        return redirect('admin/student/viewStudent');
+
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -479,6 +484,8 @@ class StudentController extends Controller
         $student->grade_profile_id = $request->grade_id;
         $student->nationality = $request->nationality;
         $student->status = $request->status;
+        $student->start_date = $request->start_date;
+        $student->progressive_book_id = $request->progressive_book_id;
 
         $student->father_name = $request->father_name;
         $student->mother_name = $request->mother_name;

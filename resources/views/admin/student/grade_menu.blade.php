@@ -1,7 +1,6 @@
 @if(Auth::guard('admin')->check())
 <div class="x_content">
-    {{--
-    <h2><i class="fa fa-bars"></i> Dropdowns <small>Multiple dropdown designs</small></h2>--}}
+   
     <ul class="nav nav-pills" role="tablist">
 
         <li role="presentation" class="dropdown">
@@ -66,15 +65,15 @@
 
 
         <a href="{{ route('transcript',['student_id'=>$students->id]) }}" class="btn btn-primary pull-right">
-                    Print Transcript
-                    <i class="fas fa-print"></i>
-                </a>
+            Print Transcript
+            <i class="fas fa-print"></i>
+        </a>
 
 
         <a href="{{ route('select.option',['student_id'=>$students->id]) }}" class="btn btn-success pull-right">
-                    Print Yearly Report
-                    <i class="fas fa-print"></i>
-                </a>
+            Print Yearly Report
+            <i class="fas fa-print"></i>
+        </a>
 
     </ul>
 </div>

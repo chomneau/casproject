@@ -7,7 +7,7 @@
 
                          
                         <h3>
-                            Staff's Contact              
+                            Teacher's Contact              
                         </h3>
 
                         <div class="dropdown-divider" style="margin-bottom: 20px"></div>
@@ -30,8 +30,9 @@
                                         <div class="content">
                                             <p> 
                                                 <span class="font-weight-bold">
+                                                    {{ $teachers->last_name }}, 
                                                     {{ $teachers->first_name }} 
-                                                    {{ $teachers->last_name }} 
+                                                    
                                                 </span>  
 
                                             </p>

@@ -41,8 +41,23 @@ class AdminController extends Controller
 
         $countQuit = StudentProfile::where('status', 'Quit')->count();
 
+        $countQuit_female = StudentProfile::where('status','Quit')
+        ->where('gender','Female')->count();
+
+        $countQuit_male = StudentProfile::where('status','Quit')
+        ->where('gender','Male')->count(); 
+           
+
         $countGraduationStudent = StudentProfile::where('status', 'Graduated')->count();
+        $countGraduation_male = StudentProfile::where('status', 'Graduated')->where('gender','Male')->count();
+
+        $countGraduation_female = StudentProfile::where('status', 'Graduated')->where('gender','Female')->count();
+
+
+
         $countNewStudent = StudentProfile::where('status', 'New')->count();
+        $countNewStudent_female = StudentProfile::where('status', 'New')->where('gender','Female')->count();
+        $countNewStudent_male = StudentProfile::where('status', 'New')->where('gender','Male')->count();
 
 
         //teacher
@@ -63,8 +78,16 @@ class AdminController extends Controller
             'countMaleStudent'=>$countMaleStudent,
 
             'countQuitStudent'=>$countQuit,
+            'countQuit_female'=>$countQuit_female,
+            'countQuit_male'=>$countQuit_male,
+
             'countNewStudent'=>$countNewStudent,
+            'countNewStudent_female'=>$countNewStudent_female,
+            'countNewStudent_male'=>$countNewStudent_male,
+
             'countGraduationStudent'=>$countGraduationStudent,
+            'countGraduation_female'=>$countGraduation_female,
+            'countGraduation_male'=>$countGraduation_male,
             
             'countMaleTeacher'=>$countMaleTeacher,
             'countFemaleTeacher'=>$countFemaleTeacher,
@@ -77,11 +100,139 @@ class AdminController extends Controller
 
             ]);
     }
-//    public function showPostjobForm()
-//    {
-//        return view('pages.postjob');
-//    }
-    //show all users
+
+    public function reportByYear(Request $request){
+
+        $start_date = $request->start_date;
+        $end_date = $request->end_date;
+
+        $from = date($start_date .' 00:00:00');
+        $to = date($end_date .' 23:59:00');
+
+        
+        $countAllStudent = StudentProfile::all()->count();
+        $countFemaleStudent = StudentProfile::where('gender','Female')->count();
+        $countMaleStudent = StudentProfile::where('gender','Male')->count();
+
+        $countQuit = StudentProfile::where('status', 'Quit')->count();
+
+        $countQuit_female = StudentProfile::where('status','Quit')
+        ->where('gender','Female')->count();
+
+        $countQuit_male = StudentProfile::where('status','Quit')
+        ->where('gender','Male')->count(); 
+           
+
+        $countGraduationStudent = StudentProfile::where('status', 'Graduated')->count();
+        $countGraduation_male = StudentProfile::where('status', 'Graduated')->where('gender','Male')->count();
+
+        $countGraduation_female = StudentProfile::where('status', 'Graduated')->where('gender','Female')->count();
+
+
+
+        $countNewStudent = StudentProfile::where('status', 'New')->count();
+        $countNewStudent_female = StudentProfile::where('status', 'New')->where('gender','Female')->count();
+        $countNewStudent_male = StudentProfile::where('status', 'New')->where('gender','Male')->count();
+
+
+        //teacher
+        $totalTeacher = Teacher::all()->count();
+        $countMaleTeacher = Teacher::where('gender','Male')->count();
+        $countFemaleTeacher = Teacher::where('gender','Female')->count();
+
+        //staff
+
+        $allStaff = Staff::all()->count();
+        $countMaleStaff = Staff::where('gender','Male')->count();
+        $countFemaleStaff = Staff::where('gender','Female')->count();
+
+        //student quit by year
+        $student_quit_by_year = StudentProfile::where('status', 'Quit')
+        ->whereBetween('created_at', [$from, $to])->count();
+
+        $student_male_quit_by_year = StudentProfile::where('status', 'Quit')
+        ->where('gender', 'Male')
+        ->whereBetween('created_at', [$from, $to])->count();
+
+        $student_female_quit_by_year = StudentProfile::where('status', 'Quit')
+        ->where('gender', 'Female')
+        ->whereBetween('created_at', [$from, $to])->count();
+
+        //New student by year
+
+        $student_new_by_year = StudentProfile::where('status', 'New')
+        ->whereBetween('created_at', [$from, $to])->count();
+
+        $student_male_new_by_year = StudentProfile::where('status', 'New')
+        ->where('gender', 'Male')
+        ->whereBetween('created_at', [$from, $to])->count();
+
+        $student_female_new_by_year = StudentProfile::where('status', 'New')
+        ->where('gender', 'Female')
+        ->whereBetween('created_at', [$from, $to])->count();
+
+        //Graduated student by year
+        $student_graduated_by_year = StudentProfile::where('status', 'Graduated')
+        ->whereBetween('created_at', [$from, $to])->count();
+
+        $student_male_graduated_by_year = StudentProfile::where('status', 'Graduated')
+        ->where('gender', 'Male')
+        ->whereBetween('created_at', [$from, $to])->count();
+
+        $student_female_graduated_by_year = StudentProfile::where('status', 'Graduated')
+        ->where('gender', 'Female')
+        ->whereBetween('created_at', [$from, $to])->count();
+
+
+
+        return view('admin.student_report_by_year')->with([
+            'countAllStudent'=>$countAllStudent,
+            'countFemaleStudent'=>$countFemaleStudent,
+            'countMaleStudent'=>$countMaleStudent,
+
+            'countQuitStudent'=>$countQuit,
+            'countQuit_female'=>$countQuit_female,
+            'countQuit_male'=>$countQuit_male,
+
+            'countNewStudent'=>$countNewStudent,
+            'countNewStudent_female'=>$countNewStudent_female,
+            'countNewStudent_male'=>$countNewStudent_male,
+
+            'countGraduationStudent'=>$countGraduationStudent,
+            'countGraduation_female'=>$countGraduation_female,
+            'countGraduation_male'=>$countGraduation_male,
+            
+            'countMaleTeacher'=>$countMaleTeacher,
+            'countFemaleTeacher'=>$countFemaleTeacher,
+            'totalTeacher'=>$totalTeacher,
+
+            'allStaff'=>$allStaff,
+            'countMaleStaff'=>$countMaleStaff,
+            'countFemaleStaff'=>$countFemaleStaff,
+
+            //quit student by year
+            'student_quit_by_year'=>$student_quit_by_year,
+            'student_male_quit_by_year'=>$student_male_quit_by_year,
+            'student_female_quit_by_year'=>$student_female_quit_by_year,
+            //new student by year
+            'student_new_by_year'=>$student_new_by_year,
+            'student_male_new_by_year'=>$student_male_new_by_year,
+            'student_female_new_by_year'=>$student_female_new_by_year,
+            //graduation student by year
+            'student_graduated_by_year'=>$student_graduated_by_year,
+            'student_male_graduated_by_year'=>$student_male_graduated_by_year,
+            'student_female_graduated_by_year'=>$student_female_graduated_by_year,
+            
+            //selected year
+            'start_date'=>$start_date,
+            'end_date'=>$end_date,
+
+            
+
+
+            ]);
+    }
+
     public function showAllUser()
     {
         $adminUser = Admin::all();
