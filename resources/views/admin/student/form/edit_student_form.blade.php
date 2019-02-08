@@ -70,13 +70,13 @@
 
     <div class="row">
         <div class="col-md-6 {{ $errors->has('start_date') ? ' has-error' : '' }}">
-            <label for="start_date">Start Date</label>
+            <label for="start_date">Admission Date</label>
             <input type="date" name="start_date" class="form-control" value="{{ $student->start_date }}" required autofocus placeholder=" start_date" >
         </div>
 
         <div class="col-md-6 {{ $errors->has('progressive_book_id') ? ' has-error' : '' }}">
             <label for="progressive_book_id">Progressive Book ID</label>
-            <input type="number" name="progressive_book_id" class="form-control" value="{{ $student->progressive_book_id }}" required autofocus placeholder=" progressive_book_id" >
+            <input type="number" name="progressive_book_id" class="form-control" value="{{ $student->progressive_book_id }}" autofocus placeholder=" progressive_book_id" >
         </div>
 
     </div>
