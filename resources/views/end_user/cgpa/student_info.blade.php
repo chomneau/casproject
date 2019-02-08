@@ -88,7 +88,8 @@
 							        <th scope="row">Student ID</th>
 							        <td>:</td>
 							        <td>
-							        	{{ $student->progressive_book_id }}
+							        	{{ $student->card_id}}
+							        	
 									</td>     
 							        
 							      </tr>
@@ -97,7 +98,7 @@
 							        <th scope="row">Progressive Book ID</th>
 							        <td>:</td>
 							        <td>
-							        	{{ $student->card_id}} 	
+							        	{{ $student->progressive_book_id }}	
 									</td>     
 							      </tr>
 
