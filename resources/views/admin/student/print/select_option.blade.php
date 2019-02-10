@@ -62,7 +62,9 @@
                                                 </div>
                                                 <div class="col-md-6" style="margin-top: 20px">
                                                     <div class="pull-right">
-                                                        <input type="submit" value="print view" class="btn btn-success btn-sm">
+                                                        
+                                                        <input type="submit" value="print view"  class="btn btn-success btn-sm">
+
                                                     </div>
                                                 </div>
 

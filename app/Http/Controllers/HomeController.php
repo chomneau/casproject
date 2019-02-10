@@ -1146,7 +1146,7 @@ $tardy = AbsentRecord::where([
         $SRS = PrekScore::where([['student_profile_id', $student_id], ['subject_code', 'SRS']] )
              ->where('k_level_id', $checked_id)->get();
 
-        return view('admin.student.print.prek_yearly_report')
+        return view('end_user.prek.detail_prek_report_card')
                     ->with([
 
                         'kscore'=>$kscore,
@@ -1231,7 +1231,7 @@ $tardy = AbsentRecord::where([
              ->where('k_level_id', $checked_id)->get();          
 
 
-        return view('admin.student.print.gradeK_yearly_report')
+        return view('end_user.prek.detail_gradeK_report_card')
                     ->with([
 
                         'kscore'=>$kscore,
@@ -1280,7 +1280,7 @@ $tardy = AbsentRecord::where([
         $secondaryscore = secondaryScore::where('student_profile_id', $student_id)
         ->where('secondary_level_id', $checked_id)->get();
 
-        return view('admin.student.print.secondary_yearly_report')
+        return view('end_user.secondary_school.detail_secondary_report_card')
                     ->with([
 
                         'secondaryscore'=>$secondaryscore,
@@ -1331,8 +1331,9 @@ $tardy = AbsentRecord::where([
         // ->where([ ['grade_id', $checked_id], ['semester', 2] ])->first();
 
 
-        return view('admin.student.print.yearly_report_highschool.yearly_report_highschool')
+        return view('end_user.high_school.detail_high_report_card')
             ->with([
+                
                 'semester_1' => $semester_1,
                 'student' => $student,
                 'sum_pts_1' => $sum_pts_1,

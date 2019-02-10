@@ -676,7 +676,7 @@ Route::get('student/gradeK/reportCard/detail/{student_id}/{grade_id}', 'HomeCont
 Route::get('student/secondary/reportCard/{student_id}', 'HomeController@secondaryReportCard')->name('student.secondary.reportCard');
 
 //Report Card for Secondary School detail
-Route::get('student/secondary/reportCard/detail/{student_id}/{grade_id}', 'HomeController@secondaryReportCardDetail')->name('student.gradeK.reportCard.detail');
+Route::get('student/secondary/reportCard/detail/{student_id}/{grade_id}', 'HomeController@secondaryReportCardDetail')->name('student.secondary.reportCard.detail');
 
 //Report card for High School
 

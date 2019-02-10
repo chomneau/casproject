@@ -36,7 +36,7 @@
 
                                             </p>
                                             <p>
-                                                <a href="{{ route('student.gradeK.reportCard.detail', ['student_id'=>$students->id, 'grade_id'=>$grade_secondarys->id]) }}">
+                                                <a href="{{ route('student.secondary.reportCard.detail', ['student_id'=>$students->id, 'grade_id'=>$grade_secondarys->id]) }}">
                                                     <button style="background-color: #0CC1B8; border-radius: 20px; border-color: #7F6FEF; border:3px; padding-top:5px; padding-bottom: 5px; padding-left: 15px; padding-right: 15px; color: #fff">
                                                         View Report Card
                                                     </button>

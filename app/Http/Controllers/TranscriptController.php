@@ -15,6 +15,7 @@ use App\Subject;
 use App\PrekScore;
 use App\SecondaryScore;
 use App\GradeProfile;
+use App\AbsentRecord;
 
 
 class TranscriptController extends Controller
@@ -109,7 +110,7 @@ class TranscriptController extends Controller
         $SRS = PrekScore::where([['student_profile_id', $student_id], ['subject_code', 'SRS']] )
              ->whereIn('k_level_id', $checked_id)->get();
 
-        return view('admin.student.print.prek_yearly_report')
+        return view('admin.student.print.report_card.prek_yearly_report')
                     ->with([
 
                         'kscore'=>$kscore,
@@ -183,7 +184,7 @@ class TranscriptController extends Controller
              ->whereIn('k_level_id', $checked_id)->get();          
 
 
-        return view('admin.student.print.gradeK_yearly_report')
+        return view('admin.student.print.report_card.gradeK_yearly_report')
                     ->with([
 
                         'kscore'=>$kscore,
@@ -217,7 +218,7 @@ class TranscriptController extends Controller
         $secondaryscore = secondaryScore::where('student_profile_id', $student_id)
         ->whereIn('secondary_level_id', $checked_id)->get();
 
-        return view('admin.student.print.secondary_yearly_report')
+        return view('admin.student.print.report_card.secondary_yearly_report')
                     ->with([
 
                         'secondaryscore'=>$secondaryscore,
@@ -272,7 +273,7 @@ class TranscriptController extends Controller
 
         
 
-        return view('admin.student.print.high_school_print_view')
+        return view('admin.student.print.cgpa.cgpa_highschool_by_grade')
         ->with([
 
             'semester_1'=>$semester_1,
@@ -281,8 +282,8 @@ class TranscriptController extends Controller
             'sum_pts_1'=>$sum_pts_1,
             'sum_pts_2'=>$sum_pts_2,
 
-           'CGPA'=>$CGPA,
-           'total_credit'=>$total_credit,
+            'CGPA'=>$CGPA,
+            'total_credit'=>$total_credit,
 
             
         ]);
@@ -303,6 +304,8 @@ public function yearlyReportHighSchool(Request $request, $student_id)
 
     $checked_id = $request->input('grade');
 
+   // $absent = AbsentRecord::where('student_profile_id', $student_id)->where('grade_id', $checked_id)->count();
+
 
     $semester_1 = Score::where('student_profile_id', $student_id)
         ->where([['grade_id', $checked_id]])->orderBy('grade_id', 'ASC')->get();
@@ -321,12 +324,13 @@ public function yearlyReportHighSchool(Request $request, $student_id)
     // ->where([ ['grade_id', $checked_id], ['semester', 2] ])->first();
 
 
-    return view('admin.student.print.yearly_report_highschool.yearly_report_highschool')
+    return view('admin.student.print.report_card.highschool_report_card')
         ->with([
             'semester_1' => $semester_1,
             'student' => $student,
             'sum_pts_1' => $sum_pts_1,
-            'sum_pts_2' => $sum_pts_2
+            'sum_pts_2' => $sum_pts_2,
+            //'absent'=>$absent
 
         ]);
     }
@@ -429,7 +433,7 @@ public function yearlyReportHighSchool(Request $request, $student_id)
 
             
 
-    return view('admin.student.print.cgpa_transcript')->with([
+    return view('admin.student.print.cgpa.cgpa_912_transcript')->with([
         'student'=> $student,
         'score_grade_9'=>$score_grade_9,
         'score_grade_10'=>$score_grade_10,
@@ -516,7 +520,7 @@ public function yearlyReportHighSchool(Request $request, $student_id)
 
         
 
-        return view('admin.student.print.yearly_report_highschool.cgpa_910_transcript')->with([
+        return view('admin.student.print.cgpa.cgpa_910_transcript')->with([
             'student'=> $student,
             'score_grade_9'=>$score_grade_9,
             'score_grade_10'=>$score_grade_10,
@@ -635,7 +639,7 @@ public function yearlyReportHighSchool(Request $request, $student_id)
 
             
 
-    return view('admin.student.print.yearly_report_highschool.cgpa_911_transcript')->with([
+    return view('admin.student.print.cgpa.cgpa_911_transcript')->with([
         'student'=> $student,
         'score_grade_9'=>$score_grade_9,
         'score_grade_10'=>$score_grade_10,
@@ -743,7 +747,7 @@ public function yearlyReportHighSchool(Request $request, $student_id)
             
 
 
-    return view('admin.student.print.yearly_report_highschool.cgpa_1011_transcript')->with([
+    return view('admin.student.print.cgpa.cgpa_1011_transcript')->with([
         'student'=> $student,
         
         'score_grade_10'=>$score_grade_10,
@@ -846,7 +850,7 @@ public function yearlyReportHighSchool(Request $request, $student_id)
            
 
         
-    return view('admin.student.print.yearly_report_highschool.cgpa_1112_transcript')->with([
+    return view('admin.student.print.cgpa.cgpa_1112_transcript')->with([
         'student'=> $student,
         
         'score_grade_11'=>$score_grade_11,
@@ -969,9 +973,10 @@ public function yearlyReportHighSchool(Request $request, $student_id)
 
         
 
+
             
 
-    return view('admin.student.print.yearly_report_highschool.cgpa_1012_transcript')->with([
+    return view('admin.student.print.cgpa.cgpa_1012_transcript')->with([
         'student'=> $student,
         
         'score_grade_10'=>$score_grade_10,

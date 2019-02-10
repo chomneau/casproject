@@ -7,11 +7,9 @@
 	<div class="container">
 		<div class="row" >
 			<!-- school info -->
+			
 				@include('admin.student.print.report_card.report_card_header')
        
-                    
-
-
 			<!-- student info -->
 
 			</div>
@@ -133,25 +131,25 @@
 
 			        <tr>
 						<td style="font-size: 12px; font-weight: bold">Days Present</td>
-						<td style="font-size: 12px" >
+						<td style="font-size: 12px" contenteditable="true">
 							
 						</td>
 
-						<td class="text-center" style="font-size: 12px" >
+						<td class="text-center" style="font-size: 12px" contenteditable="true">
 							
 							
 						</td>
 
-						<td class="text-center" style="font-size: 12px" >
+						<td class="text-center" style="font-size: 12px" contenteditable="true">
 							
 						</td>
-						<td class="text-center" style="font-size: 12px" >
+						<td class="text-center" style="font-size: 12px" contenteditable="true">
 							
 						</td>
-						<td class="text-center" style="font-size: 12px" >
+						<td class="text-center" style="font-size: 12px" contenteditable="true">
 							
 						</td>
-						<td class="text-center" style="font-size: 12px" >
+						<td class="text-center" style="font-size: 12px" contenteditable="true">
 							
 						</td>
 						
@@ -170,14 +168,14 @@
 			<!--Table-->
 
 			
-
-
-
-			
 		</div>
 
 
-	@include('admin.student.print.report_card.report_card_footer')
+		
+
+@include('admin.student.print.report_card.report_card_footer')
+
+
 
 </page>
 
