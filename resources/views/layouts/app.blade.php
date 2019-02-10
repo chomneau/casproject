@@ -10,7 +10,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
 
-    <title>CAS</title>
+    <title>CAS Management System</title>
 
     <link rel="shortcut icon" href="{{ asset('images/logo.png') }}">
 
