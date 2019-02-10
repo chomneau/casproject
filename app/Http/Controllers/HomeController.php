@@ -1096,7 +1096,7 @@ $tardy = AbsentRecord::where([
 
     public function prekReportCard($student_id){
         $student = Studentprofile::find($student_id);
-        $grade_prek = KLevel::all()->take(-1);
+        $grade_prek = KLevel::all()->take(-3);
 
         return view('end_user.prek.index_prek_report_card')
         ->with(['students'=>$student, 'grade_prek'=>$grade_prek]);
@@ -1172,7 +1172,7 @@ $tardy = AbsentRecord::where([
     public function gradeKReportCard($student_id){
 
         $student = Studentprofile::find($student_id);
-        $grade_k = KLevel::all()->take(2);
+        $grade_k = KLevel::all()->take(3);
 
         return view('end_user.prek.index_gradeK_report_card')
         ->with(['students'=>$student, 'grade_k'=>$grade_k]);

@@ -45,20 +45,20 @@
                     </span>
                 </a>
                 <ul class="dropdown-menu">
-                    @if(count($kgrade)) 
-                        @foreach($kgrade as $kgrades)
-                        <li class="nav-item dropdown">
-                            <a href="{{ route('student.prekscore', ['grade_id'=>$kgrades->id, 'student_id'=>$students->id]) }}">
-                                    <span>
-                                        {{ $kgrades->name }}
-                                    </span>
-                                    <span class="arrow">
-                                        <i style="color:#55CBF2" class="fa fa-angle-right"></i>
-                                    </span>
-                                </a>
-                        </li>
-                        @endforeach 
-                    @endif
+                   {{-- @if(count($kgrade)) --}}
+                    {{--    @foreach($kgrade as $kgrades) --}}
+                     {{--   <li class="nav-item dropdown"> --}}
+                      {{--      <a href="{{ route('student.prekscore', ['grade_id'=>$kgrades->id, 'student_id'=>$students->id]) }}"> --}}
+                        {{--            <span> --}}
+                         {{--               {{ $kgrades->name }} --}}
+                         {{--           </span> --}}
+                         {{--           <span class="arrow">--}}
+                          {{--              <i style="color:#55CBF2" class="fa fa-angle-right"></i>--}}
+                           {{--         </span>--}}
+                           {{--     </a> --}}
+                       {{-- </li>--}}
+                       {{-- @endforeach --}}
+                   {{-- @endif --}}
 
                     <li>
                         <a href="{{ route('student.prek.reportCard', [ 'student_id'=>$students->id])}}">
@@ -91,23 +91,23 @@
                 Primary & Secondary</span> <span class="arrow">
                     <i style="color:#55CBF2" class="fas fa-angle-right"></i></span></a>
                 <ul class="dropdown-menu">
-                    @if(count($secondaryGrade)) 
+                    {{--@if(count($secondaryGrade))--}} 
 
-                    @foreach($secondaryGrade as $secondaryGrades)
+                    {{--@foreach($secondaryGrade as $secondaryGrades)--}}
 
-                    <li class="nav-item dropdown">
-                        <a href="{{ route('student.secondary', ['grade_id'=>$secondaryGrades->id, 'student_id'=>$students->id]) }}">
-                                    <span>
-                                    {{ $secondaryGrades->name }}
-                                    </span>
-                                    <span class="arrow">
-                                        <i style="color:#55CBF2" class="ti-angle-right"></i>
-                                    </span>
-                        </a>
-                    </li>
+                    <!-- <li class="nav-item dropdown"> -->
+                       {{-- <a href="{{ route('student.secondary', ['grade_id'=>$secondaryGrades->id, 'student_id'=>$students->id]) }}">--}}
+                                    <!-- <span> -->
+                                  {{--  {{ $secondaryGrades->name }}--}}
+                                    <!-- </span> -->
+                                    <!-- <span class="arrow"> -->
+                                        <!-- <i style="color:#55CBF2" class="ti-angle-right"></i> -->
+                                    <!-- </span> -->
+                        <!-- </a> -->
+                    <!-- </li> -->
 
-                    @endforeach 
-                    @endif
+                   {{-- @endforeach --}}
+                    {{--@endif--}}
 
                     <li>
                         <a href="{{ route('student.secondary.reportCard',['student_id'=>$students->id] ) }}">
@@ -129,22 +129,22 @@
                     <i style="color:#55CBF2"  class="fas fa-user-graduate"></i> </span><span class="title">
                 High School</span> <span class="arrow"><i  style="color:#55CBF2" class="fas fa-angle-right"></i></span></a>
                 <ul class="dropdown-menu">
-                    @if(count($grade)) 
-                        @foreach($grade as $grades)
+                   {{-- @if(count($grade)) --}}
+                        {{--@foreach($grade as $grades)--}}
 
-                        <li class="nav-item dropdown">
-                            <a href="{{ route('student.highschool', ['grade_id'=>$grades->id, 'student_id'=>$students->id]) }}">                            
-                                <span>
-                                    {{ $grades->grade_name }}
-                                </span>
-                                <span class="arrow">
+                        <!-- <li class="nav-item dropdown"> -->
+                            {{--<a href="{{ route('student.highschool', ['grade_id'=>$grades->id, 'student_id'=>$students->id]) }}"> --}}                           
+                                <!-- <span> -->
+                                    {{--{{ $grades->grade_name }}--}}
+                                <!-- </span> -->
+                                <!-- <span class="arrow">
                                     <i style="color:#55CBF2; font-weight: bold;" class="ti-angle-right"></i>
                                 </span>
                             </a>
-                        </li>
+                        </li> -->
 
-                        @endforeach 
-                    @endif
+                        {{--@endforeach --}}
+                    {{--@endif--}}
                     <li>
                         <a href="{{ route('student.highschool.reportCard', ['student_id'=>$students->id])}}">
                             <span style="font-weight: bold;">

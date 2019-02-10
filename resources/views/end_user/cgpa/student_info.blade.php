@@ -111,7 +111,7 @@
 							        	Admission Date
 							        </th>
 							        <td>:</td>
-							        <td contenteditable="true">
+							        <td >
 
 							        	{{ date_format($student->updated_at, 'd-M-Y') }}</td>
 							        							        
@@ -121,7 +121,7 @@
 							        	Completion Date
 							        </th>
 							        <td>:</td>
-							        <td contenteditable="true">{{ date_format($student->updated_at, 'd-M-Y')  }}</td>
+							        <td >{{ date_format($student->updated_at, 'd-M-Y')  }}</td>
 							        
 							        
 							      </tr>
