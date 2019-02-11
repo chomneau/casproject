@@ -134,7 +134,7 @@
                                 <p>
                                     <i class="fa fa-square purple"></i>
                                     <span style="font-weight: bold">
-                                        Female : {{ $countGraduation_male }}
+                                        Female : {{ $countGraduation_female }}
                                     </span>
                                 </p>
                            </td>

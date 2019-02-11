@@ -144,7 +144,7 @@
                         </li> -->
 
                         {{--@endforeach --}}
-                    {{--@endif--}}
+                    {{--@endif--}} 
                     <li>
                         <a href="{{ route('student.highschool.reportCard', ['student_id'=>$students->id])}}">
                             <span style="font-weight: bold;">

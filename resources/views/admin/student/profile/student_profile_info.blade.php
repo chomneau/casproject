@@ -63,6 +63,12 @@
                                             <li style="margin-bottom: 8px"><i class="fa fa-credit-card"></i>
                                                 <a href="#">Student id : {{ $students->card_id }} </a>
                                             </li>
+
+                                            <li style="margin-bottom: 8px"><i class="fa fa-credit-card"></i>
+                                                <a href="#">Status : 
+                                                {{ $students->status }} </a>
+                                            </li>
+
                                             <li style="margin-bottom: 8px"><i class="fa fa-flag"></i>
                                                 <a href="#">Nationality : {{ $students->nationality }} </a>
                                             </li>
