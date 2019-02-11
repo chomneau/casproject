@@ -639,54 +639,7 @@
 		</div>
 
 
-<div class="row" style="margin-top: 5em">
-		<div class="col-md-1"></div>
-
-	<div class="col-md-1"></div>
-
-
-	<div class="col-md-12">
-		<p class="text-uppercase text-center" style="font-size: 12px; margin-left: 15em">****** any entry below this lines in not valid ******* </p>
-	</div>
-
-
-	</div>
-
-				<div class="col-md-10 offset-1" style="margin-top: 8em">
-					<div class="row">
-						<div class="col-md-4 pull-left text-center">
-							<hr>
-							<p style="font-size: 12px">Registra's Signature</p>
-						</div>
-
-						<div class="col-md-4"></div>
-			
-						
-
-						<div class="col-md-4 pull-right text-center">
-							<hr>
-							<p style="font-size: 12px">Homeroom Teacher's Signature</p>
-						</div>
-					</div>
-					
-						
-					
-				</div>
-				
-			
-
-		<div class="col-md-10 offset-1 mt-4">
-			<p class="text-left" style="font-size: 12px">
-
-			<!-- A transcript is official if embossed with Cambodia Adventist School logo seal and signature signed in ink. -->
-			
-			</p>
-		</div>
-					
-		
-	
-
-	</div>
+	@include('admin.student.print.report_card.prek_and_k_report_card_footer')
 
 
 
