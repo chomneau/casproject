@@ -131,7 +131,7 @@
                                      
                                     <a href="{{ route('subject.score', ['grade_id'=>$grade_id->id,'student_id'=>$students->id]) }}" class="btn btn-success">
                                         
-                                        Add subjects
+                                        Add a subject
                                     </a>
                                 </span>
 
@@ -155,7 +155,7 @@
                                         ]) 
                                     }}" class="btn btn-success">
                                         
-                                        Add subjects
+                                        Add a subject
                                     </a>
                                 </span> 
 

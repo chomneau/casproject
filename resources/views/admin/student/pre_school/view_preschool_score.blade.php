@@ -81,7 +81,7 @@
                                      
                                     <a href="{{ route('prek.addSubject', ['grade_id'=>$grade_id->id,'student_id'=>$students->id]) }}" class="btn btn-success">
                                         
-                                        Add a subjects
+                                        Add a subject
                                     </a>
                                 </span>
                                 <span>
