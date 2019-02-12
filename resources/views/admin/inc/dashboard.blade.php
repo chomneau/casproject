@@ -245,19 +245,19 @@
                                         <td>
                                             <p><i class="fa fa-square blue"></i>All Students </p>
                                         </td>
-                                        <td>30%</td>
+                                        <td>0.00</td>
                                     </tr>
                                     <tr>
                                         <td>
                                             <p><i class="fa fa-square green"></i>Male Students </p>
                                         </td>
-                                        <td>10%</td>
+                                        <td>0.00</td>
                                     </tr>
                                     <tr>
                                         <td>
                                             <p><i class="fa fa-square purple"></i>Female Students </p>
                                         </td>
-                                        <td>20%</td>
+                                        <td>0.00</td>
                                     </tr>
                                     
                                 </table>
@@ -288,19 +288,19 @@
                                         <td>
                                             <p><i class="fa fa-square blue"></i>All Students </p>
                                         </td>
-                                        <td>30%</td>
+                                        <td>0.00</td>
                                     </tr>
                                     <tr>
                                         <td>
                                             <p><i class="fa fa-square green"></i>Male Students </p>
                                         </td>
-                                        <td>10%</td>
+                                        <td>0.00</td>
                                     </tr>
                                     <tr>
                                         <td>
                                             <p><i class="fa fa-square purple"></i>Female Students </p>
                                         </td>
-                                        <td>20%</td>
+                                        <td>0.00</td>
                                     </tr>
                                     
                                 </table>
@@ -332,19 +332,19 @@
                                         <td>
                                             <p><i class="fa fa-square blue"></i>All Students </p>
                                         </td>
-                                        <td>30%</td>
+                                        <td>0.00</td>
                                     </tr>
                                     <tr>
                                         <td>
                                             <p><i class="fa fa-square green"></i>Male Students </p>
                                         </td>
-                                        <td>10%</td>
+                                        <td>0.00</td>
                                     </tr>
                                     <tr>
                                         <td>
                                             <p><i class="fa fa-square purple"></i>Female Students </p>
                                         </td>
-                                        <td>20%</td>
+                                        <td>0.00</td>
                                     </tr>
                                     
                                 </table>
