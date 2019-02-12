@@ -116,32 +116,20 @@
                   <div class="count blue">{{ $countGraduationStudent }}</div>
 
                     
-                    <table class="tile_info table-sm" style="margin-left: 1em" >
-                        
-                        <tr>
-                            <td width="50%">
-                                <p>
-                                    <i class="fa fa-square green"></i>
-                                    <span style="font-weight: bold">
-                                        Male : {{ $countGraduation_male }} 
-                                    </span> 
-                                </p>
-                            </td>
-                            
-                        </tr>
-                        <tr>
-                            <td >
-                                <p>
-                                    <i class="fa fa-square purple"></i>
-                                    <span style="font-weight: bold">
-                                        Female : {{ $countGraduation_female }}
-                                    </span>
-                                </p>
-                           </td>
-                            
-                        </tr>
-                                    
-                    </table>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <h4 class="blue text-center" style="padding-left: 10px">
+                          <i class="blue fa fa-male"></i>
+                          M : {{ $countGraduation_male }}
+                        </h4>
+                      </div>
+                      <div class="col-md-6">
+                        <h4 class="green" style="padding-left: 10px">
+                          <i class="green fa fa-female"></i>
+                          F : {{$countGraduation_female}}
+                        </h4>
+                      </div>
+                    </div>
 
 
 
@@ -180,21 +168,13 @@
 
     
 
-
-
-
-
-
-
-    
-
     <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="dashboard_graph">
 
                 <div class="row x_title">
                     <div class="col-md-6">
-                        <h3>Student report by year <small>query by year</small></h3>
+                        <h3>Student report by year <small>Query by year</small></h3>
                     </div>
                     <div class="col-md-6">
                         <form action="{{ route('student.reportByYear')}}" method="GET">
@@ -248,7 +228,7 @@
         <div class="col-md-4 col-sm-4 col-xs-12">
             <div class="x_panel ">
                 <div class="x_title">
-                    <h2>New Students</h2>
+                    <h2>Total Students by year</h2>
                     
                     <div class="clearfix"></div>
                 </div>
