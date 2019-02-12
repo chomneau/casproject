@@ -26,7 +26,7 @@
                 <option value="">--Select sex--</option>
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
-                <option value="Other">Other</option>
+               
 
                 
             </select>
@@ -57,7 +57,7 @@
             <label for="email">Status</label>
 
             <select name="status" id="" class="form-control" required>
-                <option value="Select Status"></option>
+                <option value="">Select Status</option>
                 <option value="New">New</option>
                 <option value="Old">Old</option>
                 

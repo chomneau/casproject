@@ -112,8 +112,8 @@
 							        </th>
 							        <td>:</td>
 							        <td >
-
-							        	{{ date_format($student->updated_at, 'd-M-Y') }}</td>
+							        	{{ date('d-M-Y', strtotime($student->start_date)) }}
+											</td>
 							        							        
 							      </tr>
 							      <tr>

@@ -24,7 +24,7 @@
                 <option value="{{ $student->gender }}">{{ $student->gender }}</option>
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
-                <option value="Other">Other</option>
+                
                 {{--@if(count($grade))--}}
                     {{--@foreach($grade as $grades)--}}
                         {{--<option value="{{ $grades->id }} ">{{ $grades->grade_name }}</option>--}}
