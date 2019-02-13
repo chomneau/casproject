@@ -47,9 +47,7 @@
                         	
 	                        {{ $score_s1->created_at->format('Y') }} - 
 	                        {{ $score_s1->created_at->format('Y')+1 }}
-                        			 
-                        		
-                    	</span>
+            </span>
 
 					@endif
 

@@ -49,9 +49,15 @@
 
 
 	<div class="col-md-10 offset-1" style="margin-top: 8em">
-					<div class="row">
-						<div class="col-md-4 pull-left text-center">
-							<hr>
+		<div class="row">
+				<div class="col-md-4 pull-left text-center">
+						<p style="font-size: 12px; margin-bottom:6em;">
+						Date: 
+						<span contenteditable="true">
+							{{ @date("d-M-Y") }}
+						</span>
+						</p>
+							<hr style="margin-bottom:4em">
 							<p style="font-size: 12px">Registra's Signature</p>
 						</div>
 
@@ -60,14 +66,13 @@
 						
 
 						<div class="col-md-4 pull-right text-center">
-							<hr>
+						<p style="font-size: 12px; margin-bottom:6em">Date: {{ @date("d-M-Y") }}</p>
+							<hr style="margin-bottom:4em">
 							<p style="font-size: 12px">Homeroom Teacher's Signature</p>
 						</div>
-					</div>
-					
-						
-					
-				</div>
+					</div>	
+		</div>
+	</div>
 				
 			
 

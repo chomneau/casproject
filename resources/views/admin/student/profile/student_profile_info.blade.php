@@ -64,7 +64,7 @@
                                                 <a href="#">Student id : {{ $students->card_id }} </a>
                                             </li>
 
-                                            <li style="margin-bottom: 8px"><i class="fa fa-credit-card"></i>
+                                            <li style="margin-bottom: 8px"><i class="fa fa-bullseye text-success"></i>
                                                 <a href="#">Status : 
                                                 {{ $students->status }} </a>
                                             </li>
@@ -73,7 +73,12 @@
                                                 <a href="#">Nationality : {{ $students->nationality }} </a>
                                             </li>
 
-                                            <li style="margin-bottom: 8px"><i class="glyphicon glyphicon-home"></i>
+                                            <li style="margin-bottom: 8px">
+                                            <i class="fa fa-map-marker"></i>
+                                                <a href="#">Place of Birth : {{ $students->place_of_birth }} </a>
+                                            </li>
+
+                                            <li style="margin-bottom: 8px"><i class="fa fa-calendar"></i>
                                                 <a href="#">Admission Date : {{  
                                                 date('d-M-Y', strtotime($students->start_date))
                                                 }}</a>

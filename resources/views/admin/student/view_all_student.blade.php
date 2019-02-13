@@ -95,9 +95,9 @@
                                             </td>
                                             <!-- grade profile name -->
                                             <td>
-                                            @foreach($gradeProfile as $gradeProfiles)
+                                        @foreach($gradeProfile as $gradeProfiles)
                                                 
-                                                @if($students->grade_profile_id == $gradeProfiles->id)
+                                            @if($students->grade_profile_id == $gradeProfiles->id)
                                                     {{ $gradeProfiles->name }}
                                                 @endif
                                             @endforeach    
