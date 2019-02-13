@@ -70,6 +70,7 @@
                                     <th style="width: 10%">Gender</th>
                                     <th>Student id</th>
                                     <!-- grade name -->
+                                    <th>Grade</th>
                                     <th>Parents Contact</th>
                                     <th>Status</th>
 
@@ -92,8 +93,18 @@
                                             <td>
                                                 {{ $students->card_id }}
                                             </td>
-                                            
                                             <!-- grade profile name -->
+                                            <td>
+                                            @foreach($gradeProfile as $gradeProfiles)
+                                                
+                                                @if($students->grade_profile_id == $gradeProfiles->id)
+                                                    {{ $gradeProfiles->name }}
+                                                @endif
+                                            @endforeach    
+                                                
+                                            </td>
+                                            
+                                            
                                             <td> {{ $students->father_phone }} | {{ $students->mother_phone }} </td>
                                             <td class="project_progress">
                                                 {{ $students->status }}
