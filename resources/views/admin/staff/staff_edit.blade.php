@@ -185,7 +185,7 @@
                                         <div class="col-md-8 col-lg-offset-2 {{ $errors->has('address') ? ' has-error' : '' }}" style="margin-bottom: 50px">
                                             <button class="btn btn-success">
                                                 <strong><i class="fa fa-user-plus" aria-hidden="true"></i></strong>
-                                                Create Now
+                                                Update Now
                                             </button>
                                         </div>
 
