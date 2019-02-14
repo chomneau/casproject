@@ -40,7 +40,9 @@
 
                                                     <ul class="quick-list">
                                                         <li><i class="glyphicon glyphicon-user"></i>
-                                                            <a href="#">Name : {{ $staff->first_name }} {{ $staff->last_name }}</a>
+                                                            <a href="#">Name :  {{ $staff->last_name }},
+                                                            {{ $staff->first_name }}
+                                                            </a>
                                                         </li>
                                                         <li><i class="fa fa-envelope"></i>
                                                             <a href="#">E-mail : {{ $staff->email }} </a>
