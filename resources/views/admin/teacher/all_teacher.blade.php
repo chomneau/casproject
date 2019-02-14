@@ -88,7 +88,7 @@
 
 
 
-                                          {{ $teachers->grade_profile_id }}
+                                         
 
 
                                         

@@ -30,7 +30,7 @@
                                 Staff Photo
                                 </label>
                                 <div class="col-md-8 col-md-offset-2" style="margin-bottom: 20px">
-                                    <input id="name" type="file" class="form-control" name="photo" value="{{ $staff->photo }}" placeholder="First name" required autofocus>
+                                    <input id="name" type="file" class="form-control" name="photo" value="{{ $staff->photo }}"  autofocus>
 
                                         @if ($errors->has('photo'))
                                             <span class="help-block">
