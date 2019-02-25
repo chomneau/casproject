@@ -1,3 +1,5 @@
+
+
 @extends('admin.admin-layout.main')
 
 @section('content')
@@ -7,7 +9,7 @@
         <div class="">
             <div class="page-title">
                 <div class="title_left">
-                    <h3>STAFF <small></small></h3>
+                    <h3>Day Present Setting</h3>
                 </div>
 
                 <div class="title_right">
@@ -28,7 +30,7 @@
                 <div class="col-md-12">
                     <div class="x_panel">
                         <div class="x_title">
-                            <h2></h2>
+
                             <ul class="nav navbar-right panel_toolbox">
                                 <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                 </li>
@@ -44,58 +46,66 @@
                                 <li><a class="close-link"><i class="fa fa-close"></i></a>
                                 </li>
                             </ul>
+                            <a href="#" id="addCategory" class="btn btn-success" data-toggle="modal" data-target="#add-category">
+                                Add New
+                                <i class="glyphicon glyphicon-plus-sign"></i>
+                            </a>
+                            @include('admin.Absent.day_present.daypresent-form')
                             <div class="clearfix"></div>
                         </div>
                         <div class="x_content">
-
-
 
                             <!-- start project list -->
                             <table class="table table-striped projects">
                                 <thead>
                                 <tr>
                                     <th style="width: 1%">#</th>
-                                    <th style="width: 20%">Staff Name</th>
-                                    <th>Email</th>
-                                    <th>Position</th>
-                                    <th>Phone</th>
-                                    <th>updated_at</th>
-                                    
-                                    <th style="width: 20%">Action</th>
+                                    <th style="width: 20%">Quarter Name</th>
+                                    <th style="width: 20%">Day Present Per Quarter</th>
+                                    <th>Created_at</th>
+                                    <th>Updated_at</th>
+                                    <th style="width: 20%">#Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @if(count($staff))
-                                    @foreach($staff as $staffs)
+                                @if(count($daypresent))
+                                    @foreach($daypresent as $daypresents)
                                         <tr>
                                             <td>#</td>
-                                            <td>
-                                                <a> {{ $staffs->last_name }}, {{ $staffs->first_name }}</a>
-                                                <br />
-                                                <small>Created {{ $staffs->created_at->diffForHumans() }}</small>
-                                            </td>
-                                            <td>
-                                                {{ $staffs->email }}
-                                            </td>
-                                            <td>
-                                                {{ $staffs->position }}
-                                            </td>
-                                            <td>
-                                                {{ $staffs->phone }}
-                                            </td>
-                                            <td class="project_progress">
-                                                {{ $staffs->updated_at }}
-                                            </td>
-                                            
-                                            <td>
-                                                 
-                                                <a href="{{ route('admin.staffDetail', ['id'=>$staffs->id] ) }}" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> View profile </a>
+                                            <td id="dataItem" data-toggle="modal" data-target="#editCategory">
                                                 
-                                                <a href="{{ route('admin.staff.edit', ['id'=>$staffs->id]) }}" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
+                                                {{ $daypresents->quarter_name }}
                                                 
-                                                <a href="{{ route('admin.staff.delete', ['id'=>$staffs->id]) }}" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </a>
 
-                                                
+                                            </td>
+                                            <td>{{ $daypresents->quarter_day_present }}</td>
+
+                                            <td>
+                                                {{ $daypresents->created_at }}
+
+                                            </td>
+                                            <td>
+                                                {{ $daypresents->updated_at }}
+                                            </td>
+
+                                            <td>
+                                                <a href="{{ route('daypresent.edit', ['id'=>$daypresents->id] ) }}" class="btn btn-primary btn-xs">
+                                                    <i class="fa fa-pencil" aria-hidden="true"></i> Edit
+                                                </a>
+
+
+                                                <a href="{{ route('daypresent.delete', ['id'=>$daypresents->id]) }}" class="btn btn-danger btn-xs"
+                                                   id="confirmation">
+                                                    <i class="fa fa-trash"></i>
+                                                    Delete
+                                                </a>
+
+                                                <script type="text/javascript">
+                                                    $('#confirmation').on('click', function () {
+                                                        return confirm('Are you sure? You want to delete grade!');
+                                                    });
+                                                </script>
+
                                             </td>
                                         </tr>
                                     @endforeach

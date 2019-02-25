@@ -59,6 +59,8 @@
                                     <th>Student's name</th>
                                     <th>Grade</th>
                                     <th>Absent Type</th>
+                                    <th>Quarter</th>
+                                    <th>Day Present</th>
                                     <th>Reason</th>
                                     <th>Absent date</th>
                                 </tr>
@@ -73,9 +75,14 @@
                                 @foreach($prekAbsent as $prekAbsents)
                                 <tr>
                                     <th scope="row">#</th>
-                                    <td>{{ $prekAbsents->studentProfile->first_name }}</td>
+                                    <td>
+                                    {{ $prekAbsents->studentProfile->last_name }},
+                                    {{ $prekAbsents->studentProfile->first_name }}
+                                    </td>
                                     <td>{{ $prekAbsents->KLevel->name }}</td>
                                     <td>{{ $prekAbsents->absent_type }}</td>
+                                    <td >{{ $prekAbsents->quarter_name }}</td>
+                                    <td class="text-center">{{ $prekAbsents->quarter_day_present }}</td>
                                     <td>{{ substr($prekAbsents->reason, 0, 25)}}
                                         <?php
                                             $reason = $prekAbsents->reason;
@@ -152,7 +159,277 @@
 
                 </div>
 
+
+
+        <div class="x_panel">
+
+        <h3>1<sup>st</sup> Quarter</h3>
+
+        <div class="row tile_count">
+
+            <div class="col-md-3 col-sm-3 col-xs-6 tile_stats_count text-center">
+            <span class="count_top"><i class="fa fa-user"></i> Unexcused</span>
+                <div class="count">
+                    <!-- total here -->
+                    {{ $quarter_1_unexcused }}
+
+
+                </div>
+            <span class="count_bottom"><i class="green"></i> 
+                <!-- text here -->
+            </span>
             </div>
+
+            <div class="col-md-3 col-sm-3 col-xs-6 tile_stats_count text-center">
+            <span class="count_top"><i class="fa fa-user"></i> Excused</span>
+            <div class="count">
+                
+                <!-- total here -->
+                {{ $quarter_1_excused }}
+
+
+            </div>
+            <span class="count_bottom"><i class="green"></i> 
+                <!-- text here -->
+            </span>
+            </div>
+
+            <div class="col-md-3 col-sm-3 col-xs-6 tile_stats_count text-center">
+                <span class="count_top"><i class="fa fa-user"></i> Tardy</span>
+                <div class="count">
+
+                    <!-- total here -->
+                    {{ $quarter_1_tardy }}
+
+
+                </div>
+                <span class="count_bottom"><i class="green"></i>
+                    <!-- text here -->
+            </span>
+            </div>
+
+            <div class="col-md-3 col-sm-3 col-xs-6 tile_stats_count text-center">
+            <span class="count_top"><i class="fa fa-clock-o"></i> Total Absent</span>
+            <div class="count">
+                
+                <!-- total here -->
+                {{ floor($quarter_1_total_All_Absent) }}
+
+            </div>
+                <span class="count_bottom"> 
+            <!-- text here -->
+                </span>
+            </div>
+            
+            
+        </div>
+
+        </div>
+        <!-- /end quarter_1 -->  
+
+        <!-- start quarter_2 --> 
+        <div class="x_panel">
+
+        <h3>2<sup>nd</sup> Quarter</h3>
+
+        <div class="row tile_count">
+
+        <div class="col-md-3 col-sm-3 col-xs-6 tile_stats_count text-center">
+        <span class="count_top"><i class="fa fa-user"></i> Unexcused</span>
+            <div class="count">
+                <!-- total here -->
+                {{ $quarter_2_unexcused }}
+
+
+            </div>
+        <span class="count_bottom"><i class="green"></i> 
+            <!-- text here -->
+        </span>
+        </div>
+
+        <div class="col-md-3 col-sm-3 col-xs-6 tile_stats_count text-center">
+        <span class="count_top"><i class="fa fa-user"></i> Excused</span>
+        <div class="count">
+            
+            <!-- total here -->
+            {{ $quarter_2_excused }}
+
+
+        </div>
+        <span class="count_bottom"><i class="green"></i> 
+            <!-- text here -->
+        </span>
+        </div>
+
+        <div class="col-md-3 col-sm-3 col-xs-6 tile_stats_count text-center">
+            <span class="count_top"><i class="fa fa-user"></i> Tardy</span>
+            <div class="count">
+
+                <!-- total here -->
+                {{ $quarter_2_tardy }}
+
+
+            </div>
+            <span class="count_bottom"><i class="green"></i>
+                <!-- text here -->
+        </span>
+        </div>
+
+        <div class="col-md-3 col-sm-3 col-xs-6 tile_stats_count text-center">
+        <span class="count_top"><i class="fa fa-clock-o"></i> Total Absent</span>
+        <div class="count">
+            
+            <!-- total here -->
+            {{ floor($quarter_2_total_All_Absent) }}
+
+        </div>
+            <span class="count_bottom"> 
+        <!-- text here -->
+            </span>
+        </div>
+
+
+        </div>
+
+        </div>
+
+        <!-- /end quarter_2 --> 
+        <!-- start quarter_3 -->
+        <div class="x_panel">
+
+        <h3>3<sup>rd</sup> Quarter</h3>
+
+        <div class="row tile_count">
+
+            <div class="col-md-3 col-sm-3 col-xs-6 tile_stats_count text-center">
+            <span class="count_top"><i class="fa fa-user"></i> Unexcused</span>
+                <div class="count">
+                    <!-- total here -->
+                    {{ $quarter_3_unexcused }}
+
+
+                </div>
+            <span class="count_bottom"><i class="green"></i> 
+                <!-- text here -->
+            </span>
+            </div>
+
+            <div class="col-md-3 col-sm-3 col-xs-6 tile_stats_count text-center">
+            <span class="count_top"><i class="fa fa-user"></i> Excused</span>
+            <div class="count">
+                
+                <!-- total here -->
+                {{ $quarter_3_excused }}
+
+
+            </div>
+            <span class="count_bottom"><i class="green"></i> 
+                <!-- text here -->
+            </span>
+            </div>
+
+            <div class="col-md-3 col-sm-3 col-xs-6 tile_stats_count text-center">
+                <span class="count_top"><i class="fa fa-user"></i> Tardy</span>
+                <div class="count">
+
+                    <!-- total here -->
+                    {{ $quarter_3_tardy }}
+
+
+                </div>
+                <span class="count_bottom"><i class="green"></i>
+                    <!-- text here -->
+            </span>
+            </div>
+
+            <div class="col-md-3 col-sm-3 col-xs-6 tile_stats_count text-center">
+            <span class="count_top"><i class="fa fa-clock-o"></i> Total Absent</span>
+            <div class="count">
+                
+                <!-- total here -->
+                {{ floor($quarter_3_total_All_Absent) }}
+
+            </div>
+                <span class="count_bottom"> 
+            <!-- text here -->
+                </span>
+            </div>
+            
+            
+        </div>
+
+        </div>
+
+        <!-- /end quarter_3 --> 
+        <!-- start quarter_4 --> 
+        <div class="x_panel">
+
+        <h3>4<sup>th</sup> Quarter</h3>
+
+        <div class="row tile_count">
+
+        <div class="col-md-3 col-sm-3 col-xs-6 tile_stats_count text-center">
+        <span class="count_top"><i class="fa fa-user"></i> Unexcused</span>
+            <div class="count">
+                <!-- total here -->
+                {{ $quarter_4_unexcused }}
+
+
+            </div>
+        <span class="count_bottom"><i class="green"></i> 
+            <!-- text here -->
+        </span>
+        </div>
+
+        <div class="col-md-3 col-sm-3 col-xs-6 tile_stats_count text-center">
+        <span class="count_top"><i class="fa fa-user"></i> Excused</span>
+        <div class="count">
+            
+            <!-- total here -->
+            {{ $quarter_4_excused }}
+
+
+        </div>
+        <span class="count_bottom"><i class="green"></i> 
+            <!-- text here -->
+        </span>
+        </div>
+
+        <div class="col-md-3 col-sm-3 col-xs-6 tile_stats_count text-center">
+            <span class="count_top"><i class="fa fa-user"></i> Tardy</span>
+            <div class="count">
+
+                <!-- total here -->
+                {{ $quarter_4_tardy }}
+
+
+            </div>
+            <span class="count_bottom"><i class="green"></i>
+                <!-- text here -->
+        </span>
+        </div>
+
+        <div class="col-md-3 col-sm-3 col-xs-6 tile_stats_count text-center">
+        <span class="count_top"><i class="fa fa-clock-o"></i> Total Absent</span>
+        <div class="count">
+            
+            <!-- total here -->
+            {{ floor($quarter_4_total_All_Absent) }}
+
+        </div>
+            <span class="count_bottom"> 
+        <!-- text here -->
+            </span>
+        </div>
+
+
+        </div>
+
+        </div>
+
+        <!-- /end quarter_4 --> 
+
+        </div> 
 
 
 
@@ -174,16 +451,32 @@
                             <div class="modal-body">
                                 <label for="exampleInputEmail1">Select absent type</label>
                                 <select name="absent_type" id="" class="form-control" required>
-                                        <option value="">--select absent type--</option>
-                                            {{--@if(count($absent))--}}
-                                                {{--@foreach($absent as $absents)--}}
-                                                    {{--<option value="{{ $absents->id }} ">{{ $absents->absent_type }}</option>--}}
-                                                {{--@endforeach--}}
-                                            {{--@endif--}}
+                                        <option value="">
+                                        --select absent type--
+                                        </option>
+                                            
 
                                     <option value="Unexcused">Unexcused</option>
                                     <option value="Excused">Excused</option>
                                     <option value="Tardy">Tardy</option>
+                                </select>
+                            </div>
+
+                            <div class="modal-body">
+                                <label for="exampleInputEmail1">Select Quarter</label>
+                                <select name="quarter_id" id="" class="form-control" required>
+                                        <option value="">
+                                        --select quarter--
+                                        </option>
+
+                                    @if(count($daypresent))
+                                    @foreach($daypresent as $daypresents)
+                                        <option value="{{ $daypresents->id }} ">
+                                            {{ $daypresents->quarter_name }}
+                                            --{{$daypresents->quarter_day_present}} days
+                                        </option>
+                                    @endforeach
+                                    @endif
                                 </select>
                             </div>
 
@@ -193,7 +486,7 @@
                             </div>
                             <div class="modal-body">
                                 <label for="exampleInputEmail1">Reason</label>
-                                <textarea rows="4" cols="50" wrap="hard" name="reason" class="form-control" placeholder="Reason" required autofocus>
+                                <textarea rows="4" cols="50" wrap="hard" name="reason" class="form-control" placeholder="Reason"  autofocus>
                                     
                                 </textarea>
                             </div>

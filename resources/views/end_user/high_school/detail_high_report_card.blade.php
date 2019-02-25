@@ -62,6 +62,8 @@
 			            <th class="text-center" style="font-size: 13px">3<sup>rd</sup> Quarter</th>
 			            <th class="text-center" style="font-size: 13px">4<sup>th</sup> Quarter</th>
 			            <th class="text-center" style="font-size: 13px">2<sup>nd</sup> Semester</th>
+
+									<th class="text-center" style="font-size: 13px">Yearly</th>
 									
 			           
 			        </tr>
@@ -115,6 +117,11 @@
 							            
 
 							            </td>
+
+													<td style="font-size: 12px; font-weight: bold" class="text-center">{{
+														number_format(ceil(($score_s1->quarter_1+$score_s1->quarter_2+$score_s1->quarter_3+$score_s1->quarter_4)/4), 2, '.', ',')
+
+													}}</td>
 										
 
 							            
@@ -131,33 +138,41 @@
 				        @endforeach
 			        @endif
 
-			        <tr>
+			    <tr>
 						<td style="font-size: 12px; font-weight: bold">Days Present</td>
-						<td style="font-size: 12px" >
-							
+						<td style="font-size: 12px; font-weight:350" contenteditable="true" class="text-center">
+						
+						{{ $total_daypresent_1 - $highschool_absent_quarter_1 }} / {{ $total_daypresent_1 }}
+													
 						</td>
 
-						<td class="text-center" style="font-size: 12px" >
+						<td class="text-center" style="font-size: 12px" contenteditable="true">
 							
-							
+						{{ $total_daypresent_2 - $highschool_absent_quarter_2 }} / {{ $total_daypresent_2 }}
+						</td>
+					{{--semester_1--}}
+						<td class="text-center" style="font-size: 12px; font-weight:bold" contenteditable="true">
+						{{ ($total_daypresent_1 - $highschool_absent_quarter_1) + ($total_daypresent_2 - $highschool_absent_quarter_2) }} / {{ $total_daypresent_1 + $total_daypresent_2}}
 						</td>
 
-						<td class="text-center" style="font-size: 12px" >
-							
-						</td>
-						<td class="text-center" style="font-size: 12px" >
-							
-						</td>
-						<td class="text-center" style="font-size: 12px" >
-							
-						</td>
-						<td class="text-center" style="font-size: 12px" >
-							
-						</td>
-						
 
-						
-						
+						<td class="text-center" style="font-size: 12px" contenteditable="true">
+						{{ $total_daypresent_3 - $highschool_absent_quarter_3 }} / {{ $total_daypresent_3 }}						
+						</td>
+
+
+						<td class="text-center" style="font-size: 12px" contenteditable="true">
+						{{ $total_daypresent_4 - $highschool_absent_quarter_4 }} / {{ $total_daypresent_4 }}
+						</td>
+						{{-- semeter 2--}}
+						<td class="text-center" style="font-size: 12px; font-weight:bold" contenteditable="true">
+
+						{{ ($total_daypresent_3 - $highschool_absent_quarter_3) + ($total_daypresent_4 - $highschool_absent_quarter_4) }} / {{ $total_daypresent_3 + $total_daypresent_4 }}
+						</td>
+
+						<td class="text-center" style="font-size: 12px; font-weight:bold" contenteditable="true">
+							{{ $yearly_daypresent-$yearly_absent  }} / {{ $yearly_daypresent }}
+						</td>	
 					</tr>
 
 			        

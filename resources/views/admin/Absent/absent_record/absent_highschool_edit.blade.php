@@ -5,7 +5,7 @@
     <div class="">
         <div class="page-title">
             <div class="title_left">
-                <h4>Student Name : {{ $students->last_name}} {{ $students->first_name}}
+                <h4>Student Name : {{ $students->last_name}}, {{ $students->first_name}}
                     <span class="btn btn-success btn-dm ">
                                 ID : {{ $students->card_id}}
                     </span>
@@ -59,18 +59,29 @@
                                     <th>Student's name</th>
                                     <th>Grade</th>
                                     <th>Absent Type</th>
+                                    <th>Quarter</th>
+                                    <th>Day Present</th>
                                     <th>Reason</th>
                                     <th>Absent date</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @if(count($hightSchoolAbsent))
+                                @if(!count($hightSchoolAbsent))                               
+
+                                <tr class="text-center">
+                                    <td colspan="6"><h4>No record found !</h4> </td> 
+
+                                </tr>
+
+                                @else
                                 @foreach($hightSchoolAbsent as $hightSchoolAbsents)
                                 <tr>
                                     <th scope="row">#</th>
                                     <td>{{ $hightSchoolAbsents->studentProfile->first_name }}</td>
                                     <td>{{ $hightSchoolAbsents->Grade->grade_name }}</td>
                                     <td>{{ $hightSchoolAbsents->absent_type }}</td>
+                                    <td>{{ $hightSchoolAbsents->quarter_name }}</td>
+                                    <td class="text-center">{{ $hightSchoolAbsents->quarter_day_present }}</td>
                                     <td>{{ substr($hightSchoolAbsents->reason, 0, 25)}}
                                         <?php
                                             $reason = $hightSchoolAbsents->reason;
@@ -81,10 +92,15 @@
                                     </td>
                                     <td>{{ Carbon\Carbon::parse($hightSchoolAbsents->absent_date)->format('M d, Y') }}</td>
                                     <td>
-                                        <a href="{{ route('edit.highSchool.absentRecord', ['grade_id'=>$grade_id->id,'id'=>$students->id, 'absentRecord_id'=>$hightSchoolAbsents->id]) }}"><span class="btn btn-sm btn-primary"> Edit </span></a>
+                                        <a href="{{ route('edit.highSchool.absentRecord', ['grade_id'=>$grade_id->id,'student_id'=>$students->id, 'absentRecord_id'=>$hightSchoolAbsents->id]) }}">
+                                            <span class="btn btn-sm btn-primary"> Edit </span>
+                                        </a>
                                     </td>
                                 </tr>
-                                @endforeach @endif
+                                @endforeach
+
+
+                                @endif
                             </tbody>
                         </table>
 
@@ -119,15 +135,7 @@
                             <div class="modal-body">
                                 <label for="exampleInputEmail1">Select absent type</label>
                                 <select name="absent_type" id="" class="form-control" required>
-                                                {{--<option value="">--select absent type--</option>--}}
-                                                {{--@if(count($absent))--}}
-                                                    {{--@foreach($absent as $absents)--}}
-                                                        {{--<option value="{{ $absents->id }} "--}}
-                                                            {{--@if($absentRecord->absent_id == $absents->id) selected @endif>--}}
-                                                            {{--{{ $absents->absent_type }}--}}
-                                                        {{--</option>--}}
-                                                    {{--@endforeach--}}
-                                                {{--@endif--}}
+                                                
                                     <option value="{{ $absentRecord->absent_type }}">{{ $absentRecord->absent_type }} </option>
                                     <option value="Unexcused">Unexcused</option>
                                     <option value="Excused">Excused</option>
@@ -138,12 +146,28 @@
                             </div>
 
                             <div class="modal-body">
+                                <label for="exampleInputEmail1">Select Quarter</label>
+                                <select name="quarter_id" id="" class="form-control" required>
+                                        
+
+                                    @if(count($daypresent))
+                                    @foreach($daypresent as $daypresents)
+                                        <option value="{{ $daypresents->id }} selected ">
+                                            {{ $daypresents->quarter_name }}
+                                            --{{$daypresents->quarter_day_present}} days
+                                        </option>
+                                    @endforeach
+                                    @endif
+                                </select>
+                            </div>
+
+                            <div class="modal-body">
                                 <label for="exampleInputEmail1">Absent date</label>
                                 <input type="text" name="absent_date" class="form-control" min="2000-01-01" max="2050-12-01" value="{{ $absentRecord->absent_date }}">
                             </div>
                             <div class="modal-body">
                                 <label for="exampleInputEmail1">Reason</label>
-                                <textarea rows="4" cols="50" wrap="hard" name="reason" class="form-control" placeholder="Reason" required autofocus>
+                                <textarea rows="4" cols="50" wrap="hard" name="reason" class="form-control" placeholder="Reason"  autofocus>
                                     {!! $absentRecord->reason !!}
                                 </textarea>
                             </div>

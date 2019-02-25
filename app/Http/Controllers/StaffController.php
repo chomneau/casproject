@@ -19,7 +19,7 @@ class StaffController extends Controller
 
 
     public function showStaff(){
-    	$staff = Staff::all();
+    	$staff = Staff::orderBy('last_name', 'ASC')->orderBy('first_name', 'ASC')->get();
     	return view('admin.staff.show_staff')->with('staff', $staff);
     }
 
@@ -41,7 +41,7 @@ class StaffController extends Controller
             'position' => 'required|string',
             'degree' => 'required|string',
             'phone' => 'required|string|min:9',
-            'email' => 'required|string|email',
+            //'email' => 'required|string|email',
         ]);
 
 

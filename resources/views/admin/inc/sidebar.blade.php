@@ -113,6 +113,15 @@
                                 </ul>
                             </li>
 
+                            <li>
+                                <a>Day Present<span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li class="sub_menu"><a href="{{ route('daypresent.index') }}">Day Present</a>
+                                    </li>
+
+                                </ul>
+                            </li>
+
 
                         </ul>
 

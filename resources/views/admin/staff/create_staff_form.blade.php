@@ -78,7 +78,7 @@
                                 <label for="email" class="col-md-8 col-md-offset-2 control-label">E-Mail</label>
 
                                     <div class="col-md-8 col-md-8 col-md-offset-2" style="margin-bottom: 15px">
-                                        <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="Email address" required>
+                                        <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="Email address">
 
                                         @if ($errors->has('email'))
                                             <span class="help-block">

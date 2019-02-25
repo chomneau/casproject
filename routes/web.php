@@ -230,6 +230,13 @@ Route::prefix('admin')->group(function () {
      Route::get('/gradeprofile/delete/{id}', 'GradeProfileController@delete')->name('gradeprofile.delete');
      Route::post('/gradeprofile/update/{id}', 'GradeProfileController@update')->name('gradeprofile.update');
 
+//setting Day Present
+
+Route::get('/daypresent', 'DaypresentController@index')->name('daypresent.index');
+Route::post('/daypresent/store', 'DaypresentController@store')->name('daypresent.store');
+Route::get('/daypresent/edit/{id}', 'DaypresentController@edit')->name('daypresent.edit');
+Route::get('/daypresent/delete/{id}', 'DaypresentController@destroy')->name('daypresent.delete');
+Route::post('/daypresent/update/{id}', 'DaypresentController@update')->name('daypresent.update');
 
 
 

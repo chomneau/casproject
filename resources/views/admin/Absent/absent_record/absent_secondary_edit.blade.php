@@ -110,33 +110,40 @@
                             <div class="modal-body">
                                 <label for="exampleInputEmail1">Select absent type</label>
                                 <select name="absent_type" id="" class="form-control" required>
-                                                {{--<option value="">--select absent type--</option>--}}
-                                                {{--@if(count($absent))--}}
-                                                    {{--@foreach($absent as $absents)--}}
-                                                        {{--<option value="{{ $absents->id }} "--}}
-                                                            {{--@if($secondaryAbsent_edit->absent_id == $absents->id) selected @endif>--}}
-                                                            {{--{{ $absents->absent_type }}--}}
-                                                        {{--</option>--}}
-                                                    {{--@endforeach--}}
-                                                {{--@endif--}}
-
+                                                
                                     <option value="{{ $secondaryAbsent_edit->absent_type}}">{{ $secondaryAbsent_edit->absent_type }} </option>
                                     <option value="Unexcused">Unexcused</option>
                                     <option value="Excused">Excused</option>
                                     <option value="Tardy">Tardy</option>
 
-                                                
-                                            </select>
+                                </select>
                             </div>
 
                             <div class="modal-body">
-                                <label for="exampleInputEmail1">Absent date</label>
-                                <input type="text" name="absent_date" class="form-control" min="2000-01-01" max="2050-12-01" value="
-                                {{ $secondaryAbsent_edit->absent_date }} " >
+                                <label for="exampleInputEmail1">Select Quarter</label>
+                                <select name="quarter_id" id="" class="form-control" required>
+                                        
+
+                                    @if(count($daypresent))
+                                    @foreach($daypresent as $daypresents)
+                                        <option value="{{ $daypresents->id }} selected ">
+                                            {{ $daypresents->quarter_name }}
+                                            --{{$daypresents->quarter_day_present}} days
+                                        </option>
+                                    @endforeach
+                                    @endif
+                                </select>
+                            </div>
+
+
+                            <div class="modal-body">
+                                <label for="exampleInputEmail1">Absent date (yyyy-mm-dd)</label>
+                                <input type="text" name="absent_date" class="form-control" min="2000-01-01" max="2050-12-01" value="{{ $secondaryAbsent_edit->absent_date }}">
+                                
                             </div>
                             <div class="modal-body">
-                                <label for="exampleInputEmail1">Reason</label>
-                                <textarea rows="4" cols="50" wrap="hard" name="reason" class="form-control" placeholder="Reason" required autofocus>
+                                <label for="">Reason</label>
+                                <textarea rows="4" cols="50" name="reason" class="form-control" placeholder="Reason"  autofocus>
                                         
                                         <?php
                                         $reason = $secondaryAbsent_edit->reason;

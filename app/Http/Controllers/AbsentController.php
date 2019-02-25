@@ -15,6 +15,7 @@ use View;
 use Carbon;
 use App\SecondaryAbsent;
 use App\PrekAbsent;
+use App\DayPresent;
 
 
 class AbsentController extends Controller
@@ -37,6 +38,9 @@ class AbsentController extends Controller
 
         $this->absent = Absent::all();
         View::share('absent', $this->absent);
+
+        $this->daypresent = DayPresent::all();
+        View::share('daypresent', $this->daypresent);
         
     }
     public function show(){
@@ -48,6 +52,9 @@ class AbsentController extends Controller
         $this->validate($request, [
             'absentType'=>'required'
         ]);
+
+
+        
         $absent = new Absent;
         $absent->absent_type = $request->absentType;
         $absent->save();
@@ -97,6 +104,153 @@ public function highSchoolAbsent($grade_id, $student_id){
         ['grade_id', $grade_id], 
         ['student_profile_id', $student_id],
     ])->orderBy('created_at', 'Desc')->get();
+//first
+    $quarter_1_unexcused = AbsentRecord::where([
+        ['grade_id', $grade_id],
+        ['student_profile_id', $student_id],
+        ['absent_type', 'Unexcused'],
+        ['quarter_name', 'quarter_1'],
+
+       ])->count();
+
+    $quarter_1_excused = AbsentRecord::where([
+        ['grade_id', $grade_id],
+        ['student_profile_id', $student_id],
+        ['absent_type', 'Excused'],
+        ['quarter_name', 'quarter_1'],
+
+       ])->count(); 
+       
+    $quarter_1_tardy = AbsentRecord::where([
+        ['grade_id', $grade_id],
+        ['student_profile_id', $student_id],
+        ['absent_type', 'Tardy'],
+        ['quarter_name', 'quarter_1'],
+
+       ])->count();  
+       
+    // $totalExcuse;
+    $quarter_1_tardy_absent = 0;
+
+    if($quarter_1_tardy >= 3){
+        $quarter_1_tardy_absent = $quarter_1_tardy/3;
+    }elseif($quarter_1_tardy<3){
+        $quarter_1_tardy_absent;
+    }
+
+
+    $quarter_1_total_All_Absent = $quarter_1_tardy_absent+$quarter_1_excused+$quarter_1_unexcused; 
+    
+ //second
+ $quarter_2_unexcused = AbsentRecord::where([
+    ['grade_id', $grade_id],
+    ['student_profile_id', $student_id],
+    ['absent_type', 'Unexcused'],
+    ['quarter_name', 'quarter_2'],
+
+   ])->count();
+
+$quarter_2_excused = AbsentRecord::where([
+    ['grade_id', $grade_id],
+    ['student_profile_id', $student_id],
+    ['absent_type', 'Excused'],
+    ['quarter_name', 'quarter_2'],
+
+   ])->count(); 
+   
+$quarter_2_tardy = AbsentRecord::where([
+    ['grade_id', $grade_id],
+    ['student_profile_id', $student_id],
+    ['absent_type', 'Tardy'],
+    ['quarter_name', 'quarter_2'],
+
+   ])->count();  
+   
+// $totalExcuse;
+$quarter_2_tardy_absent = 0;
+
+if($quarter_2_tardy >= 3){
+    $quarter_2_tardy_absent = $quarter_2_tardy/3;
+}elseif($quarter_2_tardy<3){
+    $quarter_2_tardy_absent;
+}
+
+
+$quarter_2_total_All_Absent = $quarter_2_tardy_absent+$quarter_2_excused+$quarter_2_unexcused; 
+
+//third
+$quarter_3_unexcused = AbsentRecord::where([
+    ['grade_id', $grade_id],
+    ['student_profile_id', $student_id],
+    ['absent_type', 'Unexcused'],
+    ['quarter_name', 'quarter_3'],
+
+   ])->count();
+
+$quarter_3_excused = AbsentRecord::where([
+    ['grade_id', $grade_id],
+    ['student_profile_id', $student_id],
+    ['absent_type', 'Excused'],
+    ['quarter_name', 'quarter_3'],
+
+   ])->count(); 
+   
+$quarter_3_tardy = AbsentRecord::where([
+    ['grade_id', $grade_id],
+    ['student_profile_id', $student_id],
+    ['absent_type', 'Tardy'],
+    ['quarter_name', 'quarter_3'],
+
+   ])->count();  
+   
+// $totalExcuse;
+$quarter_3_tardy_absent = 0;
+
+if($quarter_3_tardy >= 3){
+    $quarter_3_tardy_absent = $quarter_3_tardy/3;
+}elseif($quarter_3_tardy<3){
+    $quarter_3_tardy_absent;
+}
+
+
+$quarter_3_total_All_Absent = $quarter_3_tardy_absent+$quarter_3_excused+$quarter_3_unexcused; 
+
+//fourth
+$quarter_4_unexcused = AbsentRecord::where([
+    ['grade_id', $grade_id],
+    ['student_profile_id', $student_id],
+    ['absent_type', 'Unexcused'],
+    ['quarter_name', 'quarter_4'],
+
+   ])->count();
+
+$quarter_4_excused = AbsentRecord::where([
+    ['grade_id', $grade_id],
+    ['student_profile_id', $student_id],
+    ['absent_type', 'Excused'],
+    ['quarter_name', 'quarter_4'],
+
+   ])->count(); 
+   
+$quarter_4_tardy = AbsentRecord::where([
+    ['grade_id', $grade_id],
+    ['student_profile_id', $student_id],
+    ['absent_type', 'Tardy'],
+    ['quarter_name', 'quarter_4'],
+
+   ])->count();  
+   
+// $totalExcuse;
+$quarter_4_tardy_absent = 0;
+
+if($quarter_4_tardy >= 3){
+    $quarter_4_tardy_absent = $quarter_4_tardy/3;
+}elseif($quarter_4_tardy<3){
+    $quarter_4_tardy_absent;
+}
+
+
+$quarter_4_total_All_Absent = $quarter_4_tardy_absent+$quarter_4_excused+$quarter_4_unexcused;   
 
 
 
@@ -137,10 +291,36 @@ $tardy = AbsentRecord::where([
         'grade_id'=>$grade ,
         'students'=> $student,
         'hightSchoolAbsent'=> $highSchoolAbsent,
+
         'unexcused'=>$unexcused,
         'totalAbsent'=>$total_All_Absent,
         'excused'=>$excused,
-        'tardy'=>$tardy
+        'tardy'=>$tardy,
+        //first
+        'quarter_1_total_All_Absent' => $quarter_1_total_All_Absent,
+        'quarter_1_excused'=>$quarter_1_excused,
+        'quarter_1_unexcused'=>$quarter_1_unexcused,
+        'quarter_1_tardy'=>$quarter_1_tardy,
+
+        //second
+        'quarter_2_total_All_Absent' => $quarter_2_total_All_Absent,
+        'quarter_2_excused'=>$quarter_2_excused,
+        'quarter_2_unexcused'=>$quarter_2_unexcused,
+        'quarter_2_tardy'=>$quarter_2_tardy,
+        
+        //Third
+        'quarter_3_total_All_Absent' => $quarter_3_total_All_Absent,
+        'quarter_3_excused'=>$quarter_3_excused,
+        'quarter_3_unexcused'=>$quarter_3_unexcused,
+        'quarter_3_tardy'=>$quarter_3_tardy,
+
+        //Fourth
+        'quarter_4_total_All_Absent' => $quarter_4_total_All_Absent,
+        'quarter_4_excused'=>$quarter_4_excused,
+        'quarter_4_unexcused'=>$quarter_4_unexcused,
+        'quarter_4_tardy'=>$quarter_4_tardy,
+
+
         ]);
 }
 
@@ -149,9 +329,17 @@ public function storeHighSchoolAbsent(Request $request, $grade_id, $student_id){
     $student = StudentProfile::find($student_id);
     $grade = Grade::find($grade_id);
 
+    $daypresent_id = $request->quarter_id;
+    $daypresent = DayPresent::find($daypresent_id);
+
+   
+
     $highSchoolAbsent = new AbsentRecord();
     //absent type is the id of absent table
     $highSchoolAbsent->absent_type = $request->absent_type;
+    $highSchoolAbsent->quarter_name = $daypresent->quarter_name;
+    $highSchoolAbsent->quarter_day_present = $daypresent->quarter_day_present;
+
     $highSchoolAbsent->student_profile_id = $student->id;
     $highSchoolAbsent->grade_id = $grade->id;
     $highSchoolAbsent->reason = $request->reason;
@@ -169,6 +357,7 @@ public function editHighSchoolAbsent($grade_id, $student_id, $absentRecord_id){
     
     $absentRecord = AbsentRecord::find($absentRecord_id);
     
+
     $highSchoolAbsent = AbsentRecord::where([
         ['grade_id', $grade_id], 
         ['student_profile_id', $student_id],
@@ -190,9 +379,14 @@ public function updateHighSchoolAbsent(Request $request, $grade_id, $student_id,
     $student = StudentProfile::find($student_id);
     $grade = Grade::find($grade_id);
 
+    $daypresent_id = $request->quarter_id;
+    $daypresent = DayPresent::find($daypresent_id);
+
     $highSchoolAbsent = AbsentRecord::findOrFail($absentRecord_id);
     //absent type is the id of absent table
     $highSchoolAbsent->absent_type = $request->absent_type;
+    $highSchoolAbsent->quarter_name = $daypresent->quarter_name;
+    $highSchoolAbsent->quarter_day_present = $daypresent->quarter_day_present;
     $highSchoolAbsent->student_profile_id = $student->id;
     $highSchoolAbsent->grade_id = $grade->id;
     $highSchoolAbsent->reason = $request->reason;
@@ -230,6 +424,154 @@ public function secondarySchoolAbsent($grade_id, $student_id){
         ['secondary_level_id', $grade_id], 
         ['student_profile_id', $student_id],
     ])->orderBy('created_at', 'Desc')->get();
+
+//first
+$quarter_1_unexcused = SecondaryAbsent::where([
+    ['secondary_level_id', $grade_id],
+    ['student_profile_id', $student_id],
+    ['absent_type', 'Unexcused'],
+    ['quarter_name', 'quarter_1'],
+
+   ])->count();
+
+$quarter_1_excused = SecondaryAbsent::where([
+    ['secondary_level_id', $grade_id],
+    ['student_profile_id', $student_id],
+    ['absent_type', 'Excused'],
+    ['quarter_name', 'quarter_1'],
+
+   ])->count(); 
+   
+$quarter_1_tardy = SecondaryAbsent::where([
+    ['secondary_level_id', $grade_id],
+    ['student_profile_id', $student_id],
+    ['absent_type', 'Tardy'],
+    ['quarter_name', 'quarter_1'],
+
+   ])->count();  
+   
+// $totalExcuse;
+$quarter_1_tardy_absent = 0;
+
+if($quarter_1_tardy >= 3){
+    $quarter_1_tardy_absent = $quarter_1_tardy/3;
+}elseif($quarter_1_tardy<3){
+    $quarter_1_tardy_absent;
+}
+
+
+$quarter_1_total_All_Absent = $quarter_1_tardy_absent+$quarter_1_excused+$quarter_1_unexcused; 
+
+//second
+$quarter_2_unexcused = SecondaryAbsent::where([
+['secondary_level_id', $grade_id],
+['student_profile_id', $student_id],
+['absent_type', 'Unexcused'],
+['quarter_name', 'quarter_2'],
+
+])->count();
+
+$quarter_2_excused = SecondaryAbsent::where([
+['secondary_level_id', $grade_id],
+['student_profile_id', $student_id],
+['absent_type', 'Excused'],
+['quarter_name', 'quarter_2'],
+
+])->count(); 
+
+$quarter_2_tardy = SecondaryAbsent::where([
+['secondary_level_id', $grade_id],
+['student_profile_id', $student_id],
+['absent_type', 'Tardy'],
+['quarter_name', 'quarter_2'],
+
+])->count();  
+
+// $totalExcuse;
+$quarter_2_tardy_absent = 0;
+
+if($quarter_2_tardy >= 3){
+$quarter_2_tardy_absent = $quarter_2_tardy/3;
+}elseif($quarter_2_tardy<3){
+$quarter_2_tardy_absent;
+}
+
+
+$quarter_2_total_All_Absent = $quarter_2_tardy_absent+$quarter_2_excused+$quarter_2_unexcused; 
+
+//third
+$quarter_3_unexcused = SecondaryAbsent::where([
+['secondary_level_id', $grade_id],
+['student_profile_id', $student_id],
+['absent_type', 'Unexcused'],
+['quarter_name', 'quarter_3'],
+
+])->count();
+
+$quarter_3_excused = SecondaryAbsent::where([
+['secondary_level_id', $grade_id],
+['student_profile_id', $student_id],
+['absent_type', 'Excused'],
+['quarter_name', 'quarter_3'],
+
+])->count(); 
+
+$quarter_3_tardy = SecondaryAbsent::where([
+['secondary_level_id', $grade_id],
+['student_profile_id', $student_id],
+['absent_type', 'Tardy'],
+['quarter_name', 'quarter_3'],
+
+])->count();  
+
+// $totalExcuse;
+$quarter_3_tardy_absent = 0;
+
+if($quarter_3_tardy >= 3){
+$quarter_3_tardy_absent = $quarter_3_tardy/3;
+}elseif($quarter_3_tardy<3){
+$quarter_3_tardy_absent;
+}
+
+
+$quarter_3_total_All_Absent = $quarter_3_tardy_absent+$quarter_3_excused+$quarter_3_unexcused; 
+
+//fourth
+$quarter_4_unexcused = SecondaryAbsent::where([
+['secondary_level_id', $grade_id],
+['student_profile_id', $student_id],
+['absent_type', 'Unexcused'],
+['quarter_name', 'quarter_4'],
+
+])->count();
+
+$quarter_4_excused = SecondaryAbsent::where([
+['secondary_level_id', $grade_id],
+['student_profile_id', $student_id],
+['absent_type', 'Excused'],
+['quarter_name', 'quarter_4'],
+
+])->count(); 
+
+$quarter_4_tardy = SecondaryAbsent::where([
+['secondary_level_id', $grade_id],
+['student_profile_id', $student_id],
+['absent_type', 'Tardy'],
+['quarter_name', 'quarter_4'],
+
+])->count();  
+
+// $totalExcuse;
+$quarter_4_tardy_absent = 0;
+
+if($quarter_4_tardy >= 3){
+$quarter_4_tardy_absent = $quarter_4_tardy/3;
+}elseif($quarter_4_tardy<3){
+$quarter_4_tardy_absent;
+}
+
+
+$quarter_4_total_All_Absent = $quarter_4_tardy_absent+$quarter_4_excused+$quarter_4_unexcused;   
 
 
 
@@ -272,7 +614,33 @@ public function secondarySchoolAbsent($grade_id, $student_id){
         'unexcused'=>$unexcused,
         'totalAbsent'=>$total_All_Absent,
         'excused'=>$excused,
-        'tardy'=>$tardy
+        'tardy'=>$tardy,
+
+
+        //first
+        'quarter_1_total_All_Absent' => $quarter_1_total_All_Absent,
+        'quarter_1_excused'=>$quarter_1_excused,
+        'quarter_1_unexcused'=>$quarter_1_unexcused,
+        'quarter_1_tardy'=>$quarter_1_tardy,
+
+        //second
+        'quarter_2_total_All_Absent' => $quarter_2_total_All_Absent,
+        'quarter_2_excused'=>$quarter_2_excused,
+        'quarter_2_unexcused'=>$quarter_2_unexcused,
+        'quarter_2_tardy'=>$quarter_2_tardy,
+        
+        //Third
+        'quarter_3_total_All_Absent' => $quarter_3_total_All_Absent,
+        'quarter_3_excused'=>$quarter_3_excused,
+        'quarter_3_unexcused'=>$quarter_3_unexcused,
+        'quarter_3_tardy'=>$quarter_3_tardy,
+
+        //Fourth
+        'quarter_4_total_All_Absent' => $quarter_4_total_All_Absent,
+        'quarter_4_excused'=>$quarter_4_excused,
+        'quarter_4_unexcused'=>$quarter_4_unexcused,
+        'quarter_4_tardy'=>$quarter_4_tardy,
+
         ]);
 
 }
@@ -285,9 +653,16 @@ public function storeSecondaryAbsent(Request $request, $grade_id, $student_id){
     $student = StudentProfile::find($student_id);
     $grade = SecondaryLevel::find($grade_id);
 
+    $daypresent_id = $request->quarter_id;
+    $daypresent = DayPresent::find($daypresent_id);
+
     $secondaryAbsent = new SecondaryAbsent();
     //absent type is the id of absent table
     $secondaryAbsent->absent_type = $request->absent_type;
+
+    $secondaryAbsent->quarter_name = $daypresent->quarter_name;
+    $secondaryAbsent->quarter_day_present = $daypresent->quarter_day_present;
+
     $secondaryAbsent->student_profile_id = $student->id;
     $secondaryAbsent->secondary_level_id = $grade->id;
     $secondaryAbsent->reason = $request->reason;
@@ -323,8 +698,15 @@ public function updateSecondaryAbsent(Request $request, $grade_id, $student_id, 
     $student = StudentProfile::find($student_id);
     $grade = SecondaryLevel::find($grade_id);
 
+    $daypresent_id = $request->quarter_id;
+    $daypresent = DayPresent::find($daypresent_id);
+
+    
     $secondaryAbsent = SecondaryAbsent::find($absentRecord_id);
     //absent type is the id of absent table
+    $secondaryAbsent->quarter_name = $daypresent->quarter_name;
+    $secondaryAbsent->quarter_day_present = $daypresent->quarter_day_present;
+
     $secondaryAbsent->absent_type = $request->absent_type;
     $secondaryAbsent->student_profile_id = $student->id;
     $secondaryAbsent->secondary_level_id = $grade->id;
@@ -371,7 +753,155 @@ public function prekSchoolAbsent($grade_id, $student_id){
 
     ])->orderBy('created_at', 'Desc')->get();
 
-    //return $highSchoolAbsent;
+   //first
+    $quarter_1_unexcused = PrekAbsent::where([
+        ['k_level_id', $grade_id],
+        ['student_profile_id', $student_id],
+        ['absent_type', 'Unexcused'],
+        ['quarter_name', 'quarter_1'],
+
+    ])->count();
+
+    $quarter_1_excused = PrekAbsent::where([
+        ['k_level_id', $grade_id],
+        ['student_profile_id', $student_id],
+        ['absent_type', 'Excused'],
+        ['quarter_name', 'quarter_1'],
+
+    ])->count(); 
+    
+    $quarter_1_tardy = PrekAbsent::where([
+        ['k_level_id', $grade_id],
+        ['student_profile_id', $student_id],
+        ['absent_type', 'Tardy'],
+        ['quarter_name', 'quarter_1'],
+
+    ])->count();  
+    
+    // $totalExcuse;
+    $quarter_1_tardy_absent = 0;
+
+    if($quarter_1_tardy >= 3){
+        $quarter_1_tardy_absent = $quarter_1_tardy/3;
+    }elseif($quarter_1_tardy<3){
+        $quarter_1_tardy_absent;
+    }
+
+
+    $quarter_1_total_All_Absent = $quarter_1_tardy_absent+$quarter_1_excused+$quarter_1_unexcused; 
+
+    //second
+    $quarter_2_unexcused = PrekAbsent::where([
+    ['k_level_id', $grade_id],
+    ['student_profile_id', $student_id],
+    ['absent_type', 'Unexcused'],
+    ['quarter_name', 'quarter_2'],
+
+    ])->count();
+
+    $quarter_2_excused = PrekAbsent::where([
+    ['k_level_id', $grade_id],
+    ['student_profile_id', $student_id],
+    ['absent_type', 'Excused'],
+    ['quarter_name', 'quarter_2'],
+
+    ])->count(); 
+
+    $quarter_2_tardy = PrekAbsent::where([
+    ['k_level_id', $grade_id],
+    ['student_profile_id', $student_id],
+    ['absent_type', 'Tardy'],
+    ['quarter_name', 'quarter_2'],
+
+    ])->count();  
+
+    // $totalExcuse;
+    $quarter_2_tardy_absent = 0;
+
+    if($quarter_2_tardy >= 3){
+    $quarter_2_tardy_absent = $quarter_2_tardy/3;
+    }elseif($quarter_2_tardy<3){
+    $quarter_2_tardy_absent;
+    }
+
+
+    $quarter_2_total_All_Absent = $quarter_2_tardy_absent+$quarter_2_excused+$quarter_2_unexcused; 
+
+    //third
+    $quarter_3_unexcused = PrekAbsent::where([
+    ['k_level_id', $grade_id],
+    ['student_profile_id', $student_id],
+    ['absent_type', 'Unexcused'],
+    ['quarter_name', 'quarter_3'],
+
+    ])->count();
+
+    $quarter_3_excused = PrekAbsent::where([
+    ['k_level_id', $grade_id],
+    ['student_profile_id', $student_id],
+    ['absent_type', 'Excused'],
+    ['quarter_name', 'quarter_3'],
+
+    ])->count(); 
+
+    $quarter_3_tardy = PrekAbsent::where([
+    ['k_level_id', $grade_id],
+    ['student_profile_id', $student_id],
+    ['absent_type', 'Tardy'],
+    ['quarter_name', 'quarter_3'],
+
+    ])->count();  
+
+    // $totalExcuse;
+    $quarter_3_tardy_absent = 0;
+
+    if($quarter_3_tardy >= 3){
+    $quarter_3_tardy_absent = $quarter_3_tardy/3;
+    }elseif($quarter_3_tardy<3){
+    $quarter_3_tardy_absent;
+    }
+
+
+    $quarter_3_total_All_Absent = $quarter_3_tardy_absent+$quarter_3_excused+$quarter_3_unexcused; 
+
+    //fourth
+    $quarter_4_unexcused = PrekAbsent::where([
+    ['k_level_id', $grade_id],
+    ['student_profile_id', $student_id],
+    ['absent_type', 'Unexcused'],
+    ['quarter_name', 'quarter_4'],
+
+    ])->count();
+
+    $quarter_4_excused = PrekAbsent::where([
+    ['k_level_id', $grade_id],
+    ['student_profile_id', $student_id],
+    ['absent_type', 'Excused'],
+    ['quarter_name', 'quarter_4'],
+
+    ])->count(); 
+
+    $quarter_4_tardy = PrekAbsent::where([
+    ['k_level_id', $grade_id],
+    ['student_profile_id', $student_id],
+    ['absent_type', 'Tardy'],
+    ['quarter_name', 'quarter_4'],
+
+    ])->count();  
+
+    // $totalExcuse;
+    $quarter_4_tardy_absent = 0;
+
+    if($quarter_4_tardy >= 3){
+    $quarter_4_tardy_absent = $quarter_4_tardy/3;
+    }elseif($quarter_4_tardy<3){
+    $quarter_4_tardy_absent;
+    }
+
+
+    $quarter_4_total_All_Absent = $quarter_4_tardy_absent+$quarter_4_excused+$quarter_4_unexcused;   
+
+
 
 
     $unexcused = PrekAbsent::where([
@@ -411,7 +941,32 @@ public function prekSchoolAbsent($grade_id, $student_id){
         'unexcused'=>$unexcused,
         'totalAbsent'=>$total_All_Absent,
         'excused'=>$excused,
-        'tardy'=>$tardy
+        'tardy'=>$tardy,
+
+         //first
+         'quarter_1_total_All_Absent' => $quarter_1_total_All_Absent,
+         'quarter_1_excused'=>$quarter_1_excused,
+         'quarter_1_unexcused'=>$quarter_1_unexcused,
+         'quarter_1_tardy'=>$quarter_1_tardy,
+ 
+         //second
+         'quarter_2_total_All_Absent' => $quarter_2_total_All_Absent,
+         'quarter_2_excused'=>$quarter_2_excused,
+         'quarter_2_unexcused'=>$quarter_2_unexcused,
+         'quarter_2_tardy'=>$quarter_2_tardy,
+         
+         //Third
+         'quarter_3_total_All_Absent' => $quarter_3_total_All_Absent,
+         'quarter_3_excused'=>$quarter_3_excused,
+         'quarter_3_unexcused'=>$quarter_3_unexcused,
+         'quarter_3_tardy'=>$quarter_3_tardy,
+ 
+         //Fourth
+         'quarter_4_total_All_Absent' => $quarter_4_total_All_Absent,
+         'quarter_4_excused'=>$quarter_4_excused,
+         'quarter_4_unexcused'=>$quarter_4_unexcused,
+         'quarter_4_tardy'=>$quarter_4_tardy,
+
         ]);
 
 
@@ -424,9 +979,16 @@ public function storePrekAbsent(Request $request, $grade_id, $student_id){
     $student = StudentProfile::find($student_id);
     $grade = KLevel::find($grade_id);
 
+    $daypresent_id = $request->quarter_id;
+    $daypresent = DayPresent::find($daypresent_id);
+
     $prekAbsent = new PrekAbsent();
     //absent type is the id of absent table
     $prekAbsent->absent_type = $request->absent_type;
+
+    $prekAbsent->quarter_name = $daypresent->quarter_name;
+    $prekAbsent->quarter_day_present = $daypresent->quarter_day_present;
+
     $prekAbsent->student_profile_id = $student->id;
     $prekAbsent->k_level_id = $grade->id;
     $prekAbsent->reason = $request->reason;
@@ -462,9 +1024,16 @@ public function updatePrekAbsent(Request $request, $grade_id, $student_id, $prek
     $student = StudentProfile::find($student_id);
     $grade = KLevel::find($grade_id);
 
+    $daypresent_id = $request->quarter_id;
+    $daypresent = DayPresent::find($daypresent_id);
+
     $prekAbsent = PrekAbsent::find($prekAbsent_id);
     //absent type is the id of absent table
     $prekAbsent->absent_type = $request->absent_type;
+
+    $prekAbsent->quarter_name = $daypresent->quarter_name;
+    $prekAbsent->quarter_day_present = $daypresent->quarter_day_present;
+
     $prekAbsent->student_profile_id = $student->id;
     $prekAbsent->k_level_id = $grade->id;
     $prekAbsent->reason = $request->reason;

@@ -125,33 +125,53 @@
 				        @endforeach
 			        @endif
 
-			        <tr>
+			      <tr>
 						<td style="font-size: 12px; font-weight: bold">Days Present</td>
-						<td style="font-size: 12px" contenteditable="true">
-							
-						</td>
-
-						<td style="font-size: 12px" contenteditable="true">
-							
-						</td>
-
-						<td style="font-size: 12px" contenteditable="true">
-							
-						</td>
-						<td style="font-size: 12px" contenteditable="true">
-							
-						</td>
-						<td style="font-size: 12px" contenteditable="true">
-							
-						</td>
-						<td style="font-size: 12px" contenteditable="true">
-							
-						</td>
-
-						<td style="font-size: 12px" contenteditable="true">
-							
-						</td>
+						<td style="font-size: 12px; font-weight:350" contenteditable="true" class="text-center">
 						
+					
+
+								{{ $total_daypresent_1-$secondaryschool_absent_quarter_1 }} /  {{$total_daypresent_1}}
+
+						
+													
+						</td>
+
+						<td class="text-center" style="font-size: 12px" contenteditable="true">
+							
+						{{ $total_daypresent_2-$secondaryschool_absent_quarter_2 }} / {{ $total_daypresent_2 }}
+						</td>
+					{{--semester_1--}}
+						<td class="text-center" style="font-size: 12px; font-weight:bold" contenteditable="true">
+
+						{{ ($total_daypresent_1 + $total_daypresent_2)- ($secondaryschool_absent_quarter_1 + $secondaryschool_absent_quarter_2) }} / {{ $total_daypresent_1 + $total_daypresent_2 }}
+						
+						</td>
+
+
+						<td class="text-center" style="font-size: 12px">
+						{{ $total_daypresent_3-$secondaryschool_absent_quarter_3 }} / {{ $total_daypresent_3 }}
+
+												
+						</td>
+
+
+						<td class="text-center" style="font-size: 12px">
+					
+							{{ $total_daypresent_4-$secondaryschool_absent_quarter_4 }} / {{$total_daypresent_4}}
+
+							
+						</td>
+						<td class="text-center" style="font-size: 12px; font-weight:bold" >
+							{{ ($total_daypresent_3 + $total_daypresent_4)- ($secondaryschool_absent_quarter_3 + $secondaryschool_absent_quarter_4) }} / {{ $total_daypresent_3 + $total_daypresent_4 }}
+						</td>
+
+						<td class="text-center" style="font-size: 12px; font-weight:bold" >
+							{{ $yearly_daypresent-$yearly_absent }} / {{ $yearly_daypresent }}
+						</td>
+
+
+	
 					</tr>
 
 			        
