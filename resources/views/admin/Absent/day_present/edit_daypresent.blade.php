@@ -62,7 +62,9 @@
                                     <label for="exampleInputEmail1">
                                         Quarter Name
                                     </label>
-                                    <input type="text" name="quarter_name"  value="{{ $daypresent->quarter_name }}" class="form-control" autofocus required>
+                                    <P style="font-weight:bold">{{ $daypresent->quarter_name }}</P>
+                                {{--    <input type="text" name="quarter_name"  value="{{ $daypresent->quarter_name }}" class="form-control" autofocus required>
+                                --}}
                                 </div>
 
                                 <div class="col-md-6 col-md-offset-1" style="margin-top:1em;">
