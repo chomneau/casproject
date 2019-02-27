@@ -33,6 +33,7 @@ use App\Staff;
 
 
 
+
 class TeacherProfileController extends Controller
 {
         public function __construct()
@@ -808,7 +809,7 @@ class TeacherProfileController extends Controller
 
        //search student
 
-       public function searchStudent($teacher_id){
+    public function searchStudent($teacher_id){
         $teacher = Teacher::findOrFail($teacher_id);
         $student = StudentProfile::where('card_id','like', '%'. request('query') .  '%')
             ->orWhere('first_name','like', '%'. request('query') .  '%')
@@ -819,6 +820,31 @@ class TeacherProfileController extends Controller
         return view('search.teacher_search_result')->with('student', $student)->with('teacher', $teacher)
             ->with('studentName', 'Search results :' .request('query'));
     }
+
+    public function viewStaff($teacher_id)
+    {
+        $teacher = Teacher::findOrFail($teacher_id);
+
+        $staff = Staff::orderBy('last_name', 'ASC')->orderBy('first_name', 'ASC')->get();
+    	return view('admin.staff.show_staff')->with('staff', $staff)->with('teacher', $teacher);
+    }
+
+    public function staffDetail($teacher_id, $staff_id)
+    {
+        $staff = Staff::findOrFail($staff_id);
+        $teacher = Teacher::findOrFail($teacher_id);
+        return view('admin.staff.staff_detail')->with('staff', $staff)->with('teacher', $teacher);
+        
+    }
+
+    public function showAllTeacher($teacher_id)
+    {
+        $teacher = Teacher::findOrFail($teacher_id);
+        $teacherAll = Teacher::orderBy('first_name', 'ASC')->orderBy('first_name', 'ASC')->get();
+    	return view('admin.teacher.all_teacher')->with('teacherAll', $teacherAll)->with('teacher', $teacher);
+    }
+
+    
 
 
 

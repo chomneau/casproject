@@ -6,12 +6,14 @@
             <div class="page-title">
                 <div class="title_left">
                     <h3>Staff Profile
+                    @if(Auth::guard('admin')->check())
                         <span>
                             <a href="{{ route('admin.staff.edit', ['id'=>$staff->id]) }}" class="btn btn-success btn-sm ">
                                <i class="fa fa-edit m-right-xs"></i>
                                 Edit Profile
                             </a>
                         </span>
+                        @endif   
                     </h3>
                 </div>
 

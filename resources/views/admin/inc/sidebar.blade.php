@@ -49,7 +49,7 @@
 
                     <li><a><i class="fas fa-users"></i> Staff <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
-                            <li><a href="{{ route('admin.showStaff') }}">View all Staffs</a></li>
+                            <li><a href="{{ route('admin.showStaff') }}">View all Staff</a></li>
                             <li><a href="{{ route('admin.createStaff') }}">Create new Staff</a></li>
                             
                         </ul>
@@ -188,6 +188,22 @@
                             </li>
 
 
+                        </ul>
+                    </li>
+
+                    <li><a ><i class="fas fa-users"></i> Staff <span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu">
+                            <li><a href="{{ route('teacher.viewStaff', ['teacher_id'=>$teacher->id]) }}">View all Staff</a></li>
+                            
+                            
+                        </ul>
+                    </li>
+
+                    <li><a href="#"><i class="fas fa-book-open"></i> Teachers </a>
+                        <ul class="nav child_menu">
+                            
+                            <li><a href="{{ route('teacher.showAllTeacher', ['teacher_id'=>$teacher->id]) }}">View all teachers</a></li>
+                            
                         </ul>
                     </li>
 

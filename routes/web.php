@@ -488,10 +488,20 @@ Route::post('/daypresent/update/{id}', 'DaypresentController@update')->name('day
 Route::prefix('teacher')->group(function () {
 
 
-
-
     //teacher search students
     Route::get('/search/{teacher_id}', 'TeacherProfileController@searchStudent')->name('teacher.searchStudent');
+    //view all staff
+    Route::get('/viewStaff/{teacher_id}', 'TeacherProfileController@viewStaff')->name('teacher.viewStaff');
+
+    //view staff detail
+    Route::get('/staffDetail/{teacher_id}/{staff_id}/', 'TeacherProfileController@staffDetail')->name('teacher.staffDetail');
+
+    //show all teacher
+    Route::get('/showAllTeacher/{teacher_id}', 'TeacherProfileController@showAllTeacher')->name('teacher.showAllTeacher');
+
+
+
+
     //Change teacher password form
     Route::get('/changePassword/{teacher_id}', 'TeacherProfileController@changePassword')->name('teacher.changePassword');
 

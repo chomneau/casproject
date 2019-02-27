@@ -29,7 +29,7 @@ class TeacherController extends Controller
 
     public function show(){
 
-    	$teacher = Teacher::orderBy('first_name', 'ASC')->get();
+    	$teacher = Teacher::orderBy('last_name', 'ASC')->orderBy('first_name', 'ASC')->get();
     	return view('admin.teacher.all_teacher')->with('teacher', $teacher);
     }
 
