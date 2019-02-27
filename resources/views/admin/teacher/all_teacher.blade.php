@@ -87,7 +87,7 @@
                           </tr>
 
                           <tr>
-                            <td>Homeroom Teacher for</td>
+                            <td>Homeroom Teacher</td>
                             <td> :</td>
                             <td>
                                 @foreach($gradeProfile as $gradeProfiles)
@@ -178,7 +178,7 @@
                           </tr>
 
                           <tr>
-                            <td>Homeroom Teacher for</td>
+                            <td>Homeroom Teacher</td>
                             <td> :</td>
                             <td>
                                 @foreach($gradeProfile as $gradeProfiles)
