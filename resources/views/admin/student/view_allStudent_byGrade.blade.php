@@ -11,7 +11,7 @@
                     <h3>ALL STUDENT <small></small></h3>
                 </div>
 
-                <div class="title_right">
+                <!-- <div class="title_right">
                     <div class="col-md-8 col-sm-8 col-xs-12 form-group pull-right top_search">
                         <form action="{{ route('student.search')  }}" method='get'>
                             {{csrf_field()}}
@@ -24,7 +24,7 @@
                         </form>
 
                     </div>
-                </div>
+                </div> -->
 
 
             </div>

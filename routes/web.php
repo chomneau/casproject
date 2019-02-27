@@ -490,6 +490,8 @@ Route::prefix('teacher')->group(function () {
 
 
 
+    //teacher search students
+    Route::get('/search/{teacher_id}', 'TeacherProfileController@searchStudent')->name('teacher.searchStudent');
     //Change teacher password form
     Route::get('/changePassword/{teacher_id}', 'TeacherProfileController@changePassword')->name('teacher.changePassword');
 

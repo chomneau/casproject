@@ -79,7 +79,7 @@
                                         <tr>
                                             <td>#</td>
                                             <td>
-                                                <a>{{ $students->last_name }} {{ $students->first_name }}</a>
+                                                <a>{{ $students->last_name }}, {{ $students->first_name }}</a>
                                                 <br />
                                                 <small>Created {{ $students->created_at->diffForHumans() }}</small>
                                             </td>

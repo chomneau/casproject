@@ -29,21 +29,6 @@
                     </div>
                 </div>
 
-                <div class="title_right">
-                    <div class="col-md-8 col-sm-8 col-xs-12 form-group pull-right top_search">
-                        <form action="{{ route('student.search')  }}" method='get'>
-                            {{csrf_field()}}
-                            <!-- <div class="input-group">
-                                <input type="text" class="form-control" name="query" placeholder="Enter Student ID or First name" required >
-                                <span class="input-group-btn">
-                                    <button class="btn btn-default" type="submit">Search</button>
-                                </span>                       
-                            </div> -->
-                        </form>
-
-                    </div>
-                </div>
-
 
 
 
@@ -82,12 +67,8 @@
                                 <tr>
                                     <th style="width: 1%">#</th>
                                     <th style="width: 20%">Student name</th>
-                                    <th style="width: 10%">Gender</th>
                                     <th>Student id</th>
-                                    <!-- grade name -->
-                                    <th>Grade</th>
-                                    <th>Parents Contact</th>
-                                    <th>Status</th>
+                                    <th>Admission date</th>
 
                                     <th style="width: 20%">Action</th>
                                 </tr>
@@ -98,49 +79,25 @@
                                         <tr>
                                             <td>#</td>
                                             <td>
-                                                <a> {{ $students->last_name }}, {{ $students->first_name }} </a>
+                                                <a>{{ $students->last_name }}, {{ $students->first_name }}</a>
                                                 <br />
                                                 <small>Created {{ $students->created_at->diffForHumans() }}</small>
                                             </td>
                                             <td>
-                                                {{ $students->gender }}
-                                            </td>
-                                            <td>
                                                 {{ $students->card_id }}
                                             </td>
-
-                                            <td>
-                                                @foreach($gradeProfile as $gradeProfiles)
-                                                    @if($students->grade_profile_id == $gradeProfiles->id)
-                                                {{ $gradeProfiles->name }}
-
-                                                    @endif
-
-                                                @endforeach
-                                            </td>
-                                            
-                                            <!-- grade profile name -->
-                                            <td> {{ $students->father_phone }} | {{ $students->mother_phone }} </td>
                                             <td class="project_progress">
-                                                {{ $students->status }}
+                                                {{ $students->created_at }}
                                             </td>
 
                                             <td>
-                                                @if(Auth::guard('admin')->check())
-                                                <a href="{{ route('student.detail', ['id'=>$students->id] ) }}" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> View profile </a>
-
-                                                <a href="{{ route('student.detail.edit', ['id'=>$students->id]) }}" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
+                                            <a href="{{ route('teacher.studentProfile.detail', ['teacher_id'=>$teacher->id, 'student_id'=>$students->id] ) }}" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> View profile </a>
+                                                
                                                 
                                                 <!-- <a href="{{ route('student.detail.delete', ['id'=>$students->id]) }}"  class="btn btn-danger btn-xs" id="confirmation">
                                                     <i class="fa fa-trash-o"></i>
                                                     Delete
                                                 </a> -->
-
-                                                @elseif(Auth::guard('teacher')->check())
-
-                                                <a href="{{ route('teacher.studentProfile.detail', ['teacher_id'=>$teacher->id, 'student_id'=>$students->id] ) }}" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> View profile </a>
-
-                                                @endif
 
                                                 <script type="text/javascript">
                                                     $('#confirmation').on('click', function () {
@@ -161,7 +118,7 @@
 
                             <div class="text-right">
                             {!! $student->links() !!}
-                            </div>
+                        </div>
 
                         </div>
                     </div>

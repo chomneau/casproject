@@ -578,6 +578,7 @@ class StudentController extends Controller
     public function searchStudent(){
         $student = StudentProfile::where('card_id','like', '%'. request('query') .  '%')
             ->orWhere('first_name','like', '%'. request('query') .  '%')
+            ->orWhere('last_name','like', '%'. request('query') .  '%')
             ->orWhere('father_phone','like', '%'. request('query') .  '%')
             ->orWhere('mother_phone','like', '%'. request('query') .  '%')
             ->paginate(10);

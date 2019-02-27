@@ -740,7 +740,7 @@ class TeacherProfileController extends Controller
     
     public function viewAllStudents($teacher_id){
 
-        $student = StudentProfile::orderBy('first_name', 'ASC')->orderBy('grade_profile_id', 'ASC')
+        $student = StudentProfile::orderBy('last_name', 'ASC')->orderBy('first_name', 'ASC')->orderBy('grade_profile_id', 'ASC')
             ->paginate(10);
 
         $teacher = Teacher::find($teacher_id);    
@@ -805,6 +805,21 @@ class TeacherProfileController extends Controller
             return redirect()->back();
         }
     }
+
+       //search student
+
+       public function searchStudent($teacher_id){
+        $teacher = Teacher::findOrFail($teacher_id);
+        $student = StudentProfile::where('card_id','like', '%'. request('query') .  '%')
+            ->orWhere('first_name','like', '%'. request('query') .  '%')
+            ->orWhere('last_name','like', '%'. request('query') .  '%')
+            ->orWhere('father_phone','like', '%'. request('query') .  '%')
+            ->orWhere('mother_phone','like', '%'. request('query') .  '%')
+            ->paginate(10);
+        return view('search.teacher_search_result')->with('student', $student)->with('teacher', $teacher)
+            ->with('studentName', 'Search results :' .request('query'));
+    }
+
 
 
 
