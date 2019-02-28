@@ -1,10 +1,6 @@
 <div class="row mt-4">
 		<div class="col-md-1"></div>
 		<div class="col-md-10 border border-secondary" style="margin-top:1em; padding-top:1em " >
-			<p> 
-				<span class="pull-left">Next Year's Grade</span> 
-				<span class="text-center" style="margin-left:6em">Level : ……………………</span>		                           </p>
-				
 			
 			<table class="table table-sm" style="font-size: 12px; margin-top:1em ">
 			

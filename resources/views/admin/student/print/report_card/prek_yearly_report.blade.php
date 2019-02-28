@@ -439,6 +439,26 @@
 					<td></td>
 				</tr>
 
+					<tr>
+						<td style="font-size: 12px">
+							This student is meeting the expected level of development for his/her age range. (If No, see comment)
+						</td>
+						<td style="font-size: 10.5px" >Y or N</td>
+						<td style="font-size: 10.5px" >Y or N</td>
+						<td style="font-size: 10.5px" >Y or N</td>
+						<td style="font-size: 10.5px" >Y or N</td>
+					</tr>
+
+					<tr>
+						<td style="font-size: 12px">
+							This student is on a modified program. (If Yes, see comment)  	
+						</td>
+						<td style="font-size: 10.5px" >Y or N</td>
+						<td style="font-size: 10.5px" >Y or N</td>
+						<td style="font-size: 10.5px" >Y or N</td>
+						<td style="font-size: 10.5px" >Y or N</td>
+					</tr>
+
 			    <tr>
 						<td style="font-size: 12px; font-weight: bold">Days Present</td>
 						<td style="font-size: 12px; font-weight:350" contenteditable="true" class="text-center">
@@ -474,6 +494,8 @@
 						
 					</tr>
 
+					
+
 			        
 
 			        
@@ -486,7 +508,7 @@
 		</div>
 
 
-	@include('admin.student.print.report_card.prek_and_k_report_card_footer')
+	@include('admin.student.print.report_card.prek_yearly_report_card_footer')
 
 
 

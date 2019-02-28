@@ -1620,7 +1620,7 @@ $tardy = AbsentRecord::where([
             'total_daypresent_1'=>$total_daypresent_1,
             'highschool_absent_quarter_1'=>$highschool_absent_quarter_1,
             //Quarter_2
-            'total_daypresent_2'=>$total_daypresent_3,
+            'total_daypresent_2'=>$total_daypresent_2,
             'highschool_absent_quarter_2'=>$highschool_absent_quarter_2,
 
             //Quarter_3

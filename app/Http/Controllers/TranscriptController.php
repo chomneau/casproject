@@ -424,9 +424,6 @@ class TranscriptController extends Controller
         $secondaryscore = secondaryScore::where('student_profile_id', $student_id)
         ->whereIn('secondary_level_id', $checked_id)->get();
 
-        
-
-
 
         return view('admin.student.print.report_card.secondary_yearly_report')
                     ->with([
@@ -481,9 +478,6 @@ class TranscriptController extends Controller
         ->where([ ['grade_id', $checked_id]])->orderBy('grade_id', 'ASC')->get();
 
         
-
-
-
         $sum_pts_1 = Score::where('student_profile_id', $student_id)
         ->where([ ['grade_id', $checked_id]])->sum('pts_1');
 
@@ -523,8 +517,6 @@ class TranscriptController extends Controller
 
 
 //Yearly report for High School
-
-
 
 public function yearlyReportHighSchool(Request $request, $student_id)
 {
@@ -621,7 +613,7 @@ public function yearlyReportHighSchool(Request $request, $student_id)
             'total_daypresent_1'=>$total_daypresent_1,
             'highschool_absent_quarter_1'=>$highschool_absent_quarter_1,
             //Quarter_2
-            'total_daypresent_2'=>$total_daypresent_3,
+            'total_daypresent_2'=>$total_daypresent_2,
             'highschool_absent_quarter_2'=>$highschool_absent_quarter_2,
 
             //Quarter_3
@@ -1273,13 +1265,7 @@ public function yearlyReportHighSchool(Request $request, $student_id)
 
         }
            
-
-            
-
-        
-
-
-            
+   
 
     return view('admin.student.print.cgpa.cgpa_1012_transcript')->with([
         'student'=> $student,

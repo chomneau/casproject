@@ -757,7 +757,7 @@ class TeacherProfileController extends Controller
      public function StudentByGrade($grade_profile_id, $teacher_id){
 
         $teacher = Teacher::findOrFail($teacher_id);
-        $viewStudentByGrade = StudentProfile::withCount('GradeProfile')->where(['grade_profile_id'=>$grade_profile_id])->get();
+        $viewStudentByGrade = StudentProfile::withCount('GradeProfile')->where(['grade_profile_id'=>$grade_profile_id])->orderBy('last_name', 'ASC')->orderBy('first_name', 'ASC')->get();
         $countStudentByGrade = StudentProfile::withCount('GradeProfile')->where(['grade_profile_id'=>$grade_profile_id])->count();
         $countMaleStudentByGrade = StudentProfile::withCount('GradeProfile')->where(['grade_profile_id'=>$grade_profile_id, 'gender'=>'Male'])->count();
         $countFemaleStudentByGrade = StudentProfile::withCount('GradeProfile')->where(['grade_profile_id'=>$grade_profile_id, 'gender'=>'Female'])->count();

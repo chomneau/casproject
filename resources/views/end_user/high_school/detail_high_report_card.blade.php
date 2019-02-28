@@ -138,6 +138,8 @@
 				        @endforeach
 			        @endif
 
+							
+
 			    <tr>
 						<td style="font-size: 12px; font-weight: bold">Days Present</td>
 						<td style="font-size: 12px; font-weight:350" contenteditable="true" class="text-center">
