@@ -24,7 +24,7 @@
                             <li>
                                 <a href="{{ route('admin.updatepassword', ['id'=> Auth::user()->id]) }}">
                                     <i class="fa fa-lock" aria-hidden="true"></i>
-                                    <span>Change password</span>
+                                    <span>Change Password</span>
                                 </a>
                             </li>
                             <li>
@@ -59,7 +59,7 @@
                                 <li>
                                     <a href="{{ route('teacher.changePassword', ['teacher_id'=>Auth::user()->id]) }}">
                                         <i class="fa fa-lock" aria-hidden="true"></i>
-                                        <span>Change password</span>
+                                        <span>Change Password</span>
                                     </a>
                                 </li>
                                 <li>

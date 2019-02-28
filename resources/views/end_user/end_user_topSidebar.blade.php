@@ -17,7 +17,7 @@
                 <li class="dropdown">
                     <a href="" class="dropdown-toggle no-after peers fxw-nw ai-c lh-1" data-toggle="dropdown">
                         <div class="peer mR-10">
-                            <img class="w-2r bdrs-50p" src="{{ asset($students->photo) }}" class="img-circle" width="120" height="100%">
+                            <img class="w-2r bdrs-50p" src="{{ asset(Auth()->user()->photo) }}" class="img-circle" width="120" height="100%">
                         </div>
                         <div class="peer">
                             <span class="fsz-sm c-grey-900">
@@ -43,9 +43,9 @@
                         <li role="separator" class="divider"></li>
                         
                         <li>
-                            <a href="{{ route('student.passwordFrom', ['id'=>auth()->user()->id])}}" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700">
+                            <a href="{{ route('student.passwordFrom', ['id'=>Auth()->user()->id])}}" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700">
                                 <i class="fa fa-unlock" style="color:#55CBF2"></i>
-                                <span>password</span>
+                                <span>Change Password</span>
                             </a>
                         </li> 
                         <li role="separator" class="divider"></li>
