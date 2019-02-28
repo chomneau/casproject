@@ -52,6 +52,13 @@
                         
                       </div>
 
+                      <div class="col-xs-12 col-sm-6 emphasis" style="margin-left:8.5em; margin-top:1em">
+                        <a href="{{ route('teacher.edit',['admin_id'=>Auth()->user()->id, 'teacher_id'=>$teachers->id])}}" type="button" class="btn btn-success btn-sm">
+                          <i class="fa fa-user"> </i> Update Profile
+                        </a>
+                      </div>
+                      
+
                       
 
                     <div class="col-md-12">
@@ -60,6 +67,9 @@
                             <h2 class="text-center" style="margin-top:5px">
                               {{ $teachers->last_name }}, {{ $teachers->first_name }} 
                             </h2>
+
+                            
+
                           </tbody>
                           <tr>
                             <td>Date of Birth</td>
@@ -121,6 +131,8 @@
                         </table>
                       
                     </div>
+
+                            
 
                   </div>
                 </div>
