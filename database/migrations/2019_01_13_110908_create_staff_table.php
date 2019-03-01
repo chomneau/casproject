@@ -23,7 +23,7 @@ class CreateStaffTable extends Migration
             $table->string('gender');
             $table->string('position');
             $table->string('degree')->nullable();
-            $table->string('email');
+            $table->string('email')->nullable();
             $table->string('phone');
             $table->date('date_of_birth');
             $table->timestamps();
