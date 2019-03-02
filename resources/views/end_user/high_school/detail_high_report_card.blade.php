@@ -63,7 +63,7 @@
 			            <th class="text-center" style="font-size: 13px">4<sup>th</sup> Quarter</th>
 			            <th class="text-center" style="font-size: 13px">2<sup>nd</sup> Semester</th>
 
-									<th class="text-center" style="font-size: 13px">Yearly</th>
+									
 									
 			           
 			        </tr>
@@ -118,10 +118,7 @@
 
 							            </td>
 
-													<td style="font-size: 12px; font-weight: bold" class="text-center">{{
-														number_format(ceil(($score_s1->quarter_1+$score_s1->quarter_2+$score_s1->quarter_3+$score_s1->quarter_4)/4), 2, '.', ',')
-
-													}}</td>
+													
 										
 
 							            
@@ -172,9 +169,7 @@
 						{{ ($total_daypresent_3 - $highschool_absent_quarter_3) + ($total_daypresent_4 - $highschool_absent_quarter_4) }} / {{ $total_daypresent_3 + $total_daypresent_4 }}
 						</td>
 
-						<td class="text-center" style="font-size: 12px; font-weight:bold" contenteditable="true">
-							{{ $yearly_daypresent-$yearly_absent  }} / {{ $yearly_daypresent }}
-						</td>	
+						
 					</tr>
 
 			        

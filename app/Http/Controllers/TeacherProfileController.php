@@ -840,7 +840,7 @@ class TeacherProfileController extends Controller
     public function showAllTeacher($teacher_id)
     {
         $teacher = Teacher::findOrFail($teacher_id);
-        $teacherAll = Teacher::orderBy('first_name', 'ASC')->orderBy('first_name', 'ASC')->get();
+        $teacherAll = Teacher::orderBy('last_name', 'ASC')->orderBy('first_name', 'ASC')->get();
     	return view('admin.teacher.all_teacher')->with('teacherAll', $teacherAll)->with('teacher', $teacher);
     }
 

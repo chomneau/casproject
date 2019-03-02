@@ -373,7 +373,7 @@ $tardy = AbsentRecord::where([
         
         $student = StudentProfile::find($student_id);
     
-        $teacher = Teacher::orderBy('first_name', 'ASC')->get();
+        $teacher = Teacher::orderBy('last_name', 'ASC')->orderBy('first_name', 'ASC')->get();
         return view('end_user.view_all_teacher_index')->with([
 
             'students'=> $student,
@@ -405,7 +405,7 @@ $tardy = AbsentRecord::where([
   public function viewStaff($student_id){
     $student = StudentProfile::find($student_id);
     
-        $staff = Staff::orderBy('first_name', 'ASC')->get();
+        $staff = Staff::orderBy('last_name', 'ASC')->orderBy('first_name', 'ASC')->get();
         return view('end_user.view_staff_index')->with([
 
             'students'=> $student,
