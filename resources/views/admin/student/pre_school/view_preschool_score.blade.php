@@ -134,11 +134,10 @@
                                         <th>Grade</th>
                                         <th>Quarter 1</th>
                                         <th>Quarter 2</th>
-                                        <th>Semester 1</th>
+                                        
                                         <th>Quarter 3</th>
                                         <th>Quarter 4</th>
-                                        <th>Semester 2</th>
-                                        <th>Yearly</th>
+                                        
 
                                         <th>Action</th>
 
@@ -162,11 +161,10 @@
 
                                         <td>{{ $score->quarter_1 }}</td>
                                         <td>{{ $score->quarter_2 }}</td>
-                                        <td>{{ $score->semester_1 }}</td>
+                                        
                                         <td>{{ $score->quarter_3 }}</td>
                                         <td>{{ $score->quarter_4 }}</td>
-                                        <td>{{ $score->semester_2 }}</td>
-                                        <td>{{ $score->yearly }}</td>
+                                        
 
                                         {{--Semester 1--}}
 
