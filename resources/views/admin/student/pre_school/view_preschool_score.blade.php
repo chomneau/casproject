@@ -95,10 +95,6 @@
                                 
 
                                 
-
-
-
-                                
                             </div>
 
                         </div>
@@ -146,7 +142,8 @@
 
 
                                 <tbody>
-                                    @if(count($prekScores)) @foreach($prekScores as $score)
+                                    @if(count($prekScores)) 
+                                    @foreach($prekScores as $score)
                                     <tr>
                                         {{--<td>{{ $score->studentProfile->card_id }}</td>--}}
 
@@ -172,11 +169,13 @@
                                             <span>
                                                     <a href="{{ route('teacher.prek.editSubject',[
                                                     'teacher_id'=>$teacher->id,
-                                                    'score_id'=>$score->id, 'grade_id'=>$grade_id->id,'student_id'=>$students->id]) }}" class="btn btn-default btn-sm"><i class="fas fa-pencil-alt"></i></a>
+                                                    'score_id'=>$score->id, 'grade_id'=>$grade_id->id,'student_id'=>$students->id]) }}" class="btn btn-default btn-sm"> Edit</a>
                                                 </span>
-                                            <span>
+<!--                                                 
+                                                <span>
                                                     <a href="{{ route('teacher.prek.Subject.delete', ['score_id'=>$score->id]) }}" class="btn btn-default btn-sm"><i class="far fa-trash-alt"></i></a>
-                                                </span>
+                                                </span> -->
+
                                         </td>
                                     </tr>
 
@@ -195,7 +194,7 @@
 
                                 <span>
                                      
-                                    <a href="{{ route('teacher.prek.addSubject', 
+                                    <!-- <a href="{{ route('teacher.prek.addSubject', 
                                         [ 
                                         'teacher_id'=>$teacher->id,
                                         'grade_id'=>$grade_id->id,
@@ -204,7 +203,7 @@
                                     }}" class="btn btn-success">
                                         
                                         Add a subject
-                                    </a>
+                                    </a> -->
                                 </span>
 
 

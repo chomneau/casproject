@@ -69,9 +69,9 @@
                                                     <span>
                                                         <a href="{{ route('teacher.secondary.score.edit',['teacher_id'=>$teacher->id,'score_id'=>$score->id, 'grade_id'=>$grade_id->id,'student_id'=>$students->id]) }}" class="btn btn-default btn-sm">Edit</a>
                                                     </span>
-                                                    <span>
+                                                    <!-- <span>
                                                         <a href="{{ route('teacher.secondary.score.delete', ['score_id'=>$score->id]) }}" class="btn btn-danger btn-sm">Delete</a>
-                                                    </span>
+                                                    </span> -->
 
                                                 @endif
                                             </td>
@@ -102,7 +102,7 @@
 
                                 @elseif(Auth::guard('teacher')->check())
 
-                                <span>
+                                <!-- <span>
                                      
                                     <a href="{{ route('teacher.secondary.addSubject', 
                                         [ 
@@ -114,7 +114,7 @@
                                         
                                         Add a subject
                                     </a>
-                                </span> 
+                                </span>  -->
 
                                 @endif
                                 

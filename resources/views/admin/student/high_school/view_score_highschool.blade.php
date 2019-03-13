@@ -104,9 +104,9 @@
                                             <span>
                                                 <a href="{{ route('teacher.student.score.edit',['teacher_id'=>$teacher->id, 'score_id'=>$score->id, 'grade_id'=>$grade_id->id,'student_id'=>$students->id]) }}" class="btn btn-default btn-sm">Edit</a>
                                             </span>
-                                            <span>
+                                            <!-- <span>
                                                 <a href="{{ route('teacher.score.delete', ['score_id'=>$score->id]) }}" class="btn btn-danger btn-sm">Delete</a>
-                                            </span>
+                                            </span> -->
                                         
 
                                         @endif
@@ -147,7 +147,7 @@
 
                                 <span>
                                      
-                                    <a href="{{ route('teacher.subject.score', 
+                                    <!-- <a href="{{ route('teacher.subject.score', 
                                         [ 
                                         'teacher_id'=>$teacher->id,
                                         'grade_id'=>$grade_id->id,
@@ -156,7 +156,7 @@
                                     }}" class="btn btn-success">
                                         
                                         Add a subject
-                                    </a>
+                                    </a> -->
                                 </span> 
 
                                 @endif
