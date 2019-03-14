@@ -39,19 +39,15 @@
 
 				School Year : 
 
-				@foreach($secondaryscore as $score_s1)
-
-					@if ($loop->first) 
+				
 					
 						<span class="text-center" style="font-size: 16px; font-weight: 400;" contenteditable="true">
                         	
-	                        {{ $score_s1->created_at->format('Y') }} - 
-	                        {{ $score_s1->created_at->format('Y')+1 }}
+	                        {{ $student->updated_at->format('Y') }} - 
+	                        {{ $student->updated_at->format('Y')+1 }}
             </span>
 
-					@endif
 
-				@endforeach
 				</span>
 
 				</h6>
