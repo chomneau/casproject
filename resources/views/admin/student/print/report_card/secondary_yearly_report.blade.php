@@ -40,12 +40,18 @@
 				School Year : 
 
 				
-					
+				@foreach($kscore as $score_s1)	
+					@if ($loop->first) 
+										
 						<span class="text-center" style="font-size: 16px; font-weight: 400;" contenteditable="true">
                         	
-	                        {{ $student->updated_at->format('Y') }} - 
-	                        {{ $student->updated_at->format('Y')+1 }}
-            </span>
+							{{ $score_s1->updated_at->format('Y') }} - 
+	            {{ $score_s1->updated_at->format('Y')+1 }}
+                        			 
+            </span> 
+
+					@endif
+				@endforeach
 
 
 				</span>
