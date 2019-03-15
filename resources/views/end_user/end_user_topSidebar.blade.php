@@ -43,7 +43,7 @@
                         <li role="separator" class="divider"></li>
                         
                         <li>
-                            <a href="{{ route('student.passwordFrom', ['id'=>Auth()->user()->id])}}" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700">
+                            <a href="{{ route('student.passwordFrom', ['id'=>Auth()->user()->StudentProfile->id])}}" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700">
                                 <i class="fa fa-unlock" style="color:#55CBF2"></i>
                                 <span>Change Password</span>
                             </a>
