@@ -7,7 +7,7 @@
             <div class="title_left">
                 <h4>Student Name : {{ $students->last_name}}, {{ $students->first_name}}
                     <span class="btn btn-success btn-dm ">
-                                ID : {{ $students->card_id}}
+                        ID : {{ $students->card_id }}
                     </span>
 
 
