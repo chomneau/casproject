@@ -70,7 +70,7 @@
 
 							            </td>
 							            <td style="font-size: 12px; font-weight: bold">
-											{{ ($score_s1->pts_1)/2 }}
+											{{ round(($score_s1->pts_1)/2, 2) }}
 											
 							            </td>
 
