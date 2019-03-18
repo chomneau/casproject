@@ -490,7 +490,7 @@ class TranscriptController extends Controller
 
         $credit_grade = $semester_1->sum('credit')/2;
 
-        if($credit_grade > 0 && $sum_pts_1 > 0 && $sum_pts_2){
+        if($credit_grade > 0 && $sum_pts_1 > 0 && $sum_pts_2>0){
             $total_credit = $credit_grade*2;
             $CGPA = ($sum_pts_1/$credit_grade + $sum_pts_2/$credit_grade)/2;
         }else{
