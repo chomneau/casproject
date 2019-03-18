@@ -465,7 +465,7 @@ class TranscriptController extends Controller
 
 
 
-    //High school transcript
+    //High school transcript by grade
     public function highSchoolPrintView(Request $request, $student_id){
 
         $student = StudentProfile::find($student_id);
@@ -478,11 +478,15 @@ class TranscriptController extends Controller
         ->where([ ['grade_id', $checked_id]])->orderBy('grade_id', 'ASC')->get();
 
         
-        $sum_pts_1 = Score::where('student_profile_id', $student_id)
+        $sum_pts_1_grade = Score::where('student_profile_id', $student_id)
         ->where([ ['grade_id', $checked_id]])->sum('pts_1');
 
-        $sum_pts_2 = Score::where('student_profile_id', $student_id)
+        $sum_pts_1 = $sum_pts_1_grade/2;
+
+        $sum_pts_2_grade = Score::where('student_profile_id', $student_id)
         ->where([ ['grade_id', $checked_id]])->sum('pts_2');
+        
+        $sum_pts_2 = $sum_pts_2_grade/2;
 
         $credit_grade = $semester_1->sum('credit')/2;
 
@@ -654,9 +658,9 @@ public function yearlyReportHighSchool(Request $request, $student_id)
         //Grade 9
             $credit_grade_9 = $score_grade_9->sum('credit')/2;
     
-            $sum_pts_1_grade_9 = $score_grade_9->sum('pts_1');
+            $sum_pts_1_grade_9 = $score_grade_9->sum('pts_1')/2;
     
-            $sum_pts_2_grade_9 = $score_grade_9->sum('pts_2');
+            $sum_pts_2_grade_9 = $score_grade_9->sum('pts_2')/2;
 
           
 
@@ -664,9 +668,9 @@ public function yearlyReportHighSchool(Request $request, $student_id)
 
             $credit_grade_10 = $score_grade_10->sum('credit')/2;
     
-            $sum_pts_1_grade_10 = $score_grade_10->sum('pts_1');
+            $sum_pts_1_grade_10 = $score_grade_10->sum('pts_1')/2;
     
-            $sum_pts_2_grade_10 = $score_grade_10->sum('pts_2');
+            $sum_pts_2_grade_10 = $score_grade_10->sum('pts_2')/2;
 
            
 
@@ -676,9 +680,9 @@ public function yearlyReportHighSchool(Request $request, $student_id)
         // Grade 11
             $credit_grade_11 = $score_grade_11->sum('credit')/2;
     
-            $sum_pts_1_grade_11 = $score_grade_11->sum('pts_1');
+            $sum_pts_1_grade_11 = $score_grade_11->sum('pts_1')/2;
     
-            $sum_pts_2_grade_11 = $score_grade_11->sum('pts_2');
+            $sum_pts_2_grade_11 = $score_grade_11->sum('pts_2')/2;
 
           
             
@@ -686,9 +690,9 @@ public function yearlyReportHighSchool(Request $request, $student_id)
         // Grade 12
             $credit_grade_12 = $score_grade_12->sum('credit')/2;
     
-            $sum_pts_1_grade_12 = $score_grade_12->sum('pts_1');
+            $sum_pts_1_grade_12 = $score_grade_12->sum('pts_1')/2;
     
-            $sum_pts_2_grade_12 = $score_grade_12->sum('pts_2');
+            $sum_pts_2_grade_12 = $score_grade_12->sum('pts_2')/2;
 
            if($credit_grade_9 > 0 
             && $credit_grade_10 > 0
@@ -779,18 +783,18 @@ public function yearlyReportHighSchool(Request $request, $student_id)
         
         $credit_grade_9 = $score_grade_9->sum('credit')/2;
     
-        $sum_pts_1_grade_9 = $score_grade_9->sum('pts_1');
+        $sum_pts_1_grade_9 = $score_grade_9->sum('pts_1')/2;
     
-        $sum_pts_2_grade_9 = $score_grade_9->sum('pts_2');
+        $sum_pts_2_grade_9 = $score_grade_9->sum('pts_2')/2;
           
 
         //grade 10
 
         $credit_grade_10 = $score_grade_10->sum('credit')/2;
     
-        $sum_pts_1_grade_10 = $score_grade_10->sum('pts_1');
+        $sum_pts_1_grade_10 = $score_grade_10->sum('pts_1')/2;
     
-        $sum_pts_2_grade_10 = $score_grade_10->sum('pts_2');
+        $sum_pts_2_grade_10 = $score_grade_10->sum('pts_2')/2;
 
         if($credit_grade_9 > 0 
             && $credit_grade_10 > 0
@@ -863,9 +867,9 @@ public function yearlyReportHighSchool(Request $request, $student_id)
         //Grade 9
             $credit_grade_9 = ($score_grade_9->sum('credit'))/2;
     
-            $sum_pts_1_grade_9 = $score_grade_9->sum('pts_1');
+            $sum_pts_1_grade_9 = $score_grade_9->sum('pts_1')/2;
     
-            $sum_pts_2_grade_9 = $score_grade_9->sum('pts_2');
+            $sum_pts_2_grade_9 = $score_grade_9->sum('pts_2')/2;
 
           
 
@@ -873,9 +877,9 @@ public function yearlyReportHighSchool(Request $request, $student_id)
 
             $credit_grade_10 = ($score_grade_10->sum('credit'))/2;
     
-            $sum_pts_1_grade_10 = $score_grade_10->sum('pts_1');
+            $sum_pts_1_grade_10 = $score_grade_10->sum('pts_1')/2;
     
-            $sum_pts_2_grade_10 = $score_grade_10->sum('pts_2');
+            $sum_pts_2_grade_10 = $score_grade_10->sum('pts_2')/2;
 
            
 
@@ -885,9 +889,9 @@ public function yearlyReportHighSchool(Request $request, $student_id)
         // Grade 11
             $credit_grade_11 = ($score_grade_11->sum('credit'))/2;
     
-            $sum_pts_1_grade_11 = $score_grade_11->sum('pts_1');
+            $sum_pts_1_grade_11 = $score_grade_11->sum('pts_1')/2;
     
-            $sum_pts_2_grade_11 = $score_grade_11->sum('pts_2');
+            $sum_pts_2_grade_11 = $score_grade_11->sum('pts_2')/2;
 
           
         if(
@@ -990,9 +994,9 @@ public function yearlyReportHighSchool(Request $request, $student_id)
 
             $credit_grade_10 = ($score_grade_10->sum('credit'))/2;
     
-            $sum_pts_1_grade_10 = $score_grade_10->sum('pts_1');
+            $sum_pts_1_grade_10 = $score_grade_10->sum('pts_1')/2;
     
-            $sum_pts_2_grade_10 = $score_grade_10->sum('pts_2');
+            $sum_pts_2_grade_10 = $score_grade_10->sum('pts_2')/2;
 
            
 
@@ -1002,9 +1006,9 @@ public function yearlyReportHighSchool(Request $request, $student_id)
         // Grade 11
             $credit_grade_11 = ($score_grade_11->sum('credit'))/2;
     
-            $sum_pts_1_grade_11 = $score_grade_11->sum('pts_1');
+            $sum_pts_1_grade_11 = $score_grade_11->sum('pts_1')/2;
     
-            $sum_pts_2_grade_11 = $score_grade_11->sum('pts_2');
+            $sum_pts_2_grade_11 = $score_grade_11->sum('pts_2')/2;
 
         if($credit_grade_10 > 0
             && $credit_grade_11 > 0
@@ -1094,9 +1098,9 @@ public function yearlyReportHighSchool(Request $request, $student_id)
         // Grade 11
             $credit_grade_11 = $score_grade_11->sum('credit')/2;
     
-            $sum_pts_1_grade_11 = $score_grade_11->sum('pts_1');
+            $sum_pts_1_grade_11 = $score_grade_11->sum('pts_1')/2;
     
-            $sum_pts_2_grade_11 = $score_grade_11->sum('pts_2');
+            $sum_pts_2_grade_11 = $score_grade_11->sum('pts_2')/2;
 
           
             
@@ -1104,9 +1108,9 @@ public function yearlyReportHighSchool(Request $request, $student_id)
         // Grade 12
             $credit_grade_12 = $score_grade_12->sum('credit')/2;
     
-            $sum_pts_1_grade_12 = $score_grade_12->sum('pts_1');
+            $sum_pts_1_grade_12 = $score_grade_12->sum('pts_1')/2;
     
-            $sum_pts_2_grade_12 = $score_grade_12->sum('pts_2');
+            $sum_pts_2_grade_12 = $score_grade_12->sum('pts_2')/2;
 
     
     if($credit_grade_11 > 0
@@ -1199,9 +1203,9 @@ public function yearlyReportHighSchool(Request $request, $student_id)
 
             $credit_grade_10 = $score_grade_10->sum('credit')/2;
     
-            $sum_pts_1_grade_10 = $score_grade_10->sum('pts_1');
+            $sum_pts_1_grade_10 = $score_grade_10->sum('pts_1')/2;
     
-            $sum_pts_2_grade_10 = $score_grade_10->sum('pts_2');
+            $sum_pts_2_grade_10 = $score_grade_10->sum('pts_2')/2;
 
            
 
@@ -1211,9 +1215,9 @@ public function yearlyReportHighSchool(Request $request, $student_id)
         // Grade 11
             $credit_grade_11 = $score_grade_11->sum('credit')/2;
     
-            $sum_pts_1_grade_11 = $score_grade_11->sum('pts_1');
+            $sum_pts_1_grade_11 = $score_grade_11->sum('pts_1')/2;
     
-            $sum_pts_2_grade_11 = $score_grade_11->sum('pts_2');
+            $sum_pts_2_grade_11 = $score_grade_11->sum('pts_2')/2;
 
           
             
@@ -1221,9 +1225,9 @@ public function yearlyReportHighSchool(Request $request, $student_id)
         // Grade 12
             $credit_grade_12 = $score_grade_12->sum('credit')/2;
     
-            $sum_pts_1_grade_12 = $score_grade_12->sum('pts_1');
+            $sum_pts_1_grade_12 = $score_grade_12->sum('pts_1')/2;
     
-            $sum_pts_2_grade_12 = $score_grade_12->sum('pts_2');
+            $sum_pts_2_grade_12 = $score_grade_12->sum('pts_2')/2;
 
         if($credit_grade_10 > 0
             && $credit_grade_11 > 0
