@@ -85,7 +85,7 @@
 	</div>
 
 
-	<div class="col-md-10 offset-1" style="margin-top: 8em">
+			<div class="col-md-10 offset-1" style="margin-top: 8em">
 					<div class="row">
 						<div class="col-md-4 pull-left text-center">
 							<hr>
@@ -101,10 +101,7 @@
 							<p style="font-size: 12px">Date  of  Issue</p>
 						</div>
 					</div>
-					
-						
-					
-				</div>
+			</div>
 				
 			
 
@@ -114,4 +111,5 @@
 			</p>
 		</div>
 
-	</div>
+
+

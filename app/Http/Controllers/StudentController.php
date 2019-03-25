@@ -261,44 +261,44 @@ class StudentController extends Controller
             $score->save();
         }
 
-        
+      
 
-        $GPA_1 = ($score->quarter_1 + $score->quarter_2) / 2;
+        $GPA_1 = ($score->quarter_1 + $score->quarter_2)/2;
 
 
-        if ($GPA_1 >= 93 && $GPA_1 <= 100) {
+        if ($GPA_1 >= 92.5 && $GPA_1 <= 100) {
             $score->gpa_quarter_1 = "A";
-            $score->pts_1 = $score->subject->credit*4;
-        } elseif ($GPA_1 >= 90 && $GPA_1 <= 92) {
+            $score->pts_1 = ($score->subject->credit*4)/2;
+        } elseif ($GPA_1 >= 89.5 && $GPA_1 <= 92) {
             $score->gpa_quarter_1 = "A-";
-            $score->pts_1 = $score->subject->credit*3.70;
-        } elseif ($GPA_1 >= 87 && $GPA_1 <= 89) {
+            $score->pts_1 = ($score->subject->credit*3.70)/2;
+        } elseif ($GPA_1 >= 86.5 && $GPA_1 <= 89) {
             $score->gpa_quarter_1 = "B+";
-            $score->pts_1 = $score->subject->credit*3.30;
-        } elseif ($GPA_1 >= 83 && $GPA_1 <= 86) {
+            $score->pts_1 = ($score->subject->credit*3.30)/2;
+        } elseif ($GPA_1 >= 82.5 && $GPA_1 <= 86) {
             $score->gpa_quarter_1 = "B";
-            $score->pts_1 = $score->subject->credit*3.00;
-        } elseif ($GPA_1 >= 80 && $GPA_1 <= 82) {
+            $score->pts_1 = ($score->subject->credit*3.00)/2;
+        } elseif ($GPA_1 >= 79.5 && $GPA_1 <= 82) {
             $score->gpa_quarter_1 = "B-";
-            $score->pts_1 = $score->subject->credit*2.70;
-        } elseif ($GPA_1 >= 77 && $GPA_1 <= 79) {
+            $score->pts_1 = ($score->subject->credit*2.70)/2;
+        } elseif ($GPA_1 >= 76.5 && $GPA_1 <= 79) {
             $score->gpa_quarter_1 = "C+";
-            $score->pts_1 = $score->subject->credit*2.30;
-        } elseif ($GPA_1 >= 73 && $GPA_1 <= 76) {
+            $score->pts_1 = ($score->subject->credit*2.30)/2;
+        } elseif ($GPA_1 >= 72.5 && $GPA_1 <= 76) {
             $score->gpa_quarter_1 = "C";
-            $score->pts_1 = $score->subject->credit*2.00;
-        } elseif ($GPA_1 >= 70 && $GPA_1 <= 72) {
+            $score->pts_1 = ($score->subject->credit*2.00)/2;
+        } elseif ($GPA_1 >= 69.5 && $GPA_1 <= 72) {
             $score->gpa_quarter_1 = "C-";
-            $score->pts_1 = $score->subject->credit*1.70;
-        } elseif ($GPA_1 >= 67 && $GPA_1 <= 69) {
+            $score->pts_1 = ($score->subject->credit*1.70)/2;
+        } elseif ($GPA_1 >= 66.5 && $GPA_1 <= 69) {
             $score->gpa_quarter_1 = "D+";
-            $score->pts_1 = $score->subject->credit*1.30;
-        } elseif ($GPA_1 >= 63 && $GPA_1 <= 66) {
+            $score->pts_1 = ($score->subject->credit*1.30)/2;
+        } elseif ($GPA_1 >= 62.5 && $GPA_1 <= 66) {
             $score->gpa_quarter_1 = "D";
-            $score->pts_1 = $score->subject->credit*1.00;
-        } elseif ($GPA_1 >= 60 && $GPA_1 <= 62) {
+            $score->pts_1 = ($score->subject->credit*1.00)/2;
+        } elseif ($GPA_1 >= 59.5 && $GPA_1 <= 62) {
             $score->gpa_quarter_1 = "D-";
-            $score->pts_1 = $score->subject->credit*0.70;
+            $score->pts_1 = ($score->subject->credit*0.70)/2;
         } elseif ($GPA_1 >= 0 && $GPA_1 <= 59) {
             $score->gpa_quarter_1 = "F";
             $score->pts_1 = $score->subject->credit*0.0;
@@ -308,42 +308,42 @@ class StudentController extends Controller
 
         $GPA_2 = ($score->quarter_3 + $score->quarter_4) / 2;
 
-        if ($GPA_2 >= 93 && $GPA_2 <= 100) {
+        if ($GPA_2 >= 92.5 && $GPA_2 <= 100) {
             $score->gpa_quarter_2 = "A";
-            $score->pts_2 = $score->subject->credit*4;
-        } elseif ($GPA_2 >= 90 && $GPA_2 <= 92) {
+            $score->pts_2 = ($score->subject->credit*4)/2;
+        } elseif ($GPA_2 >= 89.5 && $GPA_2 <= 92) {
             $score->gpa_quarter_2 = "A-";
-            $score->pts_2 = $score->subject->credit*3.70;
-        } elseif ($GPA_2 >= 87 && $GPA_2 <= 89) {
+            $score->pts_2 = ($score->subject->credit*3.70)/2;
+        } elseif ($GPA_2 >= 86.5 && $GPA_2 <= 89) {
             $score->gpa_quarter_2 = "B+";
-            $score->pts_2 = $score->subject->credit*3.30;
-        } elseif ($GPA_2 >= 83 && $GPA_2 <= 86) {
+            $score->pts_2 = ($score->subject->credit*3.30)/2;
+        } elseif ($GPA_2 >= 82.5 && $GPA_2 <= 86) {
             $score->gpa_quarter_2 = "B";
-            $score->pts_2 = $score->subject->credit*3.00;
-        } elseif ($GPA_2 >= 80 && $GPA_2 <= 82) {
+            $score->pts_2 = ($score->subject->credit*3.00)/2;
+        } elseif ($GPA_2 >= 79.5 && $GPA_2 <= 82) {
             $score->gpa_quarter_2 = "B-";
-            $score->pts_2 = $score->subject->credit*2.70;
-        } elseif ($GPA_2 >= 77 && $GPA_2 <= 79) {
+            $score->pts_2 = ($score->subject->credit*2.70)/2;
+        } elseif ($GPA_2 >= 76.5 && $GPA_2 <= 79) {
             $score->gpa_quarter_2 = "C+";
-            $score->pts_2 = $score->subject->credit*2.30;
-        } elseif ($GPA_2 >= 73 && $GPA_2 <= 76) {
+            $score->pts_2 = ($score->subject->credit*2.30)/2;
+        } elseif ($GPA_2 >= 72.5 && $GPA_2 <= 76) {
             $score->gpa_quarter_2 = "C";
-            $score->pts_2 = $score->subject->credit*2.00;
-        } elseif ($GPA_2 >= 70 && $GPA_2 <= 72) {
+            $score->pts_2 = ($score->subject->credit*2.00)/2;
+        } elseif ($GPA_2 >= 69.5 && $GPA_2 <= 72) {
             $score->gpa_quarter_2 = "C-";
-            $score->pts_2 = $score->subject->credit*1.70;
-        } elseif ($GPA_2 >= 67 && $GPA_2 <= 69) {
+            $score->pts_2 = ($score->subject->credit*1.70)/2;
+        } elseif ($GPA_2 >= 66.5 && $GPA_2 <= 69) {
             $score->gpa_quarter_2 = "D+";
-            $score->pts_2 = $score->subject->credit*1.30;
-        } elseif ($GPA_2 >= 63 && $GPA_2 <= 66) {
+            $score->pts_2 = ($score->subject->credit*1.30)/2;
+        } elseif ($GPA_2 >= 62.5 && $GPA_2 <= 66) {
             $score->gpa_quarter_2 = "D";
-            $score->pts_2 = $score->subject->credit*1.00;
-        } elseif ($GPA_2 >= 60 && $GPA_2 <= 62) {
+            $score->pts_2 = ($score->subject->credit*1.00)/2;
+        } elseif ($GPA_2 >= 59.5 && $GPA_2 <= 62) {
             $score->gpa_quarter_2 = "D-";
-            $score->pts_2 = $score->subject->credit*0.70;
+            $score->pts_2 = ($score->subject->credit*0.70)/2;
         } elseif ($GPA_2 >= 0 && $GPA_2 <= 59) {
             $score->gpa_quarter_2 = "F";
-            $score->pts_2 = $score->subject->credit*0.0;
+            $score->pts_2 = ($score->subject->credit*0.00)/2;
         } else {
             $error = "invalid input";
         }

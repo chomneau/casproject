@@ -658,6 +658,12 @@ Route::get('staff/profile/{student_id}/{staff_id}', 'HomeController@staffProfile
 //student CGPA - END USER SIDE
 Route::get('student/cgpa/{student_id}', 'HomeController@studentCGPA')->name('student.cgpa');
 
+Route::get('student/highSchool/cpgabyGradeList/{student_id}', 'HomeController@cpgaByGradeList')->name('student.highschool.cgpaByGradeList');
+
+
+//CGPA by grade student side
+Route::get('student/cgpaByGrade/{student_id}/{grade_id}', 'HomeController@cgpaByGrade')->name('student.cgpaByGrade');
+
 //CGPA grade 9 to 10 student side
 Route::get('student/cgpa910/{student_id}', 'HomeController@studentCGPA910')->name('student.cgpa910');
 

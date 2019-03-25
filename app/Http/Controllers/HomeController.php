@@ -441,6 +441,67 @@ $tardy = AbsentRecord::where([
         ]);
             
     }
+//view cgpa by grade from 9 to 12
+    public function cpgaByGradeList($student_id){
+
+        $student = Studentprofile::find($student_id);
+        $grade_highschool = Grade::all();
+
+        return view('end_user.cgpa.cgpa_by_grade_list')
+        ->with(['students'=>$student, 'grade_highschool'=>$grade_highschool]);
+    }    
+
+//High school transcript by grade
+public function cgpaByGrade(Request $request, $student_id, $grade_id){
+
+    $student = StudentProfile::find($student_id);
+
+   //$grade_id = Grade::find($grade_id);
+
+    
+
+    $semester_1 = Score::where('student_profile_id', $student_id)
+    ->where([ ['grade_id', $grade_id]])->orderBy('grade_id', 'ASC')->get();
+
+    
+    $sum_pts_1 = Score::where('student_profile_id', $student_id)
+    ->where([ ['grade_id', $grade_id]])->sum('pts_1');
+
+    
+
+    $sum_pts_2 = Score::where('student_profile_id', $student_id)
+    ->where([ ['grade_id', $grade_id]])->sum('pts_2');
+    
+    
+
+    $credit_grade = $semester_1->sum('credit')/2;
+
+    if($credit_grade > 0 && $sum_pts_1 > 0 && $sum_pts_2>0){
+        $total_credit = $credit_grade*2;
+        $CGPA = ($sum_pts_1/$credit_grade + $sum_pts_2/$credit_grade)/2;
+    }else{
+        $CGPA = 0.00;
+        $total_credit = 0.00;
+    }
+
+    
+
+    return view('end_user.cgpa.cgpa_highschool_by_grade')
+    ->with([
+
+        'semester_1'=>$semester_1,
+        'student'=>$student,
+        'credit_grade'=>$credit_grade,
+        'sum_pts_1'=>$sum_pts_1,
+        'sum_pts_2'=>$sum_pts_2,
+
+        'CGPA'=>$CGPA,
+        'total_credit'=>$total_credit,
+
+        
+    ]);
+    
+}    
 
 
 
@@ -500,9 +561,6 @@ $tardy = AbsentRecord::where([
         }
 
         
-
-        
-
         return view('end_user.cgpa.cgpa_grade_9_to_10')->with([
             'student'=> $student,
             'score_grade_9'=>$score_grade_9,

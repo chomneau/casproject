@@ -7,12 +7,20 @@
                         <div class="dropdown-divider"></div>
 
                         <ul class="nav nav-tabs">
+
+                         <li class="nav-item">
+                                <a class="nav-link" style="color: #227f93; font-weight: bold;"  href="{{ route('student.highschool.cgpaByGradeList', ['student_id'=>$students->id]) }}" target="_blank" >
+                                    CGPA by Grade
+                                </a>
+                            </li>
                           
                             <li class="nav-item">
                                 <a class="nav-link" style="color: #227f93; font-weight: bold;"  href="{{ route('student.cgpa910', ['student_id'=>$students->id]) }}" target="_blank" >
                                     Grade 9 to 10
                                 </a>
                             </li>
+
+                            
 
                             <li class="nav-item">
                                 <a class="nav-link" style="color: #227f93; font-weight: bold;"  href="{{ route('student.cgpa911', ['student_id'=>$students->id]) }}" target="_blank" >

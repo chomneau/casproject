@@ -16,18 +16,34 @@
 				
 			<table class="table table-sm">
 				<!--Table head-->
-				<h6><span class="badge badge-primary badge-pill">1-A</span> First Semester : 
+				<h6><span class="badge badge-primary badge-pill">1</span> First Semester : 
 
 				@foreach($semester_1 as $score_s1)
 
 					@if ($loop->first) 
 					
-						{{ $score_s1->created_at->format('Y') }} - 
-						{{ $score_s1->created_at->format('Y')+1 }} 
+						<span class="text-center" style="font-size: 16px; font-weight: 400;" contenteditable="true">
+                        	
+                        	{{ $score_s1->created_at->format('Y') }} - 
+                          {{ $score_s1->created_at->format('Y')+1 }}
+                        			 
+                        		
+                        </span> 
 
 					@endif
 
 				@endforeach
+
+				<span style="color:#5d95ef" class="pull-right">
+						@foreach($semester_1 as $score_s1)
+
+							@if ($loop->first) 
+								{{ $score_s1->grade->grade_name }} 
+							@endif
+
+						@endforeach
+
+        </span>
 
 
 				</h6>
@@ -65,7 +81,7 @@
 
 							            </td>
 							            <td style="font-size: 12px; font-weight: bold">
-											{{ $score_s1->pts_1 }}
+											{{ round($score_s1->pts_1, 2) }}
 											
 							            </td>
 
@@ -83,7 +99,7 @@
 
 			        <tr>
 						<th style="font-size: 12px; font-weight: bold">SEMESTER CREDIT</th>
-						<th style="font-size: 12px; font-weight: bold">{{ $credit_grade }}</th>
+						<th style="font-size: 12px; font-weight: bold">{{ round($credit_grade,2) }}</th>
 						<th style="font-size: 12px; font-weight: bold"> SEMESTER GPA</th>
 						<th style="font-size: 12px; font-weight: bold">
 
@@ -92,7 +108,7 @@
 							@else
 								
 
-								{{ number_format($sum_pts_1/$credit_grade, 2, '.', '') }}
+								{{ round($sum_pts_1/$credit_grade, 2) }}
 
 							@endif
 							
@@ -127,12 +143,27 @@
 
 					@if ($loop->first) 
 					
-						{{ $score_s1->created_at->format('Y') }} - 
-						{{ $score_s1->created_at->format('Y')+1 }} 
+						<span class="text-center" style="font-size: 16px; font-weight: 400;" contenteditable="true">
+                        	
+                {{ $score_s1->created_at->format('Y') }} - 
+                {{ $score_s1->created_at->format('Y')+1 }}
+                        			 
+            </span> 
 
 					@endif
 
 				@endforeach
+
+				<span style="color:#5d95ef" class="pull-right">
+						@foreach($semester_1 as $score_s1)
+
+							@if ($loop->first) 
+								{{ $score_s1->grade->grade_name }} 
+							@endif
+
+						@endforeach
+
+        </span>
 
 				</h6>
 			    <thead>
@@ -168,7 +199,7 @@
 
 							            </td>
 							            <td style="font-size: 12px; font-weight: bold" >
-											{{ $score_s1->pts_2 }}
+											{{ round($score_s1->pts_2,2) }}
 											
 							            </td>
 
@@ -190,7 +221,7 @@
 						<th style="font-size: 12px; font-weight: bold">SEMESTER CREDIT</th>
 						<th style="font-size: 12px; font-weight: bold">
 
-							{{ $credit_grade }}
+							{{ round($credit_grade, 2) }}
 
 						</th>
 
@@ -204,7 +235,7 @@
 								<span>0.00</span>
 							@else
 								
-								{{ number_format($sum_pts_2/$credit_grade, 2, '.', '') }}
+								{{ round($sum_pts_2/$credit_grade, 2) }}
 
 							@endif
 						</th>
@@ -227,13 +258,13 @@
 										
 					<th colspan="2" class="pull-right">CUMULATIVE  CREDIT</th>
 					<th>
-						{{ $total_credit }}
+						{{ round($total_credit,2) }}
 					</th>
 					
 					<th colspan="2" class="pull-right">CUMULATIVE  GPA</th>			            
 					<th>
 						@if($CGPA > 0 )
-							{{ number_format($CGPA, 2, '.', ' ')}}
+							{{ round($CGPA, 2)}}
 						@else
 							<span>0.00</span>
 						@endif
@@ -244,9 +275,12 @@
 		</div>
 
 
-@include('admin.student.print.transcript_footer')
+	@include('admin.student.print.transcript_footer')
 
-
+		</div>
+	<!-- end row  -->
+	</div>
+	<!-- end container  -->
 
 </page>
 

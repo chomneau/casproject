@@ -45,20 +45,7 @@
                     </span>
                 </a>
                 <ul class="dropdown-menu">
-                   {{-- @if(count($kgrade)) --}}
-                    {{--    @foreach($kgrade as $kgrades) --}}
-                     {{--   <li class="nav-item dropdown"> --}}
-                      {{--      <a href="{{ route('student.prekscore', ['grade_id'=>$kgrades->id, 'student_id'=>$students->id]) }}"> --}}
-                        {{--            <span> --}}
-                         {{--               {{ $kgrades->name }} --}}
-                         {{--           </span> --}}
-                         {{--           <span class="arrow">--}}
-                          {{--              <i style="color:#55CBF2" class="fa fa-angle-right"></i>--}}
-                           {{--         </span>--}}
-                           {{--     </a> --}}
-                       {{-- </li>--}}
-                       {{-- @endforeach --}}
-                   {{-- @endif --}}
+                   
 
                     <li>
                         <a href="{{ route('student.prek.reportCard', [ 'student_id'=>$students->id])}}">
