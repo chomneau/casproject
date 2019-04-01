@@ -503,7 +503,7 @@
                             </div>
                             <div class="modal-body">
                                 <label for="exampleInputEmail1">Reason</label>
-                                <textarea rows="4" cols="50" wrap="hard" name="reason" class="form-control" placeholder="Reason"  autofocus>
+                                <textarea rows="4" cols="50" wrap="hard" name="reason" class="form-control" placeholder="Reason"  autofocus>-
                                     
                                 </textarea>
                             </div>
