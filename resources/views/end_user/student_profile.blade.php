@@ -20,7 +20,7 @@
                         <div class="x_content" style="margin-top: -10px">
                             <div class="dashboard-widget-content">
 
-                                <ul style="margin-top: 15px; list-style: none; font-size: 14px">
+                                <ul style="margin-top: 15px; list-style: none; font-size: 16px">
                                     <li>
                                         <h3>Student's info</h3>
                                     </li>
@@ -76,7 +76,7 @@
                         <div class="studentDetail">
                             <div class="dashboard-widget-content">
 
-                                <ul style="margin-top: 5px; list-style: none; font-size: 14px">
+                                <ul style="margin-top: 5px; list-style: none; font-size: 16px">
                                     <li>
                                         <h3>Father's info</h3>
                                     </li>
@@ -109,7 +109,7 @@
                         <div class="studentDetail">
                             <div class="dashboard-widget-content">
 
-                                <ul style="margin-top: 5px; list-style: none; font-size: 14px">
+                                <ul style="margin-top: 5px; list-style: none; font-size: 16px">
                                     <li>
                                         <h3>Mother's info</h3>
                                     </li>
