@@ -487,7 +487,7 @@ public function yearlyReportHighSchool(Request $request, $student_id)
     $absent_tardy_quarter_1 = 0;
 
     if($countTardy_Quarter_1 >= 3){
-        $absent_tardy_quarter_1 = $countTardy_Quarter_1/3;
+        $absent_tardy_quarter_1 = floor($countTardy_Quarter_1/3);
     }elseif($countTardy_Quarter_1<3){
         $absent_tardy_quarter_1;
     }
@@ -517,7 +517,7 @@ public function yearlyReportHighSchool(Request $request, $student_id)
     $absent_tardy_Quarter_2 = 0;
 
     if($countTardy_Quarter_2 >= 3){
-        $absent_tardy_Quarter_2 = $countTardy_Quarter_2/3;
+        $absent_tardy_Quarter_2 = floor($countTardy_Quarter_2/3);
     }elseif($countTardy_Quarter_2<3){
         $absent_tardy_Quarter_2;
     }
@@ -536,14 +536,14 @@ public function yearlyReportHighSchool(Request $request, $student_id)
     $highschool_quarter_3 = AbsentRecord::where('student_profile_id', $student_id)->where('grade_id', $checked_id)
     ->where('quarter_name','Quarter_3')->count();
 
-    //count tardy in quarter_2
+    //count tardy in quarter_3
     $countTardy_Quarter_3 = AbsentRecord::where('student_profile_id', $student_id)->where('grade_id', $checked_id)
     ->where('quarter_name','Quarter_3')->where('absent_type', 'Tardy')->count();
 
     $absent_tardy_Quarter_3 = 0;
 
     if($countTardy_Quarter_3 >= 3){
-        $absent_tardy_Quarter_3 = $countTardy_Quarter_3/3;
+        $absent_tardy_Quarter_3 = floor($countTardy_Quarter_3/3);
     }elseif($countTardy_Quarter_3<3){
         $absent_tardy_Quarter_3;
     }
@@ -563,14 +563,14 @@ public function yearlyReportHighSchool(Request $request, $student_id)
     $highschool_quarter_4 = AbsentRecord::where('student_profile_id', $student_id)->where('grade_id', $checked_id)
     ->where('quarter_name','Quarter_4')->count();
 
-    //count tardy in quarter_2
+    //count tardy in quarter_4
     $countTardy_Quarter_4 = AbsentRecord::where('student_profile_id', $student_id)->where('grade_id', $checked_id)
     ->where('quarter_name','Quarter_4')->where('absent_type', 'Tardy')->count();
 
     $absent_tardy_Quarter_4 = 0;
 
     if($countTardy_Quarter_4 >= 3){
-        $absent_tardy_Quarter_4 = $countTardy_Quarter_4/3;
+        $absent_tardy_Quarter_4 = floor($countTardy_Quarter_4/3);
     }elseif($countTardy_Quarter_4<3){
         $absent_tardy_Quarter_4;
     }
