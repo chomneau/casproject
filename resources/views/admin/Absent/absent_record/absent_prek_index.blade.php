@@ -5,7 +5,7 @@
     <div class="">
         <div class="page-title">
             <div class="title_left">
-                <h4>Student Name : {{ $students->last_name}} {{ $students->first_name}}
+                <h4>Student Name : {{ $students->last_name}}, {{ $students->first_name}}
                     <span class="btn btn-success btn-dm ">
                                 ID : {{ $students->card_id}}
                     </span>
@@ -45,7 +45,7 @@
             <div class="col-md-8 col-sm-6 col-xs-12">
                 <div class="x_panel">
                     <div class="x_title">
-                        <h2>Absent Record's {{ $students->first_name }} {{ $students->last_name}} in : {{ $grade_id->name}}
+                        <h2>Absent Record's  {{ $students->last_name}}, {{ $students->first_name }} in : {{ $grade_id->name}}
                         </h2>
 
                         <div class="clearfix"></div>
@@ -480,9 +480,19 @@
                                 </select>
                             </div>
 
+                            <?php 
+
+                                $month = date('m');
+                                $day = date('d');
+                                $year = date('Y');
+
+                                $today = $year . '-' . $month . '-' . $day;
+                            ?>
+
                             <div class="modal-body">
                                 <label for="exampleInputEmail1">Absent date</label>
-                                <input type="date" name="absent_date" class="form-control" min="2000-01-01" max="2050-12-01">
+                                <input type="date" value="<?php echo $today; ?>" name="absent_date" 
+                                class="form-control" min="2000-01-01" max="2050-12-01">
                             </div>
                             <div class="modal-body">
                                 <label for="exampleInputEmail1">Reason</label>

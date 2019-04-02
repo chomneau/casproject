@@ -127,38 +127,69 @@
 
 			      <tr>
 						<td style="font-size: 12px; font-weight: bold">Days Present</td>
-						<td style="font-size: 12px; font-weight:350" contenteditable="true" class="text-center">
+						<td style="font-size: 12px; font-weight:350"  class="text-center">
 						
-					
+							@if($total_daypresent_1==1)						
 
+								{{$total_daypresent_1}} / {{$total_daypresent_1}}
+
+							@elseif($total_daypresent_1>1)
+								
 								{{ $total_daypresent_1-$secondaryschool_absent_quarter_1 }} /  {{$total_daypresent_1}}
 
+							@endif							
 						
 													
 						</td>
 
-						<td class="text-center" style="font-size: 12px" contenteditable="true">
+						<td class="text-center" style="font-size: 12px" >
+							@if($total_daypresent_2==1)						
+
+								{{$total_daypresent_2}} / {{$total_daypresent_2}}
+
+							@elseif($total_daypresent_2>1)
+								
+							{{ $total_daypresent_2-$secondaryschool_absent_quarter_2 }} / {{ $total_daypresent_2 }}
+
+							@endif
 							
-						{{ $total_daypresent_2-$secondaryschool_absent_quarter_2 }} / {{ $total_daypresent_2 }}
+						
 						</td>
 					{{--semester_1--}}
-						<td class="text-center" style="font-size: 12px; font-weight:bold" contenteditable="true">
+						<td class="text-center" style="font-size: 12px; font-weight:bold" >
 
 						{{ ($total_daypresent_1 + $total_daypresent_2)- ($secondaryschool_absent_quarter_1 + $secondaryschool_absent_quarter_2) }} / {{ $total_daypresent_1 + $total_daypresent_2 }}
 						
 						</td>
 
 
-						<td class="text-center" style="font-size: 12px">
-						{{ $total_daypresent_3-$secondaryschool_absent_quarter_3 }} / {{ $total_daypresent_3 }}
+						<td class="text-center" style="font-size: 12px" >
+						@if($total_daypresent_3==1)						
+
+								{{$total_daypresent_3}} / {{$total_daypresent_3}}
+
+						@elseif($total_daypresent_3>1)
+								
+								{{ $total_daypresent_3-$secondaryschool_absent_quarter_3 }} / {{ $total_daypresent_3 }}
+
+						@endif
+						
 
 												
 						</td>
 
 
-						<td class="text-center" style="font-size: 12px">
+						<td class="text-center" style="font-size: 12px" >
 					
-							{{ $total_daypresent_4-$secondaryschool_absent_quarter_4 }} / {{$total_daypresent_4}}
+						@if($total_daypresent_4==1)						
+
+								{{$total_daypresent_4}} / {{$total_daypresent_4}}
+
+						@elseif($total_daypresent_4>1)
+								
+								{{ $total_daypresent_4-$secondaryschool_absent_quarter_4 }} / {{ $total_daypresent_4 }}
+
+						@endif
 
 							
 						</td>

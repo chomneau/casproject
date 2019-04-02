@@ -23,7 +23,7 @@ use App\PrekAbsent;
 class TranscriptController extends Controller
 {
 
-    public function __construct()
+public function __construct()
     {
         $this->middleware('auth:admin');
 
@@ -48,7 +48,7 @@ class TranscriptController extends Controller
     }
 
 
-    public function selectTranscript($student_id)
+public function selectTranscript($student_id)
     {
         $student = StudentProfile::find($student_id);
        // $grade = Grade::find($grade_id);
@@ -60,7 +60,7 @@ class TranscriptController extends Controller
 
 
 
-    public function selectOption($student_id)
+public function selectOption($student_id)
     {
 
         $student = StudentProfile::find($student_id);
@@ -72,9 +72,9 @@ class TranscriptController extends Controller
     }
 
 
-    //print view for Prek
+//print view for Prek
 
-    public function prekPrintView(Request $request, $student_id){
+public function prekPrintView(Request $request, $student_id){
 
         $student = StudentProfile::find($student_id);
 
@@ -112,102 +112,169 @@ class TranscriptController extends Controller
         $SRS = PrekScore::where([['student_profile_id', $student_id], ['subject_code', 'SRS']] )
              ->whereIn('k_level_id', $checked_id)->get();
 
-    //Absent report         
-   //Quarter_1
-    $prek_absent_quarter_1 = PrekAbsent::where('student_profile_id', $student_id)->where('k_level_id', $checked_id)
-    ->where('quarter_name','Quarter_1')->count();
+        //Absent report         
+        //Quarter_1
 
-    $prek_daypresent_quarter_1 = PrekAbsent::where('student_profile_id', $student_id)
-    ->where([ ['k_level_id', $checked_id],['quarter_name','Quarter_1'] ])->first();
-
-    if($prek_daypresent_quarter_1 == null){
-        $total_daypresent_1 = 0;
-    }else{
-        $total_daypresent_1 = $prek_daypresent_quarter_1->quarter_day_present;
-    }
+        //count tardy in quarter_1
+        $countTardy_Quarter_1 = PrekAbsent::where('student_profile_id', $student_id)->where('k_level_id', $checked_id)
+        ->where('quarter_name','Quarter_1')->where('absent_type', 'Tardy')->count();
         
-    //Quarter_2
 
-    $prek_absent_quarter_2 = PrekAbsent::where('student_profile_id', $student_id)->where('k_level_id', $checked_id)
-    ->where('quarter_name','Quarter_2')->count();
+        $prek_quarter_1 = PrekAbsent::where('student_profile_id', $student_id)->where('k_level_id', $checked_id)
+        ->where('quarter_name','Quarter_1')->count();
+        
 
-    $prek_daypresent_quarter_2 = PrekAbsent::where('student_profile_id', $student_id)
-    ->where([ ['k_level_id', $checked_id],['quarter_name','Quarter_2'] ])->first();
+        $absent_tardy_quarter_1 = 0;
 
-    if($prek_daypresent_quarter_2 == null){
-        $total_daypresent_2 = 0;
-    }else{
-        $total_daypresent_2 = $prek_daypresent_quarter_2->quarter_day_present;
-    }
+        if($countTardy_Quarter_1 >= 3){
+            $absent_tardy_quarter_1 = floor($countTardy_Quarter_1/3);
+        }elseif($countTardy_Quarter_1<3){
+            $absent_tardy_quarter_1;
+        }
 
-    //Quarter_3
-    $prek_absent_quarter_3 = PrekAbsent::where('student_profile_id', $student_id)->where('k_level_id', $checked_id)
-    ->where('quarter_name','Quarter_3')->count();
+        $prek_absent_quarter_1 = abs(($prek_quarter_1-$countTardy_Quarter_1)+$absent_tardy_quarter_1);
 
-    $prek_daypresent_quarter_3 = PrekAbsent::where('student_profile_id', $student_id)
-    ->where([ ['k_level_id', $checked_id],['quarter_name','Quarter_3'] ])->first();
 
-    if($prek_daypresent_quarter_3 == null){
-        $total_daypresent_3 = 0;
-    }else{
-        $total_daypresent_3 = $prek_daypresent_quarter_3->quarter_day_present;
-    }
 
-    //Quarter_4
-    $prek_absent_quarter_4 = PrekAbsent::where('student_profile_id', $student_id)->where('k_level_id', $checked_id)
-    ->where('quarter_name','Quarter_4')->count();
+            $prek_daypresent_quarter_1 = PrekAbsent::where('student_profile_id', $student_id)
+            ->where([ ['k_level_id', $checked_id],['quarter_name','Quarter_1'] ])->first();
 
-    $prek_daypresent_quarter_4 = PrekAbsent::where('student_profile_id', $student_id)
-    ->where([ ['k_level_id', $checked_id],['quarter_name','Quarter_4'] ])->first();
-
-    if($prek_daypresent_quarter_4 == null){
-        $total_daypresent_4 = 0;
-    }else{
-        $total_daypresent_4 = $prek_daypresent_quarter_4->quarter_day_present;
-    }     
-
-        return view('admin.student.print.report_card.prek_yearly_report')
-                    ->with([
-
-            'kscore'=>$kscore,
-            'student'=>$student,
-            'subject_code_PPI'=>$PPI,
-            'subject_code_ELAI'=>$ELAI,
-            'subject_code_KLAI'=>$KLAI,
-            'subject_code_MI'=>$MI,
-            'subject_code_SSI'=>$SSI,
-            'subject_code_SI'=>$SI,
-            'subject_code_FAA'=>$FAA,
-            'subject_code_PEP'=>$PEP,
-            'subject_code_SRS'=>$SRS,
-
-    //dayspresnt report
-
-            //Quarter_1
-            'total_daypresent_1'=>$total_daypresent_1,
-            'prek_absent_quarter_1'=>$prek_absent_quarter_1,
+            if($prek_daypresent_quarter_1 == null){
+                $total_daypresent_1 = 0;
+            }else{
+                $total_daypresent_1 = $prek_daypresent_quarter_1->quarter_day_present;
+            }
+                
             //Quarter_2
-            'total_daypresent_2'=>$total_daypresent_2,
-            'prek_absent_quarter_2'=>$prek_absent_quarter_2,
+
+            //count tardy in quarter_2
+        $countTardy_Quarter_2 = PrekAbsent::where('student_profile_id', $student_id)->where('k_level_id', $checked_id)
+        ->where('quarter_name','Quarter_2')->where('absent_type', 'Tardy')->count();
+        
+
+        $prek_quarter_2 = PrekAbsent::where('student_profile_id', $student_id)->where('k_level_id', $checked_id)
+        ->where('quarter_name','Quarter_2')->count();
+        
+
+        $absent_tardy_quarter_2 = 0;
+
+        if($countTardy_Quarter_2 >= 3){
+            $absent_tardy_quarter_2 = floor($countTardy_Quarter_2/3);
+        }elseif($countTardy_Quarter_2<3){
+            $absent_tardy_quarter_2;
+        }
+
+        $prek_absent_quarter_2 = abs(($prek_quarter_2-$countTardy_Quarter_2)+$absent_tardy_quarter_2);
+
+            $prek_daypresent_quarter_2 = PrekAbsent::where('student_profile_id', $student_id)
+            ->where([ ['k_level_id', $checked_id],['quarter_name','Quarter_2'] ])->first();
+
+            if($prek_daypresent_quarter_2 == null){
+                $total_daypresent_2 = 0;
+            }else{
+                $total_daypresent_2 = $prek_daypresent_quarter_2->quarter_day_present;
+            }
 
             //Quarter_3
-            'total_daypresent_3'=>$total_daypresent_3,
-            'prek_absent_quarter_3'=>$prek_absent_quarter_3,
-
-            //Quarter_4
-            'total_daypresent_4'=>$total_daypresent_4,
-            'prek_absent_quarter_4'=>$prek_absent_quarter_4,
-
-        ]);
+            //count tardy in quarter_3
+        $countTardy_Quarter_3 = PrekAbsent::where('student_profile_id', $student_id)->where('k_level_id', $checked_id)
+        ->where('quarter_name','Quarter_3')->where('absent_type', 'Tardy')->count();
         
 
+        $prek_quarter_3 = PrekAbsent::where('student_profile_id', $student_id)->where('k_level_id', $checked_id)
+        ->where('quarter_name','Quarter_3')->count();
+        
 
-    }
+        $absent_tardy_quarter_3 = 0;
+
+        if($countTardy_Quarter_3 >= 3){
+            $absent_tardy_quarter_3 = floor($countTardy_Quarter_3/3);
+        }elseif($countTardy_Quarter_3<3){
+            $absent_tardy_quarter_3;
+        }
+
+        $prek_absent_quarter_3 = abs(($prek_quarter_3-$countTardy_Quarter_3)+$absent_tardy_quarter_3);
+
+            $prek_daypresent_quarter_3 = PrekAbsent::where('student_profile_id', $student_id)
+            ->where([ ['k_level_id', $checked_id],['quarter_name','Quarter_3'] ])->first();
+
+            if($prek_daypresent_quarter_3 == null){
+                $total_daypresent_3 = 0;
+            }else{
+                $total_daypresent_3 = $prek_daypresent_quarter_3->quarter_day_present;
+            }
+
+            //Quarter_4
+            //count tardy in quarter_4
+        $countTardy_Quarter_4 = PrekAbsent::where('student_profile_id', $student_id)->where('k_level_id', $checked_id)
+        ->where('quarter_name','Quarter_4')->where('absent_type', 'Tardy')->count();
+        
+
+        $prek_quarter_4 = PrekAbsent::where('student_profile_id', $student_id)->where('k_level_id', $checked_id)
+        ->where('quarter_name','Quarter_4')->count();
+        
+
+        $absent_tardy_quarter_4 = 0;
+
+        if($countTardy_Quarter_4 >= 3){
+            $absent_tardy_quarter_4 = floor($countTardy_Quarter_4/3);
+        }elseif($countTardy_Quarter_4<3){
+            $absent_tardy_quarter_4;
+        }
+
+        $prek_absent_quarter_4 = abs(($prek_quarter_4-$countTardy_Quarter_4)+$absent_tardy_quarter_4);
+
+            $prek_daypresent_quarter_4 = PrekAbsent::where('student_profile_id', $student_id)
+            ->where([ ['k_level_id', $checked_id],['quarter_name','Quarter_4'] ])->first();
+
+            if($prek_daypresent_quarter_4 == null){
+                $total_daypresent_4 = 0;
+            }else{
+                $total_daypresent_4 = $prek_daypresent_quarter_4->quarter_day_present;
+            }  
+
+                return view('admin.student.print.report_card.prek_yearly_report')
+                            ->with([
+
+                    'kscore'=>$kscore,
+                    'student'=>$student,
+                    'subject_code_PPI'=>$PPI,
+                    'subject_code_ELAI'=>$ELAI,
+                    'subject_code_KLAI'=>$KLAI,
+                    'subject_code_MI'=>$MI,
+                    'subject_code_SSI'=>$SSI,
+                    'subject_code_SI'=>$SI,
+                    'subject_code_FAA'=>$FAA,
+                    'subject_code_PEP'=>$PEP,
+                    'subject_code_SRS'=>$SRS,
+
+            //dayspresnt report
+
+                    //Quarter_1
+                    'total_daypresent_1'=>$total_daypresent_1,
+                    'prek_absent_quarter_1'=>$prek_absent_quarter_1,
+                    //Quarter_2
+                    'total_daypresent_2'=>$total_daypresent_2,
+                    'prek_absent_quarter_2'=>$prek_absent_quarter_2,
+
+                    //Quarter_3
+                    'total_daypresent_3'=>$total_daypresent_3,
+                    'prek_absent_quarter_3'=>$prek_absent_quarter_3,
+
+                    //Quarter_4
+                    'total_daypresent_4'=>$total_daypresent_4,
+                    'prek_absent_quarter_4'=>$prek_absent_quarter_4,
+
+                ]);
+                
 
 
-    //print view for Grade k
+            }
 
-    public function gradekPrintView(Request $request, $student_id){
+
+//print view for Grade k(report card for grade k)
+
+public function gradekPrintView(Request $request, $student_id){
 
         $student = StudentProfile::find($student_id);
 
@@ -258,8 +325,27 @@ class TranscriptController extends Controller
              
     //Absent report         
    //Quarter_1
-    $prek_absent_quarter_1 = PrekAbsent::where('student_profile_id', $student_id)->where('k_level_id', $checked_id)
-    ->where('quarter_name','Quarter_1')->count();
+
+   //count tardy in quarter_1
+   $countTardy_Quarter_1 = PrekAbsent::where('student_profile_id', $student_id)->where('k_level_id', $checked_id)
+   ->where('quarter_name','Quarter_1')->where('absent_type', 'Tardy')->count();
+ 
+
+   $prek_quarter_1 = PrekAbsent::where('student_profile_id', $student_id)->where('k_level_id', $checked_id)
+   ->where('quarter_name','Quarter_1')->count();
+   
+
+   $absent_tardy_quarter_1 = 0;
+
+   if($countTardy_Quarter_1 >= 3){
+       $absent_tardy_quarter_1 = floor($countTardy_Quarter_1/3);
+   }elseif($countTardy_Quarter_1<3){
+       $absent_tardy_quarter_1;
+   }
+
+   $prek_absent_quarter_1 = abs(($prek_quarter_1-$countTardy_Quarter_1)+$absent_tardy_quarter_1);
+
+
 
     $prek_daypresent_quarter_1 = PrekAbsent::where('student_profile_id', $student_id)
     ->where([ ['k_level_id', $checked_id],['quarter_name','Quarter_1'] ])->first();
@@ -272,8 +358,24 @@ class TranscriptController extends Controller
         
     //Quarter_2
 
-    $prek_absent_quarter_2 = PrekAbsent::where('student_profile_id', $student_id)->where('k_level_id', $checked_id)
-    ->where('quarter_name','Quarter_2')->count();
+    //count tardy in quarter_2
+   $countTardy_Quarter_2 = PrekAbsent::where('student_profile_id', $student_id)->where('k_level_id', $checked_id)
+   ->where('quarter_name','Quarter_2')->where('absent_type', 'Tardy')->count();
+ 
+
+   $prek_quarter_2 = PrekAbsent::where('student_profile_id', $student_id)->where('k_level_id', $checked_id)
+   ->where('quarter_name','Quarter_2')->count();
+   
+
+   $absent_tardy_quarter_2 = 0;
+
+   if($countTardy_Quarter_2 >= 3){
+       $absent_tardy_quarter_2 = floor($countTardy_Quarter_2/3);
+   }elseif($countTardy_Quarter_2<3){
+       $absent_tardy_quarter_2;
+   }
+
+   $prek_absent_quarter_2 = abs(($prek_quarter_2-$countTardy_Quarter_2)+$absent_tardy_quarter_2);
 
     $prek_daypresent_quarter_2 = PrekAbsent::where('student_profile_id', $student_id)
     ->where([ ['k_level_id', $checked_id],['quarter_name','Quarter_2'] ])->first();
@@ -285,8 +387,24 @@ class TranscriptController extends Controller
     }
 
     //Quarter_3
-    $prek_absent_quarter_3 = PrekAbsent::where('student_profile_id', $student_id)->where('k_level_id', $checked_id)
-    ->where('quarter_name','Quarter_3')->count();
+     //count tardy in quarter_3
+   $countTardy_Quarter_3 = PrekAbsent::where('student_profile_id', $student_id)->where('k_level_id', $checked_id)
+   ->where('quarter_name','Quarter_3')->where('absent_type', 'Tardy')->count();
+ 
+
+   $prek_quarter_3 = PrekAbsent::where('student_profile_id', $student_id)->where('k_level_id', $checked_id)
+   ->where('quarter_name','Quarter_3')->count();
+   
+
+   $absent_tardy_quarter_3 = 0;
+
+   if($countTardy_Quarter_3 >= 3){
+       $absent_tardy_quarter_3 = floor($countTardy_Quarter_3/3);
+   }elseif($countTardy_Quarter_3<3){
+       $absent_tardy_quarter_3;
+   }
+
+   $prek_absent_quarter_3 = abs(($prek_quarter_3-$countTardy_Quarter_3)+$absent_tardy_quarter_3);
 
     $prek_daypresent_quarter_3 = PrekAbsent::where('student_profile_id', $student_id)
     ->where([ ['k_level_id', $checked_id],['quarter_name','Quarter_3'] ])->first();
@@ -298,8 +416,24 @@ class TranscriptController extends Controller
     }
 
     //Quarter_4
-    $prek_absent_quarter_4 = PrekAbsent::where('student_profile_id', $student_id)->where('k_level_id', $checked_id)
-    ->where('quarter_name','Quarter_4')->count();
+     //count tardy in quarter_4
+   $countTardy_Quarter_4 = PrekAbsent::where('student_profile_id', $student_id)->where('k_level_id', $checked_id)
+   ->where('quarter_name','Quarter_4')->where('absent_type', 'Tardy')->count();
+ 
+
+   $prek_quarter_4 = PrekAbsent::where('student_profile_id', $student_id)->where('k_level_id', $checked_id)
+   ->where('quarter_name','Quarter_4')->count();
+   
+
+   $absent_tardy_quarter_4 = 0;
+
+   if($countTardy_Quarter_4 >= 3){
+       $absent_tardy_quarter_4 = floor($countTardy_Quarter_4/3);
+   }elseif($countTardy_Quarter_4<3){
+       $absent_tardy_quarter_4;
+   }
+
+   $prek_absent_quarter_4 = abs(($prek_quarter_4-$countTardy_Quarter_4)+$absent_tardy_quarter_4);
 
     $prek_daypresent_quarter_4 = PrekAbsent::where('student_profile_id', $student_id)
     ->where([ ['k_level_id', $checked_id],['quarter_name','Quarter_4'] ])->first();
@@ -353,16 +487,34 @@ class TranscriptController extends Controller
 
     }
 
-    //print view primary and secondary school (report Card)
-    public function secondarySchoolPrintView(Request $request, $student_id){
+//print view primary and secondary school (report Card)
+public function secondarySchoolPrintView(Request $request, $student_id){
 
         $student = StudentProfile::find($student_id);
 
         $checked_id = $request->input('secondaryGrade');
 
     //Quarter_1
-    $secondaryschool_absent_quarter_1 = SecondaryAbsent::where('student_profile_id', $student_id)->where('secondary_level_id', $checked_id)
-    ->where('quarter_name','Quarter_1')->count();
+    
+    //count tardy in quarter_1
+   $countTardy_Quarter_1 = SecondaryAbsent::where('student_profile_id', $student_id)->where('secondary_level_id', $checked_id)
+   ->where('quarter_name','Quarter_1')->where('absent_type', 'Tardy')->count();
+ 
+
+   $secondaryschool_quarter_1 = SecondaryAbsent::where('student_profile_id', $student_id)->where('secondary_level_id', $checked_id)
+   ->where('quarter_name','Quarter_1')->count();
+   
+
+   $absent_tardy_quarter_1 = 0;
+
+   if($countTardy_Quarter_1 >= 3){
+       $absent_tardy_quarter_1 = floor($countTardy_Quarter_1/3);
+   }elseif($countTardy_Quarter_1<3){
+       $absent_tardy_quarter_1;
+   }
+
+   $secondaryschool_absent_quarter_1 = abs(($secondaryschool_quarter_1-$countTardy_Quarter_1)+$absent_tardy_quarter_1);
+
 
     $secondaryschool_daypresent_quarter_1 = SecondaryAbsent::where('student_profile_id', $student_id)
     ->where([ ['secondary_level_id', $checked_id],['quarter_name','Quarter_1'] ])->first();
@@ -374,9 +526,24 @@ class TranscriptController extends Controller
     }
         
     //Quarter_2
+    //count tardy in quarter_2
+    $countTardy_Quarter_2 = SecondaryAbsent::where('student_profile_id', $student_id)->where('secondary_level_id', $checked_id)
+    ->where('quarter_name','Quarter_2')->where('absent_type', 'Tardy')->count();
 
-    $secondaryschool_absent_quarter_2 = SecondaryAbsent::where('student_profile_id', $student_id)->where('secondary_level_id', $checked_id)
+
+    $secondaryschool_quarter_2 = SecondaryAbsent::where('student_profile_id', $student_id)->where('secondary_level_id', $checked_id)
     ->where('quarter_name','Quarter_2')->count();
+
+
+    $absent_tardy_quarter_2 = 0;
+
+    if($countTardy_Quarter_2 >= 3){
+        $absent_tardy_quarter_2 = floor($countTardy_Quarter_2/3);
+    }elseif($countTardy_Quarter_2<3){
+        $absent_tardy_quarter_2;
+    }
+
+    $secondaryschool_absent_quarter_2 = abs(($secondaryschool_quarter_2-$countTardy_Quarter_2)+$absent_tardy_quarter_2);
 
     $secondaryschool_daypresent_quarter_2 = SecondaryAbsent::where('student_profile_id', $student_id)
     ->where([ ['secondary_level_id', $checked_id],['quarter_name','Quarter_2'] ])->first();
@@ -388,8 +555,24 @@ class TranscriptController extends Controller
     }
 
     //Quarter_3
-    $secondaryschool_absent_quarter_3 = SecondaryAbsent::where('student_profile_id', $student_id)->where('secondary_level_id', $checked_id)
-    ->where('quarter_name','Quarter_3')->count();
+    //count tardy in quarter_3
+   $countTardy_Quarter_3 = SecondaryAbsent::where('student_profile_id', $student_id)->where('secondary_level_id', $checked_id)
+   ->where('quarter_name','Quarter_3')->where('absent_type', 'Tardy')->count();
+ 
+
+   $secondaryschool_quarter_3 = SecondaryAbsent::where('student_profile_id', $student_id)->where('secondary_level_id', $checked_id)
+   ->where('quarter_name','Quarter_3')->count();
+   
+
+   $absent_tardy_quarter_3 = 0;
+
+   if($countTardy_Quarter_3 >= 3){
+       $absent_tardy_quarter_3 = floor($countTardy_Quarter_3/3);
+   }elseif($countTardy_Quarter_3<3){
+       $absent_tardy_quarter_3;
+   }
+
+   $secondaryschool_absent_quarter_3 = abs(($secondaryschool_quarter_3-$countTardy_Quarter_3)+$absent_tardy_quarter_3);
 
     $secondaryschool_daypresent_quarter_3 = SecondaryAbsent::where('student_profile_id', $student_id)
     ->where([ ['secondary_level_id', $checked_id],['quarter_name','Quarter_3'] ])->first();
@@ -401,13 +584,29 @@ class TranscriptController extends Controller
     }
 
     //Quarter_4
-    $secondaryschool_absent_quarter_4 = SecondaryAbsent::where('student_profile_id', $student_id)->where('secondary_level_id', $checked_id)
+    //count tardy in quarter_4
+    $countTardy_Quarter_4 = SecondaryAbsent::where('student_profile_id', $student_id)->where('secondary_level_id', $checked_id)
+    ->where('quarter_name','Quarter_4')->where('absent_type', 'Tardy')->count();
+
+
+    $secondaryschool_quarter_4 = SecondaryAbsent::where('student_profile_id', $student_id)->where('secondary_level_id', $checked_id)
     ->where('quarter_name','Quarter_4')->count();
+
+
+    $absent_tardy_quarter_4 = 0;
+
+    if($countTardy_Quarter_4 >= 3){
+        $absent_tardy_quarter_4 = floor($countTardy_Quarter_4/3);
+    }elseif($countTardy_Quarter_4<3){
+        $absent_tardy_quarter_4;
+    }
+
+    $secondaryschool_absent_quarter_4 = abs(($secondaryschool_quarter_4-$countTardy_Quarter_4)+$absent_tardy_quarter_4);
 
     $secondaryschool_daypresent_quarter_4 = SecondaryAbsent::where('student_profile_id', $student_id)
     ->where([ ['secondary_level_id', $checked_id],['quarter_name','Quarter_4'] ])->first();
 
-    if($secondaryschool_daypresent_quarter_1 == null){
+    if($secondaryschool_daypresent_quarter_4 == null){
         $total_daypresent_4 = 0;
     }else{
         $total_daypresent_4 = $secondaryschool_daypresent_quarter_4->quarter_day_present;
@@ -452,8 +651,8 @@ class TranscriptController extends Controller
 
     }
 
-//select transcript option
-    public function transcript($student_id){
+    //select transcript option
+public function transcript($student_id){
 
         $student = StudentProfile::find($student_id);
         $grade = Grade::all();
@@ -468,12 +667,13 @@ class TranscriptController extends Controller
 //Yearly report for High School
 
 public function yearlyReportHighSchool(Request $request, $student_id)
-{
+    {
 
     $student = StudentProfile::find($student_id);
 
     $checked_id = $request->input('grade');
 
+    //absent report 
     //Quarter_1
 
     //count tardy in quarter_1
@@ -638,13 +838,12 @@ public function yearlyReportHighSchool(Request $request, $student_id)
             'absent_tardy_quarter_1'=>$absent_tardy_quarter_1
             
 
-        ]);
-    }
+    ]);
+}
 
 
-
-    //High school transcript by grade
-    public function highSchoolPrintView(Request $request, $student_id){
+//High school transcript by grade
+public function highSchoolPrintView(Request $request, $student_id){
 
         $student = StudentProfile::find($student_id);
 
@@ -823,10 +1022,10 @@ public function yearlyReportHighSchool(Request $request, $student_id)
         'total_credit' =>$total_credit
 
     ]);
-    }
+}
 
-    //CGPA grade 9 to 10
-    public function transcript910(Request $request, $student_id){
+//CGPA grade 9 to 10
+public function transcript910(Request $request, $student_id){
 
         $checked_id = $request->input('grade');
         $student = StudentProfile::find($student_id);
@@ -904,10 +1103,10 @@ public function yearlyReportHighSchool(Request $request, $student_id)
 
         ]);
     
-    }
+}
 
-    //CGPA grade 9 to 11
-    public function transcript911(Request $request, $student_id){
+//CGPA grade 9 to 11
+public function transcript911(Request $request, $student_id){
 
         $checked_id = $request->input('grade');
         $student = StudentProfile::find($student_id);
@@ -1030,8 +1229,8 @@ public function yearlyReportHighSchool(Request $request, $student_id)
     }
 
 
-    //CGPA grade 10 to 11
-    public function transcript1011(Request $request, $student_id){
+//CGPA grade 10 to 11
+public function transcript1011(Request $request, $student_id){
 
         $checked_id = $request->input('grade');
         $student = StudentProfile::find($student_id);
@@ -1057,10 +1256,6 @@ public function yearlyReportHighSchool(Request $request, $student_id)
             $sum_pts_1_grade_10 = $score_grade_10->sum('pts_1');
     
             $sum_pts_2_grade_10 = $score_grade_10->sum('pts_2');
-
-           
-
-            
 
 
         // Grade 11
@@ -1133,11 +1328,11 @@ public function yearlyReportHighSchool(Request $request, $student_id)
 
     ]);
     
-    }
+}
 
-    //CGPA transcript for Grade 11 - 12
+//CGPA transcript for Grade 11 - 12
 
-    public function transcript1112( Request $request, $student_id){
+public function transcript1112( Request $request, $student_id){
 
     $checked_id = $request->input('grade');
     $student = StudentProfile::find($student_id);
@@ -1233,12 +1428,12 @@ public function yearlyReportHighSchool(Request $request, $student_id)
         'total_credit' =>$total_credit
 
     ]);
-    }
+}
 
 
-    //CGPA transcript for grade 10 to 12
+//CGPA transcript for grade 10 to 12
 
-    public function transcript1012( Request $request, $student_id){
+public function transcript1012( Request $request, $student_id){
 
     $checked_id = $request->input('grade');
     $student = StudentProfile::find($student_id);
@@ -1356,19 +1551,6 @@ public function yearlyReportHighSchool(Request $request, $student_id)
         'total_credit' =>$total_credit
 
     ]);
-    }
-        
-
-
-
-
-
-
-
-
-
-
-
-
+}
 
 }

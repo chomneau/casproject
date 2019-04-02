@@ -486,13 +486,21 @@
                                 </select>
                             </div>
 
+                            <?php 
 
+                                $month = date('m');
+                                $day = date('d');
+                                $year = date('Y');
 
+                                $today = $year . '-' . $month . '-' . $day;
+                            ?>
 
                             <div class="modal-body">
                                 <label for="exampleInputEmail1">Absent date</label>
-                                <input type="date" name="absent_date" class="form-control" min="2000-01-01" max="2050-12-01">
+                                <input type="date" value="<?php echo $today; ?>" name="absent_date" 
+                                class="form-control" min="2000-01-01" max="2050-12-01">
                             </div>
+
                             <div class="modal-body">
                                 <label for="exampleInputEmail1">Reason</label>
                                 <textarea rows="4" cols="50" wrap="hard" name="reason" class="form-control" placeholder="Reason"  autofocus>

@@ -456,34 +456,63 @@
 
 			  <tr>
 						<td style="font-size: 12px; font-weight: bold">Days Present</td>
-						<td style="font-size: 12px; font-weight:350" class="text-center">
-						
-					
+						<td style="font-size: 10.5px; font-weight:350" contenteditable="true" class="text-center">
 
-								{{ $total_daypresent_1-$prek_absent_quarter_1 }} /  {{$total_daypresent_1}}
+						@if($total_daypresent_1==1)
 
-						
+							{{$total_daypresent_1}}/{{$total_daypresent_1}}
+
+						@elseif($total_daypresent_1>1)					
+
+								{{ $total_daypresent_1-$prek_absent_quarter_1 }}/{{$total_daypresent_1}}
+
+						@endif
 													
 						</td>
 
-						<td class="text-center" style="font-size: 12px">
+						<td class="text-center" style="font-size: 10.5px" contenteditable="true">
+
+						@if($total_daypresent_2==1)
+
+						{{$total_daypresent_2}}/{{$total_daypresent_2}}
+
+						@elseif($total_daypresent_2>1)
+
+						{{ $total_daypresent_2-$prek_absent_quarter_2 }}/{{ $total_daypresent_2 }}
+						@endif
 							
-						{{ $total_daypresent_2-$prek_absent_quarter_2 }} / {{ $total_daypresent_2 }}
 						</td>
 					
 
 
-						<td class="text-center" style="font-size: 12px">
-						{{ $total_daypresent_3-$prek_absent_quarter_3 }} / {{ $total_daypresent_3 }}
+						<td class="text-center" style="font-size: 10.5px" contenteditable="true">
+
+						@if($total_daypresent_3==1)
+
+							{{$total_daypresent_3}}/{{$total_daypresent_3}}
+
+						@elseif($total_daypresent_3>1)
+						
+							{{ $total_daypresent_3-$prek_absent_quarter_3 }}/{{ $total_daypresent_3 }}
+						@endif
+
 
 												
 						</td>
 
 
-						<td class="text-center" style="font-size: 12px" >
-					
-							{{ $total_daypresent_4-$prek_absent_quarter_4 }} / {{$total_daypresent_4}}
+						<td class="text-center" style="font-size: 10.5px" contenteditable="true">
 
+						@if($total_daypresent_4==1)
+
+							{{$total_daypresent_4}}/{{$total_daypresent_4}}
+
+						@elseif($total_daypresent_4>1)
+
+							{{ $total_daypresent_4-$prek_absent_quarter_4 }}/{{$total_daypresent_4}}
+						@endif
+					
+						
 							
 						</td>
 						
