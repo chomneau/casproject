@@ -28,7 +28,7 @@
                                 <div class="x_content" style="margin-top: -10px">
                                     <div class="dashboard-widget-content">
 
-                                        <ul style="margin-top: 15px; list-style: none; font-size: 14px">
+                                        <ul style="margin-top: 15px; list-style: none; font-size: 16px">
                                             <li style="margin-bottom: 8px"><i class="glyphicon glyphicon-user"></i>
                                                 <a href="#">Name : 
                                                     {{ $students->last_name }},
@@ -97,7 +97,7 @@
                                 <div class="studentDetail">
                                     <div class="dashboard-widget-content">
 
-                                        <ul style="margin-top: 5px; list-style: none; font-size: 14px">
+                                        <ul style="margin-top: 5px; list-style: none; font-size: 16px">
                                             <li>
                                                 <h4>Father info</h4>
                                             </li>
@@ -134,7 +134,7 @@
                                 <div class="studentDetail">
                                     <div class="dashboard-widget-content">
 
-                                        <ul style="margin-top: 5px; list-style: none; font-size: 14px">
+                                        <ul style="margin-top: 5px; list-style: none; font-size: 16px">
                                             <li>
                                                 <h4>Mother info</h4>
                                             </li>
