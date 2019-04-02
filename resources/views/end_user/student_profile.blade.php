@@ -1,5 +1,5 @@
 <main class="main-content bgc-grey-100">
-    <div id="mainContent">
+    <div id="mainContent" style="color:#16181c">
         <div class="container-fluid">
 
 
