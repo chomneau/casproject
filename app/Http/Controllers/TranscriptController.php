@@ -621,7 +621,7 @@ public function secondarySchoolPrintView(Request $request, $student_id){
 
 
         $secondaryscore = SecondaryScore::where('student_profile_id', $student_id)
-        ->whereIn('secondary_level_id', $checked_id)->get();
+        ->where('secondary_level_id', $checked_id)->get();
 
 
         return view('admin.student.print.report_card.secondary_yearly_report')
