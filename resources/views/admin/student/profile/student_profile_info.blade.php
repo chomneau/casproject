@@ -28,7 +28,7 @@
                                 <div class="x_content" style="margin-top: -10px">
                                     <div class="dashboard-widget-content">
 
-                                        <ul style="margin-top: 15px; list-style: none; font-size: 16px">
+                                        <ul style="margin-top: 15px; list-style: none; font-size: 16px; color:#16181c">
                                             <li style="margin-bottom: 8px"><i class="glyphicon glyphicon-user"></i>
                                                 <a href="#">Name : 
                                                     {{ $students->last_name }},
