@@ -1738,7 +1738,7 @@ public function secondaryReportCard($student_id){
          $yearly_daypresent = $total_daypresent_1+$total_daypresent_2+$total_daypresent_3+$total_daypresent_4;
  
  
-         $secondaryscore = secondaryScore::where('student_profile_id', $student_id)
+         $secondaryscore = SecondaryScore::where('student_profile_id', $student_id)
          ->whereIn('secondary_level_id', $checked_id)->get();
  
  
