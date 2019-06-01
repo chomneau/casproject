@@ -63,11 +63,11 @@
 			            
 			            <th>Subject</th>
 						{{--<th>2<sup>nd</sup> Q2</th>--}}
-			            <th>Q1</th>
-			            <th>Q2</th>
+			            <th style="text-align:center">Q1</th>
+			            <th style="text-align:center">Q2</th>
 			            
-			            <th>Q3</th>
-			            <th>Q4</th>
+			            <th style="text-align:center">Q3</th>
+			            <th style="text-align:center">Q4</th>
 			            
 			           
 			        </tr>
@@ -88,35 +88,20 @@
 						    	@if($score_s1->k_level_id == $grades->id)
 
 							    	
-							        <tr>
+										<tr style="font-size: 16px;">
 
 							            
-							            <td style="font-size: 12px; font-weight: bold">{{$score_s1->KSubject->name}}</td>
-							            <td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_1}}</td>
+							            <td>{{$score_s1->KSubject->name}}</td>
+							            <td style="text-align:center">{{ $score_s1->quarter_1}}</td>
 
-							            <td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_2}}</td>
-							            
-													<!-- <td style="font-size: 12px; font-weight: bold"> 
+							            <td style="text-align:center">{{ $score_s1->quarter_2}}</td>
 
-							            	{{ ceil(($score_s1->quarter_1+$score_s1->quarter_2)/2) }}
-							            
-							            </td> -->
+							            <td style="text-align:center">{{ $score_s1->quarter_3}}</td>
 
-							            <td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_3}}</td>
+							            <td style="text-align:center">{{ $score_s1->quarter_4}}</td>
 
-							            <td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_4}}</td>
-
-							            <!-- <td style="font-size: 12px; font-weight: bold"> 
-
-							            	{{ ceil(($score_s1->quarter_3+$score_s1->quarter_4)/2) }}
-
-							            </td> -->
-
-							        </tr>
+							      </tr>
 							        
-							        
-									
-						        
 						        @endif
 
 					        @endforeach
@@ -138,18 +123,18 @@
 							@if($score_s1->k_level_id == $grades->id)
 
 
-								<tr>
+							<tr style="font-size: 16px;">
 
 
-									<td style="font-size: 12px; font-weight: bold">{{$score_s1->KSubject->name}}</td>
-									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_1}}</td>
+									<td>{{$score_s1->KSubject->name}}</td>
+									<td style="text-align:center">{{ $score_s1->quarter_1}}</td>
 
-									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_2}}</td>
+									<td style="text-align:center">{{ $score_s1->quarter_2}}</td>
 									
 
-									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_3}}</td>
+									<td style="text-align:center">{{ $score_s1->quarter_3}}</td>
 
-									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_4}}</td>
+									<td style="text-align:center">{{ $score_s1->quarter_4}}</td>
 
 									
 
@@ -179,18 +164,18 @@
 							@if($score_s1->k_level_id == $grades->id)
 
 
-								<tr>
+							<tr style="font-size: 16px;">
 
 
-									<td style="font-size: 12px; font-weight: bold">{{$score_s1->KSubject->name}}</td>
-									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_1}}</td>
+									<td>{{$score_s1->KSubject->name}}</td>
+									<td style="text-align:center">{{ $score_s1->quarter_1}}</td>
 
-									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_2}}</td>
+									<td style="text-align:center">{{ $score_s1->quarter_2}}</td>
 									
 
-									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_3}}</td>
+									<td style="text-align:center">{{ $score_s1->quarter_3}}</td>
 
-									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_4}}</td>
+									<td style="text-align:center">{{ $score_s1->quarter_4}}</td>
 
 									
 
@@ -220,18 +205,14 @@
 							@if($score_s1->k_level_id == $grades->id)
 
 
-								<tr>
+							<tr style="font-size: 16px;">
 
 
-									<td style="font-size: 12px; font-weight: bold">{{$score_s1->KSubject->name}}</td>
-									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_1}}</td>
-
-									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_2}}</td>
-									
-
-									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_3}}</td>
-
-									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_4}}</td>
+									<td>{{$score_s1->KSubject->name}}</td>
+									<td style="text-align:center">{{ $score_s1->quarter_1}}</td>
+									<td style="text-align:center">{{ $score_s1->quarter_2}}</td>
+									<td style="text-align:center">{{ $score_s1->quarter_3}}</td>
+									<td style="text-align:center">{{ $score_s1->quarter_4}}</td>
 
 									
 
@@ -258,25 +239,15 @@
 							@if($score_s1->k_level_id == $grades->id)
 
 
-								<tr>
+							<tr style="font-size: 16px;">
 
-
-									<td style="font-size: 12px; font-weight: bold">{{$score_s1->KSubject->name}}</td>
-									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_1}}</td>
-
-									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_2}}</td>
-									
-
-									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_3}}</td>
-
-									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_4}}</td>
-
-									
+									<td>{{$score_s1->KSubject->name}}</td>
+									<td style="text-align:center">{{ $score_s1->quarter_1}}</td>
+									<td style="text-align:center">{{ $score_s1->quarter_2}}</td>
+									<td style="text-align:center">{{ $score_s1->quarter_3}}</td>
+									<td style="text-align:center">{{ $score_s1->quarter_4}}</td>
 
 								</tr>
-
-
-
 
 							@endif
 
@@ -299,18 +270,15 @@
 							@if($score_s1->k_level_id == $grades->id)
 
 
-								<tr>
+							<tr style="font-size: 16px;">
 
 
-									<td style="font-size: 12px; font-weight: bold">{{$score_s1->KSubject->name}}</td>
-									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_1}}</td>
+									<td>{{$score_s1->KSubject->name}}</td>
 
-									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_2}}</td>
-									
-
-									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_3}}</td>
-
-									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_4}}</td>
+									<td style="text-align:center">{{ $score_s1->quarter_1}}</td>
+									<td style="text-align:center">{{ $score_s1->quarter_2}}</td>
+									<td style="text-align:center">{{ $score_s1->quarter_3}}</td>
+									<td style="text-align:center">{{ $score_s1->quarter_4}}</td>
 
 									
 
@@ -336,19 +304,13 @@
 							@if($score_s1->k_level_id == $grades->id)
 
 
-								<tr>
+							<tr style="font-size: 16px;">
 
-
-									<td style="font-size: 12px; font-weight: bold">{{$score_s1->KSubject->name}}</td>
-									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_1}}</td>
-
-									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_2}}</td>
-									
-
-									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_3}}</td>
-
-									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_4}}</td>
-
+									<td>{{$score_s1->KSubject->name}}</td>
+									<td style="text-align:center">{{ $score_s1->quarter_1}}</td>
+									<td style="text-align:center">{{ $score_s1->quarter_2}}</td>
+									<td style="text-align:center">{{ $score_s1->quarter_3}}</td>
+									<td style="text-align:center">{{ $score_s1->quarter_4}}</td>
 									
 								</tr>
 
@@ -373,18 +335,14 @@
 							@if($score_s1->k_level_id == $grades->id)
 
 
-								<tr>
+							<tr style="font-size: 16px;">
 
 
-									<td style="font-size: 12px; font-weight: bold">{{$score_s1->KSubject->name}}</td>
-									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_1}}</td>
-
-									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_2}}</td>
-									
-
-									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_3}}</td>
-
-									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_4}}</td>
+									<td>{{$score_s1->KSubject->name}}</td>
+									<td style="text-align:center">{{ $score_s1->quarter_1}}</td>
+									<td style="text-align:center">{{ $score_s1->quarter_2}}</td>
+									<td style="text-align:center">{{ $score_s1->quarter_3}}</td>
+									<td style="text-align:center">{{ $score_s1->quarter_4}}</td>
 
 									
 
@@ -411,18 +369,15 @@
 							@if($score_s1->k_level_id == $grades->id)
 
 
-								<tr>
+							<tr style="font-size: 16px;">
 
 
-									<td style="font-size: 12px; font-weight: bold">{{$score_s1->KSubject->name}}</td>
-									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_1}}</td>
+									<td>{{$score_s1->KSubject->name}}</td>
 
-									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_2}}</td>
-									
-
-									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_3}}</td>
-
-									<td style="font-size: 12px; font-weight: bold">{{ $score_s1->quarter_4}}</td>
+									<td style="text-align:center">{{ $score_s1->quarter_1}}</td>
+									<td style="text-align:center">{{ $score_s1->quarter_2}}</td>
+									<td style="text-align:center">{{ $score_s1->quarter_3}}</td>
+									<td style="text-align:center">{{ $score_s1->quarter_4}}</td>
 
 									
 
@@ -439,28 +394,28 @@
 				</tr>
 
 					<tr>
-						<td style="font-size: 12px">
+						<td style="font-size: 14px">
 							This student is meeting the expected level of development for his/her age range. (If No, see comment)
 						</td>
-						<td style="font-size: 10.5px" >Y or N</td>
-						<td style="font-size: 10.5px" >Y or N</td>
-						<td style="font-size: 10.5px" >Y or N</td>
-						<td style="font-size: 10.5px" >Y or N</td>
+						<td style="font-size: 14px; text-align:center" >Y or N</td>
+						<td style="font-size: 14px; text-align:center" >Y or N</td>
+						<td style="font-size: 14px; text-align:center" >Y or N</td>
+						<td style="font-size: 14px; text-align:center" >Y or N</td>
 					</tr>
 
 					<tr>
-						<td style="font-size: 12px">
+						<td style="font-size: 14px">
 							This student is on a modified program. (If Yes, see comment)  	
 						</td>
-						<td style="font-size: 10.5px" >Y or N</td>
-						<td style="font-size: 10.5px" >Y or N</td>
-						<td style="font-size: 10.5px" >Y or N</td>
-						<td style="font-size: 10.5px" >Y or N</td>
+						<td style="font-size: 14px; text-align:center" >Y or N</td>
+						<td style="font-size: 14px; text-align:center" >Y or N</td>
+						<td style="font-size: 14px; text-align:center" >Y or N</td>
+						<td style="font-size: 14px; text-align:center" >Y or N</td>
 					</tr>
 
 			    <tr>
-						<td style="font-size: 12px; font-weight: bold">Days Present</td>
-						<td style="font-size: 10.5px; font-weight:350" contenteditable="true" class="text-center">
+						<td style="font-size: 14px; font-weight: bold">Days Present</td>
+						<td style="font-size: 14px; font-weight:350" contenteditable="true" class="text-center">
 
 						@if($total_daypresent_1==1)
 
@@ -474,7 +429,7 @@
 													
 						</td>
 
-						<td class="text-center" style="font-size: 10.5px" contenteditable="true">
+						<td class="text-center" style="font-size: 14px" contenteditable="true">
 
 						@if($total_daypresent_2==1)
 
@@ -489,7 +444,7 @@
 					
 
 
-						<td class="text-center" style="font-size: 10.5px" contenteditable="true">
+						<td class="text-center" style="font-size: 14px" contenteditable="true">
 
 						@if($total_daypresent_3==1)
 
@@ -505,7 +460,7 @@
 						</td>
 
 
-						<td class="text-center" style="font-size: 10.5px" contenteditable="true">
+						<td class="text-center" style="font-size: 14px" contenteditable="true">
 
 						@if($total_daypresent_4==1)
 

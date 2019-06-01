@@ -1,4 +1,4 @@
-	<div class="row mt-4">
+	<div class="row mt-4" style="margin-top:20px">
 		<div class="col-md-1"></div>
 		<div class="col-md-7 border border-secondary" >
 			<table class="table table-sm" style="font-size: 10px ">
@@ -8,7 +8,7 @@
 			        </tr>
 			    </thead>
 				<tbody>
-					<tr>
+					<tr style="font-size:14px">
 						<td><b>Excellent</b></td>
 						<td>A</td>
 						<td>4.00</td>
@@ -18,7 +18,7 @@
 						<td>90-92%</td>
 						<td></td>
 					</tr>
-					<tr>
+					<tr style="font-size:14px">
 						<td><b>Good</b></td>
 						<td>B+</td>
 						<td>3.30</td>
@@ -32,7 +32,7 @@
 						<td>2.70</td>
 						<td>80-82%</td>
 					</tr>
-					<tr>
+					<tr style="font-size:14px">
 						<td><b>Satisfactory</b></td>
 						<td>C+</td>
 						<td>2.30</td>
@@ -46,7 +46,7 @@
 						<td>1.70</td>
 						<td>70-72%</td>
 					</tr>
-					<tr>
+					<tr style="font-size:14px">
 						<td><b>Poor</b></td>
 						<td>D+</td>
 						<td>1.30</td>
@@ -60,7 +60,7 @@
 						<td>0.70</td>
 						<td>60-62%</td>
 					</tr>
-					<tr>
+					<tr style="font-size:14px">
 						<td><b>Failed</b></td>
 						<td>F</td>
 						<td>0.00</td>
@@ -85,11 +85,11 @@
 	</div>
 
 
-			<div class="col-md-10 offset-1" style="margin-top: 8em">
+			<div class="col-md-10 offset-1" style="margin-top: 2em">
 					<div class="row">
 						<div class="col-md-4 pull-left text-center">
 							<hr>
-							<p style="font-size: 12px">Registra's Signature</p>
+							<p style="font-size: 14px">Registra's Signature</p>
 						</div>
 
 						<div class="col-md-4"></div>
@@ -98,16 +98,16 @@
 
 						<div class="col-md-4 pull-right text-center">
 							<hr>
-							<p style="font-size: 12px">Date  of  Issue</p>
+							<p style="font-size: 14px">Date  of  Issue</p>
 						</div>
 					</div>
 			</div>
 				
 			
 
-		<div class="col-md-10 offset-1 mt-4 " style="margin-bottom: 20px">
-			<p class="text-left" style="font-size: 12px" style="margin-bottom: 10px">
-			A transcript is official if embossed with Cambodia Adventist School logo seal and signature signed in ink.
+		<div style="text-align:center; margin-top:10px;">
+			<p>
+				A transcript is official if embossed with Cambodia Adventist School logo seal and signature signed in ink.
 			</p>
 		</div>
 

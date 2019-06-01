@@ -1,72 +1,123 @@
-<div class="x_content">
+<div class="x_content" style="margin-top:15px">
     {{--
     <h2><i class="fa fa-bars"></i> Dropdowns <small>Multiple dropdown designs</small></h2>--}}
     <ul class="nav nav-pills" role="tablist">
 
-        <li role="presentation" class="dropdown">
-            <a id="drop4" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
-                    <strong>
-                        K and Pre-K
-                        <span class="caret"></span>
-                    </strong>
-                </a>
-            <ul id="menu6" class="dropdown-menu animated fadeInDown" role="menu">
-                @if(count($kgrade)) 
-                    @foreach($kgrade as $kgrades)
-                    <li role="presentation" style="margin-top: 5px; margin-bottom: 3px">
-                        <a role="menuitem" tabindex="-1" href="{{ route('prekSchool.absentRecord', ['grade_id'=>$kgrades->id, 'student_id'=>$students->id]) }}"
-                            style="font-size: 14px">{{ $kgrades->name }}</a>
+        
+
+        <li>
+                
+                <div class="menu">
+                      <button class="dropbutton">K and Pre-K 
+                        <i class="fa fa-caret-down"></i>
+                      </button>
+                      <div class="content-2">
+                    
+                        <div class="row">
+                          <div class="column-2">
+
+                              @if(count($kgrade)) 
+                                  @foreach($kgrade->slice(0,3) as $kgrades)
+                                  <a href="{{ route('prekSchool.absentRecord', ['grade_id'=>$kgrades->id, 'student_id'=>$students->id]) }}">
+                                      {{ $kgrades->name }}
+                                  </a>
+                              @endforeach 
+                              @endif
+
+                          </div>
+                          <div class="column-2">
+                            
+                                  @if(count($kgrade)) 
+                                  @foreach($kgrade->slice(3,6) as $kgrades)
+                                  <a href="{{ route('prekSchool.absentRecord', ['grade_id'=>$kgrades->id, 'student_id'=>$students->id]) }}">
+                                      {{ $kgrades->name }}
+                                  </a>
+                              @endforeach 
+                              @endif
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+
+              </li>
+
+              <li>
+                
+                    <div class="menu">
+                            <button class="dropbutton">Primary & Secondary 
+                              <i class="fa fa-caret-down"></i>
+                            </button>
+                            <div class="content">
+                          
+                              <div class="row">
+                                <div class="column">
+
+                                    @if(count($secondaryGrade)) 
+                                        @foreach($secondaryGrade->slice(0,5) as $secondaryGrades)
+                                            <a href="{{ route('secondarySchool.absentRecord', ['grade_id'=>$secondaryGrades->id, 'student_id'=>$students->id]) }}">
+                                                {{ $secondaryGrades->name }}
+                                            </a>
+                                        @endforeach 
+                                    @endif
+                                  
+                                  
+                                  
+                                  
+                                </div>
+                                <div class="column">
+                                  
+                                    @if(count($secondaryGrade)) 
+                                        @foreach($secondaryGrade->slice(5,5) as $secondaryGrades)
+                                            <a href="{{ route('secondarySchool.absentRecord', ['grade_id'=>$secondaryGrades->id, 'student_id'=>$students->id]) }}">
+                                                {{ $secondaryGrades->name }}
+                                            </a>
+                                        @endforeach 
+                                    @endif
+                                </div>
+                                <div class="column">
+                                  
+                                    @if(count($secondaryGrade)) 
+                                        @foreach($secondaryGrade->slice(10,5) as $secondaryGrades)
+                                            <a href="{{ route('secondarySchool.absentRecord', ['grade_id'=>$secondaryGrades->id, 'student_id'=>$students->id]) }}">
+                                                {{ $secondaryGrades->name }}
+                                            </a>
+                                        @endforeach 
+                                    @endif
+                                </div>
+
+                                <div class="column">
+                                        @if(count($secondaryGrade)) 
+                                        @foreach($secondaryGrade->slice(15,6) as $secondaryGrades)
+                                            <a href="{{ route('secondarySchool.absentRecord', ['grade_id'=>$secondaryGrades->id, 'student_id'=>$students->id]) }}">
+                                                {{ $secondaryGrades->name }}
+                                            </a>
+                                        @endforeach 
+                                    @endif
+                                </div>
+                              </div>
+                            </div>
+                          </div> 
+
                     </li>
-                    <li role="presentation" class="divider"></li>
-
-                    @endforeach 
-                @endif
-            </ul>
-        </li>
 
 
-        <li role="presentation" class="dropdown">
-            <a id="drop4" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
-                    <strong>
-                        Primary & Secondary <span class="caret"></span>
-                    </strong>
-                </a>
-            <ul id="menu6" class="dropdown-menu animated fadeInDown" role="menu">
-                @if(count($secondaryGrade)) 
-                    @foreach($secondaryGrade as $secondaryGrades)
-                    <li role="presentation" style="margin-top: 5px; margin-bottom: 3px">
-
-
-                        <a role="menuitem" tabindex="-1" href="{{ route('secondarySchool.absentRecord', ['grade_id'=>$secondaryGrades->id, 'student_id'=>$students->id]) }}"
-                            style="font-size: 14px">{{ $secondaryGrades->name }}</a>
-
+                    <li style="padding-top:-5px">
+                        <div class="dropdown">
+                            <button class="dropbtn">High School <i class="fa fa-caret-down"></i></button>
+                            <div class="dropdown-content">
+                               @if(count($grade)) 
+                                @foreach($grade as $grades)
+                                    <a href="{{ route('highSchool.absentRecord', ['grade_id'=>$grades->id,'student_id'=>$students->id]) }}">
+                                        {{ $grades->grade_name }}
+                                    </a>
+                                @endforeach 
+                                @endif
+                              
+                              
+                            </div>
+                        </div>
                     </li>
-                    <li role="presentation" class="divider"></li>
-                    @endforeach 
-                @endif
-            </ul>
-        </li>
 
-        <li role="presentation" class="dropdown">
-            <a id="drop4" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
-                    <strong>
-                        High School <span class="caret"></span>
-                    </strong>
-                </a>
-            <ul id="menu6" class="dropdown-menu animated fadeInDown" role="menu">
-                @if(count($grade)) 
-                    @foreach($grade as $grades)
-                    <li role="presentation" style="margin-top: 5px; margin-bottom: 3px">
-                        <a role="menuitem" tabindex="-1" href="{{ route('highSchool.absentRecord', ['grade_id'=>$grades->id, 'student_id'=>$students->id]) }}"
-                            style="font-size: 14px">{{ $grades->grade_name }}</a>
-                    </li>
-                    <li role="presentation" class="divider"></li>
-                    @endforeach 
-                @endif
-            </ul>
-        </li>
-
-
-
-    </ul>
+                </ul>
 </div>

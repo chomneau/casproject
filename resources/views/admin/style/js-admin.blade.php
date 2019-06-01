@@ -1,7 +1,9 @@
 <!-- jQuery -->
 <script src="{{ asset('vendors/jquery/dist/jquery.min.js') }}"></script>
+
 <!-- Bootstrap -->
-<script src="{{ asset('vendors/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+
+<script src="{{ asset('vendors/bootstrap/dist/js/bootstrap.min.js') }}"></script> 
 <!-- FastClick -->
 <script src="{{ asset('vendors/fastclick/lib/fastclick.js') }}"></script>
 <!-- NProgress -->
@@ -43,8 +45,8 @@
 <script src="{{ asset('vendors/jQuery-Smart-Wizard/js/jquery.smartWizard.js') }}"></script>
 
 {{--echart--}}
-<script src="../vendors/echarts/dist/echarts.min.js"></script>
-<script src="../vendors/echarts/map/js/world.js"></script>
+<script src="{{ asset('../vendors/echarts/dist/echarts.min.js') }}"></script>
+<script src="{{ asset('../vendors/echarts/map/js/world.js') }}"></script>
 
 {{--form wizard js--}}
 <script src="{{ asset('js/formwizard.js') }}"></script>

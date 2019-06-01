@@ -10,8 +10,8 @@ use App\studentProfile;
 class SecondaryScore extends Model
 {
     protected $fillable = [
-        'student_id', 'secondary_level_id', 'primary_subject_id', 'gpa_1', 'gpa_2',
-        'midterm_score_1','midterm_score_2'
+        'student_profile_id', 'secondary_level_id', 'primary_subject_id', 'quarter_1', 'quarter_1', 'quarter_2', 'quarter_3', 'quarter_4',
+        'semester_1','semester_2', 'yearly'
     ];
 
     public function studentProfile(){

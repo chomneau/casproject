@@ -39,7 +39,7 @@
                                                     <div class="form-group">
                                                     <div class="tab-pane active" id="home">                              
                                                             @if(count($kgrade))
-                                                                @foreach($kgrade as $kgrades)
+                                                                @foreach($kgrade->slice(3, 3) as $kgrades)
                                                                     
                                                                     <div class="checkbox">
                                                                         <label>
@@ -95,7 +95,7 @@
                                                     <div class="form-group">
                                                     <div class="tab-pane active" id="home">                              
                                                             @if(count($kgrade))
-                                                                @foreach($kgrade as $kgrades)
+                                                                @foreach($kgrade->slice(0,3) as $kgrades)
                                                                     
                                                                     <div class="checkbox">
                                                                         <label>

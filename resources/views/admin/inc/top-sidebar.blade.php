@@ -7,145 +7,88 @@
                 <a id="menu_toggle"><i class="fa fa-bars"></i></a>
             </div>
 
+   
+
             <ul class="nav navbar-nav navbar-right">
                 @if(Auth::guard('admin')->check())
-                <li class="">
-                    <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                        <img src="{{ asset('uploads/logos/1510817755img.png') }}" alt="admin">{{ Auth::user()->name }}
-                        <span class=" fa fa-angle-down"></span>
-                    </a>
+                
 
-                        <ul class="dropdown-menu dropdown-usermenu pull-right">
-                            <li>
-
-                                <a href="/admin/adminProfile/{{ Auth()->user()->id }}">
-                                    <i class="fa fa-user" aria-hidden="true"></i>
-                                    Profile</a></li>
-                            <li>
-                                <a href="{{ route('admin.updatepassword', ['id'=> Auth::user()->id]) }}">
-                                    <i class="fa fa-lock" aria-hidden="true"></i>
-                                    <span>Change Password</span>
+                    <li style="padding-top:-5px">
+                        <div class="dropdown">
+                            <button class="dropbtn">
+                                <a href="" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                    <img src="{{ asset('uploads/logos/1510817755img.png') }}" alt="admin">{{ Auth::user()->name }}
+                                    <span class=" fa fa-angle-down"></span>
                                 </a>
-                            </li>
-                            <li>
+                            </button>
+                            <div class="dropdown-content">
+
+                                    <a href="/admin/adminProfile/{{ Auth()->user()->id }}">
+                                        <i class="fa fa-user" aria-hidden="true"></i>
+                                        Profile</a>
+
+                                    <a href="{{ route('admin.updatepassword', ['id'=> Auth::user()->id]) }}">
+                                            <i class="fa fa-lock" aria-hidden="true"></i>
+                                            <span>Change Password</span>
+                                    </a>
+
                                 <a href="{{ route('logout') }}"
-                                   onclick="event.preventDefault();
-                                  document.getElementById('logout-form').submit();">
-                                    <i class="fa fa-sign-out" aria-hidden="true"></i>
-                                    Logout
-                                </a>
-
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    {{ csrf_field() }}
-                                </form>
-                            </li>
-                        </ul>
-
-                </li>
+                                    onclick="event.preventDefault();
+                                   document.getElementById('logout-form').submit();">
+                                     <i class="fa fa-sign-out" aria-hidden="true"></i>
+                                     Logout
+                                 </a>
+ 
+                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                     {{ csrf_field() }}
+                                 </form>
+                              
+                              
+                            </div>
+                        </div>
+                    </li>
                 {{--@endif--}}
 
                 @elseif(Auth::guard('teacher')->check())
-                        <li class="">
-                            <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                <img src="{{ asset(Auth()->user()->photo) }}" alt="admin">{{ Auth::user()->first_name }}
-                                <span class=" fa fa-angle-down"></span>
-                            </a>
-                            <ul class="dropdown-menu dropdown-usermenu pull-right">
-                                <li>
+
+                <li style="padding-top:-5px">
+                        <div class="dropdown">
+                            <button class="dropbtn">
+                                <a href="" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                    <img src="{{ asset(Auth()->user()->photo) }}" alt="admin">{{ Auth::user()->first_name }}
+                                    <span class=" fa fa-angle-down"></span>
+                                </a>
+                            </button>
+                            <div class="dropdown-content">
 
                                     <a href="{{route('teacher.profile', ['teacher_id'=>Auth::user()->id])}}">
                                         <i class="fa fa-user" aria-hidden="true"></i>
-                                        Profile</a></li>
-                                <li>
+                                        Profile</a>
+
                                     <a href="{{ route('teacher.changePassword', ['teacher_id'=>Auth::user()->id]) }}">
-                                        <i class="fa fa-lock" aria-hidden="true"></i>
-                                        <span>Change Password</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                  document.getElementById('logout-form').submit();">
-                                        <i class="fa fa-sign-out" aria-hidden="true"></i>
-                                        Logout
+                                            <i class="fa fa-lock" aria-hidden="true"></i>
+                                            <span>Change Password</span>
                                     </a>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        {{ csrf_field() }}
-                                    </form>
-                                </li>
-                            </ul>
-                        </li>
+                                    <a href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                                     <i class="fa fa-sign-out" aria-hidden="true"></i>
+                                     Logout
+                                    </a>
+
+                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                     {{ csrf_field() }}
+                                 </form>
+                              
+                              
+                            </div>
+                        </div>
+                    </li>
+                        
                 @endif
 
 
-        {{--
-                <li role="presentation" class="dropdown">
-                    <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
-                        <i class="fa fa-bell-o" aria-hidden="true"></i>
-                        <span class="badge bg-green">6</span>
-                    </a>
-                    <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
-                        <li>
-                            <a>
-                                <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                                <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                                <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a>
-                                <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                                <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                                <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a>
-                                <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                                <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                                <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a>
-                                <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                                <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                                <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                            </a>
-                        </li>
-                        <li>
-                            <div class="text-center">
-                                <a>
-                                    <strong>See All Alerts</strong>
-                                    <i class="fa fa-angle-right"></i>
-                                </a>
-                            </div>
-                        </li>
-                    </ul>
-                </li>
-
-                --}}
 
             </ul>
         </nav>

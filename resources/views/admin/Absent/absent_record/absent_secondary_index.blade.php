@@ -104,7 +104,7 @@
                     </div>
                 </div>
 
-                <div class="x_panel">
+                {{-- <div class="x_panel">
 
                     <div class="row tile_count">
 
@@ -165,7 +165,7 @@
 
                     </div>
 
-                </div>
+                </div> --}}
             
 
         <!-- /start quarter_1 -->

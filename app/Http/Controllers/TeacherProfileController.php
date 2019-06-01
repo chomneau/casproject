@@ -43,11 +43,11 @@ class TeacherProfileController extends Controller
         $this->grade = Grade::all();
         View::share('grade', $this->grade);
 
-        $this->kgrade = KLevel::all();
+        $this->kgrade = KLevel::orderBy('name', 'asc')->get();
         View::share('kgrade', $this->kgrade);
 
 
-        $this->secondaryGrade = SecondaryLevel::all();
+        $this->secondaryGrade = SecondaryLevel::orderBy('name', 'asc')->get();
         View::share('secondaryGrade', $this->secondaryGrade);
 
         $this->subject = Subject::all();
@@ -270,63 +270,68 @@ class TeacherProfileController extends Controller
 
     //update pre-school score subject
 
-    public function updatePrekScore(Request $request,$teacher_id, $score_id, $grade_id, $student_id)
+    public function updatePrekScore(Request $request)
     {
-        $grade = KLevel::find($grade_id);
-        $studentprofile = StudentProfile::find($student_id);
 
-        $score = PrekScore::find($score_id);
-        $teacher = Teacher::find($teacher_id);
+        PrekScore::find($request->pk)->update([$request->name => $request->value]);
+        return response()->json(['success'=>'done']);
 
 
-      //  return 'grade_id ='.$grade->id.'score ='.$score->id.'student ='.$studentprofile->id;
+    //     $grade = KLevel::find($grade_id);
+    //     $studentprofile = StudentProfile::find($student_id);
 
-        $score->quarter_1 = $request->quarter1;
-        $score->quarter_2 = $request->quarter2;
-        $score->quarter_3 = $request->quarter3;
-        $score->quarter_4 = $request->quarter4;
-
-        if ($score->quarter_1 == 0 || $score->quarter_2 == 0) {
-
-            $score->semester_1 = 0;
-
-        } else {
-
-            $GPA_1 = ($score->quarter_1 + $score->quarter_2) / 2;
-            $score->semester_1 = $GPA_1;
-
-        }
-
-        if ($score->quarter_3 == 0 || $score->quarter_4 == 0) {
-
-            $score->semester_2 = 0;
-
-        } else {
-
-            $GPA_2 = ($score->quarter_3 + $score->quarter_4) / 2;
-            $score->semester_2 = $GPA_2;
-
-        }
-
-        //$sem_1 = $score->semester_1;
-        //$sem_2 = $score->semester_2;
+    //     $score = PrekScore::find($score_id);
+    //     $teacher = Teacher::find($teacher_id);
 
 
-        if ($score->semester_1 == 0 || $score->semester_2 == 0) {
-            $score->yearly = 0;
-        } else {
+    //   //  return 'grade_id ='.$grade->id.'score ='.$score->id.'student ='.$studentprofile->id;
 
-            $yearly = ($score->semester_1 + $score->semester_2) / 2;
-            $score->yearly = $yearly;
-        }
+    //     $score->quarter_1 = $request->quarter1;
+    //     $score->quarter_2 = $request->quarter2;
+    //     $score->quarter_3 = $request->quarter3;
+    //     $score->quarter_4 = $request->quarter4;
+
+    //     if ($score->quarter_1 == 0 || $score->quarter_2 == 0) {
+
+    //         $score->semester_1 = 0;
+
+    //     } else {
+
+    //         $GPA_1 = ($score->quarter_1 + $score->quarter_2) / 2;
+    //         $score->semester_1 = $GPA_1;
+
+    //     }
+
+    //     if ($score->quarter_3 == 0 || $score->quarter_4 == 0) {
+
+    //         $score->semester_2 = 0;
+
+    //     } else {
+
+    //         $GPA_2 = ($score->quarter_3 + $score->quarter_4) / 2;
+    //         $score->semester_2 = $GPA_2;
+
+    //     }
+
+    //     //$sem_1 = $score->semester_1;
+    //     //$sem_2 = $score->semester_2;
+
+
+    //     if ($score->semester_1 == 0 || $score->semester_2 == 0) {
+    //         $score->yearly = 0;
+    //     } else {
+
+    //         $yearly = ($score->semester_1 + $score->semester_2) / 2;
+    //         $score->yearly = $yearly;
+    //     }
 
 
 
-        $score->save();
+    //     $score->save();
 
-        Session::flash('success', 'You have successfully update your student score');
+    //     Session::flash('success', 'You have successfully update your student score');
 
-        return redirect()->route('teacher.prekschool.score', ['teacher_id'=>$teacher->id,'grade_id' => $grade->id, 'student_id' => $studentprofile->id]);
+    //     return redirect()->route('teacher.prekschool.score', ['teacher_id'=>$teacher->id,'grade_id' => $grade->id, 'student_id' => $studentprofile->id]);
 
     }
 //Delete pre-school student score
@@ -424,63 +429,68 @@ class TeacherProfileController extends Controller
 
     }
 
-    public function updateSecondaryScore(Request $request,$teacher_id, $score_id, $grade_id, $student_id)
+    public function updateSecondaryScore(Request $request)
     {
-        $grade = SecondaryLevel::find($grade_id);
-        $studentprofile = StudentProfile::find($student_id);
 
-        $score = SecondaryScore::find($score_id);
-        $teacher = Teacher::find($teacher_id);
+        SecondaryScore::find($request->pk)->update([$request->name => $request->value]);
+        return response()->json(['success'=>'done']);
 
 
-      //  return 'grade_id ='.$grade->id.'score ='.$score->id.'student ='.$studentprofile->id;
+    //     $grade = SecondaryLevel::find($grade_id);
+    //     $studentprofile = StudentProfile::find($student_id);
 
-        $score->quarter_1 = $request->quarter1;
-        $score->quarter_2 = $request->quarter2;
-        $score->quarter_3 = $request->quarter3;
-        $score->quarter_4 = $request->quarter4;
-
-        if ($score->quarter_1 == 0 || $score->quarter_2 == 0) {
-
-            $score->semester_1 = 0;
-
-        } else {
-
-            $GPA_1 = ($score->quarter_1 + $score->quarter_2) / 2;
-            $score->semester_1 = $GPA_1;
-
-        }
-
-        if ($score->quarter_3 == 0 || $score->quarter_4 == 0) {
-
-            $score->semester_2 = 0;
-
-        } else {
-
-            $GPA_2 = ($score->quarter_3 + $score->quarter_4) / 2;
-            $score->semester_2 = $GPA_2;
-
-        }
-
-        //$sem_1 = $score->semester_1;
-        //$sem_2 = $score->semester_2;
+    //     $score = SecondaryScore::find($score_id);
+    //     $teacher = Teacher::find($teacher_id);
 
 
-        if ($score->semester_1 == 0 || $score->semester_2 == 0) {
-            $score->yearly = 0;
-        } else {
+    //   //  return 'grade_id ='.$grade->id.'score ='.$score->id.'student ='.$studentprofile->id;
 
-            $yearly = ($score->semester_1 + $score->semester_2) / 2;
-            $score->yearly = $yearly;
-        }
+    //     $score->quarter_1 = $request->quarter1;
+    //     $score->quarter_2 = $request->quarter2;
+    //     $score->quarter_3 = $request->quarter3;
+    //     $score->quarter_4 = $request->quarter4;
+
+    //     if ($score->quarter_1 == 0 || $score->quarter_2 == 0) {
+
+    //         $score->semester_1 = 0;
+
+    //     } else {
+
+    //         $GPA_1 = ($score->quarter_1 + $score->quarter_2) / 2;
+    //         $score->semester_1 = $GPA_1;
+
+    //     }
+
+    //     if ($score->quarter_3 == 0 || $score->quarter_4 == 0) {
+
+    //         $score->semester_2 = 0;
+
+    //     } else {
+
+    //         $GPA_2 = ($score->quarter_3 + $score->quarter_4) / 2;
+    //         $score->semester_2 = $GPA_2;
+
+    //     }
+
+    //     //$sem_1 = $score->semester_1;
+    //     //$sem_2 = $score->semester_2;
+
+
+    //     if ($score->semester_1 == 0 || $score->semester_2 == 0) {
+    //         $score->yearly = 0;
+    //     } else {
+
+    //         $yearly = ($score->semester_1 + $score->semester_2) / 2;
+    //         $score->yearly = $yearly;
+    //     }
 
 
 
-        $score->save();
+    //     $score->save();
 
-        Session::flash('success', 'You have successfully update your student score');
+    //     Session::flash('success', 'You have successfully update your student score');
 
-        return redirect()->route('teacher.score.secondary', ['teacher_id'=>$teacher->id,'grade_id' => $grade->id, 'student_id' => $studentprofile->id]);
+    //     return redirect()->route('teacher.score.secondary', ['teacher_id'=>$teacher->id,'grade_id' => $grade->id, 'student_id' => $studentprofile->id]);
 
     }
 

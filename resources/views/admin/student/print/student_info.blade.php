@@ -32,117 +32,106 @@
 						</div>
 					</div>
 					
-					<div class="row" style="margin-top: -6em;">
+					<div class="row" style="margin-top: -8em;">
 
-						<div class="col-sm-6 col-md-6" style="margin-left: -35px">
+						<div class="col-sm-8 col-md-8" style="margin-left: -35px">
 
 							
-							<div class="table-responsive" style="margin-left: 2em">
+							<div class="table-responsive table table-sm" style="margin-left: 2em">
 							  <table class="table table-sm table-borderless">
 							    
 							    <tbody>
 							      <tr>
-							        <th scope="row">Student Name</th>
+							        <td scope="row">Student Name</td>
 							        <td>:</td>
 							        <td>
 							        	{{ $student->last_name}}, 
-										{{ $student->first_name}}
-									</td>
-							      </tr>
+												{{ $student->first_name}}
+											</td>
 
-							      <tr>
-							        <th scope="row">Sex</th>
+											<td scope="row">Sex</td>
 							        <td>:</td>
 							        <td>
 							        	{{ $student->gender}} 				
-									</td>     
-							        
+											</td> 
 							      </tr>
 
+							      
+
 							      <tr>
-							        <th scope="row">Nationality</th>
+							        <td scope="row">Nationality</td>
 							        <td>:</td>
 							        <td>
 							        	{{ $student->nationality}} 				
-									</td>     
+											</td> 
+											
+											<td scope="row">
+													Date of Birth
+												</td>
+												<td>:</td>
+												<td>
+													<?php 
+														$date = strtotime($student->date_of_birth);
+														echo $newformat = date('d-M-Y', $date);
+													 ?>
+												</td>
 							        
 							      </tr>
 
 							      <tr>
-							        <th scope="row">
-							        	Date of Birth
-							        </th>
-							        <td>:</td>
-							        <td>
-							        	<?php 
-
-							        		$date = strtotime($student->date_of_birth);
-
-											echo $newformat = date('d-M-Y', $date);
-							        	 ?>
-							        </td>
-							      </tr>
-							      
-
-							      <tr>
-							        <th scope="row">Student ID</th>
+							        <td scope="row">Student ID</td>
 							        <td>:</td>
 							        <td>
 							        	{{ $student->card_id }}
-									</td>     
-							        
-							      </tr>
-
-							      <tr>
-							        <th scope="row">Progressive Book ID</th>
+											</td> 
+											
+											<td scope="row">Progressive Book ID</td>
 							        <td>:</td>
 							        <td>
 							        	{{ $student->progressive_book_id }} 	
-									</td>     
+											</td> 
+							        
 							      </tr>
 
 							      
 
-							      
-
 							      <tr>
-							        <th scope="row">
+							        <td scope="row">
 							        	Admission Date
-							        </th>
+							        </td>
 							        <td>:</td>
 							        <td contenteditable="true">
-
-							        	{{  
-                                            date('d-M-Y', strtotime($student->start_date))
-                                        }}
-                                        
-                                    </td>
+							        	{{ date('d-M-Y', strtotime($student->start_date)) }}
+											</td>
+											
+											<td scope="row">
+													Completion Date
+												</td>
+												<td>:</td>
+												<td contenteditable="true">{{ date_format($student->updated_at, 'd-M-Y')  }}</td> 
 							        							        
 							      </tr>
-							      <tr>
-							        <th scope="row">
-							        	Completion Date
-							        </th>
-							        <td>:</td>
-							        <td contenteditable="true">{{ date_format($student->updated_at, 'd-M-Y')  }}</td>
-							        
-							        
-							      </tr>
+							      
 							    </tbody>
 							  </table>
 							</div>
-
-
-						</div>	
-          
-	                    <!-- Split button -->
-	               
-                    </div>
-					
-
+						</div>	  
+	        <!-- Split button -->
 				</div>
-       
-
-			<!-- student info -->
-
 			</div>
+			<!-- student info -->
+		</div>
+
+		<table class="table table-sm">
+				<thead>
+						<tr>
+								
+								<th style="color:white">.</th>
+								
+								<th style="color:white; text-align:right">.</th>
+								
+						</tr>
+				</thead>
+		</table>
+
+		

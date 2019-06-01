@@ -1,9 +1,7 @@
 {{--This tap--}}
 
 <div class="col-md-12 col-sm-6 col-xs-12">
-    <div class="x_panel">
 
-        <div class="x_content">
 
             <div class="col-xs-12">
                 <!-- Tab panes -->
@@ -72,13 +70,28 @@
                                             @endforeach 
                                         @endif
 
-                                        <td>{{ $score->quarter_1 }}</td>
-                                        <td>{{ $score->quarter_2 }}</td>
+                                        
+                                        <td class="text-center" >
+                                            <a href="" class="update" data-name="quarter_1"  data-type="number" data-pk="
+                                            {{$score->id }}" data-title="Quarter 1">{{ $score->quarter_1 }}
+                                            </a>
+                                        </td>
+                                        <td class="text-center" >
+                                            {{ $score->quarter_2 }}
+                                            
+                                        </td>
                                         {{--Semester 1--}}
                                         <td class="text-center" style="font-weight: bold">{{ $score->gpa_quarter_1 }}</td>
 
-                                        <td>{{ $score->quarter_3 }}</td>
-                                        <td>{{ $score->quarter_4 }}</td>
+                                        <td class="text-center" >
+                                            {{ $score->quarter_3 }}
+                                            
+                                        </td>
+                                        <td class="text-center" >
+                                            {{ $score->quarter_4 }}
+                                            
+                                        </td>
+
 
                                         {{--Semester 2--}}
                                         <td class="text-center" style="font-weight: bold">{{ $score->gpa_quarter_2 }}</td>
@@ -173,6 +186,5 @@
                 <div class="clearfix"></div>
 
             </div>
-        </div>
-    </div>
+
 </div>

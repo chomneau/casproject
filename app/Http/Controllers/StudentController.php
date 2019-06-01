@@ -35,14 +35,14 @@ class StudentController extends Controller
         $this->middleware('auth:admin');
         
 
-        $this->grade = Grade::all();
+        $this->grade = Grade::orderBy('grade_name', 'decs')->get();
         View::share('grade', $this->grade);
 
-        $this->kgrade = KLevel::all();
+        $this->kgrade = KLevel::orderBy('name', 'asc')->get();
         View::share('kgrade', $this->kgrade);
 
 
-        $this->secondaryGrade = SecondaryLevel::all();
+        $this->secondaryGrade = SecondaryLevel::orderBy('name', 'asc')->get();
         View::share('secondaryGrade', $this->secondaryGrade);
 
         $this->subject = Subject::all();
@@ -78,7 +78,7 @@ class StudentController extends Controller
     //view student by Grade
     public function viewByGrade(){
 
-       $viewByGrade = GradeProfile::all();
+       $viewByGrade = GradeProfile::orderBy('id', 'asc')->get();
 
         return view('admin.student.view_by_grade')->with([
            'viewByGrade'=>$viewByGrade,

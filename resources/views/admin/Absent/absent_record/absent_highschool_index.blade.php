@@ -109,9 +109,9 @@
 
                 </div>
 
-    <div class="x_panel">
+    {{-- <div class="x_panel"> --}}
 
-        <div class="row tile_count">
+        {{-- <div class="row tile_count">
 
             <div class="col-md-3 col-sm-3 col-xs-6 tile_stats_count text-center">
               <span class="count_top"><i class="fa fa-user"></i> Unexcused</span>
@@ -168,8 +168,8 @@
             </div>
             
             
-        </div>
-        </div>
+        </div> --}}
+    {{-- </div> --}}
 
           <!-- /top tiles -->
 <!-- /start quarter_1 -->

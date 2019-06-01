@@ -17,7 +17,7 @@
 			        </tr>
 			    </thead>
 				<tbody>
-					<tr>
+					<tr style="font-size:14px">
           <td colspan="2">
           <b>The following developmental scale is used to describe student progress:</b>
           </td>
@@ -26,12 +26,12 @@
             
 						
 					</tr>
-					<tr>
+					<tr style="font-size:14px">
 						<td><b>1 – Not yet within expectations</b></td>
 						<td><b>2 – Meets expectations  at a beginning level</b></td>
 						
 					</tr>
-					<tr>
+					<tr style="font-size:14px">
 						<td><b>3 – Fully meets expectations </b></td>
 						<td><b>4 – Exceeds expectations </b></td>
 						
@@ -59,14 +59,14 @@
 	<div class="col-md-10 offset-1" style="margin-top: 8em">
 		<div class="row">
 				<div class="col-md-4 pull-left text-center">
-						<p style="font-size: 12px; margin-bottom:6em;">
+						<p style="font-size: 14px; margin-bottom:6em;">
 						Date: 
 						<span contenteditable="true">
 							{{ @date("d-M-Y") }}
 						</span>
 						</p>
 							<hr style="margin-bottom:4em">
-							<p style="font-size: 12px">Registra's Signature</p>
+							<p style="font-size: 14px">Registra's Signature</p>
 						</div>
 
 						<div class="col-md-4"></div>
@@ -74,9 +74,9 @@
 						
 
 						<div class="col-md-4 pull-right text-center">
-						<p style="font-size: 12px; margin-bottom:6em">Date: {{ @date("d-M-Y") }}</p>
+						<p style="font-size: 14px; margin-bottom:6em">Date: {{ @date("d-M-Y") }}</p>
 							<hr style="margin-bottom:4em">
-							<p style="font-size: 12px">Homeroom Teacher's Signature</p>
+							<p style="font-size: 14px">Homeroom Teacher's Signature</p>
 						</div>
 					</div>	
 		</div>
@@ -85,7 +85,7 @@
 			
 
 		<div class="col-md-10 offset-1 mt-4 " style="margin-bottom: 20px">
-			<p class="text-left" style="font-size: 12px" style="margin-bottom: 10px">
+			<p class="text-left" style="font-size: 14px" style="margin-bottom: 10px">
 			<!-- A transcript is official if embossed with Cambodia Adventist School logo seal and signature signed in ink. -->
 			</p>
 		</div>

@@ -164,6 +164,7 @@ Route::prefix('admin')->group(function () {
 
 //update score
     Route::post('score/update/{score_id}/{grade_id}/{student_id}', 'StudentController@updateScore')->name('score.update');
+  //  Route::post('score/update', 'StudentController@updateScore')->name('score.update');
 //setting menu
     Route::get('/score/menu/{id}', 'StudentController@scoreMenu')->name('score.menu');
 //View student score
@@ -186,7 +187,9 @@ Route::prefix('admin')->group(function () {
 //edit data from secondaryScore table
     Route::get('secondaryScore/edit/{score_id}/{grade_id}/{student_id}', 'SecondaryController@editSecondaryScoreForm')->name('secondary.score.edit');
     //update score
-    Route::post('secondaryScore/update/{score_id}/{grade_id}/{student_id}', 'SecondaryController@updateSecondaryScore')->name('secondaryScore.update');
+    // Route::post('secondaryScore/update/{score_id}/{grade_id}/{student_id}', 'SecondaryController@updateSecondaryScore')->name('secondaryScore.update');
+
+    Route::post('secondaryScore/update', 'SecondaryController@updateSecondaryScore')->name('secondaryScore.update');
     //delete data from SecondaryScore table
     Route::get('/secondaryScore/delete/{id}', 'SecondaryController@destroySecondaryScore')->name('secondary.score.delete');
 
@@ -207,7 +210,8 @@ Route::prefix('admin')->group(function () {
 //edit data from  prekScore table
     Route::get('prekscore/edit/{score_id}/{grade_id}/{student_id}', 'PrekController@editPrekScoreForm')->name('prek.score.edit');
 //update score
-    Route::post('prekscore/update/{score_id}/{grade_id}/{student_id}', 'PrekController@updatePrekScore')->name('prek.update');
+ //   Route::post('prekscore/update/{score_id}/{grade_id}/{student_id}', 'PrekController@updatePrekScore')->name('prek.update');
+    Route::post('prekscore/update', 'PrekController@updatePrekScore')->name('prek.update');
 //delete data from prekScore table
     Route::get('/prekscore/delete/{id}', 'PrekController@destroyPrekScore')->name('prek.score.delete');
 
@@ -540,7 +544,7 @@ Route::prefix('teacher')->group(function () {
     Route::get('/prekscore/EditSubject/{teacher_id}/{score_id}/{grade_id}/{student_id}', 'TeacherProfileController@prekEditSubject')->name('teacher.prek.editSubject');
 
     //Prek-update subject score
-    Route::post('/prekscore/EditSubject/{teacher_id}/{score_id}/{grade_id}/{student_id}', 'TeacherProfileController@updatePrekScore')->name('teacher.prek.updateSubject');
+    Route::post('/prekscore/EditSubject', 'TeacherProfileController@updatePrekScore')->name('teacher.prek.updateSubject');
 
     //Delete Prek Subject Score
 
@@ -589,7 +593,7 @@ Route::prefix('teacher')->group(function () {
     //edit data from secondaryScore table (teacher panel)
     Route::get('secondaryScore/edit/{teacher_id}/{score_id}/{grade_id}/{student_id}', 'TeacherProfileController@editSecondaryScoreForm')->name('teacher.secondary.score.edit');
     //update secondary score student
-    Route::post('secondaryScore/update/{teacher_id}/{score_id}/{grade_id}/{student_id}', 'TeacherProfileController@updateSecondaryScore')->name('teacher.secondaryScore.update');
+    Route::post('secondaryScore/update', 'TeacherProfileController@updateSecondaryScore')->name('teacher.secondaryScore.update');
 
 
 

@@ -42,6 +42,9 @@
                         </div>
 
                         @include('admin.student.grade_menu')
+                        <div class="x_title">
+                            <div class="clearfix"></div>
+                        </div>
                         @include('admin.student.secondary_school.view_secondary_score')
                     
                 </div>{{--end x_panel--}}

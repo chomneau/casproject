@@ -104,7 +104,7 @@
                 </div>
                 {{--Total--}}
 
-                <div class="x_panel">
+                {{-- <div class="x_panel">
 
                     <div class="row tile_count">
 
@@ -157,7 +157,7 @@
 
                     </div>
 
-                </div>
+                </div> --}}
 
 
 
