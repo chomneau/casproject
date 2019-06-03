@@ -111,13 +111,13 @@
                                                     Edit
                                                 </a>
 
-                                                <a href="{{ route('subject.delete', ['id'=> $subjects->id]) }}" class="btn btn-danger btn-xs"
+                                                {{-- <a href="{{ route('subject.delete', ['id'=> $subjects->id]) }}" class="btn btn-danger btn-xs"
                                                    id="confirmation">
 
 
                                                     <i class="fa fa-trash"></i>
                                                     Delete
-                                                </a>
+                                                </a> --}}
                                                 <script type="text/javascript">
                                                     $('#confirmation').on('click', function () {
                                                         return confirm('Are you sure?');
