@@ -108,10 +108,19 @@
 							            
 
 							            </td>
-													<td style="font-size: 14px; font-weight: bold" class="text-center">{{
+													<td style="font-size: 14px; font-weight: bold" class="text-center">
+
+														<?php
+														
 														number_format(ceil(($score_s1->quarter_1+$score_s1->quarter_2+$score_s1->quarter_3+$score_s1->quarter_4)/4), 2, '.', ',')
 
-													}}</td>
+														?>
+
+<?php $semester_1= number_format(ceil(($score_s1->quarter_1+$score_s1->quarter_2)/2), 2, '.', ',');
+$semester_2= number_format(ceil(($score_s1->quarter_3+$score_s1->quarter_4)/2), 2, '.', ','); 
+echo number_format(ceil(($semester_1+$semester_2)/2), 2, '.', ',')
+?>
+													</td>
 
 							            
 
