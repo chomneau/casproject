@@ -60,7 +60,7 @@
                                             <td style="font-weight: bold; text-align:center">
                                                     <?php $semester_1= number_format(ceil(($score->quarter_1+$score->quarter_2)/2), 2, '.', ',');
                                                     $semester_2= number_format(ceil(($score->quarter_3+$score->quarter_4)/2), 2, '.', ','); 
-                                                    echo number_format(ceil(($semester_1+$semester_2)/2), 2, '.', ',')
+            echo number_format(ceil(($semester_1+$semester_2)/2), 2, '.', ',')
                                                     ?>
                                             </td>
 
