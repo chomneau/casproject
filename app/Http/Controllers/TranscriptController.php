@@ -36,7 +36,7 @@ public function __construct()
 
 
 
-        $this->secondaryGrade = SecondaryLevel::all();
+        $this->secondaryGrade = SecondaryLevel::orderBy('name', 'asc')->get();
         View::share('secondaryGrade', $this->secondaryGrade);
 
         $this->subject = Subject::all();

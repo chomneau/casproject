@@ -1,6 +1,9 @@
+<div class="container">
+		
 	<div class="row mt-4">
-		<div class="col-md-1"></div>
-		<div class="col-md-7 border border-secondary" >
+		<div class="col-md-2"></div>
+		
+		<div class="col-md-8 border border-secondary" >
 			<table class="table table-sm" style="font-size: 10px ">
 				<thead>
 			        <tr>			            
@@ -69,17 +72,22 @@
 				</tbody>
 			</table>
 		</div>
+		<div class="col-md-2"></div>
+	</div>	
+{{-- end row table --}}
 		
-		<div class="col-md-4"></div>
+		{{-- <div class="col-md-4"></div> --}}
 
-
-		<div class="col-md-6 offset-3 mt-4">
+	<div class="row">
+			<div class="col-md-2"></div>
+		<div class="col-md-8 mt-4">
 			
 			<p class="text-uppercase text-center" style="font-size: 12px">
 				****** any entry below this lines in not valid ******* 
 			</p>
 
 		</div>
+		<div class="col-md-2"></div>
 
 
 	</div>
@@ -108,10 +116,8 @@
 							<p style="font-size: 14px">Homeroom Teacher's Signature</p>
 						</div>
 					</div>
-					
-						
-					
-				</div>
+			
+	</div>
 				
 			
 
