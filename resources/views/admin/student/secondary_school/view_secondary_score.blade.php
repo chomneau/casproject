@@ -72,8 +72,15 @@
                                                         <a href="{{ route('secondary.score.edit',['score_id'=>$score->id, 'grade_id'=>$grade_id->id,'student_id'=>$students->id]) }}" class="btn btn-default btn-sm">Edit</a>
                                                     </span> --}}
                                                     <span>
-                                                        <a href="{{ route('secondary.score.delete', ['score_id'=>$score->id]) }}" class="btn btn-danger btn-sm"><i class="fa fa-trash-o" aria-hidden="true"></i> </a>
+                                                        <a href="{{ route('secondary.score.delete', ['score_id'=>$score->id]) }}" class="btn btn-danger btn-sm" Onclick="return ConfirmDelete()" ><i class="fa fa-trash-o" aria-hidden="true"></i> </a>
                                                 </span>
+
+                                                <script>
+                                                    function ConfirmDelete() 
+                                                        {
+                                                            return confirm("Are you sure you want to delete?");
+                                                        }
+                                                </script>
 
                                             </td>
                                         </tr>

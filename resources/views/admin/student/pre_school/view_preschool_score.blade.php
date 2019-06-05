@@ -71,8 +71,17 @@
                                                     <a href="{{ route('prek.score.edit',['score_id'=>$score->id, 'grade_id'=>$grade_id->id,'student_id'=>$students->id]) }}" class="btn btn-default btn-sm"><i class="fas fa-pencil-alt"></i></a>
                                                 </span> --}}
                                             <span>
-                                                    <a href="{{ route('prek.score.delete', ['score_id'=>$score->id]) }}" class="btn btn-default btn-sm"><i class="far fa-trash-alt"></i></a>
+                                                    <a href="{{ route('prek.score.delete', ['score_id'=>$score->id]) }}" class="btn btn-default btn-sm" Onclick="return ConfirmDelete()" >
+                                                        <i class="far fa-trash-alt"></i>
+                                                    </a>
                                                 </span>
+
+                                                <script>
+                                                    function ConfirmDelete() 
+                                                        {
+                                                            return confirm("Are you sure you want to delete?");
+                                                        }
+                                                </script>
                                         </td>
                                     </tr>
 

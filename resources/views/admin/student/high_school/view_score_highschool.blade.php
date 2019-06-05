@@ -106,8 +106,15 @@
                                                 <a href="{{ route('student.score.edit',['score_id'=>$score->id, 'grade_id'=>$grade_id->id,'student_id'=>$students->id]) }}" class="btn btn-default btn-sm">Edit</a>
                                             </span>
                                             <span>
-                                                <a href="{{ route('student.score.delete', ['score_id'=>$score->id]) }}" class="btn btn-danger btn-sm">Delete </a>
+                                                <a href="{{ route('student.score.delete', ['score_id'=>$score->id]) }}" class="btn btn-danger btn-sm" Onclick="return ConfirmDelete()">Delete </a>
                                             </span>
+
+                                            <script>
+                                            function ConfirmDelete() 
+                                                {
+                                                    return confirm("Are you sure you want to delete?");
+                                                }
+                                            </script>
 
 
                                         @elseif(Auth::guard('teacher')->check())
