@@ -40,6 +40,8 @@
                     </div>
                 </div>
             </div>
+ 
+@if(Auth::guard('admin')->check())        
 
 
             <div class="col-md-8 col-sm-6 col-xs-12">
@@ -103,12 +105,13 @@
 
                     </div>
                 </div>
+          
 
-                {{-- <div class="x_panel">
+                 <div class="x_panel" style="background-color:seagreen; color:white">
 
                     <div class="row tile_count">
 
-                        <div class="col-md-3 col-sm-3 col-xs-6 tile_stats_count text-center">
+                        <div class="col-md-4 col-sm-4 col-xs-6 tile_stats_count text-center">
                             <span class="count_top"><i class="fa fa-user"></i> Unexcused</span>
                             <div class="count">
                                 <!-- total here -->
@@ -121,7 +124,7 @@
               </span>
                         </div>
 
-                        <div class="col-md-3 col-sm-3 col-xs-6 tile_stats_count text-center">
+                        <div class="col-md-4 col-sm-4 col-xs-6 tile_stats_count text-center">
                             <span class="count_top"><i class="fa fa-user"></i> Excused</span>
                             <div class="count">
 
@@ -132,10 +135,10 @@
                             </div>
                             <span class="count_bottom"><i class="green"></i>
                                 <!-- text here -->
-              </span>
+                            </span>
                         </div>
 
-                        <div class="col-md-3 col-sm-3 col-xs-6 tile_stats_count text-center">
+                        {{-- <div class="col-md-3 col-sm-3 col-xs-6 tile_stats_count text-center">
                             <span class="count_top"><i class="fa fa-user"></i> Tardy</span>
                             <div class="count">
 
@@ -146,10 +149,10 @@
                             </div>
                             <span class="count_bottom"><i class="green"></i>
                                 <!-- text here -->
-              </span>
-                        </div>
+                            </span>
+                        </div> --}}
 
-                        <div class="col-md-3 col-sm-3 col-xs-6 tile_stats_count text-center">
+                        <div class="col-md-4 col-sm-4 col-xs-6 tile_stats_count text-center">
                             <span class="count_top"><i class="fa fa-clock-o"></i> Total Absent</span>
                             <div class="count">
 
@@ -165,7 +168,7 @@
 
                     </div>
 
-                </div> --}}
+                </div>
             
 
         <!-- /start quarter_1 -->
@@ -440,6 +443,350 @@
   <!-- /end quarter_4 --> 
 
 </div>    
+{{-- ====================Teacher======================================== --}}
+@elseif(Auth::guard('teacher')->check())  
+
+<div class="x_panel" style="background-color:cornflowerblue; color:white">
+
+    <div class="row tile_count">
+
+        <div class="col-md-4 col-sm-4 col-xs-6 tile_stats_count text-center">
+            <span class="count_top"><i class="fa fa-user"></i> Unexcused</span>
+            <div class="count">
+                <!-- total here -->
+                {{ $unexcused }}
+
+
+            </div>
+            <span class="count_bottom"><i class="green"></i>
+                <!-- text here -->
+</span>
+        </div>
+
+        <div class="col-md-4 col-sm-4 col-xs-6 tile_stats_count text-center">
+            <span class="count_top"><i class="fa fa-user"></i> Excused</span>
+            <div class="count">
+
+                <!-- total here -->
+                {{ $excused }}
+
+
+            </div>
+            <span class="count_bottom"><i class="green"></i>
+                <!-- text here -->
+            </span>
+        </div>
+
+        {{-- <div class="col-md-3 col-sm-3 col-xs-6 tile_stats_count text-center">
+            <span class="count_top"><i class="fa fa-user"></i> Tardy</span>
+            <div class="count">
+
+                <!-- total here -->
+                {{ $tardy }}
+
+
+            </div>
+            <span class="count_bottom"><i class="green"></i>
+                <!-- text here -->
+            </span>
+        </div> --}}
+
+        <div class="col-md-4 col-sm-4 col-xs-6 tile_stats_count text-center">
+            <span class="count_top"><i class="fa fa-clock-o"></i> Total Absent</span>
+            <div class="count">
+
+                <!-- total here -->
+                {{ floor($totalAbsent) }}
+
+            </div>
+            <span class="count_bottom">
+<!-- text here -->
+</span>
+        </div>
+
+
+    </div>
+
+</div>
+
+
+<!-- /start quarter_1 -->
+
+
+<div class="x_panel">
+
+<h3>1<sup>st</sup> Quarter</h3>
+
+<div class="row tile_count">
+
+<div class="col-md-3 col-sm-3 col-xs-6 tile_stats_count text-center">
+<span class="count_top"><i class="fa fa-user"></i> Unexcused</span>
+<div class="count">
+<!-- total here -->
+{{ $quarter_1_unexcused }}
+
+
+</div>
+<span class="count_bottom"><i class="green"></i> 
+<!-- text here -->
+</span>
+</div>
+
+<div class="col-md-3 col-sm-3 col-xs-6 tile_stats_count text-center">
+<span class="count_top"><i class="fa fa-user"></i> Excused</span>
+<div class="count">
+
+<!-- total here -->
+{{ $quarter_1_excused }}
+
+
+</div>
+<span class="count_bottom"><i class="green"></i> 
+<!-- text here -->
+</span>
+</div>
+
+<div class="col-md-3 col-sm-3 col-xs-6 tile_stats_count text-center">
+<span class="count_top"><i class="fa fa-user"></i> Tardy</span>
+<div class="count">
+
+<!-- total here -->
+{{ $quarter_1_tardy }}
+
+
+</div>
+<span class="count_bottom"><i class="green"></i>
+<!-- text here -->
+</span>
+</div>
+
+<div class="col-md-3 col-sm-3 col-xs-6 tile_stats_count text-center">
+<span class="count_top"><i class="fa fa-clock-o"></i> Total Absent</span>
+<div class="count">
+
+<!-- total here -->
+{{ floor($quarter_1_total_All_Absent) }}
+
+</div>
+<span class="count_bottom"> 
+<!-- text here -->
+</span>
+</div>
+
+
+</div>
+
+</div>
+<!-- /end quarter_1 -->  
+
+<!-- start quarter_2 --> 
+<div class="x_panel">
+
+<h3>2<sup>nd</sup> Quarter</h3>
+
+<div class="row tile_count">
+
+<div class="col-md-3 col-sm-3 col-xs-6 tile_stats_count text-center">
+<span class="count_top"><i class="fa fa-user"></i> Unexcused</span>
+<div class="count">
+<!-- total here -->
+{{ $quarter_2_unexcused }}
+
+
+</div>
+<span class="count_bottom"><i class="green"></i> 
+<!-- text here -->
+</span>
+</div>
+
+<div class="col-md-3 col-sm-3 col-xs-6 tile_stats_count text-center">
+<span class="count_top"><i class="fa fa-user"></i> Excused</span>
+<div class="count">
+
+<!-- total here -->
+{{ $quarter_2_excused }}
+
+
+</div>
+<span class="count_bottom"><i class="green"></i> 
+<!-- text here -->
+</span>
+</div>
+
+<div class="col-md-3 col-sm-3 col-xs-6 tile_stats_count text-center">
+<span class="count_top"><i class="fa fa-user"></i> Tardy</span>
+<div class="count">
+
+<!-- total here -->
+{{ $quarter_2_tardy }}
+
+
+</div>
+<span class="count_bottom"><i class="green"></i>
+<!-- text here -->
+</span>
+</div>
+
+<div class="col-md-3 col-sm-3 col-xs-6 tile_stats_count text-center">
+<span class="count_top"><i class="fa fa-clock-o"></i> Total Absent</span>
+<div class="count">
+
+<!-- total here -->
+{{ floor($quarter_2_total_All_Absent) }}
+
+</div>
+<span class="count_bottom"> 
+<!-- text here -->
+</span>
+</div>
+
+
+</div>
+
+</div>
+
+<!-- /end quarter_2 --> 
+<!-- start quarter_3 -->
+<div class="x_panel">
+
+<h3>3<sup>rd</sup> Quarter</h3>
+
+<div class="row tile_count">
+
+<div class="col-md-3 col-sm-3 col-xs-6 tile_stats_count text-center">
+<span class="count_top"><i class="fa fa-user"></i> Unexcused</span>
+<div class="count">
+<!-- total here -->
+{{ $quarter_3_unexcused }}
+
+
+</div>
+<span class="count_bottom"><i class="green"></i> 
+<!-- text here -->
+</span>
+</div>
+
+<div class="col-md-3 col-sm-3 col-xs-6 tile_stats_count text-center">
+<span class="count_top"><i class="fa fa-user"></i> Excused</span>
+<div class="count">
+
+<!-- total here -->
+{{ $quarter_3_excused }}
+
+
+</div>
+<span class="count_bottom"><i class="green"></i> 
+<!-- text here -->
+</span>
+</div>
+
+<div class="col-md-3 col-sm-3 col-xs-6 tile_stats_count text-center">
+<span class="count_top"><i class="fa fa-user"></i> Tardy</span>
+<div class="count">
+
+<!-- total here -->
+{{ $quarter_3_tardy }}
+
+
+</div>
+<span class="count_bottom"><i class="green"></i>
+<!-- text here -->
+</span>
+</div>
+
+<div class="col-md-3 col-sm-3 col-xs-6 tile_stats_count text-center">
+<span class="count_top"><i class="fa fa-clock-o"></i> Total Absent</span>
+<div class="count">
+
+<!-- total here -->
+{{ floor($quarter_3_total_All_Absent) }}
+
+</div>
+<span class="count_bottom"> 
+<!-- text here -->
+</span>
+</div>
+
+
+</div>
+
+</div>
+
+<!-- /end quarter_3 --> 
+<!-- start quarter_4 --> 
+<div class="x_panel">
+
+<h3>4<sup>th</sup> Quarter</h3>
+
+<div class="row tile_count">
+
+<div class="col-md-3 col-sm-3 col-xs-6 tile_stats_count text-center">
+<span class="count_top"><i class="fa fa-user"></i> Unexcused</span>
+<div class="count">
+<!-- total here -->
+{{ $quarter_4_unexcused }}
+
+
+</div>
+<span class="count_bottom"><i class="green"></i> 
+<!-- text here -->
+</span>
+</div>
+
+<div class="col-md-3 col-sm-3 col-xs-6 tile_stats_count text-center">
+<span class="count_top"><i class="fa fa-user"></i> Excused</span>
+<div class="count">
+
+<!-- total here -->
+{{ $quarter_4_excused }}
+
+
+</div>
+<span class="count_bottom"><i class="green"></i> 
+<!-- text here -->
+</span>
+</div>
+
+<div class="col-md-3 col-sm-3 col-xs-6 tile_stats_count text-center">
+<span class="count_top"><i class="fa fa-user"></i> Tardy</span>
+<div class="count">
+
+<!-- total here -->
+{{ $quarter_4_tardy }}
+
+
+</div>
+<span class="count_bottom"><i class="green"></i>
+<!-- text here -->
+</span>
+</div>
+
+<div class="col-md-3 col-sm-3 col-xs-6 tile_stats_count text-center">
+<span class="count_top"><i class="fa fa-clock-o"></i> Total Absent</span>
+<div class="count">
+
+<!-- total here -->
+{{ floor($quarter_4_total_All_Absent) }}
+
+</div>
+<span class="count_bottom"> 
+<!-- text here -->
+</span>
+</div>
+
+
+</div>
+
+</div>
+
+<!-- /end quarter_4 --> 
+
+</div>   
+
+
+@endif
+
+@if(Auth::guard('admin')->check())  
 
             {{-- record form --}}
             <div class="col-md-4 col-sm-6 col-xs-12">
@@ -518,10 +865,11 @@
                 </div>
             </div>
 
-
-
-
         </div>
+
+@endif
+
+
 
         <!-- /page content -->
 @endsection

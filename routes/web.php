@@ -353,6 +353,7 @@ Route::post('/daypresent/update/{id}', 'DaypresentController@update')->name('day
    Route::post('/absent/update/{id}', 'AbsentController@update')->name('update.absent');
 
    
+  
 
    //High School student absent
    Route::get('/absent/show/{student_id}', 'AbsentController@showAbsent')->name('show.absentRecord');
@@ -491,6 +492,19 @@ Route::post('/daypresent/update/{id}', 'DaypresentController@update')->name('day
 
 Route::prefix('teacher')->group(function () {
 
+    //Absent
+
+  //High School student absent for teacher side
+  Route::get('/absent/show/{student_id}', 'TeacherAbsentController@showAbsent')->name('teacher.show.absentRecord');
+//Secondary
+  Route::get('/secondarySchool/absent/{grade_id}/{student_id}', 'TeacherAbsentController@secondarySchoolAbsent')->name('teacher.secondarySchool.absentRecord'); 
+//pre-k
+  Route::get('/prekSchool/absent/{grade_id}/{student_id}', 'TeacherAbsentController@prekSchoolAbsent')->name('teacher.prekSchool.absentRecord'); 
+//high school
+
+Route::get('/highSchool/absent/{grade_id}/{student_id}', 'TeacherAbsentController@highSchoolAbsent')->name('teacher.highSchool.absentRecord');
+
+  //end Absent
 
     //teacher search students
     Route::get('/search/{teacher_id}', 'TeacherProfileController@searchStudent')->name('teacher.searchStudent');

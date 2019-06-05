@@ -19,12 +19,21 @@
 
 
         </div>
-        <span class="pull-right" style="margin-right:30px">
+        @if(Auth::guard('admin')->check())
+            <span class="pull-right" style="margin-right:30px">
                 <a href="{{ route('show.absentRecord', ['id'=>$students->id]) }}" class="btn btn-primary btn-sm ">
                    <i class="fa fa-edit m-right-xs"></i>
                     Absent
                 </a>
             </span>
+        @elseif(Auth::guard('teacher')->check())
+            <span class="pull-right" style="margin-right:30px">
+                <a href="{{ route('teacher.show.absentRecord', ['id'=>$students->id]) }}" class="btn btn-primary btn-sm ">
+                <i class="fa fa-edit m-right-xs"></i>
+                Absent
+                </a>
+            </span>
+        @endif
 
         <div class="clearfix"></div>
 
