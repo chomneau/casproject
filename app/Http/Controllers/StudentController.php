@@ -64,8 +64,8 @@ class StudentController extends Controller
 
     public function viewStudent()
     {
-        $student = StudentProfile::orderBy('last_name','ASC')
-            ->paginate(10);
+        $student = StudentProfile::orderBy('last_name','ASC')->orderBy('first_name', 'ASC')
+            ->paginate(20);
 
        // $grade = Grade::all();
 
@@ -86,7 +86,7 @@ class StudentController extends Controller
     }
 
     public function viewAllStudentByGrade($grade_profile_id){
-        $viewStudentByGrade = StudentProfile::withCount('GradeProfile')->where(['grade_profile_id'=>$grade_profile_id])->OrderBy('last_name', 'ASC')->get();
+        $viewStudentByGrade = StudentProfile::where(['grade_profile_id'=>$grade_profile_id])->OrderBy('last_name', 'asc')->OrderBy('first_name', 'asc')->get();
         $countStudentByGrade = StudentProfile::withCount('GradeProfile')->where(['grade_profile_id'=>$grade_profile_id])->count();
         $countMaleStudentByGrade = StudentProfile::withCount('GradeProfile')->where(['grade_profile_id'=>$grade_profile_id, 'gender'=>'Male'])->count();
         $countFemaleStudentByGrade = StudentProfile::withCount('GradeProfile')->where(['grade_profile_id'=>$grade_profile_id, 'gender'=>'Female'])->count();
