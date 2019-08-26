@@ -99,6 +99,13 @@ Route::prefix('admin')->group(function () {
 
     Route::get('/student/reportByYear', 'AdminController@reportByYear')->name('student.reportByYear');
 
+    //show file library
+    Route::get('/filelibrary', 'AdminController@fileLibrary')->name('admin.filelibrary');
+    //file library upload
+    Route::post('/filelibrary/upload', 'AdminController@fileLibraryUpload')->name('admin.filelibrary.upload');
+    //file library delete
+    Route::get('/filelibrary/delete/{id}', 'AdminController@fileLibraryDelete')->name('admin.filelibrary.delete');
+
 
     Route::get('/student/register', 'StudentController@showRegisterForm')->name('student.register');
     Route::post('/student/register', 'StudentController@studentRegister')->name('student.register.create');
@@ -138,6 +145,20 @@ Route::prefix('admin')->group(function () {
 
      //store staff to table route
      Route::post('/storeStaff/{id}', 'StaffController@storeStaff')->name('admin.storeStaff');
+//+++++++++++++++******** Staff Absnet ********+++++++++++++++
+     //store staff absent
+     Route::post('/storeStaff/absent/{admin_id}/{id}', 'StaffController@storeStaffAbsent')->name('admin.storeStaff.absent');
+     //edit staff absent
+
+     Route::get('/editStaff/absent/{staffAbsnet_id}/{admin_id}/{staff_id}', 'StaffController@editStaffAbsent')->name('admin.editStaff.absent');
+
+    //Update staff Absent
+    Route::post('/staff/absent/update/{staffAbsent_id}/{admin_id}/{teacher_id}', 'StaffController@updateStaffAbsent')->name('admin.updateStaff.absent');
+
+    //delete staff absent
+    Route::get('/staff/absent/delete/{id}', 'StaffController@deleteStaffAbsent')->name('admin.deleteStaff.absent');
+
+
 
     // view profile
      Route::get('/staffDetail/{id}', 'StaffController@staffDetail')->name('admin.staffDetail');
@@ -453,7 +474,6 @@ Route::post('/daypresent/update/{id}', 'DaypresentController@update')->name('day
 
 
     //search student
-
     Route::get('/student/search', 'StudentController@searchStudent')->name('student.search');
 
 
@@ -462,9 +482,12 @@ Route::post('/daypresent/update/{id}', 'DaypresentController@update')->name('day
     
 
     // Route::get('/teacher/dashboard', 'TeacherController@index')->name('teacher.dashboard');
-
+    //search teahcer
+    Route::get('/teacher/search', 'TeacherController@searchTeacher')->name('teacher.search');
     //show all teacher
     Route::get('/teacher/showAll', 'TeacherController@show')->name('teacher.showAll');
+    //view teacher profile
+    Route::get('/teacher/profile/{admin_id}/{teacher_id}', 'TeacherController@teacherProfile')->name('admin.teacher.profile');
 
     //register new teacher from
     Route::get('/teacher/register', 'TeacherController@register')->name('teacher.register');
@@ -481,8 +504,24 @@ Route::post('/daypresent/update/{id}', 'DaypresentController@update')->name('day
     Route::get('/teacher/delete/{admin_id}/{teacher_id}', 'TeacherController@delete')->name('teacher.delete');
 
 
+// +++++++++*******************++++++++++++++++//
+    //Record Teacher Absent
+    Route::post('/teacher/absent/{admin_id}/{teacher_id}', 'AbsentTeacherController@store')->name('absentTeacher.store');
+    
+   // Route::resource('/teacher/absent', 'AbsentTeacherController');
+    //View Teacher Absent
+    Route::get('/teacher/absent/view/{admin_id}/{teacher_id}', 'AbsentTeacherController@show')->name('absentTeacher.view');
+    //Edit Teacher Absent
+    Route::get('/teacher/absent/edit/{id}/{admin_id}/{teacher_id}', 'AbsentTeacherController@edit')->name('absentTeacher.edit');
+    //Update Teacher Absent
+    Route::post('/teacher/absent/update/{id}/{admin_id}/{teacher_id}', 'AbsentTeacherController@update')->name('absentTeacher.update');
+    //Delete Teacher Absent
+    Route::get('/teacher/absent/delete/{absent_id}', 'AbsentTeacherController@destroy')->name('absentTeacher.delete');
 
-  
+    //+++++++++++++++++++++**********************++++++++++++++++++++
+    // Record Staff Absent, add, update, Delete
+
+
 
 
 
@@ -508,14 +547,23 @@ Route::get('/highSchool/absent/{grade_id}/{student_id}', 'TeacherAbsentControlle
 
     //teacher search students
     Route::get('/search/{teacher_id}', 'TeacherProfileController@searchStudent')->name('teacher.searchStudent');
+
     //view all staff
     Route::get('/viewStaff/{teacher_id}', 'TeacherProfileController@viewStaff')->name('teacher.viewStaff');
 
     //view staff detail
     Route::get('/staffDetail/{teacher_id}/{staff_id}/', 'TeacherProfileController@staffDetail')->name('teacher.staffDetail');
+    //search staff
+    Route::get('/staff/search', 'StaffController@searchStaff')->name('staff.search');
+
+
+
 
     //show all teacher
     Route::get('/showAllTeacher/{teacher_id}', 'TeacherProfileController@showAllTeacher')->name('teacher.showAllTeacher');
+
+    //view teacher detail
+    Route::get('/detail/{teacher_id}', 'TeacherProfileController@teacherDetail')->name('teacher.detail');
 
 
 
@@ -622,6 +670,44 @@ Route::get('/highSchool/absent/{grade_id}/{student_id}', 'TeacherAbsentControlle
     Route::get('assignment/edit/{teacher_id}/{assignment_id}', 'AssignmentController@assignmentEdit')->name('teacher.assignment.edit');
     Route::get('assignment/delete/{assignment_id}', 'AssignmentController@assignmentDelete')->name('teacher.assignment.delete');
     Route::post('assignment/update/{teacher_id}/{assignment_id}', 'AssignmentController@assignmentUpdate')->name('teacher.assignment.update');
+
+    //lesson plan
+
+    Route::get('lessonPlan/view/{teacher_id}', 'LessonplanController@showLessonplan')->name('teacher.lessonPlan.show');
+
+    Route::get('lessonPlan/create/{teacher_id}', 'LessonplanController@createLessonplanForm')->name('teacher.lessonPlan.create');
+    Route::post('lessonPlan/create/{teacher_id}', 'LessonplanController@createLessonplan')->name('teacher.lessonPlan.post');
+
+    Route::get('lessonPlan/detail/{teacher_id}/{lessonplan_id}', 'LessonplanController@LessonplanDetail')->name('teacher.lessonPlan.detail');
+    Route::get('lessonPlan/edit/{teacher_id}/{lessonplan_id}', 'LessonplanController@LessonplanEdit')->name('teacher.lessonPlan.edit');
+    Route::get('lessonPlan/delete/{lessonplan_id}', 'LessonplanController@LessonplanDelete')->name('teacher.lessonPlan.delete');
+    Route::post('lessonPlan/update/{teacher_id}/{lessonplan_id}', 'LessonplanController@LessonplanUpdate')->name('teacher.lessonPlan.update');
+//++++++++++++++++***********************++++++++++++++++++++++++++++++++
+    //Grade File upload
+    Route::get('gradeFile/view/{teacher_id}', 'GradefileController@showGradefile')->name('teacher.gradefile.show');
+
+    //create upload grade file form
+    Route::get('gradefile/create/{teacher_id}', 'GradefileController@createGradefileForm')->name('teacher.gradefile.create');
+
+    //Create upload Grade file
+    Route::post('gradefile/create/{teacher_id}', 'GradefileController@createGradefile')->name('teacher.gradefile.post');
+
+    //view detail Grade file form
+    Route::get('gradefile/detail/{teacher_id}/{gradefile_id}', 'GradefileController@gradefileDetail')->name('teacher.gradefile.detail');
+
+    //Edit grade file 
+    Route::get('gradefile/edit/{teacher_id}/{gradefile_id}', 'GradefileController@gradefileEdit')->name('teacher.gradefile.edit');
+
+    //Update grade file
+    Route::post('gradefile/update/{teacher_id}/{gradefile_id}', 'GradefileController@gradefileUpdate')->name('teacher.gradefile.update');
+
+    //Delete Grade file
+    Route::get('gradefile/delete/{gradefile_id}', 'GradefileController@gradefileDelete')->name('teacher.gradefile.delete');
+
+
+   
+
+
 
 
 

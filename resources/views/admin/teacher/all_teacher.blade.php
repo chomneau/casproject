@@ -1,256 +1,280 @@
 @extends('admin.admin-layout.main')
+
 @section('content')
 
-<!-- page content -->
-        <div class="right_col" role="main">
-          <div class="">
-            <div class="page-title">
-              <div class="title_left">
-                <h3>Teacher's Contact</h3>
-              </div>
+ @if(Auth::guard('admin')->check())
 
-              <!-- <div class="title_right">
-                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-                  <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search for...">
-                    <span class="input-group-btn">
-                      <button class="btn btn-default" type="button">Go!</button>
-                    </span>
-                  </div>
+    <!-- page content -->
+    <div class="right_col" role="main">
+        <div class="">
+            <div class="page-title">
+                <div class="title_left">
+                    <h3>ALL TEACHERS <small></small></h3>
                 </div>
-              </div> -->
+
+                <div class="title_right">
+                    <div class="col-md-8 col-sm-8 col-xs-12 form-group pull-right top_search">
+                        <form action="{{ route('teacher.search')  }}" method='get'>
+                            {{csrf_field()}}
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="query" placeholder="Enter first name,last name, Phone, or email to seach" required >
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="submit">Search</button>
+                                </span>                       
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
 
             </div>
 
             <div class="clearfix"></div>
 
-         
-
-			<div class="row">
-              <div class="col-md-12">
-                <div class="x_panel">
-                  <div class="x_content">
-                    <div class="row">
-                      <div class="col-md-12 col-sm-12 col-xs-12 text-center">
-                        
-                      </div>
-
-                      <div class="clearfix"></div>
-
-				<div class="row">
-
-      @if(Auth::guard('admin')->check())    
-					@foreach($teacher as $teachers)
-						
-            <div class="col-md-4 col-sm-4 col-xs-12 profile_details">
-                  <div class="well profile_view">
-
-                      <div class="row">
-                        <div class="center-block" style="margin-left:8.5em">
-                        <img src="{{ asset($teachers->photo) }}" alt="" class="img-circle" width="150" height="150">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="x_panel">
+                        <div class="x_title">
+                            <h2 >
+                                <span class="text-primary" style="margin-right:20px">TOTAL TEACHERS : 
+                                  <b style="color:cadetblue"> {{ $teacherCount }} </b>
+                                </span>
+                                <span style="margin-right:20px">MALE : 
+                                  <b style="color:cadetblue"> {{$teacherCountMale }} </b>
+                                </span>
+                                <span>FEMALE : 
+                                  <b style="color:cadetblue"> {{$teacherCountFemale }}</b>
+                                </span>
+                              
+                              </h2>
+                            <ul class="nav navbar-right panel_toolbox">
+                                <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a href="#">Settings 1</a>
+                                        </li>
+                                        <li><a href="#">Settings 2</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li><a class="close-link"><i class="fa fa-close"></i></a>
+                                </li>
+                            </ul>
+                            <div class="clearfix"></div>
                         </div>
-                        
-                      </div>
-
-                      <div class="col-xs-12 col-sm-6 emphasis" style="margin-left:8.5em; margin-top:1em">
-                        <a href="{{ route('teacher.edit',['admin_id'=>Auth()->user()->id, 'teacher_id'=>$teachers->id])}}" type="button" class="btn btn-success btn-sm">
-                          <i class="fa fa-user"> </i> Update Profile
-                        </a>
-                      </div>
-                      
-
-                      
-
-                    <div class="col-md-12">
-                        <table class="table borderless" style="margin-top:2em" >
-                          <tbody >
-                            <h2 class="text-center" style="margin-top:5px">
-                              {{ $teachers->last_name }}, {{ $teachers->first_name }} 
-                            </h2>
-
-                            
-
-                          </tbody>
-                          <tr>
-                            <td>Date of Birth</td>
-                            <td> :</td>
-                            <td>{{ $teachers->date_of_birth }}</td>
-
-                          </tr>
-                          <tr>
-                            <td>Gender</td>
-                            <td> :</td>
-                            <td>{{ $teachers->gender}}</td>
-
-                          </tr>
-                          <tr>
-                            <td>Position</td>
-                            <td> :</td>
-                            <td>{{ $teachers->position}}</td>
-
-                          </tr>
-                          <tr>
-                            <td>Degree</td>
-                            <td> :</td>
-                            <td>{{ $teachers->degree}}</td>
-
-                          </tr>
-
-                          <tr>
-                            <td>Homeroom Teacher</td>
-                            <td> :</td>
-                            <td>
-                                @foreach($gradeProfile as $gradeProfiles)
-
-                                  @if($teachers->grade_profile_id == $gradeProfiles->id)
-
-                                    {{ $gradeProfiles->name }}
-
-                                  @endif
-
-                                @endforeach 
-
-                              </td>
-
-                          </tr>
-
-                          <tr>
-                            <td style="border-bottom: 0 ">Phone</td>
-                            <td> :</td>
-                            <td>{{ $teachers->phone}}</td>
-
-                          </tr>
-
-                          <tr>
-                            <td >Email</td>
-                            <td> :</td>
-                            <td>{{ $teachers->email}}</td>
-
-                          </tr>
-
-                        </table>
-                      
-                    </div>
-
-                            
-
-                  </div>
-                </div>
-
-            @endforeach
+                        <div class="x_content">
 
 
-          @elseif(Auth::guard('teacher')->check()) 
-              
-            @foreach($teacherAll as $teachers)
 
+                            <!-- start project list -->
+                            <table class="table table-striped projects">
+                                <thead>
+                                <tr>
+                                    <th style="width: 1%">#</th>
+                                    <th style="width: 20%">Teacher Name</th>
+                                    <th>Gender</th>
+                                    
+                                    <th style="width: 15%">Homeroom Teacher</th>
+                                    <th>Position</th>
+                                    <th>Phone</th>
+                                    
+                                    
+                                    <th style="width: 20%">Action</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @if(count($teacher))
+                                    @foreach($teacher as $teachers)
+                                        <tr>
+                                           
+                                            <td>
+                                              <img src="{{ asset($teachers->photo) }}" class="avatar"  alt="Avatar">
+                                            </td>
+                                            
+                                            <td>
+                                                <a> {{ $teachers->last_name }}, {{ $teachers->first_name }}</a>
+                                                <br />
+                                                <small>Created {{ $teachers->created_at->diffForHumans() }}</small>
+                                            </td>
 
-              <div class="col-md-4 col-sm-4 col-xs-12 profile_details">
-                  <div class="well profile_view">
+                                          <td>{{ $teachers->gender }}</td>
+                                            
+                                            <td>
+                                                {{ $teachers->GradeProfile->name }}
+                                            </td>
+                                            <td>
+                                                {{ $teachers->position }}
+                                            </td>
+                                            <td>
+                                                {{ $teachers->phone }}
+                                            </td>
+                                            
+                                            
+                                            <td>
+                                                 
+                                                <a href="{{ route('admin.teacher.profile',['admin_id'=>Auth()->user()->id, 'teacher_id'=>$teachers->id])}}" class="btn btn-primary btn-sm"><i class="fa fa-folder"></i> View profile </a>
+                                                                                       
+                                                
+                                                {{-- <a href="{{ route('admin.staff.delete', ['id'=>$teachers->id]) }}" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </a> --}}
 
-                      <div class="row">
-                        <div class="center-block" style="margin-left:8.5em">
-                        <img src="{{ asset($teachers->photo) }}" alt="" class="img-circle" width="150" height="150">
+                                                
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                @endif
+
+                                </tbody>
+                            </table>
+                            <!-- end project list -->
+
                         </div>
-                        
-                      </div>
-
-                      
-
-                    <div class="col-md-12">
-                        <table class="table borderless" style="margin-top:2em" >
-                          <tbody >
-                            <h2 class="text-center" style="margin-top:5px">
-                              {{ $teachers->last_name }}, {{ $teachers->first_name }} 
-                            </h2>
-                          </tbody>
-                          <tr>
-                            <td>Date of Birth</td>
-                            <td> :</td>
-                            <td>{{ $teachers->date_of_birth }}</td>
-
-                          </tr>
-                          <tr>
-                            <td>Gender</td>
-                            <td> :</td>
-                            <td>{{ $teachers->gender}}</td>
-
-                          </tr>
-                          <tr>
-                            <td>Position</td>
-                            <td> :</td>
-                            <td>{{ $teachers->position}}</td>
-
-                          </tr>
-                          <tr>
-                            <td>Degree</td>
-                            <td> :</td>
-                            <td>{{ $teachers->degree}}</td>
-
-                          </tr>
-
-                          <tr>
-                            <td>Homeroom Teacher</td>
-                            <td> :</td>
-                            <td>
-                                @foreach($gradeProfile as $gradeProfiles)
-
-                                  @if($teachers->grade_profile_id == $gradeProfiles->id)
-
-                                    {{ $gradeProfiles->name }}
-
-                                  @endif
-
-                                @endforeach 
-
-                              </td>
-
-                          </tr>
-
-                          <tr>
-                            <td style="border-bottom: 0 ">Phone</td>
-                            <td> :</td>
-                            <td>{{ $teachers->phone}}</td>
-
-                          </tr>
-
-                          <tr>
-                            <td >Email</td>
-                            <td> :</td>
-                            <td>{{ $teachers->email}}</td>
-
-                          </tr>
-
-                        </table>
-                      
                     </div>
-
-                  </div>
                 </div>
-
-          @endforeach
-
-      @endif             
-					</div>
-                      
-
-                      
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
-          </div>
         </div>
-        <!-- /page content -->
+    </div>
+    <!-- /page content -->
 
 
 
 
-	
+    {{-- teacher side --}}
 
-		
+  @elseif(Auth::guard('teacher')->check()) 
+    <!-- page content -->
+    <div class="right_col" role="main">
+        <div class="">
+            <div class="page-title">
+                <div class="title_left">
+                    <h3>ALL TEACHERS <small></small></h3>
+                </div>
 
-	
+                <div class="title_right">
+                    <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search for...">
+                            <span class="input-group-btn">
+                      <button class="btn btn-default" type="button">Go!</button>
+                    </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="x_panel">
+                        <div class="x_title">
+                          
+                          
+                            <h2 >
+                                <span class="text-primary" style="margin-right:20px">TOTAL TEACHERS : 
+                                  <b style="color:cadetblue"> {{ $teacherCount }} </b>
+                                </span>
+                                <span style="margin-right:20px">MALE : 
+                                  <b style="color:cadetblue"> {{$teacherCountMale }} </b>
+                                </span>
+                                <span>FEMALE : 
+                                  <b style="color:cadetblue"> {{$teacherCountFemale }}</b>
+                                </span>
+                              
+                              </h2>
+                          {{-- </div> --}}
+                        
+                            <ul class="nav navbar-right panel_toolbox">
+                                <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a href="#">Settings 1</a>
+                                        </li>
+                                        <li><a href="#">Settings 2</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li><a class="close-link"><i class="fa fa-close"></i></a>
+                                </li>
+                            </ul>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="x_content">
+
+
+
+                            <!-- start project list -->
+                            <table class="table table-striped projects">
+                                <thead>
+                                <tr>
+                                    <th style="width: 1%">#</th>
+                                    <th style="width: 20%">Teacher Name</th>
+                                    <th style="width: 10%">Gender</th>
+                                    
+                                    <th style="width: 15%">Homeroom Teacher</th>
+                                    <th>Position</th>
+                                    <th>Phone</th>
+                                    
+                                    
+                                    <th style="width: 20%">Action</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @if(count($teacherAll))
+                                    @foreach($teacherAll as $teachers)
+                                        <tr>
+                                            <?php $no = 1 ?>
+                                            
+                                            <td><img src="{{ asset($teachers->photo) }}" class="avatar"  alt="Avatar"></td>
+                                            <td>
+                                                <a> {{ $teachers->last_name }}, {{ $teachers->first_name }}</a>
+                                                <br />
+                                                <small>Created {{ $teachers->created_at->diffForHumans() }}</small>
+                                            </td>
+                                            <td>
+                                                {{ $teachers->gender }}
+                                            </td>
+                                            
+                                            <td>
+                                                {{ $teachers->GradeProfile->name }}
+                                            </td>
+                                            <td>
+                                                {{ $teachers->position }}
+                                            </td>
+                                            <td>
+                                                {{ $teachers->phone }}
+                                            </td>
+                                            
+                                            
+                                            <td>
+                                                 
+                                                <a href="{{ route('teacher.detail',[ 'teacher_id'=>$teachers->id])}}" class="btn btn-primary btn-sm"><i class="fa fa-folder"></i> View profile </a>
+                                                
+                                                
+                                                
+                                                
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                @endif
+
+                                </tbody>
+                            </table>
+                            <!-- end project list -->
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  
+
+
+@endif
+
 
 @endsection

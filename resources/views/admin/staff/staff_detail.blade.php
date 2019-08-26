@@ -13,7 +13,7 @@
                                 Edit Profile
                             </a>
                         </span>
-                        @endif   
+                    @endif   
                     </h3>
                 </div>
 
@@ -77,16 +77,87 @@
                             </div>
                             {{--end of col-container container--}}
 
+                            {{-- start tap  --}}
+                <div class="col-md-12">
+                        <div class="" role="tabpanel" data-example-id="togglable-tabs">
+                            <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                              <li role="presentation" class="active">
+                                <a href="#tab_content1" role="tab" id="profile-tab2"data-toggle="tab" aria-expanded="false">
+                                  <b>Absent</b>
+                                </a>
+                              </li>
+                                                    
+                            </ul>
+    
+                            <div id="myTabContent" class="tab-content">
+    
+                                <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">                           
+                                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addNewAbsent" data-whatever="@mdo"><i class="fa fa-plus-square" aria-hidden="true"></i> Add New Absent</button>
+        
+                                    @include('admin.staff.add_new_absent_form')
+        
+                
+                                    <!-- start user projects -->
+                                    <table class="data table table-striped no-margin" id="AbsentTable">
+                                      <thead>
+                                        <tr>
+                                          <th>#</th>
+                                          <th>Absent Type</th>
+                                          <th width="40%">Reason</th>
+                                          <th width="10%">Days</th>
+                                          <th>From</th>
+                                          <th>To</th>
+                                          <th width="10%">Record date</th>
+                                          <th class="text-center">Action</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        @foreach ($staffAsent as $staffAsents) 
+                                                                           
+                                         <tr>
+                                          <td>{{ $staffAsents->id }}</td>
+                                          <td>{{ $staffAsents->absent_type }}</td>
+                                          <td>{{ $staffAsents->reason }}</td>
+                                          <td>{{ $staffAsents->number_day }}</td>
+                                          <td>{{ date('d-M-Y', strtotime($staffAsents->from)) }}</td>
+                                          <td>{{ date('d-M-Y', strtotime($staffAsents->to)) }}</td>
+                                          <td class="text-primary">{{ date('d-M-Y', strtotime($staffAsents->created_at)) }}</td>
+                                          
+                                          
+                                          <td class="pull-right">
+    
+                                          <a href="{{ route('admin.editStaff.absent', ['staffAbsent_id'=>$staffAsents->id, 'admin_id'=>$admin->id, 'staff_id'=>$staff->id]) }}" class="btn btn-info btn-sm">Edit</a>
+                                                                                 
+                                           <a href="{{ route('admin.deleteStaff.absent', ['id'=>$staffAsents->id])}}" class="btn btn-danger btn-sm" Onclick="return ConfirmDelete()">Delete</a>
+                                                                                
+                                          </td>
+                                        </tr>                                         
+    
+                                        <script>
+                                        function ConfirmDelete() 
+                                            {
+                                                return confirm("Are you sure you want to delete?");
+                                            }
+                                        </script>
+                                        @endforeach
+                                        
+                                      </tbody>
+                                    </table>
+                                    
+                                  </div>
+    
+                            
+    
+    
+    
+                            </div>
+                          </div>
+                    </div>
+                    {{-- end of tap --}}
+
 
 
                         </div>
-                        
-                        
-                        
-
-                        
-
-
 
                     </div>
 

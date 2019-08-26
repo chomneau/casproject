@@ -29,6 +29,7 @@
 
         <div class="col-md-12 {{ $errors->has('file_name') ? ' has-error' : '' }}" style="margin-top: 20px">
             <label for="logo">Upload Assignment Document(optional)</label>
+            <p>{{ $assignments->file_name }}</p>
             <input type="file" name="file_name" class="form-control" value="{{ $assignments->file_name }}" autofocus placeholder="assignment file" >
         </div>
     </div>

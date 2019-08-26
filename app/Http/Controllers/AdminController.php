@@ -14,6 +14,7 @@ use Illuminate\Foundation\Auth\User;
 use App\StudentProfile;
 use App\Teacher;
 use App\Staff;
+use App\FileLibrary;
 
 
 class AdminController extends Controller
@@ -384,6 +385,45 @@ class AdminController extends Controller
             Session::flash('error', 'Your current password not match! Try Again');
             return redirect()->back();
         }
+    }
+
+    //file library show
+
+    public function fileLibrary()
+    {
+        $fileLibrary = FileLibrary::all();
+        return view('admin.file_library.filelibrary_show')->with('fileLibrary', $fileLibrary);
+    }
+
+    //file library upload function
+    public function fileLibraryUpload(Request $request)
+    {
+        $this->validate($request, [
+            'fileLibrary' => 'required'
+        ]);
+        $fileLibrary = new FileLibrary;
+        if ($request->hasFile('fileLibrary')) {
+            $file = $request->fileLibrary;
+            $file_new_name = date('gi') . "_" . $file->getClientOriginalName();
+            $file->move('uploads/file_library', $file_new_name);
+            $fileLibrary->filename = $file_new_name;
+            $fileLibrary->save();
+        }else{
+            Session::flash('success', 'please select file to uploads');
+        }
+
+        Session::flash('success', 'You have successful uploaded the file');
+        return redirect()->back();
+    }
+
+    public function fileLibraryDelete($id)
+    {
+        $filelibrary = FileLibrary::findOrFail($id);
+        $filelibrary->delete();
+
+        Session::flash('success', 'You have successful deleted the file');
+        return redirect()->back();
+
     }
 
 

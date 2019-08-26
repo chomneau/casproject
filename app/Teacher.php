@@ -36,6 +36,21 @@ class Teacher extends Authenticatable
 
     }
 
+    public function AbsentTeacher(){
+
+        return $this->hasMany(AbsentTeacher::class);
+
+    }
+
+    public function Lessonplan()
+    {
+        return $this->hasMany(Lessonplan::class);
+    }
+    public function Gradefile()
+    {
+        return $this->hasMany(GradeFile::class);
+    }
+
     public function GradeProfile(){
 
         return $this->belongsTo(GradeProfile::class);

@@ -29,17 +29,12 @@
                                 <img src="{{ asset($teacher->photo) }}" alt="user profile" width="150" height="150">
 
 
-                                
-
-
                                 <div class="help-block col-md-8 offset-md-2">
                                     @if(Session::has('error'))
                                         <strong style="color: red;" >{{Session::get('error')}}</strong>
                                     @endif
 
-                                </div>
-
-                               
+                                </div>                              
 
                             </div>
 

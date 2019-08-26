@@ -41,30 +41,7 @@ class AssignmentController extends Controller
     {
         $this->middleware('auth:teacher');
 
-//        $this->grade = Grade::all();
-//        View::share('grade', $this->grade);
-//
-//        $this->kgrade = KLevel::all();
-//        View::share('kgrade', $this->kgrade);
-//
-//
-//        $this->secondaryGrade = SecondaryLevel::all();
-//        View::share('secondaryGrade', $this->secondaryGrade);
-//
-//        $this->subject = Subject::all();
-//        View::share('subject', $this->subject);
-//
-//        // $this->absent = Absent::all();
-//        // View::share('absent', $this->absent);
-//
-//        $this->absentRecord = AbsentRecord::all();
-//        View::share('absentRecord', $this->absentRecord);
-//
-//        $this->gradeProfile = GradeProfile::all();
-//        View::share('gradeProfile', $this->gradeProfile);
 
-        // $this->teacher = Teacher::find(Auth()->user());
-        // View::share('teacher', $this->teacher);
 
         $this->gradeProfile = GradeProfile::all();
         View::share('gradeProfile', $this->gradeProfile);
@@ -139,7 +116,7 @@ class AssignmentController extends Controller
             'title'=>'required',
             'description'=>'required',
             'gradeProfile'=>'required',
-            'file_name'=>'sometimes|max:10000',
+            'file_name'=>'sometimes|file|max:10000',
 
         ]);
 
@@ -151,20 +128,25 @@ class AssignmentController extends Controller
         $assignment->title = $request->title;
         $assignment->description = $request->description;
         $assignment->grade_profile_id = $request->gradeProfile;
-        $assignment->file_name = $request->file_name;
+       // $assignment->file_name = $request->file_name;
         $assignment->teacher_id = $teacher->id;
        // $assignment->save();
 
 
 
         if ($request->hasFile('file_name')) {
-            $file_name = $request->file_name;
+            $file_name = $request->file('file_name');
             $upload_new_name = date('gi') . "_" . $file_name->getClientOriginalName();
+           // $location = public_path('uploads/assignment_file'. $upload_new_name); 
             $file_name->move('uploads/assignment_file', $upload_new_name);
+            
+            $oldFilename = $assignment->file_name;
+            //update the database
             $assignment->file_name = $upload_new_name;
-            // $assignment->save();
+            // Delete the old file
+            Storage::delete($oldFilename);
         }
-            $assignment->file_name = $assignment->file_name;
+       // $assignment->file_name = $assignment->file_name;
 
         $assignment->save();
 

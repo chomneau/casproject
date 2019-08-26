@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Session;
 use App\Admin;
 use App\Staff;
+use App\StaffAbsent;
 
 class StaffController extends Controller
 {
@@ -78,8 +79,15 @@ class StaffController extends Controller
 
     public function staffDetail($id){
 
-    	$staff = Staff::find($id);
-    	return view('admin.staff.staff_detail')->with('staff',$staff);
+			$staff = Staff::find($id);
+			$admin = Admin::find(Auth::user()->id);
+			$staffAsent = StaffAbsent::OrderBy('created_at', 'decs')->get();
+    	return view('admin.staff.staff_detail')->with([
+				'staff' => $staff,
+				'admin' => $admin,
+				'staffAsent' => $staffAsent,
+
+			]);
     }
 
     public function staffEdit($id){
@@ -129,7 +137,98 @@ class StaffController extends Controller
 
         return redirect()->back();
 
-    }
+		}
+		
+		//staff absent
+
+		public function storeStaffAbsent(Request $request, $admin_id, $staff_id)
+		{
+			$this->validate($request, [
+				'absent_type' => 'required',
+				'number_day' => 'required',
+				'from' => 'required',
+				'to' => 'required',
+				'reason' => 'required',
+
+			]);
+
+			$staffAbsent = new StaffAbsent();
+			$staffAbsent->absent_type = $request->absent_type;
+			$staffAbsent->number_day = $request->number_day;
+			$staffAbsent->from = $request->from;
+			$staffAbsent->to = $request->to;
+			$staffAbsent->reason = $request->reason;
+			$staffAbsent->staff_id = $staff_id;
+
+			$staffAbsent->save();
+
+			Session::flash('success', 'You have successfully add a new absent');
+			return redirect()->back();
+		}
+
+		//Staff Absent Edit
+
+		public function editStaffAbsent($staffAbsent_id, $admin_id, $staff_id)
+		{
+			$admin = Admin::findOrFail($admin_id);
+			$staff = Staff::findOrFail($staff_id);
+			$staffAbsent = StaffAbsent::findOrFail($staffAbsent_id);
+
+			
+			return view('admin.staff.edit-staff-absent')->with([
+
+				'admin'         =>  $admin,
+        'staff'       	=>  $staff,
+        'staffAbsent' 	=>  $staffAbsent
+
+				]);
+		}
+// staff Absnet Edit
+		public function updateStaffAbsent(Request $request ,$staffAbsent_id, $admin_id, $staff_id)
+    {
+        
+        $admin = Admin::findOrFail($admin_id);
+        $staff = Staff::find($staff_id);
+
+        $staffAbsent = StaffAbsent::findOrFail($staffAbsent_id);
+    
+        $staffAbsent->absent_type = $request->absenttype;
+        $staffAbsent->number_day = $request->numberday;
+        $staffAbsent->from = $request->from;
+        $staffAbsent->to = $request->to;
+        $staffAbsent->reason = $request->reason;
+        $staffAbsent->save();
+
+        Session::flash('success', 'You have updated record sucessfully');
+        return redirect('admin/staffDetail/'.$staff->id);
+       
+
+		}
+		
+//Staff Absent Delete
+
+public function deleteStaffAbsent($id)
+{
+	$staffAbsentDelete = StaffAbsent::findOrFail($id);
+	$staffAbsentDelete->delete();
+	Session::flash('success', 'You have delete a record sucessfully');
+	return redirect()->back();
+
+}
+
+//search staff
+public function searchStaff(){
+	$staff = Staff::where('first_name','like', '%'. request('query') .  '%')
+			->orWhere('last_name','like', '%'. request('query') .  '%')
+			->orWhere('email','like', '%'. request('query') .  '%')
+			->orWhere('phone','like', '%'. request('query') .  '%')
+			->paginate(10);
+	return view('admin.staff.search-staff')->with('staff', $staff)
+			->with('staffName', 'Search results :' .request('query'));
+}
+
+
+    
 
 
 

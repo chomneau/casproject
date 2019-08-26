@@ -13,15 +13,20 @@
                 </div>
 
                 <div class="title_right">
-                    <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Search for...">
-                            <span class="input-group-btn">
-                      <button class="btn btn-default" type="button">Go!</button>
-                    </span>
-                        </div>
+                    <div class="col-md-8 col-sm-8 col-xs-12 form-group pull-right top_search">
+                        <form action="{{ route('staff.search')  }}" method='get'>
+                            {{csrf_field()}}
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="query" placeholder="Enter first name,last name, Phone, or email to seach" required >
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="submit">Search</button>
+                                </span>                       
+                            </div>
+                        </form>
+
                     </div>
                 </div>
+
             </div>
 
             <div class="clearfix"></div>
@@ -57,19 +62,20 @@
                                 <thead>
                                 <tr>
                                     <th style="width: 1%">#</th>
-                                    <th style="width: 20%">Staff Name</th>
+                                    <th style="width: 12%">Staff Name</th>
                                     <th>Email</th>
                                     <th>Position</th>
                                     <th>Phone</th>
                                     <th>updated_at</th>
                                     
-                                    <th style="width: 20%">Action</th>
+                                    <th style="width: 25%">Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 @if(count($staff))
                                     @foreach($staff as $staffs)
                                         <tr>
+                                            <?php $no = 1 ?>
                                             <td>#</td>
                                             <td>
                                                 <a> {{ $staffs->last_name }}, {{ $staffs->first_name }}</a>
@@ -86,7 +92,7 @@
                                                 {{ $staffs->phone }}
                                             </td>
                                             <td class="project_progress">
-                                                {{ $staffs->updated_at }}
+                                                {{ date_format($staffs->updated_at,'M d, Y') }}
                                             </td>
                                             
                                             <td>
@@ -95,11 +101,18 @@
                                                 
                                                 <a href="{{ route('admin.staff.edit', ['id'=>$staffs->id]) }}" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
                                                 
-                                                <a href="{{ route('admin.staff.delete', ['id'=>$staffs->id]) }}" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </a>
+                                                <a href="{{ route('admin.staff.delete', ['id'=>$staffs->id]) }}" class="btn btn-danger btn-xs" Onclick="return ConfirmDelete()"><i class="fa fa-trash-o"  ></i> Delete </a>
 
                                                 
                                             </td>
                                         </tr>
+                                        <script>
+                                            function ConfirmDelete() 
+                                                {
+                                                    return confirm("Are you sure you want to delete?");
+                                                }
+                                        </script>
+
                                     @endforeach
                                 @endif
 

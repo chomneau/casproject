@@ -94,13 +94,13 @@ class DaypresentController extends Controller
     {
 
         $this->validate($request, [
-            'quarter_name' => 'required',
+           // 'quarter_name' => 'required',
             'quarter_day_present' => 'required',
             
         ]);
 
         $daypresent = DayPresent::find($id);
-        $daypresent->quarter_name = $request->quarter_name;
+       // $daypresent->quarter_name = $request->quarter_name;
         $daypresent->quarter_day_present = $request->quarter_day_present;
         $daypresent->save();
 

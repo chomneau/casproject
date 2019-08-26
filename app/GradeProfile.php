@@ -14,6 +14,11 @@ class GradeProfile extends Model
         return $this->hasMany(Assignment::class);
     }
 
+    public function Lessonplan()
+    {
+        return $this->hasMany(Lessonplan::class);
+    }
+
     public function Teacher(){
     	return $this->hasOne(Teacher::class);
     }

@@ -10,6 +10,10 @@ use Session;
 use Illuminate\Support\Facades\Hash;
 use App\GradeProfile;
 use View;
+use App\Assignment;
+use App\Lessonplan;
+use App\AbsentTeacher;
+use App\GradeFile;
 
 class TeacherController extends Controller
 {
@@ -29,8 +33,37 @@ class TeacherController extends Controller
 
     public function show(){
 
-    	$teacher = Teacher::orderBy('last_name', 'ASC')->orderBy('first_name', 'ASC')->get();
-    	return view('admin.teacher.all_teacher')->with('teacher', $teacher);
+        $teacher = Teacher::orderBy('last_name', 'ASC')->orderBy('first_name', 'ASC')->get();
+        
+        $teacherCountMale = Teacher::where('gender', 'Male')->count();
+        $teacherCountFemale = Teacher::where('gender', 'Female')->count();
+        $teacherCount = Teacher::all()->count();
+
+    	return view('admin.teacher.all_teacher')->with([
+            'teacher'=> $teacher,
+            'teacherCount'  =>  $teacherCount,
+            'teacherCountMale'  =>  $teacherCountMale,
+            'teacherCountFemale'  =>  $teacherCountFemale,
+            ]);
+    }
+
+    //teacher profile in admin side
+    public function teacherProfile($admin_id, $teacher_id)
+    {
+        $admin = Admin::findOrFail($admin_id);
+        $assignment = Assignment::where('teacher_id', $teacher_id)->get();
+        $gradefile = GradeFile::where('teacher_id', $teacher_id)->get();
+        $lesson = Lessonplan::where('teacher_id', $teacher_id)->get();
+        $teacher = Teacher::find($teacher_id);
+        $absentTeacher = AbsentTeacher::where('teacher_id', $teacher_id)->OrderBy('created_at', 'decs')->get();
+        return view('admin.teacher.profile')->with([
+            'teacher'=>$teacher, 
+            'admin'=>$admin,
+            'assignments'=>$assignment,
+            'gradefile'=>$gradefile,
+            'lesson'=>$lesson,
+            'absentTeacher'=>$absentTeacher
+            ]);
     }
 
 	// show register form for teacher
@@ -57,8 +90,6 @@ class TeacherController extends Controller
     }
 
     public function store(Request $request, $id){
-
-    	
 
         $this->validation($request);
         $admin = Admin::find($id);
@@ -144,18 +175,14 @@ class TeacherController extends Controller
             $teacher->save();
         }
 
-
         if($request->has('password')){
         	$teacher->password = bcrypt($request['password']);
         	$teacher->save();
         }
-
-        
+     
 		Session::flash('success', 'You have successfully update teacher\'s profile!');
         return redirect()->route('teacher.showAll', $admin->id);
-
-
-        
+       
     }
 
     public function delete($admin_id, $teacher_id){
@@ -168,7 +195,16 @@ class TeacherController extends Controller
         return redirect()->route('teacher.showAll', $admin->id);
 
     }
-
+//search teacher
+public function searchTeacher(){
+    $teacher = Teacher::where('first_name','like', '%'. request('query') .  '%')
+        ->orWhere('last_name','like', '%'. request('query') .  '%')
+        ->orWhere('email','like', '%'. request('query') .  '%')
+        ->orWhere('phone','like', '%'. request('query') .  '%')
+        ->paginate(10);
+    return view('admin.teacher.search-teacher')->with('teacher', $teacher)
+        ->with('teacherName', 'Search results :' .request('query'));
+}
 
  
 

@@ -146,6 +146,14 @@ class TeacherProfileController extends Controller
         return view('admin.teacher.teacher_profile')->with('teacher', $teacher);
     }
 
+    //view all teacher detail
+
+    public function teacherDetail($teacher_id)
+    {
+        $teacher = Teacher::findOrFail($teacher_id);
+        return view('admin.teacher.profile')->with('teacher', $teacher);
+    }
+
 
       //show all students
 
@@ -849,7 +857,18 @@ class TeacherProfileController extends Controller
     {
         $teacher = Teacher::findOrFail($teacher_id);
         $teacherAll = Teacher::orderBy('last_name', 'ASC')->orderBy('first_name', 'ASC')->get();
-    	return view('admin.teacher.all_teacher')->with('teacherAll', $teacherAll)->with('teacher', $teacher);
+
+        $teacherCountMale = Teacher::where('gender', 'Male')->count();
+        $teacherCountFemale = Teacher::where('gender', 'Female')->count();
+        $teacherCount = Teacher::all()->count();
+        
+    	return view('admin.teacher.all_teacher')->with([
+            'teacherAll'    =>  $teacherAll,
+            'teacher'       =>  $teacher,
+            'teacherCount'  =>  $teacherCount,
+            'teacherCountMale'  =>  $teacherCountMale,
+            'teacherCountFemale'  =>  $teacherCountFemale,
+            ]);
     }
 
     

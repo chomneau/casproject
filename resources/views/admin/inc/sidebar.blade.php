@@ -65,12 +65,20 @@
                         </ul>
                     </li>
 
-                    <li><a href="#"><i class="fas fa-book-open"></i> Teachers </a>
+                    <li><a href="#"><i class="fas fa-book-open"></i><span class="fa fa-chevron-down"></span> Teachers </a>
                         <ul class="nav child_menu">
                             <li><a href="{{ route('teacher.register') }}">Add new teacher</a></li>
                             <li><a href="{{ route('teacher.showAll') }}">View all teachers</a></li>
                             
 
+                        </ul>
+                    </li>
+
+                    <li><a href="#"><i class="fa fa-folder"></i><span class="fa fa-chevron-down"></span> File Library </a>
+                        <ul class="nav child_menu">
+                            <li>
+                                <a href="{{ route('admin.filelibrary') }}">File Library</a>
+                            </li>                            
                         </ul>
                     </li>
 
@@ -156,7 +164,7 @@
             <div class="menu_section">
                 <h3>General</h3>
                 <ul class="nav side-menu">
-                    <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
+                    <li><a><i class="fa fa-home" aria-hidden="true"></i> Home <span class="fa fa-chevron-down"></span></a>
 
                         <ul class="nav child_menu">
 
@@ -174,7 +182,7 @@
 
                     <li>
                         <a>
-                            <i class="fas fa-user-graduate"></i> Students <span class="fa fa-chevron-down"></span>
+                            <i class="fa fa-graduation-cap" aria-hidden="true"></i> Students <span class="fa fa-chevron-down"></span>
                         </a>
                         <ul class="nav child_menu">
 
@@ -191,7 +199,9 @@
                         </ul>
                     </li>
 
-                    <li><a ><i class="fas fa-users"></i> Staff <span class="fa fa-chevron-down"></span></a>
+                    <li><a >
+                            <i class="fa fa-users" aria-hidden="true"></i>
+                        Staff <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
                             <li><a href="{{ route('teacher.viewStaff', ['teacher_id'=>Auth::user()->id]) }}">View all Staff</a></li>
                             
@@ -199,7 +209,8 @@
                         </ul>
                     </li>
 
-                    <li><a href="#"><i class="fas fa-book-open"></i> Teachers </a>
+                    <li><a href="#">
+                            <i class="fa fa-user-o" aria-hidden="true"></i> Teachers </a>
                         <ul class="nav child_menu">
                             
                             <li><a href="{{ route('teacher.showAllTeacher', ['teacher_id'=>Auth::user()->id]) }}">View all teachers</a></li>
@@ -209,7 +220,7 @@
 
                     <li>
                         <a>
-                            <i class="fas fa-book-reader"></i> Assignments <span class="fa fa-chevron-down"></span>
+                            <i class="fa fa-pencil" aria-hidden="true"></i> Assignments <span class="fa fa-chevron-down"></span>
                         </a>
                         <ul class="nav child_menu">
                             <li><a href="{{ route('teacher.assignment.show', ['teacher_id'=>Auth()->user()->id ]) }}">View all Assignment</a></li>
@@ -220,6 +231,35 @@
 
                         </ul>
                     </li>
+
+                    <li>
+                        <a>
+                            <i class="fa fa-clipboard" aria-hidden="true"></i> Lesson Plan <span class="fa fa-chevron-down"></span>
+                        </a>
+                        <ul class="nav child_menu">
+                            <li><a href="{{ route('teacher.lessonPlan.show', ['teacher_id'=>Auth()->user()->id ]) }}">View all Lesson Plan</a></li>
+
+                            <li>
+                                <a href="{{ route('teacher.lessonPlan.create', ['teacher_id'=>Auth()->user()->id ]) }}">Upload Lesson Plan</a>
+                            </li>
+
+                        </ul>
+                    </li>
+
+                    {{-- Upload Grade file --}}
+                    <li>
+                            <a>
+                                    <i class="fa fa-sliders" aria-hidden="true"></i> Grade File <span class="fa fa-chevron-down"></span>
+                            </a>
+                            <ul class="nav child_menu">
+                                <li><a href="{{ route('teacher.gradefile.show', ['teacher_id'=>Auth()->user()->id ]) }}">View Grade File</a></li>
+    
+                                <li>
+                                    <a href="{{ route('teacher.gradefile.create', ['teacher_id'=>Auth()->user()->id ]) }}">Upload Grade File</a>
+                                </li>
+    
+                            </ul>
+                        </li>
 
                 
                 </ul>
