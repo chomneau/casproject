@@ -140,6 +140,8 @@
 
                                                 <a href="{{ route('teacher.studentProfile.detail', ['teacher_id'=>$teacher->id, 'student_id'=>$students->id] ) }}" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> View profile </a>
 
+                                                
+
                                                 @endif
 
                                                 <script type="text/javascript">

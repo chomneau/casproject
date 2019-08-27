@@ -47,10 +47,13 @@
                         <div class="row">
                             <form action="{{ route('gradeprofile.update', ['id'=>$gradeprofile->id]) }}" method="post">
                                 {{ csrf_field() }}
-                                <div class="col-md-8 col-md-offset-1">
+                                <div class="col-md-8 col-md-offset-2">
                                     <input type="text" name="grade" value="{{ $gradeprofile->name }}" class="form-control" autofocus required>
                                 </div>
-                                <div class="col-md-2">
+                                <div class="col-md-8 col-md-offset-2" style="margin-top:20px">
+                                        <input type="text" name="order" value="{{ $gradeprofile->order }}" class="form-control" autofocus required>
+                                </div>
+                                <div class="col-md-8 col-md-offset-2" style="margin-top:20px">
                                     <input type="submit"  class="btn btn-success" value="update now">
                                 </div>
                             </form>

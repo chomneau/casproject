@@ -18,6 +18,7 @@
                 </h3>
             </div>
         </div>
+        @if(Auth::guard('admin')->check())
 
         <span class="pull-right" style="margin-right:30px">
             <a href="{{ route('show.absentRecord', ['id'=>$students->id]) }}" class="btn btn-primary btn-sm">
@@ -25,6 +26,7 @@
             Absent
             </a>
         </span>
+        @endif
 
         <div class="clearfix"></div>
 

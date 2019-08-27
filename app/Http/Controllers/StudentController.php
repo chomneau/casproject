@@ -54,7 +54,7 @@ class StudentController extends Controller
         $this->absentRecord = AbsentRecord::all();
         View::share('absentRecord', $this->absentRecord);
 
-        $this->gradeProfile = GradeProfile::all();
+        $this->gradeProfile = GradeProfile::orderBy('order', 'asc')->get();
         View::share('gradeProfile', $this->gradeProfile);
     }
 
@@ -78,7 +78,7 @@ class StudentController extends Controller
     //view student by Grade
     public function viewByGrade(){
 
-       $viewByGrade = GradeProfile::orderBy('id', 'asc')->get();
+       $viewByGrade = GradeProfile::orderBy('order', 'asc')->get();
 
         return view('admin.student.view_by_grade')->with([
            'viewByGrade'=>$viewByGrade,

@@ -61,6 +61,7 @@
                                 <tr>
                                     <th style="width: 1%">#</th>
                                     <th style="width: 20%">Grade Profile</th>
+                                    <th style="width: 20%">Order</th>
                                     <th>Created_at</th>
                                     <th>Updated_at</th>
                                     <th style="width: 20%">#Action</th>
@@ -72,12 +73,12 @@
                                         <tr>
                                             <td>#</td>
                                             <td id="dataItem" data-toggle="modal" data-target="#editCategory">
-                                                <input type="hidden" id="itemId" value="{{ $grade->id }}">
+                                                <input type="hidden" id="itemId" value="
+                                                {{ $grade->id }}">
                                                 {{ $grade->name }}
-                                                {{--<br />--}}
-                                                {{--<small>Created by {{ Auth::user()->name }}</small>--}}
-
+                                                
                                             </td>
+                                        <td>{{$grade->order}}</td>
 
                                             <td>
                                                 {{ $grade->created_at }}
@@ -94,15 +95,16 @@
 
 
                                                 <a href="{{ route('gradeprofile.delete', ['id'=>$grade->id]) }}" class="btn btn-danger btn-xs"
-                                                   id="confirmation">
+                                                    Onclick="return ConfirmDelete()">
                                                     <i class="fa fa-trash"></i>
                                                     Delete
                                                 </a>
 
-                                                <script type="text/javascript">
-                                                    $('#confirmation').on('click', function () {
-                                                        return confirm('Are you sure? You want to delete grade!');
-                                                    });
+                                                <script>
+                                                    function ConfirmDelete() 
+                                                        {
+                                                            return confirm("Are you sure you want to delete?");
+                                                        }
                                                 </script>
 
                                             </td>

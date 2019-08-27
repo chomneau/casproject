@@ -32,15 +32,7 @@ crossorigin="anonymous">
                                         <tbody>
 
                                         <tr>
-                                            {{--<td><input type="hidden" name="student_profile_id[]" value="{{ $students->id }}" size="20">{{ $students->card_id }}</td>--}}
-                                            {{--<td ><input type="hidden" name="grade_id[]" value=" {{ $subjects->grade_id }}">--}}
-                                                {{--@if(count($grade))--}}
-                                                    {{--@foreach($grade as $grades)--}}
-                                                        {{--@if($subjects->grade_id  == $grades->id)--}}
-                                                            {{--{{ $grades->grade_name }}--}}
-                                                        {{--@endif--}}
-                                                    {{--@endforeach--}}
-                                                {{--@endif</td>--}}
+                                           
 
                                             <td>
                                                 <select name="subject[]" class="col-md-12 form-control">
@@ -51,10 +43,7 @@ crossorigin="anonymous">
                                                     @endif
                                                 </select>
                                             </td>
-                                            {{--<td><input type="number" name="quarter1[]" size="10" maxlength="6" style="font-weight: bold"></td>--}}
-                                            {{--<td><input type="number" name="quarter2[]" maxlength="6" style="font-weight: bold"></td>--}}
-                                            {{--<td><input type="number" name="quarter3[]" maxlength="6" style="font-weight: bold"></td>--}}
-                                            {{--<td><input type="number" name="quarter4[]" maxlength="6" style="font-weight: bold"></td>--}}
+                                            
                                             <td style="text-align: center"><a href="#" class="btn btn-danger btn-xs remove"><i class="glyphicon glyphicon-remove"></i> </a></td>
                                         </tr>
 

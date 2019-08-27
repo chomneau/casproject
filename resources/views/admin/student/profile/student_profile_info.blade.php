@@ -53,7 +53,7 @@
                                                             @if(count($gradeProfile))
                                                                 @foreach($gradeProfile as $grades)
                                                                     @if($students->grade_profile_id  == $grades->id)
-                                                                        {{ $grades->name }}
+                                                                    {{ $grades->name }}
                                                                     @endif
                                                                 @endforeach
                                                             @endif

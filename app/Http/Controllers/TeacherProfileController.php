@@ -30,10 +30,6 @@ use App\Staff;
 
 
 
-
-
-
-
 class TeacherProfileController extends Controller
 {
         public function __construct()
@@ -59,7 +55,7 @@ class TeacherProfileController extends Controller
         $this->absentRecord = AbsentRecord::all();
         View::share('absentRecord', $this->absentRecord);
 
-        $this->gradeProfile = GradeProfile::all();
+        $this->gradeProfile = GradeProfile::orderBy('order', 'asc')->get();
         View::share('gradeProfile', $this->gradeProfile);
 
         // $this->teacher = Teacher::find(Auth()->user());

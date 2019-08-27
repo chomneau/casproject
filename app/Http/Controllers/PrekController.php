@@ -41,7 +41,7 @@ class PrekController extends Controller
         $this->subject = Subject::all();
         View::share('subject', $this->subject);
         
-        $this->gradeProfile = GradeProfile::all();
+        $this->gradeProfile = GradeProfile::orderBy('order', 'asc')->get();
         View::share('gradeProfile', $this->gradeProfile);
     }
 

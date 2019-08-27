@@ -77,8 +77,10 @@
                             </div>
                             {{--end of col-container container--}}
 
-                            {{-- start tap  --}}
-                <div class="col-md-12">
+                    @if(Auth::guard('admin')->check()) 
+
+                    {{-- start tap  --}}
+                    <div class="col-md-12">
                         <div class="" role="tabpanel" data-example-id="togglable-tabs">
                             <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
                               <li role="presentation" class="active">
@@ -93,9 +95,9 @@
     
                                 <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">                           
                                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addNewAbsent" data-whatever="@mdo"><i class="fa fa-plus-square" aria-hidden="true"></i> Add New Absent</button>
-        
+                                @if(Auth::guard('admin')->check())
                                     @include('admin.staff.add_new_absent_form')
-        
+                                @endif    
                 
                                     <!-- start user projects -->
                                     <table class="data table table-striped no-margin" id="AbsentTable">
@@ -154,6 +156,8 @@
                           </div>
                     </div>
                     {{-- end of tap --}}
+
+                    @endif
 
 
 

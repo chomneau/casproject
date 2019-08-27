@@ -199,8 +199,11 @@
                                              
                                              class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> View profile </a>
 
+                                             <a href="{{ route('teacher.show.absentRecord', ['id'=>$viewStudentByGrades->id]) }}" class="btn btn-info btn-xs ">
+                                                    <i class="fa fa-edit m-right-xs"></i>
+                                                        Absent
+                                                    </a>
                                                
-
                                             </td>
 
 

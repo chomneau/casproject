@@ -14,7 +14,7 @@ class GradeProfileController extends Controller
     }
 
     public function index(){
-    	$gradeProfile = GradeProfile::all();
+    	$gradeProfile = GradeProfile::OrderBy('order', 'asc')->get();
     	return view('admin.grade.gradeProfile.index')
     	->with('gradeProfile', $gradeProfile);
     }
@@ -29,6 +29,7 @@ class GradeProfileController extends Controller
         $gradeProfile = new gradeProfile;
 
         $gradeProfile->name = $request->grade;
+        $gradeProfile->order = $request->order;
 
         $gradeProfile->save();
 
@@ -55,6 +56,7 @@ class GradeProfileController extends Controller
 
 		$gradeprofile = GradeProfile::find($id);
 		$gradeprofile->name = $request->grade;
+		$gradeprofile->order = $request->order;
         $gradeprofile->save();
 
         Session::flash('success', 'You successfully updated a Grade!');
