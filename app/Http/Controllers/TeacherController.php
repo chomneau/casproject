@@ -22,7 +22,7 @@ class TeacherController extends Controller
     {
         $this->middleware('auth:admin');
 
-        $this->gradeProfile = GradeProfile::all();
+        $this->gradeProfile = GradeProfile::orderBy('order', 'asc')->get();
         View::share('gradeProfile', $this->gradeProfile);
     }
 
