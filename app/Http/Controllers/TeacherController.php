@@ -82,7 +82,7 @@ class TeacherController extends Controller
             'position' => 'required|string',
             'phone' => 'required|string|min:9',
 
-            'email' => 'required|string|email|max:255|unique:users',
+            'email' => 'required|string|email|max:255',
             'password' => 'required|string|min:6|confirmed',
         ]);
 

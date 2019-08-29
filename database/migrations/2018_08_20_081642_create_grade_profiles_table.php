@@ -16,6 +16,7 @@ class CreateGradeProfilesTable extends Migration
         Schema::create('grade_profiles', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->integer('order');
             $table->timestamps();
         });
     }
