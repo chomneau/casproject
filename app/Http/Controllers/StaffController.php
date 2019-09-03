@@ -81,7 +81,7 @@ class StaffController extends Controller
 
 			$staff = Staff::find($id);
 			$admin = Admin::find(Auth::user()->id);
-			$staffAsent = StaffAbsent::OrderBy('created_at', 'decs')->get();
+			$staffAsent = StaffAbsent::where('staff_id', $id)->OrderBy('created_at', 'decs')->get();
     	return view('admin.staff.staff_detail')->with([
 				'staff' => $staff,
 				'admin' => $admin,
