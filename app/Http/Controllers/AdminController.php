@@ -161,15 +161,12 @@ class AdminController extends Controller
 
         //New student by year
 
-        $student_new_by_year = StudentProfile::where('status', 'New')
+        $student_new_by_year = StudentProfile::whereBetween('created_at', [$from, $to])->count();
+
+        $student_male_new_by_year = StudentProfile::where('gender', 'Male')
         ->whereBetween('created_at', [$from, $to])->count();
 
-        $student_male_new_by_year = StudentProfile::where('status', 'New')
-        ->where('gender', 'Male')
-        ->whereBetween('created_at', [$from, $to])->count();
-
-        $student_female_new_by_year = StudentProfile::where('status', 'New')
-        ->where('gender', 'Female')
+        $student_female_new_by_year = StudentProfile::where('gender', 'Female')
         ->whereBetween('created_at', [$from, $to])->count();
 
         //Graduated student by year

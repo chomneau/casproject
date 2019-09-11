@@ -340,7 +340,7 @@
                                         <td>
                                             <p><i class="fa fa-square blue"></i>All Students </p>
                                         </td>
-                                        <td>{{$student_male_quit_by_year}}</td>
+                                        <td>{{$student_male_quit_by_year+$student_female_quit_by_year}}</td>
                                     </tr>
                                     <tr>
                                         <td>
