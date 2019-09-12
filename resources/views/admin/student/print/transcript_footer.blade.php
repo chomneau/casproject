@@ -96,7 +96,7 @@
 					<div class="row">
 						<div class="col-md-4 pull-left text-center">
 							<hr>
-							<p style="font-size: 14px">Registra's Signature</p>
+							<p style="font-size: 14px">Registrar's Signature</p>
 						</div>
 
 						<div class="col-md-4"></div>
