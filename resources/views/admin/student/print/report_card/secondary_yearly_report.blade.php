@@ -93,7 +93,7 @@
 							            <td style="font-size: 14px; " class="text-center">{{ $score_s1->quarter_2}}</td>
 							            <td style="font-size: 14px; font-weight: bold" class="text-center"> 
 
-							            	{{ number_format(ceil(($score_s1->quarter_1+$score_s1->quarter_2)/2),2, '.', ',') }}
+							            	{{-- {{ number_format(ceil(($score_s1->quarter_1+$score_s1->quarter_2)/2),2, '.', ',') }} --}}
 							            
 
 							            </td>
@@ -104,22 +104,23 @@
 
 							            <td style="font-size: 14px; font-weight: bold" class="text-center"> 
 
-							            	{{ number_format(ceil(($score_s1->quarter_3+$score_s1->quarter_4)/2), 2, '.', ',') }}
+							            	{{-- {{ number_format(ceil(($score_s1->quarter_3+$score_s1->quarter_4)/2), 2, '.', ',') }} --}}
 							            
 
 							            </td>
 													<td style="font-size: 14px; font-weight: bold" class="text-center">
-
-														<?php
+ 
+														 <?php
 														
-														number_format(ceil(($score_s1->quarter_1+$score_s1->quarter_2+$score_s1->quarter_3+$score_s1->quarter_4)/4), 2, '.', ',')
+	//													number_format(ceil(($score_s1->quarter_1+$score_s1->quarter_2+$score_s1->quarter_3+$score_s1->quarter_4)/4), 2, '.', ',')
 
-														?>
+														?> 
 
-<?php $semester_1= number_format(ceil(($score_s1->quarter_1+$score_s1->quarter_2)/2), 2, '.', ',');
-$semester_2= number_format(ceil(($score_s1->quarter_3+$score_s1->quarter_4)/2), 2, '.', ','); 
-echo number_format(ceil(($semester_1+$semester_2)/2), 2, '.', ',')
-?>
+<?php 
+//$semester_1= number_format(ceil(($score_s1->quarter_1+$score_s1->quarter_2)/2), 2, '.', ',');
+//$semester_2= number_format(ceil(($score_s1->quarter_3+$score_s1->quarter_4)/2), 2, '.', ','); 
+//echo number_format(ceil(($semester_1+$semester_2)/2), 2, '.', ',')
+?> 
 													</td>
 
 							            
@@ -169,7 +170,7 @@ echo number_format(ceil(($semester_1+$semester_2)/2), 2, '.', ',')
 					{{--semester_1--}}
 						<td class="text-center" style="font-size: 14px; font-weight:bold" contenteditable="true">
 
-						{{ ($total_daypresent_1 + $total_daypresent_2)- ($secondaryschool_absent_quarter_1 + $secondaryschool_absent_quarter_2) }} / {{ $total_daypresent_1 + $total_daypresent_2 }}
+						{{-- {{ ($total_daypresent_1 + $total_daypresent_2)- ($secondaryschool_absent_quarter_1 + $secondaryschool_absent_quarter_2) }} / {{ $total_daypresent_1 + $total_daypresent_2 }} --}}
 						
 						</td>
 
@@ -205,11 +206,11 @@ echo number_format(ceil(($semester_1+$semester_2)/2), 2, '.', ',')
 							
 						</td>
 						<td class="text-center" style="font-size: 14px; font-weight:bold" contenteditable="true">
-							{{ ($total_daypresent_3 + $total_daypresent_4)- ($secondaryschool_absent_quarter_3 + $secondaryschool_absent_quarter_4) }} / {{ $total_daypresent_3 + $total_daypresent_4 }}
+							{{-- {{ ($total_daypresent_3 + $total_daypresent_4)- ($secondaryschool_absent_quarter_3 + $secondaryschool_absent_quarter_4) }} / {{ $total_daypresent_3 + $total_daypresent_4 }} --}}
 						</td>
 
 						<td class="text-center" style="font-size: 14px; font-weight:bold" contenteditable="true">
-							{{ $yearly_daypresent-$yearly_absent }} / {{ $yearly_daypresent }}
+							{{-- {{ $yearly_daypresent-$yearly_absent }} / {{ $yearly_daypresent }} --}}
 						</td>
 
 
