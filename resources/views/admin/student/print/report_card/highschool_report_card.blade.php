@@ -100,7 +100,7 @@
 							            </td>
 							            <td style="font-size: 14px; font-weight: bold" class="text-center"> 
 
-		{{ number_format(ceil(($score_s1->quarter_1+$score_s1->quarter_2)/2), 2, '.', ',') }} 
+		{{-- {{ number_format(ceil(($score_s1->quarter_1+$score_s1->quarter_2)/2), 2, '.', ',') }}  --}}
 
 														<!-- number_format($number, 2, '.', ',') -->
 							            
@@ -118,7 +118,7 @@
 							            <td style="font-size: 14px; font-weight: bold" class="text-center"> 
 
 							            	
-		{{ number_format(ceil(($score_s1->quarter_3+$score_s1->quarter_4)/2), 2, '.', ',') }} 
+		{{-- {{ number_format(ceil(($score_s1->quarter_3+$score_s1->quarter_4)/2), 2, '.', ',') }}  --}}
 							            
 
 							            </td>
@@ -165,7 +165,9 @@
 						</td>
 					{{--semester_1--}}
 						<td class="text-center" style="font-size: 12px; font-weight:bold" contenteditable="true">
-						{{ ($total_daypresent_1 - $highschool_absent_quarter_1) + ($total_daypresent_2 - $highschool_absent_quarter_2) }} / {{ $total_daypresent_1 + $total_daypresent_2}}
+
+						{{-- {{ ($total_daypresent_1 - $highschool_absent_quarter_1) + ($total_daypresent_2 - $highschool_absent_quarter_2) }} / {{ $total_daypresent_1 + $total_daypresent_2}} --}}
+
 						</td>
 
 
@@ -194,7 +196,7 @@
 						{{-- semeter 2--}}
 						<td class="text-center" style="font-size: 12px; font-weight:bold" contenteditable="true">
 
-						{{ ($total_daypresent_3 - $highschool_absent_quarter_3) + ($total_daypresent_4 - $highschool_absent_quarter_4) }} / {{ $total_daypresent_3 + $total_daypresent_4 }}
+						{{-- {{ ($total_daypresent_3 - $highschool_absent_quarter_3) + ($total_daypresent_4 - $highschool_absent_quarter_4) }} / {{ $total_daypresent_3 + $total_daypresent_4 }} --}}
 						</td>
 
 						
