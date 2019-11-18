@@ -19,6 +19,7 @@ use App\GradeProfile;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Hash;
 use App\Teacher;
+use App\DayPresent;
 
 
 class StudentController extends Controller
@@ -194,6 +195,54 @@ class StudentController extends Controller
             $score->subject_id = $value;
             $score->save();
         }
+
+        $day_present = DayPresent::all();
+
+        $highSchoolAbsent_quarter_1 = new AbsentRecord();
+        $highSchoolAbsent_quarter_1->student_profile_id = $studentprofile->id;
+        $highSchoolAbsent_quarter_1->grade_id = $grade->id;
+        $highSchoolAbsent_quarter_1->reason = "non-count-daypresent";
+        
+        $highSchoolAbsent_quarter_1->quarter_name = $day_present[0]->quarter_name;
+        $highSchoolAbsent_quarter_1->quarter_day_present = $day_present[0]->quarter_day_present;
+
+        $highSchoolAbsent_quarter_1->absent_type = "non-count";
+
+        $highSchoolAbsent_quarter_1->absent_date = date("Y-m-d");
+        $highSchoolAbsent_quarter_1->save();
+
+        $highSchoolAbsent_quarter_2 = new AbsentRecord();
+        $highSchoolAbsent_quarter_2->student_profile_id = $studentprofile->id;
+        $highSchoolAbsent_quarter_2->grade_id = $grade->id;
+        $highSchoolAbsent_quarter_2->reason = "non-count-daypresent";
+        $highSchoolAbsent_quarter_2->absent_type = "non-count";
+        $highSchoolAbsent_quarter_2->quarter_name = $day_present[1]->quarter_name;
+        $highSchoolAbsent_quarter_2->quarter_day_present = $day_present[1]->quarter_day_present;
+        $highSchoolAbsent_quarter_2->absent_date = date("Y-m-d");
+        $highSchoolAbsent_quarter_2->save();
+
+        $highSchoolAbsent_quarter_3 = new AbsentRecord();
+        $highSchoolAbsent_quarter_3->student_profile_id = $studentprofile->id;
+        $highSchoolAbsent_quarter_3->grade_id = $grade->id;
+        $highSchoolAbsent_quarter_3->reason = "non-count-daypresent";
+        $highSchoolAbsent_quarter_3->absent_type = "non-count";
+        $highSchoolAbsent_quarter_3->quarter_name = $day_present[2]->quarter_name;
+        $highSchoolAbsent_quarter_3->quarter_day_present = $day_present[2]->quarter_day_present;
+        $highSchoolAbsent_quarter_3->absent_date = date("Y-m-d");
+        $highSchoolAbsent_quarter_3->save();
+
+        $highSchoolAbsent_quarter_4 = new AbsentRecord();
+        $highSchoolAbsent_quarter_4->student_profile_id = $studentprofile->id;
+        $highSchoolAbsent_quarter_4->grade_id = $grade->id;
+        $highSchoolAbsent_quarter_4->reason = "non-count-daypresent";
+        $highSchoolAbsent_quarter_4->absent_type = "non-count";
+        $highSchoolAbsent_quarter_4->quarter_name = $day_present[3]->quarter_name;
+        $highSchoolAbsent_quarter_4->quarter_day_present = $day_present[3]->quarter_day_present;
+        $highSchoolAbsent_quarter_4->absent_date = date("Y-m-d");
+        $highSchoolAbsent_quarter_4->save();
+
+
+
 
         Session::flash('success', 'You have successfully inserted all subject to student');
         //return redirect()->back();

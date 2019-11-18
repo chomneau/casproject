@@ -113,11 +113,6 @@
 
 
 
-
-
-
-            
-
             {{-- Edit form --}}
             <div class="col-md-4 col-sm-6 col-xs-12">
                 <div class="x_panel">
@@ -152,9 +147,11 @@
 
                                     @if(count($daypresent))
                                     @foreach($daypresent as $daypresents)
-                                        <option value="{{ $daypresents->id }} selected ">
+                                        <option value="{{ $daypresents->id }}" 
+                                            @if($absentRecord->quarter_name  == $daypresents->quarter_name) selected @endif
+                                         >
                                             {{ $daypresents->quarter_name }}
-                                            --{{$daypresents->quarter_day_present}} days
+                                            - {{$daypresents->quarter_day_present}} days
                                         </option>
                                     @endforeach
                                     @endif
@@ -176,7 +173,7 @@
 
                             <div class="modal-footer">
                                 <button type="submit" class="btn btn-primary">update</button>
-                                <a href="{{ route('delete.highSchool.absentRecord', ['grade_id'=>$grade_id->id,'student_id'=>$students->id, 'absentRecord_id'=>$absentRecord->id] ) }}" type="submit" class="btn btn-danger">Delete</a>
+                                <a href="{{ route('delete.highSchool.absentRecord', ['grade_id'=>$grade_id->id,'student_id'=>$students->id, 'absentRecord_id'=>$absentRecord->id] ) }}" type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this item?');">Delete</a>
 
                             </div>
                         </form>

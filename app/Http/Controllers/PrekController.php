@@ -20,6 +20,8 @@ use View;
 use App\PrekScore;
 use App\KSubject;
 use App\GradeProfile;
+use App\DayPresent;
+use App\PrekAbsent;
 
 class PrekController extends Controller
 {
@@ -112,6 +114,49 @@ class PrekController extends Controller
             $score->subject_code = $request->subject_code[$index];
             $score->save();
         }
+
+        $day_present = DayPresent::all();
+
+
+        $prekAbsent_quarter_1 = new PrekAbsent();
+        $prekAbsent_quarter_1->student_profile_id = $studentprofile->id;
+        $prekAbsent_quarter_1->k_level_id = $grade->id;
+        $prekAbsent_quarter_1->reason = "non-count-daypresent";       
+        $prekAbsent_quarter_1->quarter_name = $day_present[0]->quarter_name;
+        $prekAbsent_quarter_1->quarter_day_present = $day_present[0]->quarter_day_present;
+        $prekAbsent_quarter_1->absent_type = "non-count";
+        $prekAbsent_quarter_1->absent_date = date("Y-m-d");
+        $prekAbsent_quarter_1->save();
+
+        $prekAbsent_quarter_2 = new PrekAbsent();
+        $prekAbsent_quarter_2->student_profile_id = $studentprofile->id;
+        $prekAbsent_quarter_2->k_level_id = $grade->id;
+        $prekAbsent_quarter_2->reason = "non-count-daypresent";
+        $prekAbsent_quarter_2->absent_type = "non-count";
+        $prekAbsent_quarter_2->quarter_name = $day_present[1]->quarter_name;
+        $prekAbsent_quarter_2->quarter_day_present = $day_present[1]->quarter_day_present;
+        $prekAbsent_quarter_2->absent_date = date("Y-m-d");
+        $prekAbsent_quarter_2->save();
+
+        $prekAbsent_quarter_3 = new PrekAbsent();
+        $prekAbsent_quarter_3->student_profile_id = $studentprofile->id;
+        $prekAbsent_quarter_3->k_level_id = $grade->id;
+        $prekAbsent_quarter_3->reason = "non-count-daypresent";
+        $prekAbsent_quarter_3->absent_type = "non-count";
+        $prekAbsent_quarter_3->quarter_name = $day_present[2]->quarter_name;
+        $prekAbsent_quarter_3->quarter_day_present = $day_present[2]->quarter_day_present;
+        $prekAbsent_quarter_3->absent_date = date("Y-m-d");
+        $prekAbsent_quarter_3->save();
+
+        $prekAbsent_quarter_4 = new PrekAbsent();
+        $prekAbsent_quarter_4->student_profile_id = $studentprofile->id;
+        $prekAbsent_quarter_4->k_level_id = $grade->id;
+        $prekAbsent_quarter_4->reason = "non-count-daypresent";
+        $prekAbsent_quarter_4->absent_type = "non-count";
+        $prekAbsent_quarter_4->quarter_name = $day_present[3]->quarter_name;
+        $prekAbsent_quarter_4->quarter_day_present = $day_present[3]->quarter_day_present;
+        $prekAbsent_quarter_4->absent_date = date("Y-m-d");
+        $prekAbsent_quarter_4->save();
 
             Session::flash('success', 'You have successfully inserted your student score');
             return redirect()->route('prekschool.score', ['grade_id' => $grade->id, 'student_id' => $studentprofile->id]);

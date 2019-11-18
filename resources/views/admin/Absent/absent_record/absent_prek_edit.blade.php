@@ -164,7 +164,7 @@
 
                             <div class="modal-footer">
                                 <button type="submit" class="btn btn-primary">update</button>
-                                <a href="{{ route('delete.prekSchool.absentRecord', ['grade_id'=>$grade_id->id,'id'=>$students->id, 'prekAbsent_id'=>$prekAbsent_edit->id] ) }}" type="submit" class="btn btn-danger">Delete</a>
+                                <a href="{{ route('delete.prekSchool.absentRecord', ['grade_id'=>$grade_id->id,'id'=>$students->id, 'prekAbsent_id'=>$prekAbsent_edit->id] ) }}" type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this item?');" >Delete</a>
 
                             </div>
                         </form>

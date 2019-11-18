@@ -480,54 +480,75 @@
 						<td style="font-size: 14px; font-weight: bold">Days Present</td>
 						<td style="font-size: 14px; font-weight:350" contenteditable="true" class="text-center">
 
-						@if($total_daypresent_1==1)
+							@foreach($subject_code_SD as $score_s1)
+							@if($loop->first)
+								@if ($score_s1->quarter_1 )
+								
+									@if ($prek_absent_quarter_1>0)
+										{{ floor($total_daypresent_1 - $prek_absent_quarter_1) }} / {{ $total_daypresent_1 }}
+									@else
+										{{ $total_daypresent_1  }} / {{ $total_daypresent_1  }}
+									@endif
 
-							{{$total_daypresent_1}}/{{$total_daypresent_1}}
-
-						@elseif($total_daypresent_1>1)					
-
-								{{ $total_daypresent_1-$prek_absent_quarter_1 }}/{{$total_daypresent_1}}
-
-						@endif
+								@endif
+							@endif	
+						@endforeach
 													
 						</td>
 
 						<td class="text-center" style="font-size: 14px" contenteditable="true">
 
-							@if($total_daypresent_2==1)
+							@foreach($subject_code_SD as $score_s1)
+							@if($loop->first)
+								@if ($score_s1->quarter_2 )
+								
+									@if ($prek_absent_quarter_2>0)
+										{{ floor($total_daypresent_2 - $prek_absent_quarter_2) }} / {{ $total_daypresent_2 }}
+									@else
+										{{ $total_daypresent_2  }} / {{ $total_daypresent_2  }}
+									@endif
 
-								{{$total_daypresent_2}}/{{$total_daypresent_2}}
-
-							@elseif($total_daypresent_2>1)
-								{{ $total_daypresent_2-$prek_absent_quarter_2 }}/{{ $total_daypresent_2 }}
-							@endif
+								@endif
+							@endif	
+						@endforeach
 							
 						</td>
 					
 						<td class="text-center" style="font-size: 14px" contenteditable="true">
 
-							@if($total_daypresent_3==1)
+							@foreach($subject_code_SD as $score_s1)
+							@if($loop->first)
+								@if ($score_s1->quarter_3 )
+								
+									@if ($prek_absent_quarter_3>0)
+										{{ floor($total_daypresent_3 - $prek_absent_quarter_3) }} / {{ $total_daypresent_3 }}
+									@else
+										{{ $total_daypresent_3  }} / {{ $total_daypresent_3  }}
+									@endif
 
-								{{$total_daypresent_3}}/{{$total_daypresent_3}}
-
-							@elseif($total_daypresent_3>1)
-							
-								{{ $total_daypresent_3-$prek_absent_quarter_3 }}/{{ $total_daypresent_3 }}
-							@endif
+								@endif
+							@endif	
+						@endforeach
 						
 						</td>
 
 
 						<td class="text-center" style="font-size: 14px" contenteditable="true">
 
-							@if($total_daypresent_4==1)
+						@foreach($subject_code_SD as $score_s1)
+							@if($loop->first)
+								@if ($score_s1->quarter_4 )
+								
+									@if ($prek_absent_quarter_4>0)
+										{{ floor($total_daypresent_4 - $prek_absent_quarter_4) }} / {{ $total_daypresent_4 }}
+									@else
+										{{ $total_daypresent_4  }} / {{ $total_daypresent_4  }}
+									@endif
 
-								{{$total_daypresent_4}}/{{$total_daypresent_4}}
-
-							@elseif($total_daypresent_4>1)
-
-								{{ $total_daypresent_4-$prek_absent_quarter_4 }}/{{$total_daypresent_4}}
-							@endif
+								@endif
+							@endif	
+						@endforeach
+							
 						
 						</td>
 						

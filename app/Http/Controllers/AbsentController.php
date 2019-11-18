@@ -52,9 +52,7 @@ class AbsentController extends Controller
         $this->validate($request, [
             'absentType'=>'required'
         ]);
-
-
-        
+       
         $absent = new Absent;
         $absent->absent_type = $request->absentType;
         $absent->save();
@@ -89,7 +87,7 @@ class AbsentController extends Controller
         return redirect()->back();
     }
 
-// student absent record
+// show student absent record
     public function showAbsent($student_id){
         $student = StudentProfile::find($student_id);
         return view('admin.Absent.absent_record.index_absent')->with('students', $student);
@@ -103,7 +101,11 @@ public function highSchoolAbsent($grade_id, $student_id){
     $highSchoolAbsent = AbsentRecord::where([
         ['grade_id', $grade_id], 
         ['student_profile_id', $student_id],
-    ])->orderBy('created_at', 'Desc')->get();
+        
+    ])
+    ->whereNotIn('absent_type', ['non-count'])
+    
+    ->orderBy('created_at', 'Desc')->get();
 //first
     $quarter_1_unexcused = AbsentRecord::where([
         ['grade_id', $grade_id],
@@ -362,7 +364,9 @@ public function editHighSchoolAbsent($grade_id, $student_id, $absentRecord_id){
     $highSchoolAbsent = AbsentRecord::where([
         ['grade_id', $grade_id], 
         ['student_profile_id', $student_id],
-    ])->orderBy('created_at', 'Desc')->get();
+    ])
+    ->whereNotIn('absent_type', ['non-count'])
+    ->orderBy('created_at', 'Desc')->get();
 
     
 
@@ -424,7 +428,9 @@ public function secondarySchoolAbsent($grade_id, $student_id){
     $secondaryAbsent = SecondaryAbsent::where([
         ['secondary_level_id', $grade_id], 
         ['student_profile_id', $student_id],
-    ])->orderBy('created_at', 'Desc')->get();
+    ])
+    ->whereNotIn('absent_type', ['non-count'])
+    ->orderBy('created_at', 'Desc')->get();
 
 //first
 $quarter_1_unexcused = SecondaryAbsent::where([
@@ -671,7 +677,6 @@ public function storeSecondaryAbsent(Request $request, $grade_id, $student_id){
     $secondaryAbsent->absent_date = $request->absent_date;
     $secondaryAbsent->save();
 
-
     Session::flash('success', 'You successfully add a new record');
     return redirect()->back();
 }
@@ -685,7 +690,9 @@ public function editSecondaryAbsent($grade_id, $student_id, $secondaryAbsent_id)
     $secondaryAbsent = SecondaryAbsent::where([
         ['secondary_level_id', $grade_id], 
         ['student_profile_id', $student_id],
-    ])->orderBy('created_at', 'Desc')->get();
+    ])
+    ->whereNotIn('absent_type', ['non-count'])
+    ->orderBy('created_at', 'Desc')->get();
 
     return view('admin.Absent.absent_record.absent_secondary_edit')->with([
         'grade_id'=>$grade ,
@@ -740,8 +747,6 @@ public function deleteSecondaryAbsent($grade_id, $student_id, $absentRecord_id){
 
 
 
-
-
 // ******* K and Pre-k School Absent ******* //
 
 public function prekSchoolAbsent($grade_id, $student_id){
@@ -753,7 +758,9 @@ public function prekSchoolAbsent($grade_id, $student_id){
         ['k_level_id', $grade_id], 
         ['student_profile_id', $student_id],
 
-    ])->orderBy('created_at', 'Desc')->get();
+    ])
+     ->whereNotIn('absent_type', ['non-count'])
+    ->orderBy('created_at', 'Desc')->get();
 
    //first
     $quarter_1_unexcused = PrekAbsent::where([
@@ -1012,7 +1019,9 @@ public function editPrekAbsent($grade_id, $student_id, $prekAbsent_id){
     $prekAbsent = PrekAbsent::where([
         ['k_level_id', $grade_id], 
         ['student_profile_id', $student_id],
-    ])->orderBy('created_at', 'Desc')->get();
+    ])
+    ->whereNotIn('absent_type', ['non-count'])
+    ->orderBy('created_at', 'Desc')->get();
 
     return view('admin.Absent.absent_record.absent_prek_edit')->with([
         'grade_id'=>$grade ,

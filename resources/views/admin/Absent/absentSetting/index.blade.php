@@ -85,24 +85,21 @@
 
                                     <td>
                                         <a href="{{ route('edit.absent', ['id'=>$absents->id] ) }}" class="btn btn-primary btn-xs">
-                                                    <i class="fa fa-pencil" aria-hidden="true"></i> Edit
-                                                </a>
+                                            <i class="fa fa-pencil" aria-hidden="true"></i> Edit
+                                        </a>
 
 
-                                        <a href="{{ route('destroy.absent', ['id'=>$absents->id]) }}" class="btn btn-danger btn-xs" id="confirmation">
-                                                    <i class="fa fa-trash"></i>
-                                                    Delete
-                                                </a>
+                                        <a href="{{ route('destroy.absent', ['id'=>$absents->id]) }}" class="btn btn-danger btn-xs" onclick="return confirm('Are you sure you want to delete this item?');">
+                                        <i class="fa fa-trash"></i>
+                                            Delete
+                                       </a>
 
-                                        <script type="text/javascript">
-                                            $('#confirmation').on('click', function () {
-                                                        return confirm('Are you sure? You want to delete absent type!');
-                                                    });
-                                        </script>
+                                        
 
                                     </td>
                                 </tr>
-                                @endforeach @endif
+                                @endforeach 
+                            @endif
 
                             </tbody>
                         </table>

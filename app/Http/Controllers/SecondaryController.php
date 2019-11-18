@@ -14,6 +14,8 @@ use App\SecondaryScore;
 use App\PrimarySubject;
 use View;
 use App\GradeProfile;
+use App\SecondaryAbsent;
+use App\DayPresent;
 use Illuminate\Support\Facades\Input;
 
 class SecondaryController extends Controller
@@ -123,7 +125,49 @@ class SecondaryController extends Controller
 
             $score->save();
         }
-       //echo "done";
+    //insert absent record with non-count of absent_type to Secondary_Absent table to get default day_present in the yarly report
+
+    $day_present = DayPresent::all();
+
+    $secondaryAbsent_quarter_1 = new SecondaryAbsent();
+    $secondaryAbsent_quarter_1->student_profile_id = $studentprofile->id;
+    $secondaryAbsent_quarter_1->secondary_level_id = $grade->id;
+    $secondaryAbsent_quarter_1->reason = "non-count-daypresent";   
+    $secondaryAbsent_quarter_1->quarter_name = $day_present[0]->quarter_name;
+    $secondaryAbsent_quarter_1->quarter_day_present = $day_present[0]->quarter_day_present;
+    $secondaryAbsent_quarter_1->absent_type = "non-count";
+    $secondaryAbsent_quarter_1->absent_date = date("Y-m-d");
+    $secondaryAbsent_quarter_1->save();
+
+    $secondaryAbsent_quarter_2 = new SecondaryAbsent();
+    $secondaryAbsent_quarter_2->student_profile_id = $studentprofile->id;
+    $secondaryAbsent_quarter_2->secondary_level_id = $grade->id;
+    $secondaryAbsent_quarter_2->reason = "non-count-daypresent";
+    $secondaryAbsent_quarter_2->absent_type = "non-count";
+    $secondaryAbsent_quarter_2->quarter_name = $day_present[1]->quarter_name;
+    $secondaryAbsent_quarter_2->quarter_day_present = $day_present[1]->quarter_day_present;
+    $secondaryAbsent_quarter_2->absent_date = date("Y-m-d");
+    $secondaryAbsent_quarter_2->save();
+
+    $secondaryAbsent_quarter_3 = new SecondaryAbsent();
+    $secondaryAbsent_quarter_3->student_profile_id = $studentprofile->id;
+    $secondaryAbsent_quarter_3->secondary_level_id = $grade->id;
+    $secondaryAbsent_quarter_3->reason = "non-count-daypresent";
+    $secondaryAbsent_quarter_3->absent_type = "non-count";
+    $secondaryAbsent_quarter_3->quarter_name = $day_present[2]->quarter_name;
+    $secondaryAbsent_quarter_3->quarter_day_present = $day_present[2]->quarter_day_present;
+    $secondaryAbsent_quarter_3->absent_date = date("Y-m-d");
+    $secondaryAbsent_quarter_3->save();
+
+    $secondaryAbsent_quarter_4 = new SecondaryAbsent();
+    $secondaryAbsent_quarter_4->student_profile_id = $studentprofile->id;
+    $secondaryAbsent_quarter_4->secondary_level_id = $grade->id;
+    $secondaryAbsent_quarter_4->reason = "non-count-daypresent";
+    $secondaryAbsent_quarter_4->absent_type = "non-count";
+    $secondaryAbsent_quarter_4->quarter_name = $day_present[3]->quarter_name;
+    $secondaryAbsent_quarter_4->quarter_day_present = $day_present[3]->quarter_day_present;
+    $secondaryAbsent_quarter_4->absent_date = date("Y-m-d");
+    $secondaryAbsent_quarter_4->save();
 
         Session::flash('success', 'You have successfully inserted subject to your student');
         //return redirect()->back();
