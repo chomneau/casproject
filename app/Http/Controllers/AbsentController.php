@@ -103,9 +103,11 @@ public function highSchoolAbsent($grade_id, $student_id){
         ['student_profile_id', $student_id],
         
     ])
-    ->whereNotIn('absent_type', ['non-count'])
+     ->whereNotIn('absent_type', ['non-count'])
     
     ->orderBy('created_at', 'Desc')->get();
+
+    
 //first
     $quarter_1_unexcused = AbsentRecord::where([
         ['grade_id', $grade_id],
