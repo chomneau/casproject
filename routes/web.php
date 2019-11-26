@@ -20,16 +20,17 @@ use App\User;
 // Route::get('/insertForm', function () {
 //     return view('insert_data');
 // });
+//********** this insert section is to add extra record to database ***********//
+// Route::get('/insertForm', 'InsertController@insertForm');
 
-Route::get('/insertForm', 'InsertController@insertForm');
-
-Route::post('/insertdata', 'InsertController@insertData')->name('insertdata.submit');
+//Route::post('/insertdata', 'InsertController@insertData')->name('insertdata.submit');
 
 //insert all form
-Route::get('/insertAllForm', 'InsertController@insertAllForm')->name('insertAll.form');
+//Route::get('/insertAllForm', 'InsertController@insertAllForm')->name('insertAll.form');
 //insert all 
-Route::post('/insertAll/{grade_id}', 'InsertController@insertAll')->name('insertAll.submit');
+//Route::post('/insertAll/{grade_id}', 'InsertController@insertAll')->name('insertAll.submit');
 
+//******end of insert section */
 
 //student login form
 Route::get('/', function () {
