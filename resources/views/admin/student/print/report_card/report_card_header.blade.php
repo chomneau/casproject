@@ -44,9 +44,11 @@
 							        <th scope="row">Student Name</th>
 							        <td>:</td>
 							        <td>
-							        	{{ $student->last_name}}, 
-										{{ $student->first_name}}
-									</td>
+												<span style="font-size: 18px ">
+													{{ $student->last_name}}, 
+													{{ $student->first_name}}
+												</span>
+											</td>
 							        
 							        
 							        

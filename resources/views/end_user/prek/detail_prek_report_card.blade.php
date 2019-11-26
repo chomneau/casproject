@@ -29,15 +29,15 @@
 					@foreach($kscore as $score_s1)
 
 					@if ($loop->first) 
-					
+					<span style="font-size: 18px">
 						Grade : {{ $score_s1->KLevel->name }}
-						 
+					</span>	 
 
 					@endif
 
 				@endforeach
 
-				<span style="margin-left: 20px">
+				<span style="margin-left: 20px; font-size: 18px">
 
 				School Year : 
 
@@ -45,7 +45,7 @@
 			@foreach($kscore as $score_s1)	
 					@if ($loop->first) 
 										
-						<span class="text-center" style="font-size: 16px; font-weight: 400;" contenteditable="true">
+						<span class="text-center" style="font-size: 18px; font-weight: 400;" contenteditable="true">
                         	
 							{{ $score_s1->created_at->format('Y') }} - 
 	            {{ $score_s1->created_at->format('Y')+1 }}
@@ -61,7 +61,7 @@
 			    <thead>
 			        <tr>
 			            
-			            <th>Subject</th>
+			            <th style="font-size:18px">Subject</th>
 						{{--<th>2<sup>nd</sup> Q2</th>--}}
 			            <th style="text-align:center">Q1</th>
 			            <th style="text-align:center">Q2</th>
@@ -77,7 +77,7 @@
 			    <!--Table body-->
 			    <tbody>
 				<tr>
-					<td style="font-weight: Bold">PERSONAL PLANNING - Intellectual Development</td>
+					<td style="font-weight: Bold; font-size: 18px">PERSONAL PLANNING - Intellectual Development</td>
 				</tr>
 
 			    	@if(count($subject_code_PPI))
@@ -88,7 +88,7 @@
 						    	@if($score_s1->k_level_id == $grades->id)
 
 							    	
-										<tr style="font-size: 16px;">
+										<tr style="font-size: 18px;">
 
 							            
 							            <td>{{$score_s1->KSubject->name}}</td>
@@ -112,7 +112,7 @@
 				{{--English Language arts-Intellectual Development--}}
 
 				<tr>
-					<td style="font-weight: Bold">ENGLISH LANGUAGE ARTS - Intellectual Development</td>
+					<td style="font-weight: Bold;font-size: 18px">ENGLISH LANGUAGE ARTS - Intellectual Development</td>
 				</tr>
 
 				@if(count($subject_code_ELAI))
@@ -123,7 +123,7 @@
 							@if($score_s1->k_level_id == $grades->id)
 
 
-							<tr style="font-size: 16px;">
+							<tr style="font-size: 18px;">
 
 
 									<td>{{$score_s1->KSubject->name}}</td>
@@ -153,7 +153,7 @@
 				{{--Khmer Language arts-Intellectual Development--}}
 
 				<tr>
-					<td style="font-weight: Bold">KHMER LANGUAGE ARTS - Intellectual Development</td>
+					<td style="font-weight: Bold; font-size: 18px">KHMER LANGUAGE ARTS - Intellectual Development</td>
 				</tr>
 
 				@if(count($subject_code_KLAI))
@@ -164,7 +164,7 @@
 							@if($score_s1->k_level_id == $grades->id)
 
 
-							<tr style="font-size: 16px;">
+							<tr style="font-size: 18px;">
 
 
 									<td>{{$score_s1->KSubject->name}}</td>
@@ -194,7 +194,7 @@
 				{{--Mathematics-Intellectual Development--}}
 
 				<tr>
-					<td style="font-weight: Bold">MATHEMATICS - Intellectual Development</td>
+					<td style="font-weight: Bold; font-size: 18px">MATHEMATICS - Intellectual Development</td>
 				</tr>
 
 				@if(count($subject_code_MI))
@@ -205,7 +205,7 @@
 							@if($score_s1->k_level_id == $grades->id)
 
 
-							<tr style="font-size: 16px;">
+							<tr style="font-size: 18px;">
 
 
 									<td>{{$score_s1->KSubject->name}}</td>
@@ -228,7 +228,7 @@
 				{{--SOCIAL STUDIES-Intellectual Development--}}
 
 				<tr>
-					<td style="font-weight: Bold">SOCIAL STUDIES - Intellectual Development</td>
+					<td style="font-weight: Bold; font-size: 18px">SOCIAL STUDIES - Intellectual Development</td>
 				</tr>
 
 				@if(count($subject_code_SSI))
@@ -239,7 +239,7 @@
 							@if($score_s1->k_level_id == $grades->id)
 
 
-							<tr style="font-size: 16px;">
+							<tr style="font-size: 18px;">
 
 									<td>{{$score_s1->KSubject->name}}</td>
 									<td style="text-align:center">{{ $score_s1->quarter_1}}</td>
@@ -259,7 +259,7 @@
 				{{--SCIENCE-Intellectual Development--}}
 
 				<tr>
-					<td style="font-weight: Bold">SCIENCE - Intellectual Development</td>
+					<td style="font-weight: Bold; font-size: 18px">SCIENCE - Intellectual Development</td>
 				</tr>
 
 				@if(count($subject_code_SI))
@@ -270,7 +270,7 @@
 							@if($score_s1->k_level_id == $grades->id)
 
 
-							<tr style="font-size: 16px;">
+							<tr style="font-size: 18px;">
 
 
 									<td>{{$score_s1->KSubject->name}}</td>
@@ -293,7 +293,7 @@
 
 
 				<tr>
-					<td style="font-weight: Bold">FINE ARTS - Aesthetic and Artistic Development</td>
+					<td style="font-weight: Bold; font-size: 18px">FINE ARTS - Aesthetic and Artistic Development</td>
 				</tr>
 
 				@if(count($subject_code_FAA))
@@ -304,7 +304,7 @@
 							@if($score_s1->k_level_id == $grades->id)
 
 
-							<tr style="font-size: 16px;">
+							<tr style="font-size: 18px;">
 
 									<td>{{$score_s1->KSubject->name}}</td>
 									<td style="text-align:center">{{ $score_s1->quarter_1}}</td>
@@ -324,7 +324,7 @@
 				{{--PHYSICAL EDUCATION -Physical Development--}}
 
 				<tr>
-					<td style="font-weight: Bold">PHYSICAL EDUCATION - Physical Development</td>
+					<td style="font-weight: Bold; font-size: 18px">PHYSICAL EDUCATION - Physical Development</td>
 				</tr>
 
 				@if(count($subject_code_PEP))
@@ -335,7 +335,7 @@
 							@if($score_s1->k_level_id == $grades->id)
 
 
-							<tr style="font-size: 16px;">
+							<tr style="font-size: 18px;">
 
 
 									<td>{{$score_s1->KSubject->name}}</td>
@@ -358,7 +358,7 @@
 				{{--SOCIAL RESPONSIBILITY-Social and Emotional Development--}}
 
 				<tr>
-					<td style="font-weight: Bold">SOCIAL RESPONSIBILITY-Social and Emotional Development</td>
+					<td style="font-weight: Bold; font-size: 18px">SOCIAL RESPONSIBILITY-Social and Emotional Development</td>
 				</tr>
 
 				@if(count($subject_code_SRS))
@@ -369,7 +369,7 @@
 							@if($score_s1->k_level_id == $grades->id)
 
 
-							<tr style="font-size: 16px;">
+							<tr style="font-size: 18px;">
 
 
 									<td>{{$score_s1->KSubject->name}}</td>
@@ -394,7 +394,7 @@
 				</tr>
 
 					<tr>
-						<td style="font-size: 14px">
+						<td style="font-size: 16px">
 							This student is meeting the expected level of development for his/her age range. (If No, see comment)
 						</td>
 						<td style="font-size: 14px; text-align:center" >Y or N</td>
@@ -404,7 +404,7 @@
 					</tr>
 
 					<tr>
-						<td style="font-size: 14px">
+						<td style="font-size: 16px">
 							This student is on a modified program. (If Yes, see comment)  	
 						</td>
 						<td style="font-size: 14px; text-align:center" >Y or N</td>
@@ -414,8 +414,8 @@
 					</tr>
 
 			    <tr>
-						<td style="font-size: 14px; font-weight: bold">Days Present</td>
-						<td style="font-size: 14px; font-weight:350" class="text-center">
+						<td style="font-size: 16px; font-weight: bold">Days Present</td>
+						<td style="font-size: 16px; font-weight:350"  class="text-center">
 
 						
 						
@@ -436,7 +436,7 @@
 													
 						</td>
 
-						<td class="text-center" style="font-size: 14px" >
+						<td class="text-center" style="font-size: 16px" >
 				{{-- quarter_2 --}}
 						@foreach($subject_code_PPI as $score_s1)
 							@if($loop->first)
@@ -456,7 +456,7 @@
 					
 
 
-						<td class="text-center" style="font-size: 14px" >
+						<td class="text-center" style="font-size: 16px" >
 				{{-- quarter_3 --}}
 							@foreach($subject_code_PPI as $score_s1)
 							@if($loop->first)
@@ -477,7 +477,7 @@
 						</td>
 
 
-						<td class="text-center" style="font-size: 14px" >
+						<td class="text-center" style="font-size: 16px" >
 				{{-- quarter_4 --}}
 						@foreach($subject_code_PPI as $score_s1)
 							@if($loop->first)

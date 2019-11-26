@@ -27,42 +27,47 @@
 					@foreach($secondaryscore as $score_s1)
 
 					@if ($loop->first) 
-					
+					<span style="font-size: 18px ">
 						{{ $score_s1->secondaryLevel->name }}
-						 
+					</span>	 
 
 					@endif
 
 				@endforeach
 
-				<span style="margin-left: 20px">
+				<span style="margin-left: 20px;font-size: 18px ">
 
 				School Year : 
 
-				@foreach($secondaryscore as $score_s1)
-
+				
+				@foreach($secondaryscore as $score_s1)	
 					@if ($loop->first) 
-					
-						{{ $score_s1->created_at->format('Y') }} - 
-						{{ $score_s1->created_at->format('Y')+1 }} 
+										
+						<span class="text-center" style="font-size: 18px; font-weight: 400;" contenteditable="true">
+                        	
+							{{ $score_s1->created_at->format('Y') }} - 
+	            {{ $score_s1->created_at->format('Y')+1 }}
+                        			 
+            </span> 
 
 					@endif
-
 				@endforeach
+
+
 				</span>
 
 				</h6>
 			    <thead>
 			        <tr>
 			            
-			            <th style="font-size: 13px">Subject</th>
-			            <th style="font-size: 13px">1<sup>st</sup> Quarter</th>
-			            <th style="font-size: 13px">2<sup>nd</sup> Quarter</th>
-			            <th style="font-size: 13px">1<sup>st</sup> Semester</th>
-			            <th style="font-size: 13px">3<sup>rd</sup> Quarter</th>
-			            <th style="font-size: 13px">4<sup>th</sup> Quarter</th>
-			            <th style="font-size: 13px">2<sup>nd</sup> Semester</th>
-			            <th style="font-size: 13px"> Yearly</th>
+			            <th style="font-size: 16px">Subject</th>
+			            <th style="font-size: 16px">1<sup>st</sup> Quarter</th>
+			            <th style="font-size: 16px">2<sup>nd</sup> Quarter</th>
+			            <th style="font-size: 16px">1<sup>st</sup> Semester</th>
+			            <th style="font-size: 16px">3<sup>rd</sup> Quarter</th>
+			            <th style="font-size: 16px">4<sup>th</sup> Quarter</th>
+			            <th style="font-size: 16px">2<sup>nd</sup> Semester</th>
+			            <th style="font-size: 16px"> Yearly</th>
 
 			           
 			        </tr>
@@ -83,10 +88,10 @@
 							        <tr>
 
 							            
-							            <td style="font-size: 14px; font-weight: bold">{{$score_s1->PrimarySubject->name}}</td>
-							            <td style="font-size: 14px; " class="text-center">{{ $score_s1->quarter_1}}</td>
-							            <td style="font-size: 14px; " class="text-center">{{ $score_s1->quarter_2}}</td>
-													<td style="font-size: 14px; font-weight: bold" class="text-center"> 
+							            <td style="font-size: 16px; font-weight: bold">{{$score_s1->PrimarySubject->name}}</td>
+							            <td style="font-size: 16px; " class="text-center">{{ $score_s1->quarter_1}}</td>
+							            <td style="font-size: 16px; " class="text-center">{{ $score_s1->quarter_2}}</td>
+													<td style="font-size: 16px; font-weight: bold" class="text-center"> 
 														
 														<?php
 															if(!$score_s1->quarter_1 == null && !$score_s1->quarter_2 == null){
@@ -97,11 +102,11 @@
 
 							            </td>
 
-							            <td style="font-size: 14px; " class="text-center">{{ $score_s1->quarter_3}}</td>
+							            <td style="font-size: 16px; " class="text-center">{{ $score_s1->quarter_3}}</td>
 
-							            <td style="font-size: 14px; " class="text-center">{{ $score_s1->quarter_4}}</td>
+							            <td style="font-size: 16px; " class="text-center">{{ $score_s1->quarter_4}}</td>
 
-													<td style="font-size: 14px; font-weight: bold" class="text-center"> 
+													<td style="font-size: 16px; font-weight: bold" class="text-center"> 
 														
 														<?php
 															if(!$score_s1->quarter_3 == null && !$score_s1->quarter_4 == null){
@@ -114,7 +119,7 @@
 							            
 
 							            </td>
-													<td style="font-size: 14px; font-weight: bold" class="text-center">
+													<td style="font-size: 16px; font-weight: bold" class="text-center">
  
 						<?php
 
@@ -143,11 +148,13 @@
 				        @endforeach
 			        @endif
 
-			      <tr>
-						<td style="font-size: 12px; font-weight: bold">Days Present</td>
-						<td style="font-size: 12px; font-weight:350"  class="text-center">
+			    <tr>
+						<td style="font-size: 16px; font-weight: bold">Days Present</td>
+						<td style="font-size: 16px; font-weight:350"  class="text-center">
 						
-							@foreach($secondaryscore as $score_s1)
+								
+							
+						@foreach($secondaryscore as $score_s1)
 							@if($loop->first)
 								@if ($score_s1->quarter_1 )
 								
@@ -159,13 +166,14 @@
 
 								@endif
 							@endif	
-						@endforeach							
+						@endforeach
 						
 													
 						</td>
 
-						<td class="text-center" style="font-size: 12px" >
-							@foreach($secondaryscore as $score_s1)
+						<td class="text-center" style="font-size: 16px" >
+							
+						@foreach($secondaryscore as $score_s1)
 							@if($loop->first)
 								@if ($score_s1->quarter_2 )
 								
@@ -182,9 +190,11 @@
 						
 						</td>
 					{{--semester_1--}}
-						<td class="text-center" style="font-size: 12px; font-weight:bold" >
+						<td class="text-center" style="font-size: 16px; font-weight:bold" >
 
-							@foreach($secondaryscore as $score_s1)
+						
+
+						@foreach($secondaryscore as $score_s1)
 							@if($loop->first)
 								@if ($score_s1->quarter_1 && $score_s1->quarter_2 )
 								
@@ -197,8 +207,8 @@
 						</td>
 
 
-						<td class="text-center" style="font-size: 12px" >
-							{{-- quarter_3 --}}
+						<td class="text-center" style="font-size: 16px" >
+						{{-- quarter_3 --}}
 							@foreach($secondaryscore as $score_s1)
 							@if($loop->first)
 								@if ($score_s1->quarter_3 )
@@ -212,16 +222,15 @@
 								@endif
 							@endif	
 						@endforeach
-						
 
 												
 						</td>
 
 
-						<td class="text-center" style="font-size: 12px" >
+						<td class="text-center" style="font-size: 16px" >
 					
 							{{-- quarter_4 --}}
-							@foreach($secondaryscore as $score_s1)
+						@foreach($secondaryscore as $score_s1)
 							@if($loop->first)
 								@if ($score_s1->quarter_4 )
 								
@@ -235,24 +244,27 @@
 							@endif	
 						@endforeach
 
-
 							
 						</td>
-						<td class="text-center" style="font-size: 12px; font-weight:bold" >
-							{{-- semester_2 --}}
+						<td class="text-center" style="font-size: 16px; font-weight:bold" >
+
+							
+						{{-- semester_2 --}}
 						@foreach($secondaryscore as $score_s1)
-						@if($loop->first)
-							@if ($score_s1->quarter_3 && $score_s1->quarter_4 )
-							
-							{{ ($total_daypresent_3 + $total_daypresent_4)- ($secondaryschool_absent_quarter_3 + $secondaryschool_absent_quarter_4) }} / {{ $total_daypresent_3 + $total_daypresent_4 }}
+							@if($loop->first)
+								@if ($score_s1->quarter_3 && $score_s1->quarter_4 )
+								
+								{{ ($total_daypresent_3 + $total_daypresent_4)- ($secondaryschool_absent_quarter_3 + $secondaryschool_absent_quarter_4) }} / {{ $total_daypresent_3 + $total_daypresent_4 }}
 
-							@endif
-						@endif	
-					@endforeach
+								@endif
+							@endif	
+						@endforeach
+							
 						</td>
 
-						<td class="text-center" style="font-size: 12px; font-weight:bold" >
-							{{-- yearly --}}
+						<td class="text-center" style="font-size: 16px; font-weight:bold" >
+							
+					{{-- yearly --}}
 							@foreach($secondaryscore as $score_s1)
 							@if($loop->first)
 								@if ($score_s1->quarter_1 && $score_s1->quarter_2 && $score_s1->quarter_3 && $score_s1->quarter_4 )
@@ -262,6 +274,8 @@
 								@endif
 							@endif	
 						@endforeach
+
+							
 						</td>
 
 

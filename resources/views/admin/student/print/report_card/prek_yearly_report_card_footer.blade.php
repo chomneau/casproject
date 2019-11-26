@@ -42,7 +42,7 @@
 
 		<div class="col-md-12 mt-4">
 			
-			<p class="text-uppercase text-center" style="font-size: 12px">
+			<p class="text-uppercase text-center" style="font-size: 14px">
 				****** any entry below this lines in not valid ******* 
 			</p>
 
@@ -55,14 +55,14 @@
 	<div class="col-md-10 offset-1" style="margin-top: 8em">
 		<div class="row">
 				<div class="col-md-4 pull-left text-center">
-						<p style="font-size: 14px; margin-bottom:6em;">
+						<p style="font-size: 16px; margin-bottom:6em;">
 						Date: 
 						<span contenteditable="true">
 							{{ @date("d-M-Y") }}
 						</span>
 						</p>
 							<hr style="margin-bottom:4em">
-							<p style="font-size: 14px">Registra's Signature</p>
+							<p style="font-size: 16px">Registra's Signature</p>
 						</div>
 
 						<div class="col-md-4"></div>
@@ -70,9 +70,9 @@
 						
 
 						<div class="col-md-4 pull-right text-center">
-						<p style="font-size: 14px; margin-bottom:6em">Date: {{ @date("d-M-Y") }}</p>
+						<p style="font-size: 16px; margin-bottom:6em">Date: {{ @date("d-M-Y") }}</p>
 							<hr style="margin-bottom:4em">
-							<p style="font-size: 14px">Homeroom Teacher's Signature</p>
+							<p style="font-size: 16px">Homeroom Teacher's Signature</p>
 						</div>
 					</div>	
 		</div>
@@ -81,7 +81,7 @@
 			
 
 		<div class="col-md-10 offset-1 mt-4 " style="margin-bottom: 20px">
-			<p class="text-left" style="font-size: 14px" style="margin-bottom: 10px">
+			<p class="text-left" style="font-size: 16px" style="margin-bottom: 10px">
 			<!-- A transcript is official if embossed with Cambodia Adventist School logo seal and signature signed in ink. -->
 			</p>
 		</div>
