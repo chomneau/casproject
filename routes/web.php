@@ -17,13 +17,26 @@ use App\User;
 
 //student route
 
+// Route::get('/insertForm', function () {
+//     return view('insert_data');
+// });
 
+Route::get('/insertForm', 'InsertController@insertForm');
+
+Route::post('/insertdata', 'InsertController@insertData')->name('insertdata.submit');
+
+//insert all form
+Route::get('/insertAllForm', 'InsertController@insertAllForm')->name('insertAll.form');
+//insert all 
+Route::post('/insertAll/{grade_id}', 'InsertController@insertAll')->name('insertAll.submit');
 
 
 //student login form
 Route::get('/', function () {
     return view('studentLogin');
 });
+
+
 
 //student profile and score view
 Route::get('/studentProfile', 'HomeController@index')->name('home.profile');

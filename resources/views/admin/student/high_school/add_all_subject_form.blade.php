@@ -67,8 +67,12 @@
 
                                         @foreach($subjects as $subject)
                                             <tr>
-                                                <td># <input type="hidden" name="subject_id[]" value="{{ $subject->id }}"></td>
-                                                <td><input type="text" name="subject_name" value="{{ $subject->name }}" style="border:none; font-weight:normal"> </td>
+                                                <td>
+                                                    # <input type="hidden" name="subject_id[]" value="{{ $subject->id }}">
+                                                </td>
+                                                <td>
+                                                    <input type="text" name="subject_name" value="{{ $subject->name }}" style="border:none; font-weight:normal"> 
+                                                </td>
                                                 <td></td>
                                                 <td>{{$grade_id->grade_name}}</td>
 
