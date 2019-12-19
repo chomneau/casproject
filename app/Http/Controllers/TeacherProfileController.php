@@ -177,7 +177,7 @@ class TeacherProfileController extends Controller
         return view('admin.student.student_detail')
             ->with([
                 'students'=>$student, 
-               'teacher'=>$teacher
+                'teacher'=>$teacher
                 ]);
     }
 

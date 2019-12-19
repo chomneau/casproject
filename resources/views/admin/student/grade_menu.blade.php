@@ -168,7 +168,7 @@
                                   @foreach($kgrade->slice(0,3) as $kgrades)
                                   <a href="{{ route('teacher.prekschool.score', 
                                   [
-                                  'teacher_id'=>$teacher->id,
+                                  'teacher_id'=>auth()->user()->id,
                                   'grade_id'=>$kgrades->id, 
                                   'student_id'=>$students->id
                                   ]) 
@@ -185,7 +185,7 @@
                                   @foreach($kgrade->slice(3,6) as $kgrades)
                                   <a href="{{ route('teacher.prekschool.score', 
                                   [
-                                  'teacher_id'=>$teacher->id,
+                                  'teacher_id'=>auth()->user()->id,
                                   'grade_id'=>$kgrades->id, 
                                   'student_id'=>$students->id
                                   ]) 
@@ -217,7 +217,7 @@
                                     @foreach($secondaryGrade->slice(0,5) as $secondaryGrades)
                                         <a href="{{ route('teacher.score.secondary', 
                                         [
-                                        'teacher_id'=>$teacher->id,
+                                        'teacher_id'=>auth()->user()->id,
                                         'grade_id'=>$secondaryGrades->id, 
                                         'student_id'=>$students->id,
                                         ]) 
@@ -237,7 +237,7 @@
                                     @foreach($secondaryGrade->slice(5,5) as $secondaryGrades)
                                         <a href="{{ route('teacher.score.secondary', 
                                         [
-                                        'teacher_id'=>$teacher->id,
+                                        'teacher_id'=>auth()->user()->id,
                                         'grade_id'=>$secondaryGrades->id, 
                                         'student_id'=>$students->id,
                                         ]) 
@@ -253,7 +253,7 @@
                                     @foreach($secondaryGrade->slice(10,5) as $secondaryGrades)
                                         <a href="{{ route('teacher.score.secondary', 
                                         [
-                                        'teacher_id'=>$teacher->id,
+                                        'teacher_id'=>auth()->user()->id,
                                         'grade_id'=>$secondaryGrades->id, 
                                         'student_id'=>$students->id,
                                         ]) 
@@ -269,7 +269,7 @@
                                     @foreach($secondaryGrade->slice(15,6) as $secondaryGrades)
                                         <a href="{{ route('teacher.score.secondary', 
                                         [
-                                        'teacher_id'=>$teacher->id,
+                                        'teacher_id'=>auth()->user()->id,
                                         'grade_id'=>$secondaryGrades->id, 
                                         'student_id'=>$students->id,
                                         ]) 
@@ -296,7 +296,7 @@
                         @foreach($grade as $grades)
                             <a href="{{ route('teacher.score.view', 
                             [
-                            'teacher_id'=>$teacher->id,
+                            'teacher_id'=>auth()->user()->id,
                             'grade_id'=>$grades->id, 
                             'student_id'=>$students->id
                             ]) 
@@ -311,9 +311,18 @@
                   </div>
             </li>
 
-        
+            <a href="{{ route('teacher.transcript',['student_id'=>$students->id]) }}" class="btn btn-primary pull-right">
+                Print Transcript
+                <i class="fas fa-print"></i>
+            </a>
+    
+    
+            <a href="{{ route('teacher.select.option',['student_id'=>$students->id]) }}" class="btn btn-success pull-right">
+                Print Yearly Report
+                <i class="fas fa-print"></i>
+            </a>
 
-           
+                  
 
     </ul>
 </div>

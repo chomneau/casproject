@@ -503,7 +503,7 @@ public function gradekPrintView(Request $request, $student_id){
 
     }
 
-//print view primary and secondary school (report Card)
+//print view primary and secondary school (grade 1-8 report Card)
 public function secondarySchoolPrintView(Request $request, $student_id){
 
         $student = StudentProfile::find($student_id);

@@ -452,12 +452,15 @@ Route::post('/daypresent/update/{id}', 'DaypresentController@update')->name('day
 
     Route::get('/selectOption/{student_id}', 'TranscriptController@selectOption')->name('select.option');
 
+    //select option for teacher side
+    Route::get('/selectOption/{student_id}', 'TeacherTranscriptController@selectOption')->name('teacher.select.option');
+
 //Pre-K print view
     Route::get('/printView/prek/{student_id}', 'TranscriptController@prekPrintView')->name('prek.printview');
 //Grade K print preview
     Route::get('/printView/gradek/{student_id}', 'TranscriptController@gradekPrintView')->name('gradek.printview');
 
-    //high School print view
+    //secondary report card print view
     Route::get('/printView/secondaryschool/{student_id}', 'TranscriptController@secondarySchoolPrintView')->name('secondaryschool.printview');
 
     //high School transcript print view
@@ -544,6 +547,49 @@ Route::post('/daypresent/update/{id}', 'DaypresentController@update')->name('day
 //teacher
 
 Route::prefix('teacher')->group(function () {
+
+  //  Report card and transcript
+  //high school yearly report
+  Route::get('/yearlyReport/highschool/{student_id}', 'TeacherTranscriptController@yearlyReportHighSchool')->name('teacher.yearlyReport.highSchool');
+
+   //secondary report card print view
+   Route::get('/printView/secondaryschool/{student_id}', 'TeacherTranscriptController@secondarySchoolPrintView')->name('teacher.secondaryschool.printview');
+
+   //Grade K print preview (Report Card)
+   Route::get('/printView/gradek/{student_id}', 'TeacherTranscriptController@gradekPrintView')->name('teacher.gradek.printview');
+
+   //Pre-K print view (Report Card)
+   Route::get('/printView/prek/{student_id}', 'TeacherTranscriptController@prekPrintView')->name('teacher.prek.printview');
+
+//    **************************************************
+   //Teacher Transcript print view
+   Route::get('/transcript/student/{student_id}', 'TeacherTranscriptController@ShowTranscript')->name('teacher.transcript');
+
+     //high School transcript print view
+     Route::get('/printView/highschool/{student_id}', 'TeacherTranscriptController@highSchoolPrintView')->name('teacher.highschool.transcript');
+
+     //CGPA for Grade 9 to 10 
+    Route::get('/transcript910/student/{student_id}', 'TeacherTranscriptController@transcript910')->name('teacher.transcript910');
+
+    //CGPA for Grade 9 to 11 
+    Route::get('/transcript911/student/{student_id}', 'TeacherTranscriptController@transcript911')->name('teacher.transcript911');
+     //CGPA for Grade 9 to 12 
+     Route::get('/transcript/cgpa/{student_id}', 'TeacherTranscriptController@highSchoolCGPA')->name('teacher.cgpa.school');
+
+    //CGPA for Grade 10 to 11 
+    Route::get('/transcript1011/student/{student_id}', 'TeacherTranscriptController@transcript1011')->name('teacher.transcript1011');
+
+      //CGPA for Grade 11 to 12 
+    Route::get('/transcript1112/student/{student_id}', 'TeacherTranscriptController@transcript1112')->name('teacher.transcript1112');
+
+    //CGPA for Grade 10 to 12
+    Route::get('/transcript1012/student/{student_id}', 'TeacherTranscriptController@transcript1012')->name('teacher.transcript1012');
+    
+
+
+
+
+
 
     //Absent
 
