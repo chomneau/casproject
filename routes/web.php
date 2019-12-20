@@ -452,8 +452,7 @@ Route::post('/daypresent/update/{id}', 'DaypresentController@update')->name('day
 
     Route::get('/selectOption/{student_id}', 'TranscriptController@selectOption')->name('select.option');
 
-    //select option for teacher side
-    Route::get('/selectOption/{student_id}', 'TeacherTranscriptController@selectOption')->name('teacher.select.option');
+  
 
 //Pre-K print view
     Route::get('/printView/prek/{student_id}', 'TranscriptController@prekPrintView')->name('prek.printview');
@@ -551,6 +550,9 @@ Route::prefix('teacher')->group(function () {
   //  Report card and transcript
   //high school yearly report
   Route::get('/yearlyReport/highschool/{student_id}', 'TeacherTranscriptController@yearlyReportHighSchool')->name('teacher.yearlyReport.highSchool');
+  
+    //select option for teacher side
+    Route::get('/selectOption/{student_id}', 'TeacherTranscriptController@selectOption')->name('teacher.select.option');
 
    //secondary report card print view
    Route::get('/printView/secondaryschool/{student_id}', 'TeacherTranscriptController@secondarySchoolPrintView')->name('teacher.secondaryschool.printview');
