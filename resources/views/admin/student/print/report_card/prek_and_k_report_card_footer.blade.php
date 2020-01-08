@@ -66,7 +66,7 @@
 						</span>
 						</p>
 							<hr style="margin-bottom:4em">
-							<p style="font-size: 16px">Registra's Signature</p>
+							<p style="font-size: 16px">Registrar's Signature</p>
 						</div>
 
 						<div class="col-md-4"></div>

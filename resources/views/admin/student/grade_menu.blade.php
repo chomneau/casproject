@@ -137,6 +137,10 @@
             Print Yearly Report
             <i class="fas fa-print"></i>
         </a>
+        {{-- <a href="{{ route('select.option',['student_id'=>$students->id]) }}" class="btn btn-info pull-right">
+            Mid-term
+            <i class="fas fa-print"></i>
+        </a> --}}
 
     </ul>
 </div>
