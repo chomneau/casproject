@@ -53,7 +53,7 @@
                 <td>{{$student->first_name}}</td>
                 <td>{{$student->last_name}}</td>
                 <td>{{$student->gradeProfile->name}}</td>
-                <td>{{$grade_id->name}}</td>
+                <td>{{$grade_id->grade_name}}</td>
                 
               </tr>
               

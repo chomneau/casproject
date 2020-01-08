@@ -39,8 +39,8 @@
                 <div class="">
                     <label for="id">select grade absent</label>
                     <select name="grade_id" id="" class="form-control" >
-                        @foreach ($prekGrade as $grade)
-                          <option value="{{$grade->id}}">{{$grade->name}}</option>
+                        @foreach ($Grade as $grade)
+                          <option value="{{$grade->id}}">{{$grade->grade_name}}</option>
                             
                         @endforeach
                     </select>

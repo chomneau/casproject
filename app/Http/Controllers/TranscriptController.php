@@ -802,8 +802,6 @@ public function yearlyReportHighSchool(Request $request, $student_id)
 
     
     
-    
-
     $absent_tardy_Quarter_4 = 0;
 
     if($countTardy_Quarter_4 >= 3){

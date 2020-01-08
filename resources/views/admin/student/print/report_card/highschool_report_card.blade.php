@@ -217,7 +217,7 @@
 							@if($loop->first)
 								@if ($score_s1->quarter_3 )
 								
-									@if ($highschool_absent_quarter_2>0)
+									@if ($highschool_absent_quarter_3>0)
 									{{ floor($total_daypresent_3 - $highschool_absent_quarter_3) }} / {{ $total_daypresent_3 }}
 									@else
 									{{ $total_daypresent_3  }} / {{ $total_daypresent_3  }}
@@ -237,7 +237,7 @@
 							
 						@foreach($semester_1 as $score_s1)
 							@if($loop->first)
-								@if ($score_s1->quarter_2 )
+								@if ($score_s1->quarter_4 )
 								
 									@if ($highschool_absent_quarter_4>0)
 									{{ floor($total_daypresent_4 - $highschool_absent_quarter_4) }} / {{ $total_daypresent_4 }}
