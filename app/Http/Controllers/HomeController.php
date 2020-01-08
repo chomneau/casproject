@@ -1612,7 +1612,7 @@ public function cgpaByGrade(Request $request, $student_id, $grade_id){
 public function secondaryReportCard($student_id){
 
         $student = Studentprofile::find($student_id);
-        $grade_secondary = SecondaryLevel::all();
+        $grade_secondary = SecondaryLevel::OrderBy('order', 'asc')->get(); 
 
         return view('end_user.secondary_school.index_secondary_report_card')
         ->with(['students'=>$student, 'grade_secondary'=>$grade_secondary]);
@@ -1800,7 +1800,7 @@ public function secondaryReportCard($student_id){
 public function highschoolReportCard($student_id){
 
         $student = Studentprofile::find($student_id);
-        $grade_highschool = Grade::all();
+        $grade_highschool = Grade::OrderBy('order', 'asc')->get();
 
         return view('end_user.high_school.index_high_report_card')
         ->with(['students'=>$student, 'grade_highschool'=>$grade_highschool]);

@@ -27,7 +27,7 @@ class GradeController extends Controller
 
     public function index()
     {
-        $grade = Grade::all();
+        $grade = Grade::OrderBy('order', 'asc')->get();
         return view('admin.grade.highschool.index')->with('grades', $grade);
     }
 
@@ -39,6 +39,7 @@ class GradeController extends Controller
 
         $grade = new Grade();
         $grade->grade_name = $request->grade;
+        $grade->order = $request->order;
         $grade->save();
 
         Session::flash('success', 'You successfully added new Grade!');
@@ -58,6 +59,7 @@ class GradeController extends Controller
         ]);
         $grade = Grade::find($id);
         $grade->grade_name = $request->grade;
+        $grade->order = $request->order;
         $grade->save();
         Session::flash('success', 'You successfully updated a Grade!');
         return redirect('admin/grade');
@@ -77,7 +79,7 @@ class GradeController extends Controller
 
     public function showPrek()
     {
-        $grade = KLevel::all();
+        $grade = KLevel::OrderBy('order', 'asc')->get();
         return view('admin.grade.prek.index')->with('grades', $grade);
     }
 
@@ -89,6 +91,7 @@ class GradeController extends Controller
 
         $grade = new KLevel();
         $grade->name = $request->grade;
+        $grade->order = $request->order;
         $grade->save();
 
         Session::flash('success', 'You successfully added new Grade!');
@@ -108,6 +111,7 @@ class GradeController extends Controller
         ]);
         $grade = KLevel::find($id);
         $grade->name = $request->grade;
+        $grade->order = $request->order;
         $grade->save();
         Session::flash('success', 'You successfully updated a Grade!');
         return redirect('admin/prek');
@@ -126,7 +130,7 @@ class GradeController extends Controller
 
     public function showPrimary()
     {
-        $grade = PrimaryLevel::all();
+        $grade = PrimaryLevel::OrderBy('order', 'asc')->get();
         return view('admin.grade.primary.index')->with('grades', $grade);
     }
 
@@ -138,6 +142,7 @@ class GradeController extends Controller
 
         $grade = new PrimaryLevel();
         $grade->name = $request->grade;
+        $grade->order = $request->order;
         $grade->save();
 
         Session::flash('success', 'You successfully added new Grade!');
@@ -157,6 +162,7 @@ class GradeController extends Controller
         ]);
         $grade = PrimaryLevel::find($id);
         $grade->name = $request->grade;
+        $grade->order = $request->order;
         $grade->save();
         Session::flash('success', 'You successfully updated a Grade!');
         return redirect('admin/primary');
@@ -175,7 +181,7 @@ class GradeController extends Controller
 
     public function showSecondary()
     {
-        $grade = SecondaryLevel::all();
+        $grade = SecondaryLevel::OrderBy('order', 'asc')->get();
         return view('admin.grade.secondary.index')->with('grades', $grade);
     }
 
@@ -187,6 +193,7 @@ class GradeController extends Controller
 
         $grade = new SecondaryLevel();
         $grade->name = $request->grade;
+        $grade->order = $request->order;
         $grade->save();
 
         Session::flash('success', 'You successfully added new Grade!');
@@ -206,6 +213,7 @@ class GradeController extends Controller
         ]);
         $grade = SecondaryLevel::find($id);
         $grade->name = $request->grade;
+        $grade->order = $request->order;
         $grade->save();
         Session::flash('success', 'You successfully updated a Grade!');
         return redirect('admin/secondary');

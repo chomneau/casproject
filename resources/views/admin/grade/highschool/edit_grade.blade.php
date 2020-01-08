@@ -66,7 +66,11 @@
                             <form action="{{ route('grade.update', ['id'=>$grade->id]) }}" method="post">
                                 {{ csrf_field() }}
                                 <div class="col-md-8 col-md-offset-1">
+                                    <label for="order">Grade Name</label>
                                     <input type="text" name="grade" value="{{ $grade->grade_name }}" class="form-control" autofocus required>
+                                    <br>
+                                    <label for="order">Order Number</label>
+                                    <input type="number" name="order" value="{{ $grade->order }}" id="order" class="form-control" placeholder="Enter order number" required autofocus>
                                 </div>
                                 <div class="col-md-2">
                                     <input type="submit"  class="btn btn-success" value="update now">

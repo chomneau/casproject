@@ -12,6 +12,9 @@
                     <div class="modal-body">
                         <input type="hidden" id="id">
                         <input type="text" name="grade" class="form-control" placeholder="Add a new grade here" required autofocus>
+                        <br>
+                        <label for="order">Order Number</label>
+                        <input type="number" name="order" id="order" class="form-control" placeholder="Enter order number" required autofocus>
                     </div>
 
                     <div class="modal-footer">

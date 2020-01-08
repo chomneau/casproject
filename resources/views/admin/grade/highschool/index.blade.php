@@ -61,6 +61,7 @@
                                 <tr>
                                     <th style="width: 1%">#</th>
                                     <th style="width: 20%">Grade Name</th>
+                                    <th style="width: 20%">Order Number</th>
                                     <th>Created_at</th>
                                     <th>Updated_at</th>
                                     <th style="width: 20%">#Action</th>
@@ -79,6 +80,10 @@
 
                                             </td>
 
+                                            <td>
+                                                {{ $grade->order }}
+
+                                            </td>
                                             <td>
                                                 {{ $grade->created_at }}
 
