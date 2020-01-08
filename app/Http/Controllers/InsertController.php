@@ -11,6 +11,8 @@ use App\StudentProfile;
 use App\GradeProfile;
 use Illuminate\Support\Facades\Input;
 use App\DayPresent;
+use App\KLevel;
+use App\PrekAbsent;
 
 class InsertController extends Controller
 {
@@ -18,6 +20,9 @@ class InsertController extends Controller
     {
         $this->secondaryGrade = SecondaryLevel::orderBy('name', 'asc')->get();
         View::share('secondaryGrade', $this->secondaryGrade);
+
+        $this->prekGrade = kLevel::orderBy('name', 'asc')->get();
+        View::share('prekGrade', $this->prekGrade);
     }
 
     public function insertForm()
@@ -31,7 +36,7 @@ class InsertController extends Controller
     public function insertAllForm(Request $request)
     {
         $student = StudentProfile::where('grade_profile_id', $request->student_id)->get();
-        $grade_id = SecondaryLevel::find($request->grade_id);
+        $grade_id = KLevel::find($request->grade_id);
 
         // return $student;
 
@@ -45,9 +50,9 @@ class InsertController extends Controller
         foreach ($input['student_id'] as $index=>$value){
 
             $day_present = DayPresent::all();
-            $absent = new SecondaryAbsent();
+            $absent = new PrekAbsent();
             $absent->student_profile_id = $value;
-            $absent->secondary_level_id = $grade->id;
+            $absent->k_level_id = $grade->id;
             $absent->quarter_name = $day_present[0]->quarter_name;
             $absent->reason = "non-count-daypresent";
             $absent->quarter_day_present = $day_present[0]->quarter_day_present;
@@ -55,9 +60,9 @@ class InsertController extends Controller
             $absent->absent_date = date("Y-m-d");
             $absent->save();
 
-            $absent = new SecondaryAbsent();
+            $absent = new PrekAbsent();
             $absent->student_profile_id = $value;
-            $absent->secondary_level_id = $grade->id;
+            $absent->k_level_id = $grade->id;
             $absent->quarter_name = $day_present[1]->quarter_name;
             $absent->reason = "non-count-daypresent";
             $absent->quarter_day_present = $day_present[1]->quarter_day_present;
@@ -65,9 +70,9 @@ class InsertController extends Controller
             $absent->absent_date = date("Y-m-d");
             $absent->save();
 
-            $absent = new SecondaryAbsent();
+            $absent = new PrekAbsent();
             $absent->student_profile_id = $value;
-            $absent->secondary_level_id = $grade->id;
+            $absent->k_level_id = $grade->id;
             $absent->quarter_name = $day_present[2]->quarter_name;
             $absent->reason = "non-count-daypresent";
             $absent->quarter_day_present = $day_present[2]->quarter_day_present;
@@ -75,9 +80,9 @@ class InsertController extends Controller
             $absent->absent_date = date("Y-m-d");
             $absent->save();
 
-            $absent = new SecondaryAbsent();
+            $absent = new PrekAbsent();
             $absent->student_profile_id = $value;
-            $absent->secondary_level_id = $grade->id;
+            $absent->k_level_id = $grade->id;
             $absent->quarter_name = $day_present[3]->quarter_name;
             $absent->reason = "non-count-daypresent";
             $absent->quarter_day_present = $day_present[3]->quarter_day_present;

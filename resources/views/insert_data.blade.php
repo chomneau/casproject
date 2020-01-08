@@ -21,35 +21,9 @@
             </div>
           @endif
         
-          <form action="{{ route('insertdata.submit') }}"  method="POST">
-             {{ csrf_field() }}
-          <label for="id">student_id</label>
-          <div class="">
-              <select name="student_id" id="" class="form-control" >
-                  @foreach ($students as $student)
-                    <option value="{{$student->id}}">{{$student->first_name}}</option>
-                      
-                  @endforeach
-              </select>
-            {{-- <input type="number" name="student_id" id="id" class="form-control"> --}}
-          </div>
-          <label for="id">grade_id</label>
           
-          <div class="">
-              <select name="grade_id" id="" class="form-control" >
-                  @foreach ($secondaryGrade as $grade)
-                    <option value="{{$grade->id}}">{{$grade->name}}</option>
-                      
-                  @endforeach
-                </select>
-            </div>
-          <div class="submit" style="margin-top:20px">
-
-            <input type="submit" value="Insert" class="btn btn-primary">
-          </div>
-        </form>
       </div>
-      <div class="col-md-2">
+      <div class="col-md-8">
         <h3>Insert all</h3>
       <form action="{{ route('insertAll.form' ) }}" method="GET">
           {{ csrf_field() }}
@@ -65,7 +39,7 @@
                 <div class="">
                     <label for="id">select grade absent</label>
                     <select name="grade_id" id="" class="form-control" >
-                        @foreach ($secondaryGrade as $grade)
+                        @foreach ($prekGrade as $grade)
                           <option value="{{$grade->id}}">{{$grade->name}}</option>
                             
                         @endforeach
