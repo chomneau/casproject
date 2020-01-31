@@ -19,6 +19,9 @@
                                     <th>3<sup>rd</sup> Quarter(%)</th>
                                     <th>4<sup>th</sup> Quarter(%)</th>
                                     <th>2<sup>nd</sup> Semester(%)</th>
+
+                                    <th> Midterm</th>
+
                                     <th>Yearly(%)</th> 
 
                                     <th>Action</th>
@@ -53,10 +56,19 @@
                                                     <a href="" class="update" data-name="quarter_4"  data-type="number" data-pk="{{ $score->id }}" data-title="Quarter 4">{{ $score->quarter_4 }}
                                                     </a>
                                                 </td>
+
+                                                
       
                                             <td style="font-weight: bold; text-align:center">
                                                 {{ number_format(ceil(($score->quarter_3+$score->quarter_4)/2), 2, '.', ',') }}
                                             </td>
+                                    
+                                            {{-- midterm --}}
+                                            <td style="text-align:center">
+                                                <a href="" class="update" data-name="midterm"  data-type="number" data-pk="{{ $score->id }}" data-title="midterm_5">{{ $score->midterm }}
+                                                </a>
+                                            </td>
+
                                             <td style="font-weight: bold; text-align:center">
                                                     <?php $semester_1= number_format(ceil(($score->quarter_1+$score->quarter_2)/2), 2, '.', ',');
                                                     $semester_2= number_format(ceil(($score->quarter_3+$score->quarter_4)/2), 2, '.', ','); 
@@ -65,6 +77,8 @@
                                             </td>
 
                                             {{--Semester 1--}}
+
+                                            
                                             
                                             <td>
                                                 

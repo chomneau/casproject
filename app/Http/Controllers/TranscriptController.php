@@ -18,6 +18,7 @@ use App\GradeProfile;
 use App\AbsentRecord;
 use App\SecondaryAbsent;
 use App\PrekAbsent;
+use App\DayPresent;
 
 
 class TranscriptController extends Controller
@@ -45,6 +46,9 @@ public function __construct()
         $this->gradeProfile = GradeProfile::orderBy('order', 'asc')->get();
         View::share('gradeProfile', $this->gradeProfile);
 
+        $this->daypresent = DayPresent::all();
+        View::share('daypresent', $this->daypresent);
+
         
 
     }
@@ -69,6 +73,17 @@ public function selectOption($student_id)
         $grade = Grade::all();
 
         return view('admin.student.print.print_option')
+            ->with(['students' => $student, 'grade' => $grade]);
+
+    }
+    //Mid-term Print option
+public function midTermOption($student_id)
+    {
+
+        $student = StudentProfile::find($student_id);
+        $grade = Grade::all();
+
+        return view('admin.student.mid_term.midTerm_menu')
             ->with(['students' => $student, 'grade' => $grade]);
 
     }

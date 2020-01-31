@@ -452,6 +452,27 @@ Route::post('/daypresent/update/{id}', 'DaypresentController@update')->name('day
 
     Route::get('/selectOption/{student_id}', 'TranscriptController@selectOption')->name('select.option');
 
+    //mid-term menu
+    Route::get('/midterm/{student_id}', 'TranscriptController@midTermOption')->name('midterm.option');
+
+    //********* midterm print preview for admin ********************
+    
+    //Pre-K print view for midterm
+    Route::get('/midterm/prek/{student_id}', 'MidtermController@prekPrintView')->name('midterm.prek.printview');
+
+    //update midterm score for pre-k school
+    Route::post('midterm/prekscore/update', 'MidtermController@midtermUpdatePrekScore')->name('midterm.prek.update');
+
+    //GradeK print view for midterm
+    Route::get('/midterm/gradeK/{student_id}', 'MidtermController@gradeKPrintView')->name('midterm.gradeK.printview');
+
+    //update midterm score for grade-k school
+    Route::post('midterm/gradeKscore/update', 'MidtermController@midtermUpdateGradeKScore')->name('midterm.gradeK.update');
+
+
+
+    //********* end of midterm print preview for admin *************
+
   
 
 //Pre-K print view

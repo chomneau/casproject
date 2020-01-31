@@ -20,6 +20,8 @@
                                         
                                         <th>Quarter 3</th>
                                         <th>Quarter 4</th>
+
+                                        
                                         
                                         <th>Action </th>
 
@@ -61,6 +63,8 @@
                                                 <a href="" class="update" data-name="quarter_4"  data-type="number" data-pk="{{ $score->id }}" data-title="Quarter 4">{{ $score->quarter_4 }}
                                                 </a>
                                             </td>
+
+                                            
                                        
                                        
 

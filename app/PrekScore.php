@@ -8,7 +8,7 @@ class PrekScore extends Model
 {
     protected $fillable = [
         'student_profile_id', 'k_level_id', 'k_subject_id', 'quarter_1', 'quarter_2',
-        'quarter_3', 'quarter_4', 'yearly'
+        'quarter_3', 'quarter_4', 'midterm'
     ];
 
     public function studentProfile()
