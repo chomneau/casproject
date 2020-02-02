@@ -86,9 +86,15 @@
 							            
 
 													<td style="text-align:center; font-size: 16px; font-weight: bold">
-                              <a class="update" data-name="midterm"  data-type="number" 
-                              data-pk="{{ $score_s1->id}}" data-title="midterm">{{ $score_s1->midterm}}
-                              </a>
+                              @if(Auth::guard('admin')->check())
+                              	<a class="update" data-name="midterm"  data-type="number" 
+                              	data-pk="{{ $score_s1->id}}" data-title="midterm">{{ $score_s1->midterm}}
+															</a>
+															@elseif(Auth::guard('teacher')->check())
+																<a class="saveChange" data-name="midterm"  data-type="number" 
+                              	data-pk="{{ $score_s1->id}}" data-title="midterm">{{ $score_s1->midterm}}
+															</a>
+															@endif
                             </td>
 
 							            
@@ -209,7 +215,7 @@
 
   $('.saveChange').editable({
 
-      url: '/teacher/prekscore/EditSubject',
+      url: '/teacher/midterm/secondaryschool/update',
 
       type: 'text',
 

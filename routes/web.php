@@ -533,40 +533,6 @@ Route::post('/daypresent/update/{id}', 'DaypresentController@update')->name('day
 
     //teacher section ****************************************************************
 
-     //********* midterm print preview for teacher ********************
-
-    //mid-term menu admin
-    Route::get('/midterm/{student_id}', 'MidtermTeacherController@midTermOption')->name('teacher.midterm.option');
-    
-    //Pre-K print view for midterm
-    Route::get('/midterm/prek/{student_id}', 'MidtermTeacherController@prekPrintView')->name('teacher.midterm.prek.printview');
-
-    //update midterm score for pre-k school
-    Route::post('midterm/prekscore/update', 'MidtermController@midtermUpdatePrekScore')->name('teacher.midterm.prek.update');
-
-    //GradeK print view for midterm
-    Route::get('/midterm/gradeK/{student_id}', 'MidtermTeacherController@gradeKPrintView')->name('teacher.midterm.gradeK.printview');
-
-    //update midterm score for grade-k school
-    Route::post('midterm/gradeKscore/update', 'MidtermTeacherController@midtermUpdateGradeKScore')->name('teacher.midterm.gradeK.update');
-
-    //secondary midterm printview
-    Route::get('/midterm/secondaryschool/{student_id}', 'MidtermTeacherController@secondarySchoolPrintView')->name('teacher.midterm.secondaryschool.printview');
-
-    //update midterm score for secondary school
-    Route::post('/midterm/secondaryschool/update', 'MidtermTeacherController@midtermUpdateSecondaryScore')->name('teacher.midterm.secondaryschool.update');
-
-    //high school midterm printview
-    Route::get('/midterm/highschool/{student_id}', 'MidtermTeacherController@midtermHighSchool')->name('teacher.midterm.yearlyReport.highSchool');
-    
-    //update midterm score for high school
-    Route::post('/midterm/highSchool/update', 'MidtermTeacherController@midtermUpdateHighSchoolScore')->name('teacher.midterm.hightSchool.update');
-
-
-
-    //********* end of midterm print preview for teacher *************
-
-    
 
     // Route::get('/teacher/dashboard', 'TeacherController@index')->name('teacher.dashboard');
     //search teahcer
@@ -614,9 +580,49 @@ Route::post('/daypresent/update/{id}', 'DaypresentController@update')->name('day
 
 });//end admin
 
+
+
+    
+
 //teacher
 
 Route::prefix('teacher')->group(function () {
+
+     //mid-term menu admin
+     Route::get('/midterm/{student_id}', 'MidtermTeacherController@midTermOption')->name('teacher.midterm.option');
+
+
+     //********* midterm print preview for teacher ********************
+
+   
+    
+    //Pre-K print view for midterm
+    Route::get('/midterm/prek/{student_id}', 'MidtermTeacherController@prekPrintView')->name('teacher.midterm.prek.printview');
+
+    //update midterm score for pre-k school
+    Route::post('/midterm/prekscore/update', 'MidtermController@midtermUpdatePrekScore')->name('teacher.midterm.prek.update');
+
+    //GradeK print view for midterm
+    Route::get('/midterm/gradeK/{student_id}', 'MidtermTeacherController@gradeKPrintView')->name('teacher.midterm.gradeK.printview');
+
+    //update midterm score for grade-k school
+    Route::post('/midterm/gradeKscore/update', 'MidtermTeacherController@midtermUpdateGradeKScore')->name('teacher.midterm.gradeK.update');
+
+    //secondary midterm printview
+    Route::get('/midterm/secondaryschool/{student_id}', 'MidtermTeacherController@secondarySchoolPrintView')->name('teacher.midterm.secondaryschool.printview');
+
+    //update midterm score for secondary school
+    Route::post('/midterm/secondaryschool/update', 'MidtermTeacherController@midtermUpdateSecondaryScore')->name('teacher.midterm.secondaryschool.update');
+
+    //high school midterm printview
+    Route::get('/midterm/highschool/{student_id}', 'MidtermTeacherController@midtermHighSchool')->name('teacher.midterm.yearlyReport.highSchool');
+    
+    //update midterm score for high school
+    Route::post('/midterm/highSchool/update', 'MidtermTeacherController@midtermUpdateHighSchoolScore')->name('teacher.midterm.hightSchool.update');
+
+
+
+    //********* end of midterm print preview for teacher *************
 
   //  Report card and transcript
   //high school yearly report

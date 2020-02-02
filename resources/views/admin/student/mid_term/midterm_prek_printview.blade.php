@@ -93,10 +93,17 @@
                           
                           {{-- <td style="text-align:center">{{ $score_s1->midterm}}</td> --}}
 
-                          <td style="text-align:center">
-                            <a style a:link="text-decoration: none; border-bottom: dashed 0.25px #0088cc;" class="update" data-name="midterm"  data-type="number" 
-                            data-pk="{{ $score_s1->id}}" data-title="midterm">{{ $score_s1->midterm}}
-                            </a>
+													<td style="text-align:center">
+														@if(Auth::guard('admin')->check())
+                            	<a style a:link="text-decoration: none; border-bottom: dashed 0.25px #0088cc;" class="update" data-name="midterm"  data-type="number" 
+                            	data-pk="{{ $score_s1->id}}" data-title="midterm">{{ $score_s1->midterm}}
+															</a>
+														@elseif(Auth::guard('teacher')->check())
+															<a style a:link="text-decoration: none; border-bottom: dashed 0.25px #0088cc;" class="saveChange" data-name="midterm"  data-type="number" 
+															data-pk="{{ $score_s1->id}}" data-title="midterm">{{ $score_s1->midterm}}
+															</a>
+
+														@endif
                           </td>
 
 							            
@@ -131,9 +138,16 @@
 									{{-- <td style="text-align:center">{{ $score_s1->midterm}}</td> --}}
 
 									<td style="text-align:center">
-										<a class="update" data-name="midterm"  data-type="number" 
-										data-pk="{{ $score_s1->id}}" data-title="midterm">{{ $score_s1->midterm}}
-										</a>
+											@if(Auth::guard('admin')->check())
+											<a style a:link="text-decoration: none; border-bottom: dashed 0.25px #0088cc;" class="update" data-name="midterm"  data-type="number" 
+											data-pk="{{ $score_s1->id}}" data-title="midterm">{{ $score_s1->midterm}}
+											</a>
+										@elseif(Auth::guard('teacher')->check())
+											<a style a:link="text-decoration: none; border-bottom: dashed 0.25px #0088cc;" class="saveChange" data-name="midterm"  data-type="number" 
+											data-pk="{{ $score_s1->id}}" data-title="midterm">{{ $score_s1->midterm}}
+											</a>
+
+										@endif
 									</td>
 
 								</tr>
@@ -165,9 +179,16 @@
 									<td>{{$score_s1->KSubject->name}}</td>
 									
 									<td style="text-align:center">
-										<a class="update" data-name="midterm"  data-type="number" 
-										data-pk="{{ $score_s1->id}}" data-title="midterm">{{ $score_s1->midterm}}
-										</a>
+											@if(Auth::guard('admin')->check())
+											<a style a:link="text-decoration: none; border-bottom: dashed 0.25px #0088cc;" class="update" data-name="midterm"  data-type="number" 
+											data-pk="{{ $score_s1->id}}" data-title="midterm">{{ $score_s1->midterm}}
+											</a>
+										@elseif(Auth::guard('teacher')->check())
+											<a style a:link="text-decoration: none; border-bottom: dashed 0.25px #0088cc;" class="saveChange" data-name="midterm"  data-type="number" 
+											data-pk="{{ $score_s1->id}}" data-title="midterm">{{ $score_s1->midterm}}
+											</a>
+
+										@endif
 									</td>
 
 								</tr>
@@ -202,9 +223,16 @@
 									<td>{{$score_s1->KSubject->name}}</td>
 
 									<td style="text-align:center">
-										<a class="update" data-name="midterm"  data-type="number" 
-										data-pk="{{ $score_s1->id}}" data-title="midterm">{{ $score_s1->midterm}}
-										</a>
+											@if(Auth::guard('admin')->check())
+											<a style a:link="text-decoration: none; border-bottom: dashed 0.25px #0088cc;" class="update" data-name="midterm"  data-type="number" 
+											data-pk="{{ $score_s1->id}}" data-title="midterm">{{ $score_s1->midterm}}
+											</a>
+										@elseif(Auth::guard('teacher')->check())
+											<a style a:link="text-decoration: none; border-bottom: dashed 0.25px #0088cc;" class="saveChange" data-name="midterm"  data-type="number" 
+											data-pk="{{ $score_s1->id}}" data-title="midterm">{{ $score_s1->midterm}}
+											</a>
+
+										@endif
 									</td>
 									
 
@@ -237,9 +265,16 @@
 
 									<td>{{$score_s1->KSubject->name}}</td>
 									<td style="text-align:center">
-                    <a class="update" data-name="midterm"  data-type="number" 
-                            data-pk="{{ $score_s1->id}}" data-title="midterm">{{ $score_s1->midterm}}
-                    </a>
+											@if(Auth::guard('admin')->check())
+											<a style a:link="text-decoration: none; border-bottom: dashed 0.25px #0088cc;" class="update" data-name="midterm"  data-type="number" 
+											data-pk="{{ $score_s1->id}}" data-title="midterm">{{ $score_s1->midterm}}
+											</a>
+										@elseif(Auth::guard('teacher')->check())
+											<a style a:link="text-decoration: none; border-bottom: dashed 0.25px #0088cc;" class="saveChange" data-name="midterm"  data-type="number" 
+											data-pk="{{ $score_s1->id}}" data-title="midterm">{{ $score_s1->midterm}}
+											</a>
+
+										@endif
                   </td>
 									
 
@@ -272,9 +307,16 @@
 									<td>{{$score_s1->KSubject->name}}</td>
 
 									<td style="text-align:center">
-										<a class="update" data-name="midterm"  data-type="number" 
-										data-pk="{{ $score_s1->id}}" data-title="midterm">{{ $score_s1->midterm}}
-										</a>
+											@if(Auth::guard('admin')->check())
+											<a style a:link="text-decoration: none; border-bottom: dashed 0.25px #0088cc;" class="update" data-name="midterm"  data-type="number" 
+											data-pk="{{ $score_s1->id}}" data-title="midterm">{{ $score_s1->midterm}}
+											</a>
+										@elseif(Auth::guard('teacher')->check())
+											<a style a:link="text-decoration: none; border-bottom: dashed 0.25px #0088cc;" class="saveChange" data-name="midterm"  data-type="number" 
+											data-pk="{{ $score_s1->id}}" data-title="midterm">{{ $score_s1->midterm}}
+											</a>
+
+										@endif
 									</td>
 									
 
@@ -306,9 +348,16 @@
 
 									<td>{{$score_s1->KSubject->name}}</td>
 									<td style="text-align:center">
-										<a class="update" data-name="midterm"  data-type="number" 
-										data-pk="{{ $score_s1->id}}" data-title="midterm">{{ $score_s1->midterm}}
-										</a>
+											@if(Auth::guard('admin')->check())
+											<a style a:link="text-decoration: none; border-bottom: dashed 0.25px #0088cc;" class="update" data-name="midterm"  data-type="number" 
+											data-pk="{{ $score_s1->id}}" data-title="midterm">{{ $score_s1->midterm}}
+											</a>
+										@elseif(Auth::guard('teacher')->check())
+											<a style a:link="text-decoration: none; border-bottom: dashed 0.25px #0088cc;" class="saveChange" data-name="midterm"  data-type="number" 
+											data-pk="{{ $score_s1->id}}" data-title="midterm">{{ $score_s1->midterm}}
+											</a>
+
+										@endif
 									</td>
 									
 									
@@ -340,9 +389,16 @@
 
 									<td>{{$score_s1->KSubject->name}}</td>
 									<td style="text-align:center">
-										<a class="update" data-name="midterm"  data-type="number" 
-										data-pk="{{ $score_s1->id}}" data-title="midterm">{{ $score_s1->midterm}}
-										</a>
+											@if(Auth::guard('admin')->check())
+											<a style a:link="text-decoration: none; border-bottom: dashed 0.25px #0088cc;" class="update" data-name="midterm"  data-type="number" 
+											data-pk="{{ $score_s1->id}}" data-title="midterm">{{ $score_s1->midterm}}
+											</a>
+										@elseif(Auth::guard('teacher')->check())
+											<a style a:link="text-decoration: none; border-bottom: dashed 0.25px #0088cc;" class="saveChange" data-name="midterm"  data-type="number" 
+											data-pk="{{ $score_s1->id}}" data-title="midterm">{{ $score_s1->midterm}}
+											</a>
+
+										@endif
 									</td>
 									
 
@@ -377,9 +433,16 @@
 									<td>{{$score_s1->KSubject->name}}</td>
 
 									<td style="text-align:center">
-										<a class="update" data-name="midterm"  data-type="number" 
-										data-pk="{{ $score_s1->id}}" data-title="midterm">{{ $score_s1->midterm}}
-										</a>
+											@if(Auth::guard('admin')->check())
+											<a style a:link="text-decoration: none; border-bottom: dashed 0.25px #0088cc;" class="update" data-name="midterm"  data-type="number" 
+											data-pk="{{ $score_s1->id}}" data-title="midterm">{{ $score_s1->midterm}}
+											</a>
+										@elseif(Auth::guard('teacher')->check())
+											<a style a:link="text-decoration: none; border-bottom: dashed 0.25px #0088cc;" class="saveChange" data-name="midterm"  data-type="number" 
+											data-pk="{{ $score_s1->id}}" data-title="midterm">{{ $score_s1->midterm}}
+											</a>
+
+										@endif
 									</td>
 									
 
@@ -531,7 +594,7 @@
 
   $('.saveChange').editable({
 
-      url: '/teacher/prekscore/EditSubject',
+      url: '/teacher/midterm/prekscore/update',
 
       type: 'text',
 
