@@ -8,7 +8,7 @@ class Score extends Model
 {
     protected $fillable = [
         'student_id', 'grade_id', 'subject_id', 'quarter_1', 'quarter_2',
-        'quarter_3','quarter_4'
+        'quarter_3','quarter_4', 'midterm',
     ];
 
     public function studentProfile(){

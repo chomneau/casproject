@@ -59,9 +59,9 @@
 			    <thead>
 			        <tr>
 			            
-			            <th style="font-size: 16px">Subject</th>
+			            <th style="font-size: 16px" width="80%">Subject</th>
 			            
-			            <th style="font-size: 16px"> Midterm</th>
+			            <th style="font-size: 16px; text-align:center"> Midterm</th>
 
 			           
 			        </tr>
@@ -85,19 +85,15 @@
 							            <td style="font-size: 16px; font-weight: bold">{{$score_s1->PrimarySubject->name}}</td>
 							            
 
-													<td style="text-align:center">
+													<td style="text-align:center; font-size: 16px; font-weight: bold">
                               <a class="update" data-name="midterm"  data-type="number" 
                               data-pk="{{ $score_s1->id}}" data-title="midterm">{{ $score_s1->midterm}}
                               </a>
                             </td>
 
 							            
-
 							        </tr>
-							        
-							        
-									
-						        
+							        						        
 						        @endif
 
 					        @endforeach
@@ -107,136 +103,46 @@
 
 			    <tr>
 						<td style="font-size: 16px; font-weight: bold">Days Present</td>
-						<td style="font-size: 16px; font-weight:350" contenteditable="true" class="text-center">
+						<td style="font-size: 16px; font-weight:bold" contenteditable="true" class="text-center">
 						
 								
 							
-						@foreach($secondaryscore as $score_s1)
-							@if($loop->first)
-								@if ($score_s1->quarter_1 )
-								
-									@if ($secondaryschool_absent_quarter_1>0)
-									{{ floor($total_daypresent_1 - $secondaryschool_absent_quarter_1) }} / {{ $total_daypresent_1 }}
-									@else
-									{{ $total_daypresent_1  }} / {{ $total_daypresent_1  }}
-									@endif
+							{{-- midterm day present --}}
 
-								@endif
+				
+					@if ($selectedDaypresent == $dayPresents[0]->id)
+							@if ($secondaryschool_absent_quarter_1>0)
+								{{ floor($total_daypresent_1 - $secondaryschool_absent_quarter_1) }} / {{ $total_daypresent_1 }}
+							@else
+								{{ $total_daypresent_1  }} / {{ $total_daypresent_1  }}
+							@endif
+					@elseif($selectedDaypresent == $dayPresents[1]->id)
+						@if ($secondaryschool_absent_quarter_2>0)
+							{{ floor($total_daypresent_2 - $secondaryschool_absent_quarter_2) }} / {{ $total_daypresent_2 }}
+						@else
+							{{ $total_daypresent_2  }} / {{ $total_daypresent_2  }}
+						@endif
+					@elseif($selectedDaypresent == $dayPresents[2]->id)
+
+					@if ($secondaryschool_absent_quarter_3>0)
+							{{ floor($total_daypresent_3 - $secondaryschool_absent_quarter_3) }} / {{ $total_daypresent_3 }}
+						@else
+							{{ $total_daypresent_3  }} / {{ $total_daypresent_3  }}
+						@endif
+				
+					@elseif($selectedDaypresent == $dayPresents[3]->id)	
+						@if ($secondaryschool_absent_quarter_4>0)
+								{{ floor($total_daypresent_4 - $secondaryschoolrek_absent_quarter_4) }} / {{ $total_daypresent_4 }}
+							@else
+								{{ $total_daypresent_4  }} / {{ $total_daypresent_4  }}
 							@endif	
-						@endforeach
-						
-													
+					@else		
+							<h3>Please select Quarter</h3>
+					@endif
+			{{-- @endforeach			 --}}
+																			
 						</td>
 
-						<td class="text-center" style="font-size: 16px" contenteditable="true">
-							
-						@foreach($secondaryscore as $score_s1)
-							@if($loop->first)
-								@if ($score_s1->quarter_2 )
-								
-									@if ($secondaryschool_absent_quarter_2>0)
-									{{ floor($total_daypresent_2 - $secondaryschool_absent_quarter_2) }} / {{ $total_daypresent_2 }}
-									@else
-									{{ $total_daypresent_2  }} / {{ $total_daypresent_2  }}
-									@endif
-
-								@endif
-							@endif	
-						@endforeach
-							
-						
-						</td>
-					{{--semester_1--}}
-						<td class="text-center" style="font-size: 16px; font-weight:bold" contenteditable="true">
-
-						
-
-						@foreach($secondaryscore as $score_s1)
-							@if($loop->first)
-								@if ($score_s1->quarter_1 && $score_s1->quarter_2 )
-								
-								{{ ($total_daypresent_1 + $total_daypresent_2)- ($secondaryschool_absent_quarter_1 + $secondaryschool_absent_quarter_2) }} / {{ $total_daypresent_1 + $total_daypresent_2 }}
-
-								@endif
-							@endif	
-						@endforeach
-						
-						</td>
-
-
-						<td class="text-center" style="font-size: 16px" contenteditable="true">
-						{{-- quarter_3 --}}
-							@foreach($secondaryscore as $score_s1)
-							@if($loop->first)
-								@if ($score_s1->quarter_3 )
-								
-									@if ($secondaryschool_absent_quarter_3>0)
-									{{ floor($total_daypresent_3 - $secondaryschool_absent_quarter_3) }} / {{ $total_daypresent_3 }}
-									@else
-									{{ $total_daypresent_3  }} / {{ $total_daypresent_3  }}
-									@endif
-
-								@endif
-							@endif	
-						@endforeach
-
-												
-						</td>
-
-
-						<td class="text-center" style="font-size: 16px" contenteditable="true">
-					
-							{{-- quarter_4 --}}
-						@foreach($secondaryscore as $score_s1)
-							@if($loop->first)
-								@if ($score_s1->quarter_4 )
-								
-									@if ($secondaryschool_absent_quarter_4>0)
-									{{ floor($total_daypresent_4 - $secondaryschool_absent_quarter_4) }} / {{ $total_daypresent_4 }}
-									@else
-									{{ $total_daypresent_4  }} / {{ $total_daypresent_4  }}
-									@endif
-
-								@endif
-							@endif	
-						@endforeach
-
-							
-						</td>
-						<td class="text-center" style="font-size: 16px; font-weight:bold" contenteditable="true">
-
-							
-						{{-- semester_2 --}}
-						@foreach($secondaryscore as $score_s1)
-							@if($loop->first)
-								@if ($score_s1->quarter_3 && $score_s1->quarter_4 )
-								
-								{{ ($total_daypresent_3 + $total_daypresent_4)- ($secondaryschool_absent_quarter_3 + $secondaryschool_absent_quarter_4) }} / {{ $total_daypresent_3 + $total_daypresent_4 }}
-
-								@endif
-							@endif	
-						@endforeach
-							
-						</td>
-
-						<td class="text-center" style="font-size: 16px; font-weight:bold" contenteditable="true">
-							
-					{{-- yearly --}}
-							@foreach($secondaryscore as $score_s1)
-							@if($loop->first)
-								@if ($score_s1->quarter_1 && $score_s1->quarter_2 && $score_s1->quarter_3 && $score_s1->quarter_4 )
-								
-								{{ $yearly_daypresent-$yearly_absent }} / {{ $yearly_daypresent }}
-
-								@endif
-							@endif	
-						@endforeach
-
-							
-						</td>
-
-
-	
 					</tr>
 
 			        
@@ -267,6 +173,64 @@
 
 
 	</main>
+
+
+
+<script type="text/javascript">
+
+
+  $.ajaxSetup({
+
+      headers: {
+
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+
+      }
+
+  });
+
+//admin side
+
+  $('.update').editable({
+
+				url: '/admin/midterm/secondaryschool/update',
+
+				type: 'text',
+
+				pk: 1,
+
+				name: 'name',
+
+				title: 'Enter name'
+         
+  }); 
+
+//teacher side
+
+  $('.saveChange').editable({
+
+      url: '/teacher/prekscore/EditSubject',
+
+      type: 'text',
+
+      pk: 1,
+
+      name: 'name',
+
+      title: 'Enter name'
+
+
+  });
+
+  $(document).ready(function () {
+      $('#refresh').click(function(){
+          location.reload(true);
+      });
+  });
+
+
+
+</script>
 
 
 </body>

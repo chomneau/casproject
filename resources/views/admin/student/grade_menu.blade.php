@@ -327,6 +327,11 @@
                 <i class="fas fa-print"></i>
             </a>
 
+            <a href="{{ route('teacher.midterm.option',['student_id'=>$students->id]) }}" class="btn btn-info pull-right">
+                    Mid-term
+                    <i class="fas fa-print"></i>
+            </a>
+
                   
 
     </ul>

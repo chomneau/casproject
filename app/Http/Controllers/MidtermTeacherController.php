@@ -23,15 +23,12 @@ use App\DayPresent;
 use App\Midterm;
 
 
-class MidtermController extends Controller
+class MidtermTeacherController extends Controller
 {
 
 public function __construct()
     {
-         $this->middleware('auth:admin');
-       // $this->middleware('auth:teacher');
-        
-
+         $this->middleware('auth:teacher');
 
         $this->grade = Grade::all();
         View::share('grade', $this->grade);
@@ -751,3 +748,4 @@ public function secondarySchoolPrintView(Request $request, $student_id){
     
 
 }
+
