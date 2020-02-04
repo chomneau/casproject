@@ -1,6 +1,6 @@
 <div class="row mt-4">
 		<div class="col-md-1"></div>
-		<div class="col-md-10 border border-secondary" style="margin-top:1em; padding-top:1em " >
+		<div class="col-md-10 border border-secondary" style="margin-top:0.5em; padding-top:0.5em " >
 			<p> 
 				<span class="pull-left">Next Year's Grade</span> 
 				<span class="text-center" style="margin-left:6em">Level : ……………………</span>		                           </p>
@@ -56,16 +56,16 @@
 	</div>
 
 
-	<div class="col-md-10 offset-1" style="margin-top: 8em">
+	<div class="col-md-10 offset-1" style="margin-top: 2em">
 		<div class="row">
 				<div class="col-md-4 pull-left text-center">
-						<p style="font-size: 16px; margin-bottom:6em;">
+						<p style="font-size: 16px; margin-bottom:2em;">
 						Date: 
 						<span contenteditable="true">
 							{{ @date("d-M-Y") }}
 						</span>
 						</p>
-							<hr style="margin-bottom:4em">
+							<hr style="margin-bottom:2em">
 							<p style="font-size: 16px">Registrar's Signature</p>
 						</div>
 
@@ -74,7 +74,7 @@
 						
 
 						<div class="col-md-4 pull-right text-center">
-						<p style="font-size: 16px; margin-bottom:6em">Date: {{ @date("d-M-Y") }}</p>
+						<p style="font-size: 16px; margin-bottom:2em">Date: {{ @date("d-M-Y") }}</p>
 							<hr style="margin-bottom:4em">
 							<p style="font-size: 16px">Homeroom Teacher's Signature</p>
 						</div>
