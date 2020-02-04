@@ -27,7 +27,7 @@
 					@foreach($kscore as $score_s1)
 
 					@if ($loop->first) 
-					<span style="font-size: 18px">
+					<span style="font-size: 16px">
 						Grade : {{ $score_s1->KLevel->name }}
 					</span>	 
 
@@ -35,14 +35,14 @@
 
 				@endforeach
 
-				<span style="margin-left: 20px; font-size: 18px ">
+				<span style="margin-left: 20px; font-size: 16px ">
 
 				School Year : 
 
 				@foreach($kscore as $score_s1)	
 					@if ($loop->first) 
 										
-						<span class="text-center" style="font-size: 18px; font-weight: 400;" contenteditable="true">
+						<span class="text-center" style="font-size: 16px; font-weight: 400;" contenteditable="true">
                         	
 							{{ $score_s1->created_at->format('Y') }} - 
 	            {{ $score_s1->created_at->format('Y')+1 }}
@@ -55,7 +55,7 @@
 
 				</h6>
 			    <thead>
-			        <tr style="font-size: 18px">
+			        <tr style="font-size: 16px">
 			            
 			            <th>Grading Period</th>
 			            <th>MIDTERM</th>
@@ -67,7 +67,7 @@
 			    <!--Table body-->
 			    <tbody>
 				<tr>
-					<td style="font-weight: Bold; font-size: 18px">Spiritual Development</td>
+					<td style="font-weight: Bold; font-size: 16px">Spiritual Development</td>
 				</tr>
 
 			    	@if(count($subject_code_SD))
@@ -78,7 +78,7 @@
 						    	@if($score_s1->k_level_id == $grades->id)
 
 							    	
-											<tr style="font-size: 18px;">
+											<tr style="font-size: 16px;">
 							            
 							            <td>{{$score_s1->KSubject->name}}</td>
 													
@@ -108,7 +108,7 @@
 				{{--English Language arts-Intellectual Development--}}
 
 				<tr>
-					<td style="font-weight: Bold; font-size: 18px">
+					<td style="font-weight: Bold; font-size: 16px">
 					Personal/Social Development					
 					</td>
 				</tr>
@@ -121,7 +121,7 @@
 							@if($score_s1->k_level_id == $grades->id)
 
 
-								<tr style="font-size: 18px;">
+								<tr style="font-size: 16px;">
 
 									<td>{{$score_s1->KSubject->name}}</td>
 									<td style="text-align:center">
@@ -148,7 +148,7 @@
 				{{--Khmer Language arts-Intellectual Development--}}
 
 				<tr>
-					<td style="font-weight: Bold; font-size: 18px">
+					<td style="font-weight: Bold; font-size: 16px">
 					Art
 					</td>
 				</tr>
@@ -161,7 +161,7 @@
 							@if($score_s1->k_level_id == $grades->id)
 
 
-								<tr style="font-size: 18px;">
+								<tr style="font-size: 16px;">
 
 									<td>{{$score_s1->KSubject->name}}</td>
 									<td style="text-align:center">
@@ -188,7 +188,7 @@
 				{{--Music--}}
 
 				<tr>
-					<td style="font-weight: Bold; font-size: 18px">Music</td>
+					<td style="font-weight: Bold; font-size: 16px">Music</td>
 				</tr>
 
 				@if(count($subject_code_MUSIC))
@@ -199,7 +199,7 @@
 							@if($score_s1->k_level_id == $grades->id)
 
 
-								<tr style="font-size: 18px;">
+								<tr style="font-size: 16px;">
 
 									<td>{{$score_s1->KSubject->name}}</td>
 									<td style="text-align:center">
@@ -226,13 +226,13 @@
 				{{--Demonstrates emergent reading and writing skills:					--}}
 
 				<tr>
-					<td style="font-weight: Bold; font-size: 18px">
+					<td style="font-weight: Bold; font-size: 16px">
 						Language Arts (Refer to tracking cards)										
 					</td>
 				</tr>
 
 				<tr>
-					<td style="font-weight: Bold; font-size: 18px">
+					<td style="font-weight: Bold; font-size: 16px">
 						Demonstrates emergent reading and writing skills:					
 					</td>
 				</tr>
@@ -245,7 +245,7 @@
 							@if($score_s1->k_level_id == $grades->id)
 
 
-								<tr style="font-size: 18px;">
+								<tr style="font-size: 16px;">
 
 									<td>{{$score_s1->KSubject->name}}</td>
 									<td style="text-align:center">
@@ -273,7 +273,7 @@
 				{{--Exhibits appropriate word study skills:	--}}
 
 				<tr>
-					<td style="font-weight: Bold; font-size: 18px">
+					<td style="font-weight: Bold; font-size: 16px">
 					Exhibits appropriate word study skills:					
 					</td>
 				</tr>
@@ -285,7 +285,7 @@
 
 							@if($score_s1->k_level_id == $grades->id)
 
-								<tr style="font-size: 18px">
+								<tr style="font-size: 16px">
 
 									<td>{{$score_s1->KSubject->name}}</td>
 									<td style="text-align:center">
@@ -311,13 +311,13 @@
 
 
 				<tr>
-					<td style="font-weight: Bold; font-size: 18px">
+					<td style="font-weight: Bold; font-size: 16px">
 					Khmer					
 					</td>
 				</tr>
 
 				<tr>
-					<td style="font-weight: Bold; font-size: 18px">
+					<td style="font-weight: Bold; font-size: 16px">
 					Demonstrates emergent reading and writing skills:					
 					</td>
 				</tr>
@@ -330,7 +330,7 @@
 							@if($score_s1->k_level_id == $grades->id)
 
 
-								<tr style="font-size: 18px;">
+								<tr style="font-size: 16px;">
 
 									<td>{{$score_s1->KSubject->name}}</td>
 									<td style="text-align:center">
@@ -357,7 +357,7 @@
 				{{--Exhibits appropriate word study skills:	--}}
 
 				<tr>
-					<td style="font-weight: Bold; font-size: 18px">
+					<td style="font-weight: Bold; font-size: 16px">
 						Exhibits appropriate word study skills:					
 					</td>
 				</tr>
@@ -369,7 +369,7 @@
 
 							@if($score_s1->k_level_id == $grades->id)
 
-								<tr style="font-size: 18px;">
+								<tr style="font-size: 16px;">
 
 									<td>{{$score_s1->KSubject->name}}</td>
 									<td style="text-align:center">
@@ -396,7 +396,7 @@
 				{{--Mathematics (Refer to tracking cards)--}}
 
 				<tr>
-					<td style="font-weight: Bold; font-size: 18px">
+					<td style="font-weight: Bold; font-size: 16px">
 						Mathematics (Refer to tracking cards)					
 					</td>
 				</tr>
@@ -408,7 +408,7 @@
 
 							@if($score_s1->k_level_id == $grades->id)
 
-								<tr style="font-size: 18px;">
+								<tr style="font-size: 16px;">
 
 									<td>{{$score_s1->KSubject->name}}</td>
 									<td style="text-align:center">
@@ -435,13 +435,13 @@
 				{{--Grading Period	--}}
 
 				<tr>
-					<td style="font-weight: Bold; font-size: 18px">
+					<td style="font-weight: Bold; font-size: 16px">
 						Grading Period										
 					</td>
 				</tr>
 
 				<tr>
-					<td style="font-weight: Bold; font-size: 18px">
+					<td style="font-weight: Bold; font-size: 16px">
 						Physical Educe don / Health (Refer to tracking card)															
 					</td>
 				</tr>
@@ -453,7 +453,7 @@
 
 							@if($score_s1->k_level_id == $grades->id)
 
-								<tr style="font-size: 18px;">
+								<tr style="font-size: 16px;">
 
 									<td>{{$score_s1->KSubject->name}}</td>
 									<td style="text-align:center">
@@ -479,7 +479,7 @@
 
 				{{-- Science--}}
 				<tr>
-					<td style="font-weight: Bold; font-size: 18px">
+					<td style="font-weight: Bold; font-size: 16px">
 						Science																				
 					</td>
 				</tr>
@@ -491,7 +491,7 @@
 
 							@if($score_s1->k_level_id == $grades->id)
 
-								<tr style="font-size: 18px;">
+								<tr style="font-size: 16px;">
 
 									<td>{{$score_s1->KSubject->name}}</td>
 									<td style="text-align:center">
@@ -517,7 +517,7 @@
 
 				{{-- Social Studies	--}}
 				<tr>
-					<td style="font-weight: Bold; font-size: 18px">
+					<td style="font-weight: Bold; font-size: 16px">
 						Social Studies																									
 					</td>
 				</tr>
@@ -529,7 +529,7 @@
 
 							@if($score_s1->k_level_id == $grades->id)
 
-							<tr style="font-size: 18px;">
+							<tr style="font-size: 16px;">
 
 									<td>{{$score_s1->KSubject->name}}</td>
 
@@ -560,8 +560,8 @@
 				</tr>
 
 			    <tr>
-						<td style="font-size: 18px; font-weight: bold">Days Present</td>
-						<td style="font-size: 18px; font-weight:350" contenteditable="true" class="text-center">
+						<td style="font-size: 16px; font-weight: bold">Days Present</td>
+						<td style="font-size: 16px; font-weight:350" contenteditable="true" class="text-center">
 
 							@if ($selectedDaypresent == $dayPresents[0]->id)
 							@if ($prek_absent_quarter_1>0)
