@@ -600,7 +600,7 @@ Route::prefix('teacher')->group(function () {
     Route::get('/midterm/prek/{student_id}', 'MidtermTeacherController@prekPrintView')->name('teacher.midterm.prek.printview');
 
     //update midterm score for pre-k school
-    Route::post('/midterm/prekscore/update', 'MidtermController@midtermUpdatePrekScore')->name('teacher.midterm.prek.update');
+    Route::post('/midterm/prekscore/update', 'MidtermTeacherController@midtermUpdatePrekScore')->name('teacher.midterm.prek.update');
 
     //GradeK print view for midterm
     Route::get('/midterm/gradeK/{student_id}', 'MidtermTeacherController@gradeKPrintView')->name('teacher.midterm.gradeK.printview');
