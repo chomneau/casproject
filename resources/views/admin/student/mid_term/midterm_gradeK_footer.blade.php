@@ -59,7 +59,7 @@
 <div class="col-md-10 offset-1" style="margin-top: 4px">
   <div class="row">
       <div class="col-md-4 pull-left text-center">
-          <p style="font-size: 14px; margin-bottom:2em;">
+          <p style="font-size: 14px; margin-bottom:4em;">
           Date: 
           <span contenteditable="true">
             {{ @date("d-M-Y") }}
@@ -74,7 +74,7 @@
           
 
           <div class="col-md-4 pull-right text-center">
-          <p style="font-size: 14px; margin-bottom:2em">Date: {{ @date("d-M-Y") }}</p>
+          <p style="font-size: 14px; margin-bottom:4em">Date: {{ @date("d-M-Y") }}</p>
             <hr style="margin-bottom:1em">
             <p style="font-size: 14px">Homeroom Teacher's Signature</p>
           </div>
