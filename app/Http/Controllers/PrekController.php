@@ -263,7 +263,7 @@ class PrekController extends Controller
 
     }
 
-    //deleted subject from secondaryScore
+    //deleted subject from PrekScore
     public function destroyPrekScore($id)
     {
         $deleteScore = PrekScore::find($id);
@@ -271,6 +271,99 @@ class PrekController extends Controller
         Session::flash('success', 'You have successfully delete score from student');
         return redirect()->back();
 
+    }
+
+    //update score in Prek and Grade K to make approval to to students
+    public function updatePrekApproveScore(Request $request, $grade_profile_id){
+        $input = $request->all();
+       
+        
+        $studentID = $input['studentID'];
+        $gradeID = $input['kgrade'];
+        $quarter = $input['quarter_name'];
+        $approveRadio = $input['approve_radio'];
+
+        
+
+        
+        $grade_profile_id = GradeProfile::find($grade_profile_id);
+        
+
+        $prekGradeKApproveScore = PrekScore::where(['k_level_id'=>$gradeID])->whereIn('student_profile_id', $studentID)->get();
+        
+
+        if($approveRadio == 'approve_score'){
+            if($quarter == 'quarter_1'){
+
+                foreach($prekGradeKApproveScore as $scoreID){
+                    $updateScore = PrekScore::findOrFail($scoreID->id);
+                    $updateScore->approve_score_q1 = 1;
+                    $updateScore->save();
+                }
+            }elseif($quarter == 'quarter_2'){
+                foreach($prekGradeKApproveScore as $scoreID){
+                    $updateScore = PrekScore::findOrFail($scoreID->id);
+                    $updateScore->approve_score_q2 = 1;
+                    $updateScore->save();
+                }
+            
+            }elseif($quarter == 'quarter_3'){
+                foreach($prekGradeKApproveScore as $scoreID){
+                    $updateScore = PrekScore::findOrFail($scoreID->id);
+                    $updateScore->approve_score_q3 = 1;
+                    $updateScore->save();
+                }
+            
+
+            }elseif($quarter == 'quarter_4'){
+                foreach($prekGradeKApproveScore as $scoreID){
+                    $updateScore = PrekScore::findOrFail($scoreID->id);
+                    $updateScore->approve_score_q4 = 1;
+                    $updateScore->save();
+                }
+            }
+        }elseif($approveRadio == 'unapprove_score'){
+            if($quarter == 'quarter_1'){
+
+                foreach($prekGradeKApproveScore as $scoreID){
+                    $updateScore = PrekScore::findOrFail($scoreID->id);
+                    $updateScore->approve_score_q1 = 0;
+                    $updateScore->save();
+                }
+            }elseif($quarter == 'quarter_2'){
+                foreach($prekGradeKApproveScore as $scoreID){
+                    $updateScore = PrekScore::findOrFail($scoreID->id);
+                    $updateScore->approve_score_q2 = 0;
+                    $updateScore->save();
+                }
+            
+            }elseif($quarter == 'quarter_3'){
+                foreach($prekGradeKApproveScore as $scoreID){
+                    $updateScore = PrekScore::findOrFail($scoreID->id);
+                    $updateScore->approve_score_q3 = 0;
+                    $updateScore->save();
+                }
+            
+
+            }elseif($quarter == 'quarter_4'){
+                foreach($prekGradeKApproveScore as $scoreID){
+                    $updateScore = PrekScore::findOrFail($scoreID->id);
+                    $updateScore->approve_score_q4 = 0;
+                    $updateScore->save();
+                }
+            }
+        }
+
+
+
+        $prekGradeKApproveScore = PrekScore::where(['k_level_id'=>$gradeID])->whereIn('student_profile_id', $studentID)->get();
+        
+        return view('admin.student.approve_score.approve_score_prek_gradeK')->with([
+            'studentScore' => $prekGradeKApproveScore,
+            'grade_profile_id' => $grade_profile_id,
+            
+
+        ]);
     }
 
 

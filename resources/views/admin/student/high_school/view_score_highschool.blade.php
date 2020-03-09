@@ -12,6 +12,7 @@
                                 <thead>
                                     <tr>
                                         
+                                        <th>N</th>
                                         <th>Subject Name</th>
                                         <th>Grade</th>
                                         <th>1<sup>st</sup> Quarter</th>
@@ -34,7 +35,9 @@
                                     <tr>
                                         
 
-                                        {{--display subject name--}} 
+                                        <td style="font-weight:bold; font-size:14px; padding-top:15px">
+                                            {{ $loop->iteration }}                   
+                                        </td>
 
                                         
                                             @if(count($subject))
@@ -43,7 +46,7 @@
 
                                                 @if($score->subject_id == $subjects->id)
 
-                                                    <td>
+                                                    <td style="font-weight:bold; font-size:14px; padding-top:15px">
                                                         {{ $subjects->name }}
                                                     </td>
                                                         
@@ -72,23 +75,54 @@
 
                                         
                                         <td class="text-center" >
-                                            <a href="" class="update" data-name="quarter_1"  data-type="number" data-pk="
-                                            {{$score->id }}" data-title="Quarter 1">{{ $score->quarter_1 }}
-                                            </a>
+                                            
+
+                                            @if($score->quarter_1 !== null)
+                                                @if($score->approve_score_q1==1)
+                                                    <i class="fa fa-check-circle-o text-success" aria-hidden="true"></i>
+                                                @else
+                                                    <i class="fa fa-times-circle-o text-danger" aria-hidden="true"></i>    
+                                                @endif
+                                                {{ $score->quarter_1 }}
+                                            @endif 
                                         </td>
                                         <td class="text-center" >
-                                            {{ $score->quarter_2 }}
+                                            
+                                            @if($score->quarter_2 !== null)
+                                                @if($score->approve_score_q2==1)
+                                                    <i class="fa fa-check-circle-o text-success" aria-hidden="true"></i>
+                                                @else
+                                                    <i class="fa fa-times-circle-o text-danger" aria-hidden="true"></i>    
+                                                @endif
+                                                {{ $score->quarter_2 }}
+                                            @endif 
                                             
                                         </td>
                                         {{--Semester 1--}}
                                         <td class="text-center" style="font-weight: bold">{{ $score->gpa_quarter_1 }}</td>
 
                                         <td class="text-center" >
-                                            {{ $score->quarter_3 }}
+                                            
+                                            @if($score->quarter_3 !== null)
+                                                @if($score->approve_score_q3==1)
+                                                    <i class="fa fa-check-circle-o text-success" aria-hidden="true"></i>
+                                                @else
+                                                    <i class="fa fa-times-circle-o text-danger" aria-hidden="true"></i>    
+                                                @endif
+                                                {{ $score->quarter_3 }}
+                                            @endif 
                                             
                                         </td>
                                         <td class="text-center" >
-                                            {{ $score->quarter_4 }}
+                                            
+                                            @if($score->quarter_4 !== null)
+                                                @if($score->approve_score_q4==1)
+                                                    <i class="fa fa-check-circle-o text-success" aria-hidden="true"></i>
+                                                @else
+                                                    <i class="fa fa-times-circle-o text-danger" aria-hidden="true"></i>    
+                                                @endif
+                                                {{ $score->quarter_4 }}
+                                            @endif 
                                             
                                         </td>
 

@@ -55,28 +55,27 @@
 					    	@foreach($grade as $grades)
 
 						    	@if($score_s1->grade_id == $grades->id)
-
 							    	
 							        <tr>
 							            
-							            <td style="font-size: 12px; font-weight: bold">{{$score_s1->Subject->name}}</td>
-							            <td style="font-size: 12px; font-weight: bold">{{ ($score_s1->Subject->credit)/2}}</td>
-							            <td style="font-size: 12px; font-weight: bold"> 
-
-							            	{{ $score_s1->gpa_quarter_1 }}
-							            
-
-							            </td>
-							            <td style="font-size: 12px; font-weight: bold">
+										<td style="font-size: 12px; font-weight: bold">{{$score_s1->Subject->name}}</td>
+										
+										@if($score_s1->approve_score_q1==1 && $score_s1->approve_score_q2==1)
 											
-											{{ round($score_s1->pts_1,2) }}
-											
-							            </td>
+											<td style="font-size: 12px; font-weight: bold">
+												{{ ($score_s1->Subject->credit)/2}}
+											</td>
+											<td style="font-size: 12px; font-weight: bold"> 
+
+												{{ $score_s1->gpa_quarter_1 }}							            
+
+											</td>
+											<td style="font-size: 12px; font-weight: bold">
+												{{ round($score_s1->pts_1,2) }}												
+											</td>
+										@endif
 
 							        </tr>
-							        
-							        
-									
 						        
 						        @endif
 
@@ -87,35 +86,39 @@
 
 			        <tr>
 						<th style="font-size: 12px; font-weight: bold">SEMESTER CREDIT</th>
-						<th style="font-size: 12px; font-weight: bold">{{ $credit_grade_9 }}</th>
+						<th style="font-size: 12px; font-weight: bold">
+							@foreach($score_grade_9 as $score_s1)
+								@if ($loop->first) 
+									@if($score_s1->approve_score_q1==1 && $score_s1->approve_score_q2==1)
+										{{ $credit_grade_9 }}
+									@endif
+								@endif	
+							@endforeach
+						</th>
 						<th style="font-size: 12px; font-weight: bold"> SEMESTER GPA</th>
 						<th style="font-size: 12px; font-weight: bold">
 
 							@if($credit_grade_9 <= 0)
 								<span>0.00</span>
 							@else
-								
-								{{ number_format($sum_pts_1_grade_9/$credit_grade_9, 2, '.', '') }}
-
+								@foreach($score_grade_9 as $score_s1)
+									@if ($loop->first) 
+										@if($score_s1->approve_score_q1==1 && $score_s1->approve_score_q2==1)
+											{{ number_format($sum_pts_1_grade_9/$credit_grade_9, 2, '.', '') }}
+										@endif
+									@endif
+								@endforeach	
 							@endif
-							
-
-							
+														
 						</th>
 					</tr>
-
-			        
-
-			        
+   
 			    </tbody>
 			    <!--Table body-->
 
 			</table>
 			<!--Table-->
-
-
-
-			
+	
 		</div>
 
 
@@ -175,21 +178,21 @@
 							    	
 							        <tr>
 							            
-							            <td style="font-size: 12px; font-weight: bold">{{$score_s1->Subject->name}}</td>
-							            <td style="font-size: 12px; font-weight: bold">
-							            	{{ ($score_s1->Subject->credit)/2}}</td>
-							            <td style="font-size: 12px; font-weight: bold" > 
+										<td style="font-size: 12px; font-weight: bold">{{$score_s1->Subject->name}}</td>
+										@if($score_s1->approve_score_q3==1 && $score_s1->approve_score_q4==1)
+											<td style="font-size: 12px; font-weight: bold">
+												{{ ($score_s1->Subject->credit)/2}}</td>
+											<td style="font-size: 12px; font-weight: bold" > 
 
-							            	{{ $score_s1->gpa_quarter_2 }}
-							            
+												{{ $score_s1->gpa_quarter_2 }}											
 
-							            </td>
-							            <td style="font-size: 12px; font-weight: bold" >
-											
-											{{ round($score_s1->pts_2,2) }}
-											
-							            </td>
-
+											</td>
+											<td style="font-size: 12px; font-weight: bold" >
+												
+												{{ round($score_s1->pts_2,2) }}
+												
+											</td>
+										@endif		
 							            
 
 							        </tr>
@@ -207,8 +210,13 @@
 			        <tr>
 						<th style="font-size: 12px; font-weight: bold">SEMESTER CREDIT</th>
 						<th style="font-size: 12px; font-weight: bold">
-
-							{{ $credit_grade_9 }}
+							@foreach($score_grade_9 as $score_s1)
+								@if ($loop->first) 
+									@if($score_s1->approve_score_q3==1 && $score_s1->approve_score_q4==1)
+										{{ $credit_grade_9 }}
+									@endif
+								@endif	
+							@endforeach
 
 						</th>
 
@@ -220,9 +228,13 @@
 							@if($credit_grade_9 <= 0)
 								<span>0.00</span>
 							@else
-								
-								{{ number_format($sum_pts_2_grade_9/$credit_grade_9, 2, '.', '') }}
-
+								@foreach($score_grade_9 as $score_s1)
+									@if ($loop->first) 
+										@if($score_s1->approve_score_q3==1 && $score_s1->approve_score_q4==1)
+											{{ number_format($sum_pts_2_grade_9/$credit_grade_9, 2, '.', '') }}
+										@endif		
+									@endif							
+								@endforeach
 							@endif
 						</th>
 

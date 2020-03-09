@@ -85,10 +85,26 @@
 											<tr style="font-size: 18px;">
 							            
 							            <td>{{$score_s1->KSubject->name}}</td>
-							            <td style="text-align:center">{{ $score_s1->quarter_1}}</td>
-							            <td style="text-align:center">{{ $score_s1->quarter_2}}</td>
-							            <td style="text-align:center">{{ $score_s1->quarter_3}}</td>
-							            <td style="text-align:center">{{ $score_s1->quarter_4}}</td>
+							            <td style="text-align:center">
+											@if($score_s1->approve_score_q1 ==1)
+												{{ $score_s1->quarter_1}}	
+											@endif
+										</td>
+										<td style="text-align:center">
+											@if($score_s1->approve_score_q2 ==1)
+												{{ $score_s1->quarter_2}}
+											@endif
+										</td>
+										<td style="text-align:center">
+											@if($score_s1->approve_score_q3 ==1)
+												{{ $score_s1->quarter_3}}											
+											@endif
+										</td>
+										<td style="text-align:center">
+											@if($score_s1->approve_score_q4 ==1)
+												{{ $score_s1->quarter_4}}
+											@endif
+										</td>
 
 							      	</tr>
 
@@ -118,10 +134,26 @@
 								<tr style="font-size: 18px;">
 
 									<td>{{$score_s1->KSubject->name}}</td>
-									<td style="text-align:center">{{ $score_s1->quarter_1}}</td>
-									<td style="text-align:center">{{ $score_s1->quarter_2}}</td>									
-									<td style="text-align:center">{{ $score_s1->quarter_3}}</td>
-									<td style="text-align:center">{{ $score_s1->quarter_4}}</td>
+									<td style="text-align:center">
+										@if($score_s1->approve_score_q1 ==1)
+											{{ $score_s1->quarter_1}}	
+										@endif
+									</td>
+									<td style="text-align:center">
+										@if($score_s1->approve_score_q2 ==1)
+											{{ $score_s1->quarter_2}}
+										@endif
+									</td>
+									<td style="text-align:center">
+										@if($score_s1->approve_score_q3 ==1)
+											{{ $score_s1->quarter_3}}											
+										@endif
+									</td>
+									<td style="text-align:center">
+										@if($score_s1->approve_score_q4 ==1)
+											{{ $score_s1->quarter_4}}
+										@endif
+									</td>
 								
 								</tr>
 
@@ -151,10 +183,27 @@
 								<tr style="font-size: 18px;">
 
 									<td>{{$score_s1->KSubject->name}}</td>
-									<td style="text-align:center">{{ $score_s1->quarter_1}}</td>
-									<td style="text-align:center">{{ $score_s1->quarter_2}}</td>
-									<td style="text-align:center">{{ $score_s1->quarter_3}}</td>
-									<td style="text-align:center">{{ $score_s1->quarter_4}}</td>
+
+									<td style="text-align:center">
+										@if($score_s1->approve_score_q1 ==1)
+											{{ $score_s1->quarter_1}}	
+										@endif
+									</td>
+									<td style="text-align:center">
+										@if($score_s1->approve_score_q2 ==1)
+											{{ $score_s1->quarter_2}}
+										@endif
+									</td>
+									<td style="text-align:center">
+										@if($score_s1->approve_score_q3 ==1)
+											{{ $score_s1->quarter_3}}											
+										@endif
+									</td>
+									<td style="text-align:center">
+										@if($score_s1->approve_score_q4 ==1)
+											{{ $score_s1->quarter_4}}
+										@endif
+									</td>
 
 								</tr>
 
@@ -182,10 +231,26 @@
 								<tr style="font-size: 18px;">
 
 									<td>{{$score_s1->KSubject->name}}</td>
-									<td style="text-align:center">{{ $score_s1->quarter_1}}</td>
-									<td style="text-align:center">{{ $score_s1->quarter_2}}</td>
-									<td style="text-align:center">{{ $score_s1->quarter_3}}</td>
-									<td style="text-align:center">{{ $score_s1->quarter_4}}</td>	
+									<td style="text-align:center">
+										@if($score_s1->approve_score_q1 ==1)
+											{{ $score_s1->quarter_1}}	
+										@endif
+									</td>
+									<td style="text-align:center">
+										@if($score_s1->approve_score_q2 ==1)
+											{{ $score_s1->quarter_2}}
+										@endif
+									</td>
+									<td style="text-align:center">
+										@if($score_s1->approve_score_q3 ==1)
+											{{ $score_s1->quarter_3}}											
+										@endif
+									</td>
+									<td style="text-align:center">
+										@if($score_s1->approve_score_q4 ==1)
+											{{ $score_s1->quarter_4}}
+										@endif
+									</td>	
 
 								</tr>
 
@@ -221,10 +286,26 @@
 								<tr style="font-size: 18px;">
 
 									<td>{{$score_s1->KSubject->name}}</td>
-									<td style="text-align:center">{{ $score_s1->quarter_1}}</td>
-									<td style="text-align:center">{{ $score_s1->quarter_2 }}</td>									
-									<td style="text-align:center">{{ $score_s1->quarter_3}}</td>
-									<td style="text-align:center">{{ $score_s1->quarter_4}}</td>
+									<td style="text-align:center">
+										@if($score_s1->approve_score_q1 ==1)
+											{{ $score_s1->quarter_1}}	
+										@endif
+									</td>
+									<td style="text-align:center">
+										@if($score_s1->approve_score_q2 ==1)
+											{{ $score_s1->quarter_2}}
+										@endif
+									</td>
+									<td style="text-align:center">
+										@if($score_s1->approve_score_q3 ==1)
+											{{ $score_s1->quarter_3}}											
+										@endif
+									</td>
+									<td style="text-align:center">
+										@if($score_s1->approve_score_q4 ==1)
+											{{ $score_s1->quarter_4}}
+										@endif
+									</td>
 	
 								</tr>
 
@@ -254,10 +335,26 @@
 								<tr style="font-size: 18px">
 
 									<td>{{$score_s1->KSubject->name}}</td>
-									<td style="text-align:center">{{ $score_s1->quarter_1}}</td>
-									<td style="text-align:center">{{ $score_s1->quarter_2}}</td>									
-									<td style="text-align:center">{{ $score_s1->quarter_3}}</td>
-									<td style="text-align:center">{{ $score_s1->quarter_4}}</td>									
+									<td style="text-align:center">
+										@if($score_s1->approve_score_q1 ==1)
+											{{ $score_s1->quarter_1}}	
+										@endif
+									</td>
+									<td style="text-align:center">
+										@if($score_s1->approve_score_q2 ==1)
+											{{ $score_s1->quarter_2}}
+										@endif
+									</td>
+									<td style="text-align:center">
+										@if($score_s1->approve_score_q3 ==1)
+											{{ $score_s1->quarter_3}}											
+										@endif
+									</td>
+									<td style="text-align:center">
+										@if($score_s1->approve_score_q4 ==1)
+											{{ $score_s1->quarter_4}}
+										@endif
+									</td>									
 
 								</tr>
 
@@ -292,10 +389,26 @@
 								<tr style="font-size: 18px;">
 
 									<td>{{$score_s1->KSubject->name}}</td>
-									<td style="text-align:center">{{ $score_s1->quarter_1}}</td>
-									<td style="text-align:center">{{ $score_s1->quarter_2}}</td>									
-									<td style="text-align:center">{{ $score_s1->quarter_3}}</td>
-									<td style="text-align:center">{{ $score_s1->quarter_4}}</td>
+									<td style="text-align:center">
+										@if($score_s1->approve_score_q1 ==1)
+											{{ $score_s1->quarter_1}}	
+										@endif
+									</td>
+									<td style="text-align:center">
+										@if($score_s1->approve_score_q2 ==1)
+											{{ $score_s1->quarter_2}}
+										@endif
+									</td>
+									<td style="text-align:center">
+										@if($score_s1->approve_score_q3 ==1)
+											{{ $score_s1->quarter_3}}											
+										@endif
+									</td>
+									<td style="text-align:center">
+										@if($score_s1->approve_score_q4 ==1)
+											{{ $score_s1->quarter_4}}
+										@endif
+									</td>
 									
 								</tr>
 
@@ -324,10 +437,26 @@
 								<tr style="font-size: 18px;">
 
 									<td>{{$score_s1->KSubject->name}}</td>
-									<td style="text-align:center">{{ $score_s1->quarter_1}}</td>
-									<td style="text-align:center">{{ $score_s1->quarter_2}}</td>									
-									<td style="text-align:center">{{ $score_s1->quarter_3}}</td>
-									<td style="text-align:center">{{ $score_s1->quarter_4}}</td>
+									<td style="text-align:center">
+										@if($score_s1->approve_score_q1 ==1)
+											{{ $score_s1->quarter_1}}	
+										@endif
+									</td>
+									<td style="text-align:center">
+										@if($score_s1->approve_score_q2 ==1)
+											{{ $score_s1->quarter_2}}
+										@endif
+									</td>
+									<td style="text-align:center">
+										@if($score_s1->approve_score_q3 ==1)
+											{{ $score_s1->quarter_3}}											
+										@endif
+									</td>
+									<td style="text-align:center">
+										@if($score_s1->approve_score_q4 ==1)
+											{{ $score_s1->quarter_4}}
+										@endif
+									</td>
 
 								</tr>
 
@@ -356,10 +485,26 @@
 								<tr style="font-size: 18px;">
 
 									<td>{{$score_s1->KSubject->name}}</td>
-									<td style="text-align:center">{{ $score_s1->quarter_1}}</td>
-									<td style="text-align:center">{{ $score_s1->quarter_2 }}</td>
-									<td style="text-align:center">{{ $score_s1->quarter_3 }}</td>
-									<td style="text-align:center">{{ $score_s1->quarter_4}}</td>
+									<td style="text-align:center">
+										@if($score_s1->approve_score_q1 ==1)
+											{{ $score_s1->quarter_1}}	
+										@endif
+									</td>
+									<td style="text-align:center">
+										@if($score_s1->approve_score_q2 ==1)
+											{{ $score_s1->quarter_2}}
+										@endif
+									</td>
+									<td style="text-align:center">
+										@if($score_s1->approve_score_q3 ==1)
+											{{ $score_s1->quarter_3}}											
+										@endif
+									</td>
+									<td style="text-align:center">
+										@if($score_s1->approve_score_q4 ==1)
+											{{ $score_s1->quarter_4}}
+										@endif
+									</td>
 
 								</tr>
 
@@ -394,10 +539,26 @@
 								<tr style="font-size: 18px;">
 
 									<td>{{$score_s1->KSubject->name}}</td>
-									<td style="text-align:center">{{ $score_s1->quarter_1}}</td>
-									<td style="text-align:center">{{ $score_s1->quarter_2 }}</td>
-									<td style="text-align:center">{{ $score_s1->quarter_3 }}</td>
-									<td style="text-align:center">{{ $score_s1->quarter_4}}</td>
+									<td style="text-align:center">
+										@if($score_s1->approve_score_q1 ==1)
+											{{ $score_s1->quarter_1}}	
+										@endif
+									</td>
+									<td style="text-align:center">
+										@if($score_s1->approve_score_q2 ==1)
+											{{ $score_s1->quarter_2}}
+										@endif
+									</td>
+									<td style="text-align:center">
+										@if($score_s1->approve_score_q3 ==1)
+											{{ $score_s1->quarter_3}}											
+										@endif
+									</td>
+									<td style="text-align:center">
+										@if($score_s1->approve_score_q4 ==1)
+											{{ $score_s1->quarter_4}}
+										@endif
+									</td>
 									
 								</tr>
 
@@ -425,10 +586,26 @@
 								<tr style="font-size: 18px;">
 
 									<td>{{$score_s1->KSubject->name}}</td>
-									<td style="text-align:center">{{ $score_s1->quarter_1}}</td>
-									<td style="text-align:center">{{ $score_s1->quarter_2 }}</td>									
-									<td style="text-align:center">{{ $score_s1->quarter_3 }}</td>
-									<td style="text-align:center">{{ $score_s1->quarter_4}}</td>
+									<td style="text-align:center">
+										@if($score_s1->approve_score_q1 ==1)
+											{{ $score_s1->quarter_1}}	
+										@endif
+									</td>
+									<td style="text-align:center">
+										@if($score_s1->approve_score_q2 ==1)
+											{{ $score_s1->quarter_2}}
+										@endif
+									</td>
+									<td style="text-align:center">
+										@if($score_s1->approve_score_q3 ==1)
+											{{ $score_s1->quarter_3}}											
+										@endif
+									</td>
+									<td style="text-align:center">
+										@if($score_s1->approve_score_q4 ==1)
+											{{ $score_s1->quarter_4}}
+										@endif
+									</td>
 									
 								</tr>
 
@@ -457,10 +634,26 @@
 
 									<td>{{$score_s1->KSubject->name}}</td>
 
-									<td style="text-align:center">{{ $score_s1->quarter_1}}</td>
-									<td style="text-align:center">{{ $score_s1->quarter_2 }}</td>									
-									<td style="text-align:center">{{ $score_s1->quarter_3 }}</td>
-									<td style="text-align:center">{{ $score_s1->quarter_4}}</td>
+									<td style="text-align:center">
+										@if($score_s1->approve_score_q1 ==1)
+											{{ $score_s1->quarter_1}}	
+										@endif
+									</td>
+									<td style="text-align:center">
+										@if($score_s1->approve_score_q2 ==1)
+											{{ $score_s1->quarter_2}}
+										@endif
+									</td>
+									<td style="text-align:center">
+										@if($score_s1->approve_score_q3 ==1)
+											{{ $score_s1->quarter_3}}											
+										@endif
+									</td>
+									<td style="text-align:center">
+										@if($score_s1->approve_score_q4 ==1)
+											{{ $score_s1->quarter_4}}
+										@endif
+									</td>
 
 								</tr>
 
@@ -482,7 +675,7 @@
 
 							@foreach($subject_code_SD as $score_s1)
 							@if($loop->first)
-								@if ($score_s1->quarter_1 )
+								@if ($score_s1->quarter_1 && $score_s1->approve_score_q1 == 1)
 								
 									@if ($prek_absent_quarter_1>0)
 										{{ floor($total_daypresent_1 - $prek_absent_quarter_1) }} / {{ $total_daypresent_1 }}
@@ -500,7 +693,7 @@
 
 							@foreach($subject_code_SD as $score_s1)
 							@if($loop->first)
-								@if ($score_s1->quarter_2 )
+								@if ($score_s1->quarter_2 && $score_s1->approve_score_q2==1 )
 								
 									@if ($prek_absent_quarter_2>0)
 										{{ floor($total_daypresent_2 - $prek_absent_quarter_2) }} / {{ $total_daypresent_2 }}
@@ -518,7 +711,7 @@
 
 							@foreach($subject_code_SD as $score_s1)
 							@if($loop->first)
-								@if ($score_s1->quarter_3 )
+								@if ($score_s1->quarter_3 && $score_s1->approve_score_q3==1)
 								
 									@if ($prek_absent_quarter_3>0)
 										{{ floor($total_daypresent_3 - $prek_absent_quarter_3) }} / {{ $total_daypresent_3 }}
@@ -537,7 +730,7 @@
 
 						@foreach($subject_code_SD as $score_s1)
 							@if($loop->first)
-								@if ($score_s1->quarter_4 )
+								@if ($score_s1->quarter_4 && $score_s1->approve_score_q4==1 )
 								
 									@if ($prek_absent_quarter_4>0)
 										{{ floor($total_daypresent_4 - $prek_absent_quarter_4) }} / {{ $total_daypresent_4 }}

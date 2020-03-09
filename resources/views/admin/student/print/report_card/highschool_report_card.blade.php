@@ -84,58 +84,58 @@
 					    	@foreach($grade as $grades)
 
 						    	@if($score_s1->grade_id == $grades->id)
-
 							    	
-							        <tr>
-
-							            
-							            <td style="font-size: 16px; font-weight: bold" >		{{$score_s1->subject->name}}
+							        <tr>							            
+										<td style="font-size: 16px; font-weight: bold" >		
+											{{$score_s1->subject->name}}
 							            </td>
-							            <td style="font-size: 16px; " class="text-center">
-							            	{{ $score_s1->quarter_1}}
+							            <td style="font-size: 16px; " class="text-center">											
+											@if($score_s1->approve_score_q1 ==1)
+												{{ $score_s1->quarter_1}}
+											@endif
+										</td>
+										
+
+							            <td style="font-size: 16px; " class="text-center">											
+											@if($score_s1->approve_score_q2 ==1)
+												{{ $score_s1->quarter_2}}
+											@endif
 							            </td>
-
-							            <td style="font-size: 16px; " class="text-center">
-							            	{{ $score_s1->quarter_2}}
-							            </td>
-													<td style="font-size: 16px; font-weight: bold" class="text-center"> 
-														<?php
-															if(!$score_s1->quarter_1 == null && !$score_s1->quarter_2 == null){
-															 echo number_format(ceil(($score_s1->quarter_1+$score_s1->quarter_2)/2), 2, '.', ',');
-															}
-														
-														?>
-
-
-														<!-- number_format($number, 2, '.', ',') -->
-							            
-
-							            </td>
-
-							            <td style="font-size: 16px; " class="text-center">
-							            	{{ $score_s1->quarter_3}}
+										<td style="font-size: 16px; font-weight: bold" class="text-center"> 
+											@if($score_s1->approve_score_q1 ==1 && $score_s1->approve_score_q2 ==1)
+												<?php
+													if(!$score_s1->quarter_1 == null && !$score_s1->quarter_2 == null){
+														echo number_format(ceil(($score_s1->quarter_1+$score_s1->quarter_2)/2), 2, '.', ',');
+													}							
+												?>
+											@endif
 							            </td>
 
 							            <td style="font-size: 16px; " class="text-center">
-							            	{{ $score_s1->quarter_4}}
+											
+											@if($score_s1->approve_score_q3 ==1)
+												{{ $score_s1->quarter_3}}
+											@endif
 							            </td>
 
-													<td style="font-size: 16px; font-weight: bold" class="text-center"> 
-														
-														<?php
-															if(!$score_s1->quarter_3 == null && !$score_s1->quarter_4 == null){
-															 echo number_format(ceil(($score_s1->quarter_3+$score_s1->quarter_4)/2), 2, '.', ',');
-															}
-														
-														?>
-							            
-
+							            <td style="font-size: 16px; " class="text-center">
+											
+											@if($score_s1->approve_score_q4 ==1)
+												{{ $score_s1->quarter_4}}
+											@endif
 							            </td>
 
-
+										<td style="font-size: 16px; font-weight: bold" class="text-center"> 
+											@if($score_s1->approve_score_q3 ==1 && $score_s1->approve_score_q4 ==1)
+											<?php
+												if(!$score_s1->quarter_3 == null && !$score_s1->quarter_4 == null){
+													echo number_format(ceil(($score_s1->quarter_3+$score_s1->quarter_4)/2), 2, '.', ',');
+												}											
+											?>
+											@endif
+							            </td>
 							        </tr>
-							        
-						        
+							        						        
 						        @endif
 
 					        @endforeach
@@ -144,92 +144,75 @@
 			        @endif
 
 			    <tr>
-						<td style="font-size: 16px; font-weight: bold">Days Present</td>
-
+				<td style="font-size: 16px; font-weight: bold">Days Present</td>
 												
 				<td style="font-size: 16px; font-weight:350" contenteditable="true" class="text-center">
 					
-						@foreach($semester_1 as $score_s1)
-							@if($loop->first)
-								@if ($score_s1->quarter_1 )
-								
-									@if ($highschool_absent_quarter_1>0)
-									{{ floor($total_daypresent_1 - $highschool_absent_quarter_1) }} / {{ $total_daypresent_1 }}
-									@else
-									{{ $total_daypresent_1  }} / {{ $total_daypresent_1  }}
-									@endif
-
-								@endif
-							@endif	
-						@endforeach
+					@foreach($semester_1 as $score_s1)
+						@if($loop->first)
+							@if ($score_s1->quarter_1 && $score_s1->approve_score_q1==1 )
 							
-					
+								@if ($highschool_absent_quarter_1>0)
+								{{ floor($total_daypresent_1 - $highschool_absent_quarter_1) }} / {{ $total_daypresent_1 }}
+								@else
+								{{ $total_daypresent_1  }} / {{ $total_daypresent_1  }}
+								@endif
 
-
-					{{-- @if($total_daypresent_1==1)
-						{{ $total_daypresent_1  }}/{{ $total_daypresent_1  }}
-					@elseif($total_daypresent_1>1)
-						
-						{{ floor($total_daypresent_1 - $highschool_absent_quarter_1) }} / {{ $total_daypresent_1 }}
-
-					@endif							 --}}
+							@endif
+						@endif	
+					@endforeach
 					
 				</td>
 
-						<td class="text-center" style="font-size: 16px" contenteditable="true">
+				<td class="text-center" style="font-size: 16px" contenteditable="true">
+				
+				@foreach($semester_1 as $score_s1)
+					@if($loop->first)
+						@if ($score_s1->quarter_2 && $score_s1->approve_score_q2==1)
 						
-						@foreach($semester_1 as $score_s1)
-							@if($loop->first)
-								@if ($score_s1->quarter_2 )
-								
-									@if ($highschool_absent_quarter_2>0)
-									{{ floor($total_daypresent_2 - $highschool_absent_quarter_2) }} / {{ $total_daypresent_2 }}
-									@else
-									{{ $total_daypresent_2  }} / {{ $total_daypresent_2  }}
-									@endif
+							@if ($highschool_absent_quarter_2>0)
+							{{ floor($total_daypresent_2 - $highschool_absent_quarter_2) }} / {{ $total_daypresent_2 }}
+							@else
+							{{ $total_daypresent_2  }} / {{ $total_daypresent_2  }}
+							@endif
 
-								@endif
-							@endif	
-						@endforeach
+						@endif
+					@endif	
+				@endforeach
 
-						</td>
-					{{--semester_1--}}
-						<td class="text-center" style="font-size: 16px; font-weight:bold" contenteditable="true">
+				</td>
+			{{--semester_1--}}
+				<td class="text-center" style="font-size: 16px; font-weight:bold" contenteditable="true">
 
+					@foreach($semester_1 as $score_s1)
+						@if($loop->first)
+							@if ($score_s1->quarter_1 && $score_s1->quarter_2 && $score_s1->approve_score_q1==1 && $score_s1->approve_score_q2==1)
 							
-							@foreach($semester_1 as $score_s1)
-							@if($loop->first)
-								@if ($score_s1->quarter_1 && $score_s1->quarter_2 )
-								
-								{{ ($total_daypresent_1 - $highschool_absent_quarter_1) + ($total_daypresent_2 - $highschool_absent_quarter_2) }} / {{ $total_daypresent_1 + $total_daypresent_2 }}
+							{{ ($total_daypresent_1 - $highschool_absent_quarter_1) + ($total_daypresent_2 - $highschool_absent_quarter_2) }} / {{ $total_daypresent_1 + $total_daypresent_2 }}
 
+							@endif
+						@endif	
+					@endforeach
+					
+				</td>
+
+				<td class="text-center" style="font-size: 16px" contenteditable="true">
+
+					@foreach($semester_1 as $score_s1)
+						@if($loop->first)
+							@if ($score_s1->quarter_3 && $score_s1->approve_score_q3==1)
+							
+								@if ($highschool_absent_quarter_3>0)
+								{{ floor($total_daypresent_3 - $highschool_absent_quarter_3) }} / {{ $total_daypresent_3 }}
+								@else
+								{{ $total_daypresent_3  }} / {{ $total_daypresent_3  }}
 								@endif
-							@endif	
-						@endforeach
-						 
 
-						</td>
+							@endif
+						@endif	
+					@endforeach
 
-
-						<td class="text-center" style="font-size: 16px" contenteditable="true">
-
-							@foreach($semester_1 as $score_s1)
-							@if($loop->first)
-								@if ($score_s1->quarter_3 )
-								
-									@if ($highschool_absent_quarter_3>0)
-									{{ floor($total_daypresent_3 - $highschool_absent_quarter_3) }} / {{ $total_daypresent_3 }}
-									@else
-									{{ $total_daypresent_3  }} / {{ $total_daypresent_3  }}
-									@endif
-
-								@endif
-							@endif	
-						@endforeach
-
-						
-												
-						</td>
+				</td>
 
 
 						<td class="text-center" style="font-size: 16px" contenteditable="true">
@@ -237,7 +220,7 @@
 							
 						@foreach($semester_1 as $score_s1)
 							@if($loop->first)
-								@if ($score_s1->quarter_4 )
+								@if ($score_s1->quarter_4 && $score_s1->approve_score_q4==1 )
 								
 									@if ($highschool_absent_quarter_4>0)
 									{{ floor($total_daypresent_4 - $highschool_absent_quarter_4) }} / {{ $total_daypresent_4 }}
@@ -257,7 +240,7 @@
 
 						@foreach($semester_1 as $score_s1)
 							@if($loop->first)
-								@if ($score_s1->quarter_3 && $score_s1->quarter_4 )
+								@if ($score_s1->quarter_3 && $score_s1->quarter_4 && $score_s1->approve_score_q3 == 1 && $score_s1->approve_score_q4 == 1)
 								
 								{{ ($total_daypresent_3 - $highschool_absent_quarter_3) + ($total_daypresent_4 - $highschool_absent_quarter_4) }} / {{ $total_daypresent_3 + $total_daypresent_4 }}
 

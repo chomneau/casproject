@@ -11,7 +11,7 @@
         <div class="">
             <div class="page-title">
                 <div class="title_left">
-                    <h3>ALL STUDENT <small></small></h3>
+                    <h3>ALL STUDENTS <small></small></h3>
                 </div>
 
                 <div class="title_right">

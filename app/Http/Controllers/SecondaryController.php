@@ -270,5 +270,100 @@ class SecondaryController extends Controller
 
     }
 
+       
+    
+//update score in secondary to make approval to to students
+    public function updateSecondaryApproveScore(Request $request, $grade_profile_id){
+        $input = $request->all();
+       
+        
+        $studentID = $input['studentID'];
+        $gradeID = $input['secondaryGrade'];
+        $quarter = $input['quarter_name'];
+        $approveRadio = $input['approve_radio'];
+
+        
+
+        
+        $grade_profile_id = GradeProfile::find($grade_profile_id);
+        
+
+        $secondaryApproveScore = SecondaryScore::where(['secondary_level_id'=>$gradeID])->whereIn('student_profile_id', $studentID)->get();
+        
+
+        if($approveRadio == 'approve_score'){
+            if($quarter == 'quarter_1'){
+
+                foreach($secondaryApproveScore as $scoreID){
+                    $updateScore = SecondaryScore::findOrFail($scoreID->id);
+                    $updateScore->approve_score_q1 = 1;
+                    $updateScore->save();
+                }
+            }elseif($quarter == 'quarter_2'){
+                foreach($secondaryApproveScore as $scoreID){
+                    $updateScore = SecondaryScore::findOrFail($scoreID->id);
+                    $updateScore->approve_score_q2 = 1;
+                    $updateScore->save();
+                }
+            
+            }elseif($quarter == 'quarter_3'){
+                foreach($secondaryApproveScore as $scoreID){
+                    $updateScore = SecondaryScore::findOrFail($scoreID->id);
+                    $updateScore->approve_score_q3 = 1;
+                    $updateScore->save();
+                }
+            
+
+            }elseif($quarter == 'quarter_4'){
+                foreach($secondaryApproveScore as $scoreID){
+                    $updateScore = SecondaryScore::findOrFail($scoreID->id);
+                    $updateScore->approve_score_q4 = 1;
+                    $updateScore->save();
+                }
+            }
+        }elseif($approveRadio == 'unapprove_score'){
+            if($quarter == 'quarter_1'){
+
+                foreach($secondaryApproveScore as $scoreID){
+                    $updateScore = SecondaryScore::findOrFail($scoreID->id);
+                    $updateScore->approve_score_q1 = 0;
+                    $updateScore->save();
+                }
+            }elseif($quarter == 'quarter_2'){
+                foreach($secondaryApproveScore as $scoreID){
+                    $updateScore = SecondaryScore::findOrFail($scoreID->id);
+                    $updateScore->approve_score_q2 = 0;
+                    $updateScore->save();
+                }
+            
+            }elseif($quarter == 'quarter_3'){
+                foreach($secondaryApproveScore as $scoreID){
+                    $updateScore = SecondaryScore::findOrFail($scoreID->id);
+                    $updateScore->approve_score_q3 = 0;
+                    $updateScore->save();
+                }
+            
+
+            }elseif($quarter == 'quarter_4'){
+                foreach($secondaryApproveScore as $scoreID){
+                    $updateScore = SecondaryScore::findOrFail($scoreID->id);
+                    $updateScore->approve_score_q4 = 0;
+                    $updateScore->save();
+                }
+            }
+        }
+
+
+
+        $secondaryApproveScore = SecondaryScore::where(['secondary_level_id'=>$gradeID])->whereIn('student_profile_id', $studentID)->get();
+        
+        return view('admin.student.approve_score.approve_score_secondary')->with([
+            'studentScore' => $secondaryApproveScore,
+            'grade_profile_id' => $grade_profile_id,
+            
+
+        ]);
+    }
+
 
 }

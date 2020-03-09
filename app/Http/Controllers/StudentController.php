@@ -36,7 +36,7 @@ class StudentController extends Controller
         $this->middleware('auth:admin');
         
 
-        $this->grade = Grade::orderBy('grade_name', 'decs')->get();
+        $this->grade = Grade::orderBy('id', 'asc')->get();
         View::share('grade', $this->grade);
 
         $this->kgrade = KLevel::orderBy('name', 'asc')->get();
@@ -57,6 +57,9 @@ class StudentController extends Controller
 
         $this->gradeProfile = GradeProfile::orderBy('order', 'asc')->get();
         View::share('gradeProfile', $this->gradeProfile);
+
+        $this->daypresent = DayPresent::all();
+        View::share('daypresent', $this->daypresent);
     }
 
 
@@ -88,6 +91,9 @@ class StudentController extends Controller
 
     public function viewAllStudentByGrade($grade_profile_id){
         $viewStudentByGrade = StudentProfile::where(['grade_profile_id'=>$grade_profile_id])->OrderBy('last_name', 'asc')->OrderBy('first_name', 'asc')->get();
+
+    
+        $gradeID = StudentProfile::find($grade_profile_id);
         $countStudentByGrade = StudentProfile::withCount('GradeProfile')->where(['grade_profile_id'=>$grade_profile_id])->count();
         $countMaleStudentByGrade = StudentProfile::withCount('GradeProfile')->where(['grade_profile_id'=>$grade_profile_id, 'gender'=>'Male'])->count();
         $countFemaleStudentByGrade = StudentProfile::withCount('GradeProfile')->where(['grade_profile_id'=>$grade_profile_id, 'gender'=>'Female'])->count();
@@ -100,7 +106,127 @@ class StudentController extends Controller
             'countStudentByGrade'=>$countStudentByGrade,
             'countMaleStudentByGrade'=>$countMaleStudentByGrade,
             'countFemaleStudentByGrade'=>$countFemaleStudentByGrade,
-            'grade'=>$grade
+            'grade'=>$grade,
+            'gradeID'=>$gradeID,
+            //'student_ID'=>$student_ID,
+            
+        ]);
+    }
+
+    //approve Student Score for High School
+
+    public function approveByGrade($gradeID){
+
+        $viewStudentByGrade = StudentProfile::where(['grade_profile_id'=>$gradeID])->OrderBy('last_name', 'asc')->OrderBy('first_name', 'asc')->get();
+        
+        $countStudent = $viewStudentByGrade->count();
+
+        $grade_profile_id = GradeProfile::find($gradeID);
+        
+        // $studentid = StudentProfile::find($student_ID)->get();
+
+        foreach($viewStudentByGrade as $student){
+            $st[] = $student->id; 
+        }
+        //return $st;
+        
+
+        //return $viewStudentByGrade;
+
+        $studentprofile = Score::where(['grade_id'=>$gradeID])->whereIn('student_profile_id', $st)->get();
+        return view('admin.student.approve_score.approve_by_grade')->with([
+            'studentprofile'=> $studentprofile,
+            'studentID'=> $st,
+            'grade_profile_id'=>$grade_profile_id
+            ]);
+    }
+
+    //update score in highschool to make approval to to students
+    public function updateHighschoolApproveScore(Request $request, $grade_profile_id){
+        $input = $request->all();
+
+        
+        $studentID = $input['studentID'];
+        $gradeID = $input['grade'];
+        $quarter = $input['quarter_name'];
+        $approveRadio = $input['approve_radio'];
+
+        
+        $grade_profile_id = GradeProfile::find($grade_profile_id);
+        
+
+        $highSchoolApproveScore = Score::where(['grade_id'=>$gradeID])->whereIn('student_profile_id', $studentID)->get();
+
+        if($approveRadio == 'approve_score'){
+            if($quarter == 'quarter_1'){
+
+                foreach($highSchoolApproveScore as $scoreID){
+                    $updateScore = Score::findOrFail($scoreID->id);
+                    $updateScore->approve_score_q1 = 1;
+                    $updateScore->save();
+                }
+            }elseif($quarter == 'quarter_2'){
+                foreach($highSchoolApproveScore as $scoreID){
+                    $updateScore = Score::findOrFail($scoreID->id);
+                    $updateScore->approve_score_q2 = 1;
+                    $updateScore->save();
+                }
+            
+            }elseif($quarter == 'quarter_3'){
+                foreach($highSchoolApproveScore as $scoreID){
+                    $updateScore = Score::findOrFail($scoreID->id);
+                    $updateScore->approve_score_q3 = 1;
+                    $updateScore->save();
+                }
+            
+
+            }elseif($quarter == 'quarter_4'){
+                foreach($highSchoolApproveScore as $scoreID){
+                    $updateScore = Score::findOrFail($scoreID->id);
+                    $updateScore->approve_score_q4 = 1;
+                    $updateScore->save();
+                }
+            }
+        }elseif($approveRadio == 'unapprove_score'){
+            if($quarter == 'quarter_1'){
+
+                foreach($highSchoolApproveScore as $scoreID){
+                    $updateScore = Score::findOrFail($scoreID->id);
+                    $updateScore->approve_score_q1 = 0;
+                    $updateScore->save();
+                }
+            }elseif($quarter == 'quarter_2'){
+                foreach($highSchoolApproveScore as $scoreID){
+                    $updateScore = Score::findOrFail($scoreID->id);
+                    $updateScore->approve_score_q2 = 0;
+                    $updateScore->save();
+                }
+            
+            }elseif($quarter == 'quarter_3'){
+                foreach($highSchoolApproveScore as $scoreID){
+                    $updateScore = Score::findOrFail($scoreID->id);
+                    $updateScore->approve_score_q3 = 0;
+                    $updateScore->save();
+                }
+            
+
+            }elseif($quarter == 'quarter_4'){
+                foreach($highSchoolApproveScore as $scoreID){
+                    $updateScore = Score::findOrFail($scoreID->id);
+                    $updateScore->approve_score_q4 = 0;
+                    $updateScore->save();
+                }
+            }
+        }
+
+
+
+        $highSchoolApproveScore = Score::where(['grade_id'=>$gradeID])->whereIn('student_profile_id', $studentID)->get();
+        
+        return view('admin.student.approve_score.approve_score_highschool')->with([
+            'studentScore' => $highSchoolApproveScore,
+            'grade_profile_id' => $grade_profile_id,
+
         ]);
     }
 

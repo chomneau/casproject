@@ -133,6 +133,25 @@ Route::prefix('admin')->group(function () {
 
     //view detail grade
     Route::get('/student/detailByGrade/{grade_profile_id}', 'StudentController@viewAllStudentByGrade')->name('view.allStudent.byGrade');
+
+// --------------************************ APPROVE SCORE *******************************------------------//
+    //approve by grade
+    Route::get('/student/scoreApprove/{gradeID}', 'StudentController@approveByGrade')->name('approve.grade');
+
+    //high school approve score
+    //gradeID = grade_profile_id
+    Route::get('/highschool/scoreApprove/{gradeID}', 'StudentController@highschoolApproveScore')->name('hightschool.approveScore');
+    //this time gradeID=grade_id for highschool (score)   
+    Route::post('/highschool/scoreApprove/{grade_profile_id}', 'StudentController@updateHighschoolApproveScore')->name('update.hightschool.approveScore');
+    
+    //this time gradeID=grade_id for secondary (score grade 1-8)
+    Route::post('/seconday/scoreApprove/{grade_profile_id}', 'SecondaryController@updateSecondaryApproveScore')->name('update.secondary.approveScore');
+
+    //this time gradeID=grade_id for Pre-K and K (score grade pre-k and k)
+    Route::post('/prekandgradeK/scoreApprove/{grade_profile_id}', 'PrekController@updatePrekApproveScore')->name('update.prekandgradeK.approveScore');
+
+// --------------************************* END OF APPROVE SCORE ************************------------------//
+
     //view student detail
     Route::get('/student/detail/{student_id}', 'StudentController@studentDetail')->name('student.detail');
     //show student edit form

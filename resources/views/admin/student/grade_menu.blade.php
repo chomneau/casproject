@@ -21,7 +21,7 @@
                                     <a href="{{ route('prekschool.score', ['grade_id'=>$kgrades->id, 'student_id'=>$students->id]) }}">
                                         {{ $kgrades->name }}
                                     </a>
-                                @endforeach 
+                                    @endforeach 
                                 @endif
 
                             </div>
