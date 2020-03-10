@@ -14,7 +14,7 @@ class SecondaryScore extends Model
         'semester_1','semester_2', 'midterm', 'yearly',
     ];
 
-    public function studentProfile(){
+    public function StudentProfile(){
         return $this->belongsTo(StudentProfile::class);
     }
 
