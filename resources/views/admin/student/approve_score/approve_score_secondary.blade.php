@@ -40,7 +40,7 @@
                         {{ $loop->iteration }}                   
                     </th>
 
-                    <td>{{ $student->StudentProfile->first_name }}, {{ $student->StudentProfile->last_name }}</td>
+                    <td>{{ $student->student_profile_id }}</td>
                     <td>{{ $student->PrimarySubject->name }}</td>
                     <td>
                         @if($student->quarter_1 !== null)
