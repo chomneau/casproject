@@ -545,7 +545,7 @@
 
 			    <tr>
 						<td style="font-size: 16px; font-weight: bold">Days Present</td>
-						<td style="font-size: 16px; font-weight:350"  class="text-center">						
+						<td style="font-size: 16px; font-weight:350" contenteditable="true" class="text-center">						
 						
 				{{-- quarter_1 --}}
 						@foreach($subject_code_PPI as $score_s1)
@@ -564,7 +564,7 @@
 													
 						</td>
 
-						<td class="text-center" style="font-size: 16px" >
+						<td class="text-center" style="font-size: 16px" contenteditable="true">
 				{{-- quarter_2 --}}
 						@foreach($subject_code_PPI as $score_s1)
 							@if($loop->first)
@@ -584,7 +584,7 @@
 					
 
 
-						<td class="text-center" style="font-size: 16px" >
+						<td class="text-center" style="font-size: 16px" contenteditable="true">
 				{{-- quarter_3 --}}
 							@foreach($subject_code_PPI as $score_s1)
 							@if($loop->first)
@@ -605,7 +605,7 @@
 						</td>
 
 
-						<td class="text-center" style="font-size: 16px" >
+						<td class="text-center" style="font-size: 16px" contenteditable="true">
 				{{-- quarter_4 --}}
 						@foreach($subject_code_PPI as $score_s1)
 							@if($loop->first)
@@ -656,6 +656,9 @@
 
 </body>
 </html>
+
+
+
 
 
 
