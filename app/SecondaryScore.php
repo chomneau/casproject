@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use App\SecondaryLevel;
 use App\PrimarySubject;
-use App\studentProfile;
+use App\StudentProfile;
 
 class SecondaryScore extends Model
 {
