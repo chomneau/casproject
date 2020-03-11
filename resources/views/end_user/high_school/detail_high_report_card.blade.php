@@ -1,3 +1,5 @@
+
+
 @include('admin.student.print.header_style')
 <body class="d-flex flex-column" style="min-height: 100vh">
 	<main class="flex-fill">
@@ -285,6 +287,11 @@
 
 </body>
 </html>
+
+
+
+
+
 
 
 

@@ -173,7 +173,7 @@
 													
 						</td>
 
-						<td class="text-center" style="font-size: 16px" >
+						<td class="text-center" style="font-size: 16px" contenteditable="true">
 							
 						@foreach($secondaryscore as $score_s1)
 							@if($loop->first)
@@ -192,7 +192,7 @@
 						
 						</td>
 					{{--semester_1--}}
-						<td class="text-center" style="font-size: 16px; font-weight:bold" >
+						<td class="text-center" style="font-size: 16px; font-weight:bold" contenteditable="true">
 
 						
 
@@ -209,7 +209,7 @@
 						</td>
 
 
-						<td class="text-center" style="font-size: 16px" >
+						<td class="text-center" style="font-size: 16px" contenteditable="true">
 						{{-- quarter_3 --}}
 							@foreach($secondaryscore as $score_s1)
 							@if($loop->first)
@@ -229,7 +229,7 @@
 						</td>
 
 
-						<td class="text-center" style="font-size: 16px" >
+						<td class="text-center" style="font-size: 16px" contenteditable="true">
 					
 							{{-- quarter_4 --}}
 						@foreach($secondaryscore as $score_s1)
@@ -248,7 +248,7 @@
 
 							
 						</td>
-						<td class="text-center" style="font-size: 16px; font-weight:bold" >
+						<td class="text-center" style="font-size: 16px; font-weight:bold" contenteditable="true">
 
 							
 						{{-- semester_2 --}}
@@ -264,7 +264,7 @@
 							
 						</td>
 
-						<td class="text-center" style="font-size: 16px; font-weight:bold" >
+						<td class="text-center" style="font-size: 16px; font-weight:bold" contenteditable="true">
 							
 					{{-- yearly --}}
 						@foreach($secondaryscore as $score_s1)
@@ -316,6 +316,8 @@
 
 </body>
 </html>
+
+
 
 
 

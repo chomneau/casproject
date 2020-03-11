@@ -10,12 +10,12 @@
 				@include('admin.student.print.student_info')
 
 		<!-- include grade 10 -->
-				@include('admin.student.print.cgpa.transcript_by_grade_template.template_grade_10')
+				@include('end_user.cgpa.cgpa_template.transcript_by_grade_template.template_grade_10')
 		<!-- include grade 11 -->
-				@include('admin.student.print.cgpa.transcript_by_grade_template.template_grade_11')
+				@include('end_user.cgpa.cgpa_template.transcript_by_grade_template.template_grade_11')
 				
 		<!-- include cumulative template -->
-				@include('admin.student.print.cgpa.transcript_by_grade_template.cumulative_template')		
+				@include('end_user.cgpa.cgpa_template.transcript_by_grade_template.cumulative_template')		
 			
 				@include('admin.student.print.transcript_footer')
 				</div>

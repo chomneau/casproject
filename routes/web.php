@@ -136,7 +136,7 @@ Route::prefix('admin')->group(function () {
 
 // --------------************************ APPROVE SCORE *******************************------------------//
     //approve by grade
-    Route::get('/student/scoreApprove/{gradeID}', 'StudentController@approveByGrade')->name('approve.grade');
+    Route::get('/student/scoreApproved/{gradeID}', 'StudentController@approveByGrade')->name('approve.grade');
 
     //high school approve score
     //gradeID = grade_profile_id

@@ -11,17 +11,17 @@
 
 		<!-- include grade 9 -->
 
-				@include('admin.student.print.cgpa.transcript_by_grade_template.template_grade_9')
+				@include('end_user.cgpa.cgpa_template.transcript_by_grade_template.template_grade_9')
 
 		<!-- include grade 10 -->
-				@include('admin.student.print.cgpa.transcript_by_grade_template.template_grade_10')
+				@include('end_user.cgpa.cgpa_template.transcript_by_grade_template.template_grade_10')
 		<!-- include grade 11 -->
-				@include('admin.student.print.cgpa.transcript_by_grade_template.template_grade_11')
+				@include('end_user.cgpa.cgpa_template.transcript_by_grade_template.template_grade_11')
 		<!-- include grade 12 -->
-				@include('admin.student.print.cgpa.transcript_by_grade_template.template_grade_12')
+				@include('end_user.cgpa.cgpa_template.transcript_by_grade_template.template_grade_12')
 				
 		<!-- include cumulative template -->
-				@include('admin.student.print.cgpa.transcript_by_grade_template.cumulative_template')		
+				@include('end_user.cgpa.cgpa_template.transcript_by_grade_template.cumulative_template')		
 			
 				@include('admin.student.print.transcript_footer')
 				</div>
