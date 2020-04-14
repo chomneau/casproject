@@ -89,10 +89,10 @@
                                         </a>
 
 
-                                        <a href="{{ route('destroy.absent', ['id'=>$absents->id]) }}" class="btn btn-danger btn-xs" onclick="return confirm('Are you sure you want to delete this item?');">
+                                        {{-- <a href="{{ route('destroy.absent', ['id'=>$absents->id]) }}" class="btn btn-danger btn-xs" onclick="return confirm('Are you sure you want to delete this item?');">
                                         <i class="fa fa-trash"></i>
                                             Delete
-                                       </a>
+                                       </a> --}}
 
                                         
 

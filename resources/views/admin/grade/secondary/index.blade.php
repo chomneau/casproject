@@ -99,11 +99,11 @@
                                                 </a>
 
 
-                                                <a href="{{ route('grade.secondary.delete', ['id'=>$grade->id]) }}" class="btn btn-danger btn-xs"
+                                                {{-- <a href="{{ route('grade.secondary.delete', ['id'=>$grade->id]) }}" class="btn btn-danger btn-xs"
                                                    id="confirmation">
                                                     <i class="fa fa-trash"></i>
                                                     Delete
-                                                </a>
+                                                </a> --}}
 
                                                 <script type="text/javascript">
                                                     $('#confirmation').on('click', function () {

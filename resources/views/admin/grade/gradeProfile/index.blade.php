@@ -94,11 +94,11 @@
                                                 </a>
 
 
-                                                <a href="{{ route('gradeprofile.delete', ['id'=>$grade->id]) }}" class="btn btn-danger btn-xs"
+                                                {{-- <a href="{{ route('gradeprofile.delete', ['id'=>$grade->id]) }}" class="btn btn-danger btn-xs"
                                                     Onclick="return ConfirmDelete()">
                                                     <i class="fa fa-trash"></i>
                                                     Delete
-                                                </a>
+                                                </a> --}}
 
                                                 <script>
                                                     function ConfirmDelete() 

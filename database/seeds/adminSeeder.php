@@ -19,10 +19,10 @@ class adminSeeder extends Seeder
 //        ]);
 
         $admin = App\Admin::create([
-            'name'=>'administrator',
-            'email'=>'admin@gmail.com',
-            'password'=>bcrypt('123456'),
-            'admin'=>1
+            'name'=>'Chomneau Men',
+            'email'=>'menchomneau@gmail.com',
+            'password'=>bcrypt('wEo9L3#k'),
+            //'admin'=>1
         ]);
 
         App\AdminProfile::create([

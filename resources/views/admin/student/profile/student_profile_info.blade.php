@@ -2,7 +2,7 @@
                         {{--start col-container--}}
                         <div class="col-md-12 " style="margin-top: 2em">
                             <div class="col-md-2">
-                                <img src="{{ asset($students->photo) }}" alt="user profile" width="150" height="150">
+                                <img src="{{ asset($students->photo) }}" alt="user profile" width="130" height="170">
 
                                 @if(Auth::guard('admin')->check())
                                 <a href="{{ route('student.changePassword', ['student_id'=>$students->id])}}" class="btn btn-primary btn-sm" style="margin-top: 10px; margin-left: 10px"  >

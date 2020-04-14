@@ -94,11 +94,11 @@
                                                 </a>
 
 
-                                                <a href="{{ route('daypresent.delete', ['id'=>$daypresents->id]) }}" class="btn btn-danger btn-xs"
+                                                {{-- <a href="{{ route('daypresent.delete', ['id'=>$daypresents->id]) }}" class="btn btn-danger btn-xs"
                                                    id="confirmation">
                                                     <i class="fa fa-trash"></i>
                                                     Delete
-                                                </a>
+                                                </a> --}}
 
                                                 <script type="text/javascript">
                                                     $('#confirmation').on('click', function () {

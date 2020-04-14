@@ -7,12 +7,18 @@
             <div class="title_left">
                 <h3>Student Profile
                     <span>
-                            <a href="{{ route('student.detail.edit', ['id'=>$students->id]) }}" class="btn btn-success btn-sm ">
-                               <i class="fa fa-edit m-right-xs"></i>
-                                Edit Profile
-                            </a>
-                        </span>
+                        <a href="{{ route('student.detail.edit', ['id'=>$students->id]) }}" class="btn btn-success btn-sm ">
+                           <i class="fa fa-edit m-right-xs"></i>
+                            Edit Profile
+                        </a>
+                    </span>
 
+                    <span>
+                        <a href="{{ route('student.showCardID', ['id'=>$students->id]) }}" class="btn btn-primary btn-sm ">
+                           <i class="fa fa-id-card-o" aria-hidden="true"></i>
+                            Student ID Card
+                        </a>
+                    </span>
 
                 </h3>
             </div>

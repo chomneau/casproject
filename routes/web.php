@@ -17,6 +17,11 @@ use App\User;
 
 //student route
 
+Route::get('/barcode', function(){
+    $output = DNS1D::getBarcodeSVG("4445645656", "PHARMA2T");
+    return $output;
+});
+
 // Route::get('/insertForm', function () {
 //     return view('insert_data');
 // });
@@ -110,6 +115,10 @@ Route::resource('/user', 'ProfileController');
 
 
 Route::prefix('admin')->group(function () {
+
+    //student ID card for printing
+
+    Route::get('/student/CardID/{student_id}', 'CardIDController@showCardID')->name('student.showCardID');
 
 
     //Report students
