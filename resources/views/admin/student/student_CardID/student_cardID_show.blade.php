@@ -84,7 +84,7 @@
                                                 <li>Name : {{ $student->last_name }}, {{ $student->first_name }}</li>
                                                 <li>ID : {{ $student->card_id }}</li>
                                                 <li>Grade : {{ substr($student->GradeProfile->name,5)  }}</li>
-                                                <li>Parent's Contact : {{ substr($student->father_phone,0,-20) }}-{{ substr($student->mother_phone,0,-20) }}</li>
+                                                <li>Parent's Contact : {{ $student->father_phone }}-{{ $student->mother_phone }}</li>
                                                 <li>Expiration Date : 
                                                     {{ 
                                                         date('d-M-Y', strtotime($student->start_date))
