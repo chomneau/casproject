@@ -91,13 +91,24 @@
 
                                 <div class="column">
                                         @if(count($secondaryGrade)) 
-                                        @foreach($secondaryGrade->slice(15,6) as $secondaryGrades)
+                                        @foreach($secondaryGrade->slice(15,5) as $secondaryGrades)
                                             <a href="{{ route('score.secondary', ['grade_id'=>$secondaryGrades->id, 'student_id'=>$students->id]) }}">
                                                 {{ $secondaryGrades->name }}
                                             </a>
                                         @endforeach 
                                     @endif
                                 </div>
+
+                                <div class="column">
+                                    @if(count($secondaryGrade)) 
+                                    @foreach($secondaryGrade->slice(20,5) as $secondaryGrades)
+                                        <a href="{{ route('score.secondary', ['grade_id'=>$secondaryGrades->id, 'student_id'=>$students->id]) }}">
+                                            {{ $secondaryGrades->name }}
+                                        </a>
+                                    @endforeach 
+                                @endif
+                                </div>
+
                               </div>
                             </div>
                           </div> 

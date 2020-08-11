@@ -26,7 +26,7 @@ Route::get('/barcode', function(){
 //     return view('insert_data');
 // });
 //********** this insert section is to add extra record to database ***********//
-// Route::get('/insertForm', 'InsertController@insertForm');
+ //Route::get('/insertForm', 'InsertController@insertForm');
 
 //Route::post('/insertdata', 'InsertController@insertData')->name('insertdata.submit');
 

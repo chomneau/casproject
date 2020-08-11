@@ -23,7 +23,7 @@
       
       width: 530px;
       height: 325px;
-      border: solid red 3px;
+      /*border: solid red 3px;*/
       margin:0px;
       padding: 10px;
     }
@@ -43,35 +43,12 @@
 @section('content')
 <!-- page content -->
 <div class="right_col" role="main">
-    <div class="">
-        {{-- <div class="page-title">
-            <div class="title_left">
-                <h3>Student Profile
-                    <span>
-                        <a href="{{ route('student.detail.edit', ['id'=>$students->id]) }}" class="btn btn-success btn-sm ">
-                           <i class="fa fa-edit m-right-xs"></i>
-                            Edit Profile
-                        </a>
-                    </span>
-
-                    <span>
-                        <a href="{{ route('student.showCardID', ['id'=>$students->id]) }}" class="btn btn-primary btn-sm ">
-                           <i class="fa fa-id-card-o" aria-hidden="true"></i>
-                            Student ID Card
-                        </a>
-                    </span>
-
-                </h3>
-            </div>
-
-
-        </div> --}}
-        
-
+    <div class="" style="margin-bottom: 10em">
+  
         <div class="clearfix"></div>
 
         <div class="row">
-            <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="col-md-12 col-sm-12 col-xs-12" >
                 <div class="x_panel">
                     <div class="row">
                         <div class="col-md-6">
@@ -104,7 +81,12 @@
                         <div class="col-md-6">
                             <div class="cover">
                                 <div class="studentCard">
-                                background
+                                    <div class="card-front" >
+                                        <div class="visible-print text-center" style="margin-top: 30px">
+                                            {!! QrCode::size(300)->generate('Hello Chomneau'); !!}
+                                            <p>Scan me to return to the original page.</p>
+                                        </div>
+                                    </div>
                                 </div>                              
                             </div>
                         </div>
