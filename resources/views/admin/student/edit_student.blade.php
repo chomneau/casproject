@@ -2,9 +2,7 @@
 @section('content')
     <div class="right_col" role="main">
         <div class="page-title">
-            <div class="title_left">
-                <h3>Register New student</h3>
-            </div>
+            
         </div>
         <div class="clearfix"></div>
 
@@ -15,7 +13,18 @@
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="x_panel">
                         <div class="x_title">
-                            <h2>Administrator > Edit student Profile</h2>
+                            <h2>Admin > Edit student Profile</h2> 
+                            <span class="pull-right">
+                                <a href="{{ route('student.changePassword', ['student_id'=>$student->id])}}" class="btn btn-primary btn-lg btn-sm hidden-sm hidden-xs" >
+                                    <span><i class="fas fa-unlock"></i></span> 
+                                    Change Password
+                                </a>
+
+                                <a href="{{ route('student.changePassword', ['student_id'=>$student->id])}}" class="btn btn-primary btn-lg btn-sm hidden-md hidden-lg " >
+                                    <span><i class="fas fa-unlock"></i></span> 
+                                    Change Pass...
+                                </a>
+                            </span>
                             <div class="clearfix"></div>
                         </div>
                         <div class="x_content">

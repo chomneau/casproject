@@ -38,7 +38,7 @@
 
                                     
 
-                                        <div class="col-md-3 col-lg-3" style="padding-left: 3em; padding-right: 3em">
+                                        <div class="col-md-3 col-sm-12 col-xs-12 col-lg-3" style="padding-left: 3em; padding-right: 3em">
                                             <a href="{{ route('view.allStudent.byGrade', ['grade_profile_id'=>$viewByGrades->id]) }}" >
                                             <div class="panel panel-primary">
                                                 <div class="panel-body">

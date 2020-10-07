@@ -66,15 +66,14 @@
                                 <thead>
                                 <tr>
                                     <th style="width: 1%">#</th>
-                                    <th style="width: 20%">Student Name</th>
+                                    <th style="width: 25%">Student Name</th>
                                     <th style="width: 10%">Gender</th>
                                     <th>Student id</th>
                                     <!-- grade name -->
-                                    <th>Grade</th>
-                                    <th>Parents Contact</th>
-                                    <th>Status</th>
-
-                                    <th style="width: 20%">Action</th>
+                                    <th >Grade</th>
+                                    <th class="hidden-sm hidden-xs">Parents Contact</th>
+                                    <th class="hidden-sm hidden-xs">Status</th>
+                                    <th style="width: 10%">Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -85,16 +84,16 @@
                                             <td>
                                                 <a> {{ $students->last_name }}, {{ $students->first_name }} </a>
                                                 <br />
-                                                <small>Created {{ $students->created_at->diffForHumans() }}</small>
+                                                <small class="hidden-sm hidden-xs">Created {{ $students->created_at->diffForHumans() }}</small>
                                             </td>
-                                            <td>
+                                            <td >
                                                 {{ $students->gender }}
                                             </td>
                                             <td>
                                                 {{ $students->card_id }}
                                             </td>
                                             <!-- grade profile name -->
-                                            <td>
+                                            <td >
                                         @foreach($gradeProfile as $gradeProfiles)
                                                 
                                             @if($students->grade_profile_id == $gradeProfiles->id)
@@ -105,16 +104,16 @@
                                             </td>
                                             
                                             
-                                            <td> {{ $students->father_phone }} | {{ $students->mother_phone }} </td>
-                                            <td class="project_progress">
+                                            <td class="hidden-sm hidden-xs"> {{ $students->father_phone }} | {{ $students->mother_phone }} </td>
+                                            <td class="project_progress hidden-sm hidden-xs"">
                                                 {{ $students->status }}
                                             </td>
 
-                                            <td>
+                                            <td >
                                                 @if(Auth::guard('admin')->check())
-                                                <a href="{{ route('student.detail', ['id'=>$students->id] ) }}" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> View profile </a>
+                                                <a href="{{ route('student.detail', ['id'=>$students->id] ) }}" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> View </a>
 
-                                                <a href="{{ route('student.detail.edit', ['id'=>$students->id]) }}" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
+                                                {{--  <a href="{{ route('student.detail.edit', ['id'=>$students->id]) }}" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>  --}}
                                                 
                                                 <!-- <a href="{{ route('student.detail.delete', ['id'=>$students->id]) }}"  class="btn btn-danger btn-xs" id="confirmation">
                                                     <i class="fa fa-trash-o"></i>

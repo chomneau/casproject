@@ -79,37 +79,37 @@
                             <!-- start project list -->
                             <table class="table table-striped projects">
                                 <thead>
-                                <tr>
-                                    <th style="width: 1%">#</th>
-                                    <th style="width: 20%">Student name</th>
-                                    <th style="width: 10%">Gender</th>
-                                    <th>Student id</th>
-                                    <!-- grade name -->
-                                    <th>Grade</th>
-                                    <th>Parents Contact</th>
-                                    <th>Status</th>
-
-                                    <th style="width: 20%">Action</th>
-                                </tr>
+                                    <tr>
+                                        <th style="width: 1%">#</th>
+                                        <th style="width: 25%">Student name</th>
+                                        <th style="width: 15%">Gender</th>
+                                        <th style="width: 15%">StudentID</th>
+                                        <th class="hidden-sm hidden-xs">Grade</th>
+                                        <th class="hidden-sm hidden-xs" style="width: 20%">Parents Contact</th>
+                                        <th class="hidden-sm hidden-xs">Status</th>
+    
+                                        <th style="width: 10%" class="text-center">Action</th>
+                                    </tr>
                                 </thead>
                                 <tbody>
                                 @if(count($student))
-                                    @foreach($student as $students)
+                                    @foreach($student as $key => $students)
                                         <tr>
-                                            <td>#</td>
+                                        <td>{{ $key+1 }}</td>
                                             <td>
                                                 <a> {{ $students->last_name }}, {{ $students->first_name }} </a>
                                                 <br />
-                                                <small>Created {{ $students->created_at->diffForHumans() }}</small>
+                                                <small class="hidden-sm hidden-xs">Created {{ $students->created_at->diffForHumans() }}</small>
                                             </td>
                                             <td>
-                                                {{ $students->gender }}
+                                                
+                                                {{ substr($students->gender, 0, 1) }}
                                             </td>
                                             <td>
                                                 {{ $students->card_id }}
                                             </td>
 
-                                            <td>
+                                            <td class="hidden-sm hidden-xs">
                                                 @foreach($gradeProfile as $gradeProfiles)
                                                     @if($students->grade_profile_id == $gradeProfiles->id)
                                                 {{ $gradeProfiles->name }}
@@ -121,7 +121,7 @@
                                             
                                             <!-- grade profile name -->
                                             <td> {{ $students->father_phone }} | {{ $students->mother_phone }} </td>
-                                            <td class="project_progress">
+                                            <td class="project_progress hidden-sm hidden-xs"">
                                                 {{ $students->status }}
                                             </td>
 
@@ -129,7 +129,7 @@
                                                 @if(Auth::guard('admin')->check())
                                                 <a href="{{ route('student.detail', ['id'=>$students->id] ) }}" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> View profile </a>
 
-                                                <a href="{{ route('student.detail.edit', ['id'=>$students->id]) }}" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
+                                                {{--  <a href="{{ route('student.detail.edit', ['id'=>$students->id]) }}" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>  --}}
                                                 
                                                 <!-- <a href="{{ route('student.detail.delete', ['id'=>$students->id]) }}"  class="btn btn-danger btn-xs" id="confirmation">
                                                     <i class="fa fa-trash-o"></i>

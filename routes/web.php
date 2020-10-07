@@ -1,5 +1,6 @@
  <?php
 use App\User;
+// use Picqer;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,10 +18,7 @@ use App\User;
 
 //student route
 
-Route::get('/barcode', function(){
-    $output = DNS1D::getBarcodeSVG("4445645656", "PHARMA2T");
-    return $output;
-});
+
 
 // Route::get('/insertForm', function () {
 //     return view('insert_data');
@@ -39,6 +37,13 @@ Route::get('/barcode', function(){
 // Route::get('/midterm/{student_id}', 'MidtermController@midTermOption')->name('midterm.option');
 
 //******end of insert section */
+
+Route::get('barcodes', function () 
+{
+    $generator = new Picqer\Barcode\BarcodeGeneratorHTML();
+    $barcode = $generator->getBarcode('081231723897', $generator::TYPE_CODE_128_A);
+    return $barcode;  
+});
 
 //student login form
 Route::get('/', function () {

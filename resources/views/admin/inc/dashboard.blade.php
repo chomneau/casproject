@@ -76,10 +76,7 @@
                         </h4>
                       </div>
                   </div>
-                      
-                      
-                          
-                     
+
                   <h4 class="green" style="padding-left: 10px">Total Present Students</h4>
                   <p>Students who currently studying in CAS</p>
                 </div>
