@@ -162,20 +162,17 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-
-         
-        // LaravelQRCode\Providers\QRCodeServiceProvider::class,
+        LaravelQRCode\Providers\QRCodeServiceProvider::class,
 
         //Intervention\Image\ImageServiceProvider::class,
         //Milon\Barcode\BarcodeServiceProvider::class,
-        // SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
+        SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
         
 
         /*
          * Package Service Providers...
          */
         Laravel\Tinker\TinkerServiceProvider::class,
-        
 
         /*
          * Application Service Providers...
@@ -186,7 +183,6 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\FormServiceProvider::class,
-        
         Barryvdh\DomPDF\ServiceProvider::class,
         
 
@@ -245,9 +241,8 @@ return [
         'DNS1D' => Milon\Barcode\Facades\DNS1DFacade::class,
         'DNS2D' => Milon\Barcode\Facades\DNS2DFacade::class,
 
-        //'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
+        'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
         'QRCode' => LaravelQRCode\Facades\QRCode::class,
-        
         'PDF' => Barryvdh\DomPDF\Facade::class,
   
         

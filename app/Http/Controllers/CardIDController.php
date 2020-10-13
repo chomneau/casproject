@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\StudentProfile;
 use Picqer;
 use PDF;
-use Picqer\Barcode\BarcodeGeneratorHTML;
+
 
 
 class CardIDController extends Controller
