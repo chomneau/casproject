@@ -183,6 +183,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\FormServiceProvider::class,
+        Barryvdh\DomPDF\ServiceProvider::class,
         
 
 
@@ -241,7 +242,9 @@ return [
         'DNS2D' => Milon\Barcode\Facades\DNS2DFacade::class,
 
         'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
-        'QRCode' => LaravelQRCode\Facades\QRCode::class,  
+        'QRCode' => LaravelQRCode\Facades\QRCode::class,
+        'PDF' => Barryvdh\DomPDF\Facade::class,
+  
         
 
     ],

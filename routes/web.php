@@ -45,6 +45,8 @@ Route::get('barcodes', function ()
     return $barcode;  
 });
 
+
+
 //student login form
 Route::get('/', function () {
     return view('studentLogin');
@@ -124,6 +126,8 @@ Route::prefix('admin')->group(function () {
     //student ID card for printing
 
     Route::get('/student/CardID/{student_id}', 'CardIDController@showCardID')->name('student.showCardID');
+    Route::get('/student/previewCardID/{student_id}', 'CardIDController@previewStudentCardID')->name('student.previewCardID');
+    Route::get('/student/printCardID/{id}', 'CardIDController@printStudentCardID')->name('student.printCardID');
 
 
     //Report students

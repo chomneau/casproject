@@ -62,7 +62,7 @@
 
         <div class="row" >
             <div class="col-md-12 col-sm-12 col-xs-12" >
-                <div class="x_panel" style="width: auto; height:370px">
+                <div class="x_panel" style="width: auto; height:500px">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="row">
@@ -101,25 +101,13 @@
                                         <div class="barcode">
                                                 
                                             <ul class="card-ul">
-                                               {{--
-                                               <li>Name  <span class="spaceright">:{{ $student->last_name }}, {{ $student->first_name }}</span></li>
-                                               <li>ID <span class="spaceright">: {{ $student->card_id }}</span></li>
-                                               <li>Grade : {{ substr($student->GradeProfile->name,5)  }}</li>
-                                               <li>Parent's Contact : {{ $student->father_phone }}-{{ $student->mother_phone }}</li>
-                                               <li>Expiration Date : 
-                                                   {{ 
-                                                       date('d-M-Y', strtotime($student->start_date))
-                                                   }}
-
-                                               </li>
-                                               --}}
                                                <li>
                                                    {!! $barcode !!}
                                                </li>
                                                <li style="color: darkblue; letter-spacing:23px">{{ $student->card_id }}</li>
                                            </ul>
 
-                                           </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -128,6 +116,8 @@
                                 </div>
                             </div>
                         </div>
+
+                        
                         <div class="col-md-6">
                             <div class="cover">
                                 <div class="studentCard">
@@ -141,7 +131,17 @@
                         </div>
                     </div>
                     
-
+                    <div class="print-button col-12-md text-center" style="margin-top: 4em; padding-left:20px; padding-right:20px">
+                        <p class="alert alert-success text-white">
+                        <a href="{{ route('student.previewCardID',['id'=>$student->id]) }}" class="display-4 " style="color: white; font-weight-bold">
+                              PRINT ID CARD 
+                            </a>
+                            
+                        </p>
+                        
+                    </div>
+                    
+                    
                     
 
                     
@@ -154,6 +154,8 @@
                     </div> --}}
 
                 </div>
+
+                
 
             </div>
         </div>
