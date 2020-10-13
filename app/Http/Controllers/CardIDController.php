@@ -8,9 +8,11 @@ use Picqer;
 use PDF;
 use Picqer\Barcode\BarcodeGeneratorHTML;
 
+
 class CardIDController extends Controller
 {
     
+
 	public function __construct()
     {
         $this->middleware('auth:admin');
