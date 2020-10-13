@@ -163,6 +163,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
+         
          LaravelQRCode\Providers\QRCodeServiceProvider::class,
 
         //Intervention\Image\ImageServiceProvider::class,
@@ -174,6 +175,7 @@ return [
          * Package Service Providers...
          */
         Laravel\Tinker\TinkerServiceProvider::class,
+        
 
         /*
          * Application Service Providers...
@@ -244,6 +246,7 @@ return [
 
         //'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
         'QRCode' => LaravelQRCode\Facades\QRCode::class,
+        
         'PDF' => Barryvdh\DomPDF\Facade::class,
   
         
