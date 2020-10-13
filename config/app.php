@@ -162,7 +162,8 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-        LaravelQRCode\Providers\QRCodeServiceProvider::class,
+
+        // LaravelQRCode\Providers\QRCodeServiceProvider::class,
 
         //Intervention\Image\ImageServiceProvider::class,
         //Milon\Barcode\BarcodeServiceProvider::class,
