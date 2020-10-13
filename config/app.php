@@ -163,7 +163,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
-        // LaravelQRCode\Providers\QRCodeServiceProvider::class,
+         LaravelQRCode\Providers\QRCodeServiceProvider::class,
 
         //Intervention\Image\ImageServiceProvider::class,
         //Milon\Barcode\BarcodeServiceProvider::class,
@@ -243,7 +243,7 @@ return [
         'DNS2D' => Milon\Barcode\Facades\DNS2DFacade::class,
 
         //'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
-        //'QRCode' => LaravelQRCode\Facades\QRCode::class,
+        'QRCode' => LaravelQRCode\Facades\QRCode::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
   
         
