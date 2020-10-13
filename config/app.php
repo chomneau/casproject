@@ -164,7 +164,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
 
          
-         LaravelQRCode\Providers\QRCodeServiceProvider::class,
+        // LaravelQRCode\Providers\QRCodeServiceProvider::class,
 
         //Intervention\Image\ImageServiceProvider::class,
         //Milon\Barcode\BarcodeServiceProvider::class,
@@ -186,6 +186,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\FormServiceProvider::class,
+        
         Barryvdh\DomPDF\ServiceProvider::class,
         
 
