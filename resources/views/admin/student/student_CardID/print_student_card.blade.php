@@ -130,7 +130,7 @@
                     </table>
 
                     <div >
-                        <img class="image-id" src="{{ public_path($student->photo) }}" alt="user profile" width="130" height="170">
+                        <img class="image-id" src="https://ibb.co/qRm71jH" alt="user profile" width="130" height="170">
                        {{--  <img class="image-id" src="/images/david.jpeg" alt="user profile" width="130" height="170"> --}}
                     </div>
                     
@@ -170,6 +170,5 @@
 
 </body>
 </html>
-
 
 
