@@ -35,6 +35,7 @@ class StudentController extends Controller
     {
         $this->middleware('auth:admin');
         
+        
 
         $this->grade = Grade::orderBy('id', 'asc')->get();
         View::share('grade', $this->grade);
@@ -243,6 +244,18 @@ class StudentController extends Controller
                // 'absentRecord'=>$absentRecord 
                 ]);
     }
+
+    //view student detail
+    public function studentScore($id)
+        {
+            $student = StudentProfile::find($id);
+           // $absentRecord = AbsentRecord::find($absentRecord_id)
+            return view('admin.student.student_score')
+                ->with([
+                    'students'=>$student, 
+                   // 'absentRecord'=>$absentRecord 
+                    ]);
+        }
 
     //query subjects
     public function SubjectByGrade($grade_id, $student_id)

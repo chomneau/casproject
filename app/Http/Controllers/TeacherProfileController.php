@@ -181,6 +181,19 @@ class TeacherProfileController extends Controller
                 ]);
     }
 
+    //view student score
+    public function studentScore($teacher_id, $student_id)
+    {
+        $student = StudentProfile::find($student_id);
+        $teacher = Teacher::find($teacher_id); 
+       // $absentRecord = AbsentRecord::find($absentRecord_id)
+        return view('admin.student.student_score')
+            ->with([
+                'students'=>$student, 
+                'teacher'=>$teacher
+                ]);
+    }
+
 
 //view student detail only profile not score
     public function onlyStudentProfile($teacher_id, $student_id)

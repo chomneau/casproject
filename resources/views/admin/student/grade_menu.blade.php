@@ -43,8 +43,6 @@
                 </li>
         
 
-        
-
                 <li>
                 
                     <div class="menu">
@@ -57,7 +55,7 @@
                                 <div class="column">
 
                                     @if(count($secondaryGrade)) 
-                                        @foreach($secondaryGrade->slice(0,5) as $secondaryGrades)
+                                        @foreach($secondaryGrade->slice(0,7) as $secondaryGrades)
                                             <a href="{{ route('score.secondary', ['grade_id'=>$secondaryGrades->id, 'student_id'=>$students->id]) }}">
                                                 {{ $secondaryGrades->name }}
                                             </a>
@@ -71,7 +69,7 @@
                                 <div class="column">
                                   
                                     @if(count($secondaryGrade)) 
-                                        @foreach($secondaryGrade->slice(5,5) as $secondaryGrades)
+                                        @foreach($secondaryGrade->slice(7,7) as $secondaryGrades)
                                             <a href="{{ route('score.secondary', ['grade_id'=>$secondaryGrades->id, 'student_id'=>$students->id]) }}">
                                                 {{ $secondaryGrades->name }}
                                             </a>
@@ -81,7 +79,7 @@
                                 <div class="column">
                                   
                                     @if(count($secondaryGrade)) 
-                                        @foreach($secondaryGrade->slice(10,5) as $secondaryGrades)
+                                        @foreach($secondaryGrade->slice(14,7) as $secondaryGrades)
                                             <a href="{{ route('score.secondary', ['grade_id'=>$secondaryGrades->id, 'student_id'=>$students->id]) }}">
                                                 {{ $secondaryGrades->name }}
                                             </a>
@@ -91,24 +89,13 @@
 
                                 <div class="column">
                                         @if(count($secondaryGrade)) 
-                                        @foreach($secondaryGrade->slice(15,5) as $secondaryGrades)
+                                        @foreach($secondaryGrade->slice(21,7) as $secondaryGrades)
                                             <a href="{{ route('score.secondary', ['grade_id'=>$secondaryGrades->id, 'student_id'=>$students->id]) }}">
                                                 {{ $secondaryGrades->name }}
                                             </a>
                                         @endforeach 
                                     @endif
                                 </div>
-
-                                <div class="column">
-                                    @if(count($secondaryGrade)) 
-                                    @foreach($secondaryGrade->slice(20,5) as $secondaryGrades)
-                                        <a href="{{ route('score.secondary', ['grade_id'=>$secondaryGrades->id, 'student_id'=>$students->id]) }}">
-                                            {{ $secondaryGrades->name }}
-                                        </a>
-                                    @endforeach 
-                                @endif
-                                </div>
-
                               </div>
                             </div>
                           </div> 
@@ -116,20 +103,31 @@
                     </li>
 
             <li>
-                <div class="dropdown">
+                <div class="menu">
                     <button class="dropbtn">High School <i class="fa fa-caret-down"></i></button>
-                    <div class="dropdown-content">
-                       @if(count($grade)) 
-                        @foreach($grade as $grades)
-                            <a href="{{ route('score.view',['grade_id'=>$grades->id,'student_id'=>$students->id]) }}">
-                                {{ $grades->grade_name }}
-                            </a>
-                        @endforeach 
-                        @endif
-                      
-                      
+                    <div class="content-2">
+                       <div class="row">
+                            <div class="column-2">
+                                @if(count($grade)) 
+                                    @foreach($grade->slice(0,6) as $grades)
+                                        <a href="{{ route('score.view',['grade_id'=>$grades->id,'student_id'=>$students->id]) }}">
+                                            {{ $grades->grade_name }}
+                                        </a>
+                                    @endforeach 
+                                @endif
+                            </div>
+                            <div class="column-2">
+                                @if(count($grade)) 
+                                    @foreach($grade->slice(6,6) as $grades)
+                                        <a href="{{ route('score.view',['grade_id'=>$grades->id,'student_id'=>$students->id]) }}">
+                                            {{ $grades->grade_name }}
+                                        </a>
+                                    @endforeach 
+                                @endif
+                            </div>
+                       </div>
                     </div>
-                  </div>
+                </div>
             </li>
 
             
@@ -138,7 +136,7 @@
 
 
 
-        <a href="{{ route('transcript',['student_id'=>$students->id]) }}" class="btn btn-primary pull-right">
+        {{--  <a href="{{ route('transcript',['student_id'=>$students->id]) }}" class="btn btn-primary pull-right">
             Print Transcript
             <i class="fas fa-print"></i>
         </a>
@@ -152,7 +150,7 @@
         <a href="{{ route('midterm.option',['student_id'=>$students->id]) }}" class="btn btn-info pull-right">
             Mid-term
             <i class="fas fa-print"></i>
-        </a>
+        </a>  --}}
 
     </ul>
 </div>
@@ -181,7 +179,7 @@
                           <div class="column-2">
 
                               @if(count($kgrade)) 
-                                  @foreach($kgrade->slice(0,5) as $kgrades)
+                                  @foreach($kgrade->slice(0,3) as $kgrades)
                                   <a href="{{ route('teacher.prekschool.score', 
                                   [
                                   'teacher_id'=>auth()->user()->id,
@@ -198,7 +196,7 @@
                           <div class="column-2">
                             
                                   @if(count($kgrade)) 
-                                  @foreach($kgrade->slice(5,5) as $kgrades)
+                                  @foreach($kgrade->slice(3,5) as $kgrades)
                                   <a href="{{ route('teacher.prekschool.score', 
                                   [
                                   'teacher_id'=>auth()->user()->id,
@@ -216,7 +214,7 @@
                       </div>
                     </div>
 
-          </li>
+            </li>
 
             <li>
                 
@@ -230,7 +228,7 @@
                             <div class="column">
 
                                 @if(count($secondaryGrade)) 
-                                    @foreach($secondaryGrade->slice(0,5) as $secondaryGrades)
+                                    @foreach($secondaryGrade->slice(0,7) as $secondaryGrades)
                                         <a href="{{ route('teacher.score.secondary', 
                                         [
                                         'teacher_id'=>auth()->user()->id,
@@ -250,7 +248,7 @@
                             <div class="column">
                               
                                 @if(count($secondaryGrade)) 
-                                    @foreach($secondaryGrade->slice(5,5) as $secondaryGrades)
+                                    @foreach($secondaryGrade->slice(7,7) as $secondaryGrades)
                                         <a href="{{ route('teacher.score.secondary', 
                                         [
                                         'teacher_id'=>auth()->user()->id,
@@ -266,7 +264,7 @@
                             <div class="column">
                               
                                 @if(count($secondaryGrade)) 
-                                    @foreach($secondaryGrade->slice(10,5) as $secondaryGrades)
+                                    @foreach($secondaryGrade->slice(14,7) as $secondaryGrades)
                                         <a href="{{ route('teacher.score.secondary', 
                                         [
                                         'teacher_id'=>auth()->user()->id,
@@ -282,7 +280,7 @@
 
                             <div class="column">
                                     @if(count($secondaryGrade)) 
-                                    @foreach($secondaryGrade->slice(15,5) as $secondaryGrades)
+                                    @foreach($secondaryGrade->slice(21,7) as $secondaryGrades)
                                         <a href="{{ route('teacher.score.secondary', 
                                         [
                                         'teacher_id'=>auth()->user()->id,
@@ -295,25 +293,10 @@
                                     @endforeach 
                                 @endif
                             </div>
-                            <div class="column">
-                                @if(count($secondaryGrade)) 
-                                @foreach($secondaryGrade->slice(20,5) as $secondaryGrades)
-                                    <a href="{{ route('teacher.score.secondary', 
-                                    [
-                                    'teacher_id'=>auth()->user()->id,
-                                    'grade_id'=>$secondaryGrades->id, 
-                                    'student_id'=>$students->id,
-                                    ]) 
-                                }}">
-                                        {{ $secondaryGrades->name }}
-                                    </a>
-                                @endforeach 
-                            @endif
+                            
                         </div>
-
-                          </div>
-                        </div>
-                      </div> 
+                    </div>
+                </div> 
 
             </li>
 
@@ -321,29 +304,57 @@
         
 
             <li>
-                <div class="dropdown">
-                    <button class="dropbtn">High School <i class="fa fa-caret-down"></i></button>
-                    <div class="dropdown-content">
-                       @if(count($grade)) 
-                        @foreach($grade as $grades)
-                            <a href="{{ route('teacher.score.view', 
-                            [
-                            'teacher_id'=>auth()->user()->id,
-                            'grade_id'=>$grades->id, 
-                            'student_id'=>$students->id
-                            ]) 
-                        }}">
-                                {{ $grades->grade_name }}
-                            </a>
-                        @endforeach 
-                        @endif
-                      
-                      
+                
+
+                  <div class="menu">
+                    <button class="dropbutton">High School
+                      <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="content-2">
+                  
+                      <div class="row">
+                        <div class="column-2">
+
+                            @if(count($grade)) 
+                                @foreach($grade->slice(0,6) as $grades)
+                                    <a href="{{ route('teacher.score.view', 
+                                    [
+                                    'teacher_id'=>auth()->user()->id,
+                                    'grade_id'=>$grades->id, 
+                                    'student_id'=>$students->id
+                                    ]) 
+                                }}">
+                                        {{ $grades->grade_name }}
+                                    </a>
+                                @endforeach 
+                            @endif
+
+                            
+
+                        </div>
+                        <div class="column-2">
+                          
+                            @if(count($grade)) 
+                                @foreach($grade->slice(6,6) as $grades)
+                                    <a href="{{ route('teacher.score.view', 
+                                    [
+                                    'teacher_id'=>auth()->user()->id,
+                                    'grade_id'=>$grades->id, 
+                                    'student_id'=>$students->id
+                                    ]) 
+                                }}">
+                                    {{ $grades->grade_name }}
+                                    </a>
+                                @endforeach 
+                            @endif
+                        </div>
+
+                      </div>
                     </div>
-                  </div>
+                  </div>  
             </li>
 
-            <a href="{{ route('teacher.transcript',['student_id'=>$students->id]) }}" class="btn btn-primary pull-right">
+            {{--  <a href="{{ route('teacher.transcript',['student_id'=>$students->id]) }}" class="btn btn-primary pull-right">
                 Print Transcript
                 <i class="fas fa-print"></i>
             </a>
@@ -357,7 +368,7 @@
             <a href="{{ route('teacher.midterm.option',['student_id'=>$students->id]) }}" class="btn btn-info pull-right">
                     Mid-term
                     <i class="fas fa-print"></i>
-            </a>
+            </a>  --}}
 
                   
 

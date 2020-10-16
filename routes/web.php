@@ -172,6 +172,8 @@ Route::prefix('admin')->group(function () {
 
     //view student detail
     Route::get('/student/detail/{student_id}', 'StudentController@studentDetail')->name('student.detail');
+    //student score
+    Route::get('/student/score/{student_id}', 'StudentController@studentScore')->name('student.score');
     //show student edit form
     Route::get('/student/detail/edit/{id}', 'StudentController@editStudent')->name('student.detail.edit');
     //update student info
@@ -769,6 +771,9 @@ Route::get('/highSchool/absent/{grade_id}/{student_id}', 'TeacherAbsentControlle
 
     //view student detail
     Route::get('/student/detail/{teacher_id}/{student_id}', 'TeacherProfileController@studentDetail')->name('teacher.student.detail');
+    
+    //view student score
+    Route::get('/student/score/{teacher_id}/{student_id}', 'TeacherProfileController@studentScore')->name('teacher.student.score');
     
     //view student profile only
 

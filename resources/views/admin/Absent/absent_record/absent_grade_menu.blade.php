@@ -55,7 +55,7 @@
                                 <div class="column">
 
                                     @if(count($secondaryGrade)) 
-                                        @foreach($secondaryGrade->slice(0,5) as $secondaryGrades)
+                                        @foreach($secondaryGrade->slice(0,7) as $secondaryGrades)
                                             <a href="{{ route('secondarySchool.absentRecord', ['grade_id'=>$secondaryGrades->id, 'student_id'=>$students->id]) }}">
                                                 {{ $secondaryGrades->name }}
                                             </a>
@@ -69,7 +69,7 @@
                                 <div class="column">
                                   
                                     @if(count($secondaryGrade)) 
-                                        @foreach($secondaryGrade->slice(5,5) as $secondaryGrades)
+                                        @foreach($secondaryGrade->slice(7,7) as $secondaryGrades)
                                             <a href="{{ route('secondarySchool.absentRecord', ['grade_id'=>$secondaryGrades->id, 'student_id'=>$students->id]) }}">
                                                 {{ $secondaryGrades->name }}
                                             </a>
@@ -79,7 +79,7 @@
                                 <div class="column">
                                   
                                     @if(count($secondaryGrade)) 
-                                        @foreach($secondaryGrade->slice(10,5) as $secondaryGrades)
+                                        @foreach($secondaryGrade->slice(14,7) as $secondaryGrades)
                                             <a href="{{ route('secondarySchool.absentRecord', ['grade_id'=>$secondaryGrades->id, 'student_id'=>$students->id]) }}">
                                                 {{ $secondaryGrades->name }}
                                             </a>
@@ -89,7 +89,7 @@
 
                                 <div class="column">
                                         @if(count($secondaryGrade)) 
-                                        @foreach($secondaryGrade->slice(15,6) as $secondaryGrades)
+                                        @foreach($secondaryGrade->slice(21,7) as $secondaryGrades)
                                             <a href="{{ route('secondarySchool.absentRecord', ['grade_id'=>$secondaryGrades->id, 'student_id'=>$students->id]) }}">
                                                 {{ $secondaryGrades->name }}
                                             </a>
@@ -104,24 +104,37 @@
 
 
                     <li style="padding-top:-5px">
-                        <div class="dropdown">
+                        <div class="menu">
                             <button class="dropbtn">High School <i class="fa fa-caret-down"></i></button>
-                            <div class="dropdown-content">
-                               @if(count($grade)) 
-                                @foreach($grade as $grades)
-                                    <a href="{{ route('highSchool.absentRecord', ['grade_id'=>$grades->id,'student_id'=>$students->id]) }}">
-                                        {{ $grades->grade_name }}
-                                    </a>
-                                @endforeach 
-                                @endif
-                              
-                              
+                            <div class="content-2">
+                                <div class="row">
+                                    <div class="column-2">
+                                        @if(count($grade)) 
+                                            @foreach($grade->slice(0,6) as $grades)
+                                                <a href="{{ route('highSchool.absentRecord', ['grade_id'=>$grades->id,'student_id'=>$students->id]) }}">
+                                                    {{ $grades->grade_name }}
+                                                </a>
+                                            @endforeach 
+                                        @endif
+                                    </div>
+
+                                    <div class="column-2">
+                                        @if(count($grade)) 
+                                            @foreach($grade->slice(6,6) as $grades)
+                                                <a href="{{ route('highSchool.absentRecord', ['grade_id'=>$grades->id,'student_id'=>$students->id]) }}">
+                                                    {{ $grades->grade_name }}
+                                                </a>
+                                            @endforeach 
+                                        @endif
+                                    </div>
+
+                                </div> 
                             </div>
                         </div>
                     </li>
 
                 </ul>
-</div>
+    </div>
 
 @elseif(Auth::guard('teacher')->check())
 
@@ -177,52 +190,52 @@
                             </button>
                             <div class="content">
                           
-                              <div class="row">
-                                <div class="column">
+                                <div class="row">
+                                    <div class="column">
 
-                                    @if(count($secondaryGrade)) 
-                                        @foreach($secondaryGrade->slice(0,5) as $secondaryGrades)
-                                            <a href="{{ route('teacher.secondarySchool.absentRecord', ['grade_id'=>$secondaryGrades->id, 'student_id'=>$students->id]) }}">
-                                                {{ $secondaryGrades->name }}
-                                            </a>
-                                        @endforeach 
-                                    @endif
-                                  
-                                  
-                                  
-                                  
-                                </div>
-                                <div class="column">
-                                  
-                                    @if(count($secondaryGrade)) 
-                                        @foreach($secondaryGrade->slice(5,5) as $secondaryGrades)
-                                            <a href="{{ route('teacher.secondarySchool.absentRecord', ['grade_id'=>$secondaryGrades->id, 'student_id'=>$students->id]) }}">
-                                                {{ $secondaryGrades->name }}
-                                            </a>
-                                        @endforeach 
-                                    @endif
-                                </div>
-                                <div class="column">
-                                  
-                                    @if(count($secondaryGrade)) 
-                                        @foreach($secondaryGrade->slice(10,5) as $secondaryGrades)
-                                            <a href="{{ route('teacher.secondarySchool.absentRecord', ['grade_id'=>$secondaryGrades->id, 'student_id'=>$students->id]) }}">
-                                                {{ $secondaryGrades->name }}
-                                            </a>
-                                        @endforeach 
-                                    @endif
-                                </div>
-
-                                <div class="column">
                                         @if(count($secondaryGrade)) 
-                                        @foreach($secondaryGrade->slice(15,6) as $secondaryGrades)
-                                            <a href="{{ route('teacher.secondarySchool.absentRecord', ['grade_id'=>$secondaryGrades->id, 'student_id'=>$students->id]) }}">
-                                                {{ $secondaryGrades->name }}
-                                            </a>
-                                        @endforeach 
-                                    @endif
+                                            @foreach($secondaryGrade->slice(0,7) as $secondaryGrades)
+                                                <a href="{{ route('teacher.secondarySchool.absentRecord', ['grade_id'=>$secondaryGrades->id, 'student_id'=>$students->id]) }}">
+                                                    {{ $secondaryGrades->name }}
+                                                </a>
+                                            @endforeach 
+                                        @endif
+                                    
+                                    
+                                    
+                                    
+                                    </div>
+                                    <div class="column">
+                                    
+                                        @if(count($secondaryGrade)) 
+                                            @foreach($secondaryGrade->slice(7,7) as $secondaryGrades)
+                                                <a href="{{ route('teacher.secondarySchool.absentRecord', ['grade_id'=>$secondaryGrades->id, 'student_id'=>$students->id]) }}">
+                                                    {{ $secondaryGrades->name }}
+                                                </a>
+                                            @endforeach 
+                                        @endif
+                                    </div>
+                                    <div class="column">
+                                    
+                                        @if(count($secondaryGrade)) 
+                                            @foreach($secondaryGrade->slice(14,7) as $secondaryGrades)
+                                                <a href="{{ route('teacher.secondarySchool.absentRecord', ['grade_id'=>$secondaryGrades->id, 'student_id'=>$students->id]) }}">
+                                                    {{ $secondaryGrades->name }}
+                                                </a>
+                                            @endforeach 
+                                        @endif
+                                    </div>
+
+                                    <div class="column">
+                                            @if(count($secondaryGrade)) 
+                                            @foreach($secondaryGrade->slice(21,7) as $secondaryGrades)
+                                                <a href="{{ route('teacher.secondarySchool.absentRecord', ['grade_id'=>$secondaryGrades->id, 'student_id'=>$students->id]) }}">
+                                                    {{ $secondaryGrades->name }}
+                                                </a>
+                                            @endforeach 
+                                        @endif
+                                    </div>
                                 </div>
-                              </div>
                             </div>
                           </div> 
 
@@ -230,19 +243,36 @@
 
 
                     <li style="padding-top:-5px">
-                        <div class="dropdown">
+                        <div class="menu">
                             <button class="dropbtn">High School <i class="fa fa-caret-down"></i></button>
-                            <div class="dropdown-content">
-                               @if(count($grade)) 
-                                @foreach($grade as $grades)
-                                    <a href="{{ route('teacher.highSchool.absentRecord', ['grade_id'=>$grades->id,'student_id'=>$students->id]) }}">
-                                        {{ $grades->grade_name }}
-                                    </a>
-                                @endforeach 
-                                @endif
-                              
-                              
-                            </div>
+                            
+                                <div class="content-2">
+                                    <div class="row">
+                                        <div class="column-2">
+                                            @if(count($grade)) 
+                                                @foreach($grade->slice(0,6) as $grades)
+                                                    <a href="{{ route('teacher.highSchool.absentRecord', ['grade_id'=>$grades->id,'student_id'=>$students->id]) }}">
+                                                        {{ $grades->grade_name }}
+                                                    </a>
+                                                @endforeach 
+                                            @endif
+                                        </div>
+
+                                        <div class="column-2">
+                                            @if(count($grade)) 
+                                                @foreach($grade->slice(6,6) as $grades)
+                                                    <a href="{{ route('teacher.highSchool.absentRecord', ['grade_id'=>$grades->id,'student_id'=>$students->id]) }}">
+                                                        {{ $grades->grade_name }}
+                                                    </a>
+                                                @endforeach 
+                                            @endif
+                                        </div>
+
+                                    </div>
+                                
+                                </div>
+
+                               
                         </div>
                     </li>
 
