@@ -7,25 +7,38 @@
     }*/
 
     .studentCard {
-      display: flex;
-      align-items: center;
-      justify-content: left;
-      width: 530px;
-      height: 325px;
-      background-image: url("/images/CAS-ID.jpg");
-      background-repeat: no-repeat, repeat;
-      background-size: cover;
-      background-position: center;
-      margin:0px 0px 0px 0px;
-      padding: 0; 
+        top:0;
+        right:0;
+        bottom:0;
+        left:0;
+        z-index:50;
+        margin:auto;
+        width: 530px;
+        height: 325px;
+        border:1px solid #0584be;
+        font-size: 18px;
+        /* text-align:center; */
+        line-height:30px;
+        background-image: url("/images/CAS-ID.jpg");
+        margin-top:30px;
+        margin-bottom: 20px;
+        /* background-image: url("/images/CAS-ID.jpg"); */
+        background-repeat: no-repeat, repeat;
+        background-size: cover;
+        background-position: center;
+ 
     }
     .cover{
-      
-      width: 530px;
-      height: 325px;
+      height: 500px;
       /*border: solid red 3px;*/
-      margin:0px;
-      padding: 10px;
+      
+      /* border: solid #900 3px; */
+      top:0;
+        right:0;
+        bottom:0;
+        left:0;
+        z-index:50;
+        margin:auto;
     }
 
     .card-ul li{
@@ -34,132 +47,130 @@
         font-size: 18px;
         color: #fff;
         margin-left: 10px;
-        
     }
-
+    .image-cover{
+        top:0;
+        right:0;
+        bottom:0;
+        left:0;
+        z-index:50;
+        margin: auto;
+    }
     .image-id{
-        margin-top: 6.7em;
-        margin-left: 2em;
+        float:right;
+        /* float: left; */
+        margin-top: -10.6em;
     }
     .spaceright{
         margin-right: 30px;
     }
     .borderless td, .borderless th {
-    border: 0.25px;
+    border: 0.01px;
+    }
+    .barcode{
+        top:0;
+        right:0;
+        bottom:0;
+        left:0;
+        z-index:50;
+        margin:-5px 0 0 -5px;
     }
 
-    .barcode{
-        margin-top:-5em;
-        margin-left: -2em;
+    
+    table.form{width:100%}
+    td.label{width:150px;white-space:nowrap;}
+    td input{width:55%;}
+    td input{color:teal}
+
+    .print{
+        top:0;
+        right:0;
+        bottom:0;
+        left:0;
+        z-index:50;
+        margin:auto;
     }
+ 
+
 </style>
 @section('content')
 <!-- page content -->
 <div class="right_col" role="main">
-    <div class="" style="margin-bottom: 12em">
-  
+    <div class="" style="margin-bottom: 5em">
         <div class="clearfix"></div>
-
-        <div class="row" >
-            <div class="col-md-12 col-sm-12 col-xs-12" >
-                <div class="x_panel" style="width: auto; height:500px">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="row">
-                                
-                                <div class="col-md-8">
-                                    <div class="cover">
-                                        <div class="studentCard">
-
-                                            <table class="table borderless ml-2" style="color: white">
-                                                <tr>
-                                                    <td class="col-sm-4">Name</td>
-                                                    
-                                                    <td>: {{ $student->last_name }}, {{ $student->first_name }}</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Grade</td>
-                                                    
-                                                    <td>: {{ substr($student->GradeProfile->name,5)  }}</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Parent's Contact</td>
-                                                    
-                                                    <td>: {{ $student->father_phone }}-{{ $student->mother_phone }}</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Expiration Date </td>
-                                                    
-                                                    <td>: {{ date('d-M-Y', strtotime($student->start_date))}}</td>
-                                                </tr>
-                                                
-
-                                            </table>
-                                            
+                <div class="x_panel">
+                    <div class="row" >
+            
+                    <form action="{{ route('student.printCardID',['id'=>$student->id]) }}" method="GET">
+                        {{ csrf_field() }}
+                    
+                        <div class="cover col-md-12 col-sm-12 col-xs-12">
+                            <div class="studentCard">
+                                <table class="table borderless ml-2 form" style="color: white; margin-top:4.5em;">
+                                    <tr >
+                                        <td class="col-sm-3" style="padding-top: 4px; padding-bottom:4px;" >Name</td>
                                         
-                                        </div>
-                                        <div class="barcode">
-                                                
-                                            <ul class="card-ul">
-                                               <li>
-                                                   {!! $barcode !!}
-                                               </li>
-                                               <li style="color: darkblue; letter-spacing:23px">{{ $student->card_id }}</li>
-                                           </ul>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
+                                        <td style="padding-top: 4px; padding-bottom:4px;">: {{ $student->last_name }}, {{ $student->first_name }}</td>
+                                        <input type="hidden" name="first_name" value="{{ $student->first_name }}">
+                                        <input type="hidden" name="last_name" value="{{ $student->last_name }}">
+                                    </tr>
+                                    <tr>
+                                        <td style="padding-top: 4px; padding-bottom:4px;">ID</td>
+                                        
+                                        <td style="padding-top: 4px; padding-bottom:4px;">: <input type="hidden" name="card_id" value="{{ $student->card_id  }}">{{ $student->card_id  }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding-top: 4px; padding-bottom:4px;">Grade</td>
+                                        
+                                        <td style="padding-top: 4px; padding-bottom:4px;">: <input type="text" name="grade" value="{{ ($student->GradeProfile->name)  }}"></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding-top: 4px; padding-bottom:4px;">Contact</td>
+                                        
+                                        <td style="padding-top: 4px; padding-bottom:4px;">: <input type="text" name="contact" value="{{ $student->father_phone }} - {{ $student->mother_phone }}"> </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding-top: 4px; padding-bottom:4px;">Expiration Date </td>
+                                        
+                                        <td style="padding-top: 4px; padding-bottom:4px;">: <input type="text" name="expired_date" value="{{ date('d-M-Y', strtotime($student->start_date))}}"> </td>
+                                    </tr>
+                                    
+                                </table>
+                                <div class="image-cover">
                                     <img class="image-id" src="{{ asset($student->photo) }}" alt="user profile" width="130" height="170">
-                                   {{--  <img class="image-id" src="/images/david.jpeg" alt="user profile" width="130" height="170"> --}}
+                                </div>
+                                <div class="barcode">
+                                    
+                                    <ul class="card-ul">
+                                       <li>
+                                           {!! $barcode !!}
+                                       </li>
+                                       <li style="color: darkblue; letter-spacing:23px">{{ $student->card_id }}</li>
+                                    </ul>
+                                </div>
+
+                                <div class="print">
+                                    <button class="btn btn-success btn-lg btn-block " style="margin-top: 20px">
+                                        Print
+                                        {{-- <a href="{{ route('student.printCardID',['id'=>$student->id, 'download'=>'pdf']) }}" class="display-4 " style="color: white; font-weight-bold">
+                                          PRINT ID CARD 
+                                        </a> --}}
+                                        {{-- <a href="{{ route('student.showCardID',['id'=>$student->id, 'download'=>'pdf']) }}" class="display-4 " style="color: white; font-weight-bold">
+                                          PRINT ID CARD 
+                                        </a> --}}
+                                        
+                                    </button>
                                 </div>
                             </div>
-                        </div>
-
-                        
-                        <div class="col-md-6">
-                            <div class="cover">
-                                <div class="studentCard">
-                                    <div class="card-front" >
-                                        <div class="visible-print text-center" style="margin-top: 30px">
-                                            
-                                        </div>
-                                    </div>
-                                </div>                              
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="print-button col-12-md text-center" style="margin-top: 4em; padding-left:20px; padding-right:20px">
-                        <p class="alert alert-success text-white">
-                        <a href="{{ route('student.previewCardID',['id'=>$student->id]) }}" class="display-4 " style="color: white; font-weight-bold">
-                              PRINT ID CARD 
-                            </a>
+                            {{-- end of studentCard --}}
                             
-                        </p>
-                        
+                        </div>
+
+                    </form>    
+                               
                     </div>
-                    
-                    
-                    
-
-                    
-
-                    {{-- @include('admin.student.profile.student_profile_info') --}}
-
-
-                   {{--  <div class="x_title">
-                        <div class="clearfix"></div>
-                    </div> --}}
-
                 </div>
-
-                
-
             </div>
-        </div>
-    </div>
 
     <!-- /page content -->
 @endsection
