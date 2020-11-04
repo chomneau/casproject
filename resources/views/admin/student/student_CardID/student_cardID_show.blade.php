@@ -13,14 +13,14 @@
         left:0;
         z-index:50;
         margin:auto;
-        width: 530px;
-        height: 325px;
+        width: 545px;
+        height: 320px;
         border:1px solid #0584be;
         font-size: 18px;
         /* text-align:center; */
         line-height:30px;
         background-image: url("/images/CAS-ID.jpg");
-        margin-top:30px;
+        margin-top:40px;
         margin-bottom: 20px;
         /* background-image: url("/images/CAS-ID.jpg"); */
         background-repeat: no-repeat, repeat;
@@ -59,7 +59,8 @@
     .image-id{
         float:right;
         /* float: left; */
-        margin-top: -10.6em;
+        margin-top: -10.8em;
+        margin-right: 8px;
     }
     .spaceright{
         margin-right: 30px;
@@ -73,7 +74,7 @@
         bottom:0;
         left:0;
         z-index:50;
-        margin:-5px 0 0 -5px;
+        margin:-16px 0 0 -5px;
     }
 
     
@@ -106,7 +107,7 @@
                     
                         <div class="cover col-md-12 col-sm-12 col-xs-12">
                             <div class="studentCard">
-                                <table class="table borderless ml-2 form" style="color: white; margin-top:4.5em;">
+                                <table class="table borderless ml-2 form" style="color: white; margin-top:5.5em;">
                                     <tr >
                                         <td class="col-sm-3" style="padding-top: 4px; padding-bottom:4px;" >Name</td>
                                         
@@ -137,7 +138,7 @@
                                     
                                 </table>
                                 <div class="image-cover">
-                                    <img class="image-id" src="{{ asset($student->photo) }}" alt="user profile" width="130" height="170">
+                                    <img class="image-id" src="{{ asset($student->photo) }}" alt="user profile" width="130" height="173">
                                 </div>
                                 <div class="barcode">
                                     

@@ -55,7 +55,7 @@ class CardIDController extends Controller
     public function printStudentCardID(Request $request, $id)
     {
         $generator = new Picqer\Barcode\BarcodeGeneratorHTML();
-        $barcode = $generator->getBarcode($request->card_id, $generator::TYPE_CODE_128);
+        $barcode = $generator->getBarcode($request->card_id, $generator::TYPE_CODE_128_A,1,20);
         $photo = StudentProfile::find($id)->photo;
         $data = [
 
@@ -70,28 +70,13 @@ class CardIDController extends Controller
 
         ];
 
-        
-
-         
-            
-            $pdf = PDF::loadView('admin.student.student_CardID.print_student_card', $data); 
-            return $pdf->download('student_CardID.pdf');
+        $first_name = StudentProfile::find($id)->first_name;
+        $last_name = StudentProfile::find($id)->last_name;
+             
+        $pdf = PDF::loadView('admin.student.student_CardID.print_student_card', $data); 
+        return $pdf->download($first_name.' '.$last_name.'.pdf');
         
     }
 
-    public function pdftest(Request $request, $id)
-    {
-        
-        $data['items'] = StudentProfile::find($id);
-        $hello = "Hello there";
-        
-
-        if($request->has('download')){
-           // return $data->first_name;
-
-             $pdf = PDF::loadView('admin.student.student_CardID.pdf', $data, compact('hello'));
-             return $pdf->download('pdf.pdf');
-        }
-        return view('admin.student.student_CardID.pdftest', $data);
-    }
+    
 }

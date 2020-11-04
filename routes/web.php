@@ -129,9 +129,6 @@ Route::prefix('admin')->group(function () {
     Route::get('/student/previewCardID/{student_id}', 'CardIDController@previewStudentCardID')->name('student.previewCardID');
     Route::get('/student/printCardID/{id}', 'CardIDController@printStudentCardID')->name('student.printCardID');
 
-    //test download pdf
-
-Route::get('/pdftest/{id}', 'CardIDController@pdftest')->name('download.pdf');
 
     //Report students
 

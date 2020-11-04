@@ -19,7 +19,7 @@
         margin:auto;
         width: 336px;
         height: 206px;
-        border:1px solid #043df8;
+        /* border:1px solid #043df8; */
         background-repeat: no-repeat, repeat;
         background-size: cover;
         background-position: center;
@@ -63,7 +63,7 @@
         margin:auto;
         width: 336px;
         height: 206px;
-        border:1px solid #000;
+        border:0.5px solid rgb(62, 165, 250);
         /* text-align:center; */
         line-height:200px;
     }
@@ -76,7 +76,7 @@
         font-size: 12px;
         /* text-align:center; */
         line-height:18px;
-        margin-top: 40px; 
+        margin-top: 50px; 
         color:white;
         margin-left: -10px;
         
@@ -84,11 +84,11 @@
 
     .content-right{
         width:80px;
-        height: 105px;
+        height: 110px;
         float: right;
         /* margin-left:10px; */
         /* border: solid #900 1px; */
-        margin: 10px 1.5px 0 0;
+        margin: 4.5px 4px 0 0;
         padding: 0px;
     }
 
@@ -121,8 +121,8 @@
     .barcode ul{
         width: 180px;
         height: 50px;
-        margin-top:9.5em; 
-         margin-left: 0px;
+        margin-top:10.0em; 
+         margin-left: 14px;
          margin-bottom: 1em;
          float: left;
          /* border:1px solid #000; */
@@ -132,7 +132,7 @@
         /* border: #043df8 solid 1px; */
         margin-left: -25px;
         margin-top: 5px;
-        font-size: 12px;
+        font-size: 10px;
     }
 
     page[size="A4"] {  
@@ -153,7 +153,7 @@
                 <div class="studentCard">
                     <div class="image">
                         <img src="{{ public_path('/images/CAS-ID.jpg')}}" alt="" style="width: 336px;
-                        height: 206px;">
+                        height: 198px;">
                     </div>
                     <div class="row">
                         <div class="content-left">
@@ -166,7 +166,7 @@
                             </ul>
                         </div>
                         <div class="content-right">
-                            <img class="image-id" src="{{ $photo }}" alt="user profile" width="83" height="103">
+                            <img class="image-id" src="{{ $photo }}" alt="user profile" width="83" height="107">
                         </div>
                     </div>
                     
@@ -179,7 +179,7 @@
                            {!! $barcode !!}
                            
                        </li>
-                       <li style="color: darkblue;margin-top:0px; letter-spacing:15px">{{ $card_id }}</li>
+                       <li style="color: darkblue;margin-top:0px; letter-spacing:11px">{{ $card_id }}</li>
                    </ul>
 
                 </div>  
@@ -197,7 +197,7 @@
         <div class="row">
             <div class="bottom-box">
                 <div class="image">
-                    <img src="{{ public_path('/images/CAS-ID.jpg')}}" alt="" style="width: 336px;
+                    <img src="{{ public_path('/images/backstudentcard.jpg')}}" alt="" style="width: 336px;
                     height: 206px;">
                 </div>
             </div>
