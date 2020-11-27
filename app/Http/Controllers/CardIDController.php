@@ -73,8 +73,10 @@ class CardIDController extends Controller
         $first_name = StudentProfile::find($id)->first_name;
         $last_name = StudentProfile::find($id)->last_name;
              
-        $pdf = PDF::loadView('admin.student.student_CardID.print_student_card', $data); 
-        return $pdf->download($first_name.' '.$last_name.'.pdf');
+        $pdf = PDF::loadView('admin.student.student_CardID.download_student_card', $data)
+        ->setPaper([0, 0, 144, 252], 'landscape'); 
+
+        return $pdf->stream($first_name.' '.$last_name.'.pdf');
         
     }
 

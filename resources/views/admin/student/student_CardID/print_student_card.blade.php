@@ -61,6 +61,7 @@
         left:0;
         z-index:20;
         margin:auto;
+        
         width: 336px;
         height: 206px;
         border:0.5px solid rgb(62, 165, 250);
