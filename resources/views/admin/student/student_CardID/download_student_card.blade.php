@@ -15,7 +15,7 @@
         background-color: rgb(8, 8, 77);
         }
         .front{
-            /* border: solid 1px red; */
+            /* border: solid 2px rgb(27, 9, 126); */
             width: 252pt;
             height:142.5pt;
             /* background-image: url('images/cas-new-template.jpg'); */
@@ -28,17 +28,20 @@
             position: relative; z-index: 0; left: 0px; top: 0px;
             margin: 0;
             padding: 0;
+            margin-top: 3px;
+            padding-top: 10px;
             
             
             
         }
         .image{
-            width: 258pt;
-            height:160pt;
+            width: 250pt;
+            height:158pt;
             float: left;
-            margin: 10px 0px 0px 15px ;
-            padding-top: -20px;
+            margin: 30px 10px 0px 15px ;
+            padding-top: 10px;
             padding-left: 2px;
+            padding-right: 3px;
             /* border: solid 1px green; */
             position: relative; z-index: 0; left: 0px; top: 0px;
         }
@@ -96,7 +99,7 @@
         .barcode ul{
         width: 200px;
         height: 40px;
-        margin-top:7.8em; 
+        margin-top:7.9em; 
          margin-left: 14px;
          margin-bottom: -6px;
          position: absolute;
@@ -125,7 +128,7 @@
         
         <div class="row cover">
             <div class="image">
-                <img class="image-id" src="images/cas-new-template.jpg" alt="user profile" width="340" height="192">
+                <img class="image-id" src="images/cas-new-template.jpg" alt="user profile" width="335" height="194">
             </div>
             <div class="col-md-7 content-left">
                 <ul >
@@ -158,7 +161,7 @@
     <div class="page-break"></div>
     
     <div class="back">
-        <img class="image-id" src="images/backstudentcard.jpg" alt="user profile" width="350" height="220">
+        <img class="image-id" src="images/backstudentcard.jpg" alt="user profile" width="350" height="210">
     </div>
 
 </body>
