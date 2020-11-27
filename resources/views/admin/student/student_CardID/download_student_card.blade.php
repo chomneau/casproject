@@ -16,7 +16,7 @@
         }
         .front{
             /* border: solid 1px red; */
-            width: 250.5pt;
+            width: 252pt;
             height:142.5pt;
             /* background-image: url('images/cas-new-template.jpg'); */
             /* height: 100%;  */
@@ -33,10 +33,10 @@
             
         }
         .image{
-            width: 252pt;
+            width: 258pt;
             height:160pt;
             float: left;
-            margin: 10px 0px 0px 10px ;
+            margin: 10px 0px 0px 15px ;
             padding-top: -20px;
             padding-left: 2px;
             /* border: solid 1px green; */
@@ -158,7 +158,7 @@
     <div class="page-break"></div>
     
     <div class="back">
-        <img class="image-id" src="images/backstudentcard.jpg" alt="user profile" width="350" height="196">
+        <img class="image-id" src="images/backstudentcard.jpg" alt="user profile" width="350" height="220">
     </div>
 
 </body>
