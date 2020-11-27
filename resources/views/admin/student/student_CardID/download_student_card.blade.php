@@ -12,6 +12,7 @@
         height: 100%;
         margin: 0;
         position: relative; z-index: 0; left: 0px; top: 0px;
+        background-color: darkblue;
         }
         .front{
             /* border: solid 1px red; */
@@ -32,8 +33,8 @@
             
         }
         .image{
-            width: 251.5pt;
-            height:143.5pt;
+            width: 252pt;
+            height:160pt;
             float: left;
             margin: 10px 0px 0px 10px ;
             padding-top: -20px;
@@ -43,7 +44,7 @@
         }
         .content-left{
             font-family: Verdana, Geneva, Tahoma, sans-serif;
-            font-size: 11px;
+            font-size: 12px;
             color: aliceblue;
             height: 90px;
             margin-top: 55px;
