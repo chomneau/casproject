@@ -12,7 +12,7 @@
         height: 100%;
         margin: 0;
         position: relative; z-index: 0; left: 0px; top: 0px;
-        background-color: darkblue;
+        background-color: rgb(8, 8, 77);
         }
         .front{
             /* border: solid 1px red; */
@@ -149,7 +149,7 @@
                    {!! $barcode !!}
                    
                </li>
-               <li style="color: darkblue;margin-top:-3px; letter-spacing:11px">{{ $card_id }}</li>
+               <li style="margin-top:-3px; letter-spacing:11px">{{ $card_id }}</li>
            </ul>
 
         </div> 
