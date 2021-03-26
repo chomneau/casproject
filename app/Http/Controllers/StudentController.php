@@ -429,118 +429,125 @@ class StudentController extends Controller
      * @param  int  $idS
      * @return \Illuminate\Http\Response
      */
-    public function updateScore(Request $request, $score_id, $grade_id, $student_id)
+    // public function updateScore(Request $request, $score_id, $grade_id, $student_id)
+     public function updateScore(Request $request)
     {
-        $grade = Grade::find($grade_id);
-        $studentprofile = StudentProfile::find($student_id);
+        Score::find($request->pk);
+        
+        Score::find($request->pk)->update([$request->name => $request->value]);
+        return response()->json(['success'=>'done']);
 
-        $score = Score::find($score_id);
+
+    //     $grade = Grade::find($grade_id);
+    //     $studentprofile = StudentProfile::find($student_id);
+
+    //     $score = Score::find($score_id);
 
 
-      //  return 'grade_id ='.$grade->id.'score ='.$score->id.'student ='.$studentprofile->id;
+    //   //  return 'grade_id ='.$grade->id.'score ='.$score->id.'student ='.$studentprofile->id;
 
-        $score->quarter_1 = $request->quarter1;
-        $score->quarter_2 = $request->quarter2;
-        $score->quarter_3 = $request->quarter3;
-        $score->quarter_4 = $request->quarter4;
+    //     $score->quarter_1 = $request->quarter1;
+    //     $score->quarter_2 = $request->quarter2;
+    //     $score->quarter_3 = $request->quarter3;
+    //     $score->quarter_4 = $request->quarter4;
 
-        if($score->subject_id = $score->subject->id){
-            $score->credit = $score->subject->credit;
-            $score->save();
-        }
+    //     if($score->subject_id = $score->subject->id){
+    //         $score->credit = $score->subject->credit;
+    //         $score->save();
+    //     }
 
       
 
-        $GPA_1 = ($score->quarter_1 + $score->quarter_2)/2;
+    //     $GPA_1 = ($score->quarter_1 + $score->quarter_2)/2;
 
 
-        if ($GPA_1 >= 92.5 && $GPA_1 <= 100) {
-            $score->gpa_quarter_1 = "A";
-            $score->pts_1 = ($score->subject->credit*4)/2;
-        } elseif ($GPA_1 >= 89.5 && $GPA_1 <= 92) {
-            $score->gpa_quarter_1 = "A-";
-            $score->pts_1 = ($score->subject->credit*3.70)/2;
-        } elseif ($GPA_1 >= 86.5 && $GPA_1 <= 89) {
-            $score->gpa_quarter_1 = "B+";
-            $score->pts_1 = ($score->subject->credit*3.30)/2;
-        } elseif ($GPA_1 >= 82.5 && $GPA_1 <= 86) {
-            $score->gpa_quarter_1 = "B";
-            $score->pts_1 = ($score->subject->credit*3.00)/2;
-        } elseif ($GPA_1 >= 79.5 && $GPA_1 <= 82) {
-            $score->gpa_quarter_1 = "B-";
-            $score->pts_1 = ($score->subject->credit*2.70)/2;
-        } elseif ($GPA_1 >= 76.5 && $GPA_1 <= 79) {
-            $score->gpa_quarter_1 = "C+";
-            $score->pts_1 = ($score->subject->credit*2.30)/2;
-        } elseif ($GPA_1 >= 72.5 && $GPA_1 <= 76) {
-            $score->gpa_quarter_1 = "C";
-            $score->pts_1 = ($score->subject->credit*2.00)/2;
-        } elseif ($GPA_1 >= 69.5 && $GPA_1 <= 72) {
-            $score->gpa_quarter_1 = "C-";
-            $score->pts_1 = ($score->subject->credit*1.70)/2;
-        } elseif ($GPA_1 >= 66.5 && $GPA_1 <= 69) {
-            $score->gpa_quarter_1 = "D+";
-            $score->pts_1 = ($score->subject->credit*1.30)/2;
-        } elseif ($GPA_1 >= 62.5 && $GPA_1 <= 66) {
-            $score->gpa_quarter_1 = "D";
-            $score->pts_1 = ($score->subject->credit*1.00)/2;
-        } elseif ($GPA_1 >= 59.5 && $GPA_1 <= 62) {
-            $score->gpa_quarter_1 = "D-";
-            $score->pts_1 = ($score->subject->credit*0.70)/2;
-        } elseif ($GPA_1 >= 0 && $GPA_1 <= 59) {
-            $score->gpa_quarter_1 = "F";
-            $score->pts_1 = $score->subject->credit*0.0;
-        } else {
-            $error = "invalid input";
-        }
+    //     if ($GPA_1 >= 92.5 && $GPA_1 <= 100) {
+    //         $score->gpa_quarter_1 = "A";
+    //         $score->pts_1 = ($score->subject->credit*4)/2;
+    //     } elseif ($GPA_1 >= 89.5 && $GPA_1 <= 92) {
+    //         $score->gpa_quarter_1 = "A-";
+    //         $score->pts_1 = ($score->subject->credit*3.70)/2;
+    //     } elseif ($GPA_1 >= 86.5 && $GPA_1 <= 89) {
+    //         $score->gpa_quarter_1 = "B+";
+    //         $score->pts_1 = ($score->subject->credit*3.30)/2;
+    //     } elseif ($GPA_1 >= 82.5 && $GPA_1 <= 86) {
+    //         $score->gpa_quarter_1 = "B";
+    //         $score->pts_1 = ($score->subject->credit*3.00)/2;
+    //     } elseif ($GPA_1 >= 79.5 && $GPA_1 <= 82) {
+    //         $score->gpa_quarter_1 = "B-";
+    //         $score->pts_1 = ($score->subject->credit*2.70)/2;
+    //     } elseif ($GPA_1 >= 76.5 && $GPA_1 <= 79) {
+    //         $score->gpa_quarter_1 = "C+";
+    //         $score->pts_1 = ($score->subject->credit*2.30)/2;
+    //     } elseif ($GPA_1 >= 72.5 && $GPA_1 <= 76) {
+    //         $score->gpa_quarter_1 = "C";
+    //         $score->pts_1 = ($score->subject->credit*2.00)/2;
+    //     } elseif ($GPA_1 >= 69.5 && $GPA_1 <= 72) {
+    //         $score->gpa_quarter_1 = "C-";
+    //         $score->pts_1 = ($score->subject->credit*1.70)/2;
+    //     } elseif ($GPA_1 >= 66.5 && $GPA_1 <= 69) {
+    //         $score->gpa_quarter_1 = "D+";
+    //         $score->pts_1 = ($score->subject->credit*1.30)/2;
+    //     } elseif ($GPA_1 >= 62.5 && $GPA_1 <= 66) {
+    //         $score->gpa_quarter_1 = "D";
+    //         $score->pts_1 = ($score->subject->credit*1.00)/2;
+    //     } elseif ($GPA_1 >= 59.5 && $GPA_1 <= 62) {
+    //         $score->gpa_quarter_1 = "D-";
+    //         $score->pts_1 = ($score->subject->credit*0.70)/2;
+    //     } elseif ($GPA_1 >= 0 && $GPA_1 <= 59) {
+    //         $score->gpa_quarter_1 = "F";
+    //         $score->pts_1 = $score->subject->credit*0.0;
+    //     } else {
+    //         $error = "invalid input";
+    //     }
 
-        $GPA_2 = ($score->quarter_3 + $score->quarter_4) / 2;
+    //     $GPA_2 = ($score->quarter_3 + $score->quarter_4) / 2;
 
-        if ($GPA_2 >= 92.5 && $GPA_2 <= 100) {
-            $score->gpa_quarter_2 = "A";
-            $score->pts_2 = ($score->subject->credit*4)/2;
-        } elseif ($GPA_2 >= 89.5 && $GPA_2 <= 92) {
-            $score->gpa_quarter_2 = "A-";
-            $score->pts_2 = ($score->subject->credit*3.70)/2;
-        } elseif ($GPA_2 >= 86.5 && $GPA_2 <= 89) {
-            $score->gpa_quarter_2 = "B+";
-            $score->pts_2 = ($score->subject->credit*3.30)/2;
-        } elseif ($GPA_2 >= 82.5 && $GPA_2 <= 86) {
-            $score->gpa_quarter_2 = "B";
-            $score->pts_2 = ($score->subject->credit*3.00)/2;
-        } elseif ($GPA_2 >= 79.5 && $GPA_2 <= 82) {
-            $score->gpa_quarter_2 = "B-";
-            $score->pts_2 = ($score->subject->credit*2.70)/2;
-        } elseif ($GPA_2 >= 76.5 && $GPA_2 <= 79) {
-            $score->gpa_quarter_2 = "C+";
-            $score->pts_2 = ($score->subject->credit*2.30)/2;
-        } elseif ($GPA_2 >= 72.5 && $GPA_2 <= 76) {
-            $score->gpa_quarter_2 = "C";
-            $score->pts_2 = ($score->subject->credit*2.00)/2;
-        } elseif ($GPA_2 >= 69.5 && $GPA_2 <= 72) {
-            $score->gpa_quarter_2 = "C-";
-            $score->pts_2 = ($score->subject->credit*1.70)/2;
-        } elseif ($GPA_2 >= 66.5 && $GPA_2 <= 69) {
-            $score->gpa_quarter_2 = "D+";
-            $score->pts_2 = ($score->subject->credit*1.30)/2;
-        } elseif ($GPA_2 >= 62.5 && $GPA_2 <= 66) {
-            $score->gpa_quarter_2 = "D";
-            $score->pts_2 = ($score->subject->credit*1.00)/2;
-        } elseif ($GPA_2 >= 59.5 && $GPA_2 <= 62) {
-            $score->gpa_quarter_2 = "D-";
-            $score->pts_2 = ($score->subject->credit*0.70)/2;
-        } elseif ($GPA_2 >= 0 && $GPA_2 <= 59) {
-            $score->gpa_quarter_2 = "F";
-            $score->pts_2 = ($score->subject->credit*0.00)/2;
-        } else {
-            $error = "invalid input";
-        }
+    //     if ($GPA_2 >= 92.5 && $GPA_2 <= 100) {
+    //         $score->gpa_quarter_2 = "A";
+    //         $score->pts_2 = ($score->subject->credit*4)/2;
+    //     } elseif ($GPA_2 >= 89.5 && $GPA_2 <= 92) {
+    //         $score->gpa_quarter_2 = "A-";
+    //         $score->pts_2 = ($score->subject->credit*3.70)/2;
+    //     } elseif ($GPA_2 >= 86.5 && $GPA_2 <= 89) {
+    //         $score->gpa_quarter_2 = "B+";
+    //         $score->pts_2 = ($score->subject->credit*3.30)/2;
+    //     } elseif ($GPA_2 >= 82.5 && $GPA_2 <= 86) {
+    //         $score->gpa_quarter_2 = "B";
+    //         $score->pts_2 = ($score->subject->credit*3.00)/2;
+    //     } elseif ($GPA_2 >= 79.5 && $GPA_2 <= 82) {
+    //         $score->gpa_quarter_2 = "B-";
+    //         $score->pts_2 = ($score->subject->credit*2.70)/2;
+    //     } elseif ($GPA_2 >= 76.5 && $GPA_2 <= 79) {
+    //         $score->gpa_quarter_2 = "C+";
+    //         $score->pts_2 = ($score->subject->credit*2.30)/2;
+    //     } elseif ($GPA_2 >= 72.5 && $GPA_2 <= 76) {
+    //         $score->gpa_quarter_2 = "C";
+    //         $score->pts_2 = ($score->subject->credit*2.00)/2;
+    //     } elseif ($GPA_2 >= 69.5 && $GPA_2 <= 72) {
+    //         $score->gpa_quarter_2 = "C-";
+    //         $score->pts_2 = ($score->subject->credit*1.70)/2;
+    //     } elseif ($GPA_2 >= 66.5 && $GPA_2 <= 69) {
+    //         $score->gpa_quarter_2 = "D+";
+    //         $score->pts_2 = ($score->subject->credit*1.30)/2;
+    //     } elseif ($GPA_2 >= 62.5 && $GPA_2 <= 66) {
+    //         $score->gpa_quarter_2 = "D";
+    //         $score->pts_2 = ($score->subject->credit*1.00)/2;
+    //     } elseif ($GPA_2 >= 59.5 && $GPA_2 <= 62) {
+    //         $score->gpa_quarter_2 = "D-";
+    //         $score->pts_2 = ($score->subject->credit*0.70)/2;
+    //     } elseif ($GPA_2 >= 0 && $GPA_2 <= 59) {
+    //         $score->gpa_quarter_2 = "F";
+    //         $score->pts_2 = ($score->subject->credit*0.00)/2;
+    //     } else {
+    //         $error = "invalid input";
+    //     }
 
-        $score->save();
+    //     $score->save();
 
-        Session::flash('success', 'You have successfully update your student score');
+    //     Session::flash('success', 'You have successfully update your student score');
 
-        return redirect()->route('score.view', ['grade_id' => $grade->id, 'student_id' => $studentprofile->id]);
+    //     return redirect()->route('score.view', ['grade_id' => $grade->id, 'student_id' => $studentprofile->id]);
 
     }
 

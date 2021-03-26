@@ -239,9 +239,9 @@ Route::prefix('admin')->group(function () {
 //edit data from score table
     Route::get('score/edit/{score_id}/{grade_id}/{student_id}', 'StudentController@editScore')->name('student.score.edit');
 
-//update score
-    Route::post('score/update/{score_id}/{grade_id}/{student_id}', 'StudentController@updateScore')->name('score.update');
-  //  Route::post('score/update', 'StudentController@updateScore')->name('score.update');
+//update score (admin)
+  //  Route::post('score/update/{score_id}/{grade_id}/{student_id}', 'StudentController@updateScore')->name('score.update');
+    Route::post('score/update', 'StudentController@updateScore')->name('score.update');
 //setting menu
     Route::get('/score/menu/{id}', 'StudentController@scoreMenu')->name('score.menu');
 //View student score
@@ -620,6 +620,8 @@ Route::post('/daypresent/update/{id}', 'DaypresentController@update')->name('day
 });//end admin
 
 
+//update GPA high school both admin and teacher auth
+Route::post('score/update/{grade_id}/{student_id}', 'UpdateGPAController@updateGPA')->name('highschool.score.update');
 
     
 
@@ -712,14 +714,14 @@ Route::prefix('teacher')->group(function () {
     //Absent
 
   //High School student absent for teacher side
-  Route::get('/absent/show/{student_id}', 'TeacherAbsentController@showAbsent')->name('teacher.show.absentRecord');
-//Secondary
-  Route::get('/secondarySchool/absent/{grade_id}/{student_id}', 'TeacherAbsentController@secondarySchoolAbsent')->name('teacher.secondarySchool.absentRecord'); 
-//pre-k
-  Route::get('/prekSchool/absent/{grade_id}/{student_id}', 'TeacherAbsentController@prekSchoolAbsent')->name('teacher.prekSchool.absentRecord'); 
-//high school
+    Route::get('/absent/show/{student_id}', 'TeacherAbsentController@showAbsent')->name('teacher.show.absentRecord');
+    //Secondary
+    Route::get('/secondarySchool/absent/{grade_id}/{student_id}', 'TeacherAbsentController@secondarySchoolAbsent')->name('teacher.secondarySchool.absentRecord'); 
+    //pre-k
+    Route::get('/prekSchool/absent/{grade_id}/{student_id}', 'TeacherAbsentController@prekSchoolAbsent')->name('teacher.prekSchool.absentRecord'); 
+    //high school
 
-Route::get('/highSchool/absent/{grade_id}/{student_id}', 'TeacherAbsentController@highSchoolAbsent')->name('teacher.highSchool.absentRecord');
+    Route::get('/highSchool/absent/{grade_id}/{student_id}', 'TeacherAbsentController@highSchoolAbsent')->name('teacher.highSchool.absentRecord');
 
   //end Absent
 
@@ -830,7 +832,8 @@ Route::get('/highSchool/absent/{grade_id}/{student_id}', 'TeacherAbsentControlle
     Route::get('/score/delete/{id}', 'TeacherProfileController@destroyScore')->name('teacher.score.delete');
 
     //update score (teacher panel)
-    Route::post('score/update/{teacher_id}/{score_id}/{grade_id}/{student_id}', 'TeacherProfileController@updateScore')->name('teacher.score.update');
+  //Route::post('score/update/{teacher_id}/{score_id}/{grade_id}/{student_id}', 'TeacherProfileController@updateScore')->name('teacher.score.update');
+    Route::post('score/update', 'TeacherProfileController@updateScore');
 
 
     //edit data from secondaryScore table (teacher panel)
@@ -886,11 +889,6 @@ Route::get('/highSchool/absent/{grade_id}/{student_id}', 'TeacherAbsentControlle
     Route::get('gradefile/delete/{gradefile_id}', 'GradefileController@gradefileDelete')->name('teacher.gradefile.delete');
 
 
-   
-
-
-
-
 
     //view student by Grade
     Route::get('/student/byGrade/{teacher_id}', 'TeacherProfileController@viewByGrade')->name('teacher.student.byGrade');
@@ -906,94 +904,95 @@ Route::get('/highSchool/absent/{grade_id}/{student_id}', 'TeacherAbsentControlle
 
 
 });
-//show assignment in user profile
-Route::get('student/assignment/show/{student_id}', 'HomeController@studentAssignmentShow')->name('student.assignment.show');
-//show detail assignment in student profile
-Route::get('student/assignment/detail/{student_id}/{assignment_id}', 'HomeController@assignmentDetail')->name('student.assignment.detail');
 
-/////////////////////////////////absent//////////////////////////////////
+    //show assignment in user profile
+    Route::get('student/assignment/show/{student_id}', 'HomeController@studentAssignmentShow')->name('student.assignment.show');
+    //show detail assignment in student profile
+    Route::get('student/assignment/detail/{student_id}/{assignment_id}', 'HomeController@assignmentDetail')->name('student.assignment.detail');
 
-//view student 
-Route::get('student/absent/{student_id}', 'HomeController@viewStudentAbsent')->name('student.showAbsent');
+    /////////////////////////////////absent//////////////////////////////////
 
-//view student absent by Grade in PREK
-Route::get('student/prek/absentByGrade/{grade_id}/{student_id}', 'HomeController@prekAbsentByGrade')->name('prek.absentByGrade');
+    //view student 
+    Route::get('student/absent/{student_id}', 'HomeController@viewStudentAbsent')->name('student.showAbsent');
 
-//view student absent by Grade in Secondary
-Route::get('student/secondary/absentByGrade/{grade_id}/{student_id}', 'HomeController@secondaryAbsentByGrade')->name('secondary.absentByGrade');
+    //view student absent by Grade in PREK
+    Route::get('student/prek/absentByGrade/{grade_id}/{student_id}', 'HomeController@prekAbsentByGrade')->name('prek.absentByGrade');
 
-//View student absent by Grade HighSchool
-Route::get('student/highSchool/absentByGrade/{grade_id}/{student_id}', 'HomeController@highSchoolAbsentByGrade')->name('highSchool.absentByGrade');
+    //view student absent by Grade in Secondary
+    Route::get('student/secondary/absentByGrade/{grade_id}/{student_id}', 'HomeController@secondaryAbsentByGrade')->name('secondary.absentByGrade');
 
-
-//
-
-//View student absent by Grade HighSchool
-Route::get('endUser/teacher/{student_id}', 'HomeController@viewTeacher')->name('endUser.teacher');
-
-//view teacher profile
-Route::get('teacher/profile/{student_id}/{teacher_id}', 'HomeController@teacherProfile')->name('endUser.teacher.profile');
-
-//view all staff profile
-Route::get('endUser/staff/{student_id}', 'HomeController@viewStaff')->name('view.staff');
-
-//staff profile detail
-Route::get('staff/profile/{student_id}/{staff_id}', 'HomeController@staffProfile')->name('staff.profile');
-
-//student CGPA - END USER SIDE
-Route::get('student/cgpa/{student_id}', 'HomeController@studentCGPA')->name('student.cgpa');
-
-Route::get('student/highSchool/cpgabyGradeList/{student_id}', 'HomeController@cpgaByGradeList')->name('student.highschool.cgpaByGradeList');
+    //View student absent by Grade HighSchool
+    Route::get('student/highSchool/absentByGrade/{grade_id}/{student_id}', 'HomeController@highSchoolAbsentByGrade')->name('highSchool.absentByGrade');
 
 
-//CGPA by grade student side
-Route::get('student/cgpaByGrade/{student_id}/{grade_id}', 'HomeController@cgpaByGrade')->name('student.cgpaByGrade');
+    //
 
-//CGPA grade 9 to 10 student side
-Route::get('student/cgpa910/{student_id}', 'HomeController@studentCGPA910')->name('student.cgpa910');
+    //View student absent by Grade HighSchool
+    Route::get('endUser/teacher/{student_id}', 'HomeController@viewTeacher')->name('endUser.teacher');
 
-//CGPA Grade 9 to 11
-Route::get('student/cgpa911/{student_id}', 'HomeController@studentCGPA911')->name('student.cgpa911');
+    //view teacher profile
+    Route::get('teacher/profile/{student_id}/{teacher_id}', 'HomeController@teacherProfile')->name('endUser.teacher.profile');
 
-//CGPA Grade 9 to 12
-Route::get('student/cgpa912/{student_id}', 'HomeController@studentCGPA912')->name('student.cgpa912');
+    //view all staff profile
+    Route::get('endUser/staff/{student_id}', 'HomeController@viewStaff')->name('view.staff');
 
-//CGPA Grade 10 to 11
-Route::get('student/cgpa1011/{student_id}', 'HomeController@studentCGPA1011')->name('student.cgpa1011');
+    //staff profile detail
+    Route::get('staff/profile/{student_id}/{staff_id}', 'HomeController@staffProfile')->name('staff.profile');
 
-//CGPA Grade 10 to 12
-Route::get('student/cgpa1012/{student_id}', 'HomeController@studentCGPA1012')->name('student.cgpa1012');
+    //student CGPA - END USER SIDE
+    Route::get('student/cgpa/{student_id}', 'HomeController@studentCGPA')->name('student.cgpa');
 
-//CGPA grade 11 to 12
-Route::get('student/cgpa1112/{student_id}', 'HomeController@studentCGPA1112')->name('student.cgpa1112');
+    Route::get('student/highSchool/cpgabyGradeList/{student_id}', 'HomeController@cpgaByGradeList')->name('student.highschool.cgpaByGradeList');
 
 
-//Report Card for Pre-k
-Route::get('student/prek/reportCard/{student_id}', 'HomeController@prekReportCard')->name('student.prek.reportCard');
+    //CGPA by grade student side
+    Route::get('student/cgpaByGrade/{student_id}/{grade_id}', 'HomeController@cgpaByGrade')->name('student.cgpaByGrade');
 
-//report card for pre-k detail print formate 
-Route::get('student/prek/reportCard/detail/{student_id}/{grade_id}', 'HomeController@prekReportCardDetail')->name('student.prek.reportCard.detail');
+    //CGPA grade 9 to 10 student side
+    Route::get('student/cgpa910/{student_id}', 'HomeController@studentCGPA910')->name('student.cgpa910');
+
+    //CGPA Grade 9 to 11
+    Route::get('student/cgpa911/{student_id}', 'HomeController@studentCGPA911')->name('student.cgpa911');
+
+    //CGPA Grade 9 to 12
+    Route::get('student/cgpa912/{student_id}', 'HomeController@studentCGPA912')->name('student.cgpa912');
+
+    //CGPA Grade 10 to 11
+    Route::get('student/cgpa1011/{student_id}', 'HomeController@studentCGPA1011')->name('student.cgpa1011');
+
+    //CGPA Grade 10 to 12
+    Route::get('student/cgpa1012/{student_id}', 'HomeController@studentCGPA1012')->name('student.cgpa1012');
+
+    //CGPA grade 11 to 12
+    Route::get('student/cgpa1112/{student_id}', 'HomeController@studentCGPA1112')->name('student.cgpa1112');
 
 
-//Report Card for Grade K
-Route::get('student/gradeK/reportCard/{student_id}', 'HomeController@gradeKReportCard')->name('student.gradeK.reportCard');
-//Report Card for Grade K detail printer formate
-Route::get('student/gradeK/reportCard/detail/{student_id}/{grade_id}', 'HomeController@gradeKReportCardDetail')->name('student.gradeK.reportCard.detail');
+    //Report Card for Pre-k
+    Route::get('student/prek/reportCard/{student_id}', 'HomeController@prekReportCard')->name('student.prek.reportCard');
+
+    //report card for pre-k detail print formate 
+    Route::get('student/prek/reportCard/detail/{student_id}/{grade_id}', 'HomeController@prekReportCardDetail')->name('student.prek.reportCard.detail');
 
 
-//Report Card for Secondary School
+    //Report Card for Grade K
+    Route::get('student/gradeK/reportCard/{student_id}', 'HomeController@gradeKReportCard')->name('student.gradeK.reportCard');
+    //Report Card for Grade K detail printer formate
+    Route::get('student/gradeK/reportCard/detail/{student_id}/{grade_id}', 'HomeController@gradeKReportCardDetail')->name('student.gradeK.reportCard.detail');
 
-Route::get('student/secondary/reportCard/{student_id}', 'HomeController@secondaryReportCard')->name('student.secondary.reportCard');
 
-//Report Card for Secondary School detail
-Route::get('student/secondary/reportCard/detail/{student_id}/{grade_id}', 'HomeController@secondaryReportCardDetail')->name('student.secondary.reportCard.detail');
+    //Report Card for Secondary School
 
-//Report card for High School
+    Route::get('student/secondary/reportCard/{student_id}', 'HomeController@secondaryReportCard')->name('student.secondary.reportCard');
 
-Route::get('student/highSchool/reportCard/{student_id}', 'HomeController@highSchoolReportCard')->name('student.highschool.reportCard');
+    //Report Card for Secondary School detail
+    Route::get('student/secondary/reportCard/detail/{student_id}/{grade_id}', 'HomeController@secondaryReportCardDetail')->name('student.secondary.reportCard.detail');
 
-//Report Card for Secondary School detail
-Route::get('student/highSchool/reportCard/detail/{student_id}/{grade_id}', 'HomeController@highschoolReportCardDetail')->name('student.highschool.reportCard.detail');
+    //Report card for High School
+
+    Route::get('student/highSchool/reportCard/{student_id}', 'HomeController@highSchoolReportCard')->name('student.highschool.reportCard');
+
+    //Report Card for Secondary School detail
+    Route::get('student/highSchool/reportCard/detail/{student_id}/{grade_id}', 'HomeController@highschoolReportCardDetail')->name('student.highschool.reportCard.detail');
 
 
 

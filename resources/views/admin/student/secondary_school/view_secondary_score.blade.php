@@ -1,3 +1,4 @@
+
 @if(Auth::guard('admin')->check())
 {{--This tap--}}
 <div class="col-md-12 col-sm-6 col-xs-12">
@@ -56,9 +57,6 @@
                                                     </a>  
                                                 @endif 
 
-                                                
-                                            
-
                                             <td style="text-align:center">
                                                 @if($score->quarter_2 !== null && $score->approve_score_q2==1)
 
@@ -72,85 +70,89 @@
                                                 @else 
                                                     <a href="" class="update" data-name="quarter_2"  data-type="number" data-pk="{{ $score->id }}" data-title="Quarter 2">{{ $score->quarter_2 }}
                                                     </a>    
+                                                @endif  
+                                            </td>
+
+                                            <td style="font-weight: bold; text-align:center">
+                                                
+                                                @if($score->quarter_1 !== null && $score->quarter_2 !== null  && $score->approve_score_q1==1 && $score->approve_score_q2==1)
+                                                <i class="fa fa-check-circle-o text-success" aria-hidden="true"></i>
+                                                {{ number_format(ceil(($score->quarter_1+$score->quarter_2)/2), 2, '.', ',') }}
+                                                @else
+                                                    <i class="fa fa-times-circle-o text-danger" aria-hidden="true"></i>
+                                                    {{ number_format(ceil(($score->quarter_1+$score->quarter_2)/2), 2, '.', ',') }}
+                                                @endif
+                                            </td>
+
+                                            <td style="text-align:center">
+
+                                                @if($score->quarter_3 !== null && $score->approve_score_q3==1)
+
+                                                    <i class="fa fa-check-circle-o text-success" aria-hidden="true"></i>
+                                                    <a href="" class="update" data-name="quarter_3"  data-type="number" data-pk="{{ $score->id }}" data-title="Quarter 3">{{ $score->quarter_3 }}
+                                                    </a>
+                                                @elseif($score->quarter_3 !== null && $score->approve_score_q3==0)
+                                                    <i class="fa fa-times-circle-o text-danger" aria-hidden="true"></i>  
+                                                    <a href="" class="update" data-name="quarter_3"  data-type="number" data-pk="{{ $score->id }}" data-title="Quarter 3">{{ $score->quarter_3 }}
+                                                    </a>
+                                                @else 
+                                                    <a href="" class="update" data-name="quarter_3"  data-type="number" data-pk="{{ $score->id }}" data-title="Quarter 3">{{ $score->quarter_3 }}
+                                                    </a>    
+                                                @endif
+
+                                            </td>
+
+                                            <td style="text-align:center">
+
+                                                @if($score->quarter_4 !== null && $score->approve_score_q4==1)
+                                                    <i class="fa fa-check-circle-o text-success" aria-hidden="true"></i>
+                                                    <a href="" class="update" data-name="quarter_4"  data-type="number" data-pk="{{ $score->id }}" data-title="Quarter 4">{{ $score->quarter_4 }}
+                                                    </a>
+                                                @elseif($score->quarter_4 !== null && $score->approve_score_q4==0)
+                                                    <i class="fa fa-times-circle-o text-danger" aria-hidden="true"></i>  
+                                                    <a href="" class="update" data-name="quarter_4"  data-type="number" data-pk="{{ $score->id }}" data-title="Quarter 4">{{ $score->quarter_4 }}
+                                                    </a>
+                                                @else 
+                                                    <a href="" class="update" data-name="quarter_4"  data-type="number" data-pk="{{ $score->id }}" data-title="Quarter 4">{{ $score->quarter_4 }}
+                                                    </a>    
                                                 @endif 
 
-                                                
-                                                    
-                                                </td>
-                                                <td style="font-weight: bold; text-align:center">
-                                                {{ number_format(ceil(($score->quarter_1+$score->quarter_2)/2), 2, '.', ',') }}
-                                                </td>
-                                                <td style="text-align:center">
-
-                                                    @if($score->quarter_3 !== null && $score->approve_score_q3==1)
-
-                                                        <i class="fa fa-check-circle-o text-success" aria-hidden="true"></i>
-                                                        <a href="" class="update" data-name="quarter_3"  data-type="number" data-pk="{{ $score->id }}" data-title="Quarter 3">{{ $score->quarter_3 }}
-                                                        </a>
-                                                    @elseif($score->quarter_3 !== null && $score->approve_score_q3==0)
-                                                        <i class="fa fa-times-circle-o text-danger" aria-hidden="true"></i>  
-                                                        <a href="" class="update" data-name="quarter_3"  data-type="number" data-pk="{{ $score->id }}" data-title="Quarter 3">{{ $score->quarter_3 }}
-                                                        </a>
-                                                    @else 
-                                                        <a href="" class="update" data-name="quarter_3"  data-type="number" data-pk="{{ $score->id }}" data-title="Quarter 3">{{ $score->quarter_3 }}
-                                                        </a>    
-                                                    @endif
-    
-                                                </td>
-
-                                                <td style="text-align:center">
-
-                                                    @if($score->quarter_4 !== null && $score->approve_score_q4==1)
-
-                                                        <i class="fa fa-check-circle-o text-success" aria-hidden="true"></i>
-                                                        <a href="" class="update" data-name="quarter_4"  data-type="number" data-pk="{{ $score->id }}" data-title="Quarter 4">{{ $score->quarter_4 }}
-                                                        </a>
-                                                    @elseif($score->quarter_4 !== null && $score->approve_score_q4==0)
-                                                        <i class="fa fa-times-circle-o text-danger" aria-hidden="true"></i>  
-                                                        <a href="" class="update" data-name="quarter_4"  data-type="number" data-pk="{{ $score->id }}" data-title="Quarter 4">{{ $score->quarter_4 }}
-                                                        </a>
-                                                    @else 
-                                                        <a href="" class="update" data-name="quarter_4"  data-type="number" data-pk="{{ $score->id }}" data-title="Quarter 4">{{ $score->quarter_4 }}
-                                                        </a>    
-                                                    @endif 
-
-                                                </td>
+                                            </td>
 
                                                 
       
                                             <td style="font-weight: bold; text-align:center">
-                                                {{ number_format(ceil(($score->quarter_3+$score->quarter_4)/2), 2, '.', ',') }}
+                                                
+                                                @if($score->quarter_3 !== null && $score->quarter_4 !== null  && $score->approve_score_q3==1 && $score->approve_score_q4==1)
+                                                    <i class="fa fa-check-circle-o text-success" aria-hidden="true"></i>
+                                                    {{ number_format(ceil(($score->quarter_3+$score->quarter_4)/2), 2, '.', ',') }}
+                                                @else
+                                                    <i class="fa fa-times-circle-o text-danger" aria-hidden="true"></i>
+                                                    {{ number_format(ceil(($score->quarter_3+$score->quarter_4)/2), 2, '.', ',') }}
+                                                @endif
                                             </td>
                                     
                                             
 
                                             <td style="font-weight: bold; text-align:center">
-                                                    <?php $semester_1= number_format(ceil(($score->quarter_1+$score->quarter_2)/2), 2, '.', ',');
-                                                    $semester_2= number_format(ceil(($score->quarter_3+$score->quarter_4)/2), 2, '.', ','); 
-            echo number_format(ceil(($semester_1+$semester_2)/2), 2, '.', ',')
-                                                    ?>
+                                            <?php $semester_1= number_format(ceil(($score->quarter_1+$score->quarter_2)/2), 2, '.', ',');
+                                                $semester_2= number_format(ceil(($score->quarter_3+$score->quarter_4)/2), 2, '.', ','); 
+                                                echo number_format(ceil(($semester_1+$semester_2)/2), 2, '.', ',')
+                                            ?>
                                             </td>
-
-                                            {{--Semester 1--}}
-
-                                            
-                                            
                                             <td>
-                                                
-                                                    {{-- <span>
-                                                        <a href="{{ route('secondary.score.edit',['score_id'=>$score->id, 'grade_id'=>$grade_id->id,'student_id'=>$students->id]) }}" class="btn btn-default btn-sm">Edit</a>
-                                                    </span> --}}
-                                                    <span>
-                                                        <a href="{{ route('secondary.score.delete', ['score_id'=>$score->id]) }}" class="btn btn-danger btn-sm" Onclick="return ConfirmDelete()" ><i class="fa fa-trash-o" aria-hidden="true"></i> </a>
+                                                <span>
+                                                    <a href="{{ route('secondary.score.delete', ['score_id'=>$score->id]) }}" class="btn btn-danger btn-sm" Onclick="return ConfirmDelete()" >
+                                                        <i class="fa fa-trash-o" aria-hidden="true"></i> 
+                                                    </a>
                                                 </span>
 
                                                 <script>
                                                     function ConfirmDelete() 
                                                         {
-                                                            return confirm("Are you sure you want to delete?");
+                                                        return confirm("Are you sure you want to delete?");
                                                         }
                                                 </script>
-
                                             </td>
                                         </tr>
                                         
@@ -159,28 +161,31 @@
                                 </tbody>
                             </table>
 
-                            <div >
-
-                                
-                                <span>
-                                     
-                                    <a href="{{ route('secondary.addSubject', ['grade_id'=>$grade_id->id,'student_id'=>$students->id]) }}" class="btn btn-success">
-                                        
+                            <div> 
+                                <span>    
+                                    <a href="{{ route('secondary.addSubject', ['grade_id'=>$grade_id->id,'student_id'=>$students->id]) }}" class="btn btn-success">  
                                         Add a subject
                                     </a>
                                 </span>
-                                    <span>
-
+                                <span>
                                     <a href="{{ route('secondary.addAllSubject', ['grade_id'=>$grade_id->id,'student_id'=>$students->id]) }}" class="btn btn-primary">
-
                                         Add all subjects
                                     </a>
                                 </span>
 
-                                <span class='btn btn-success pull-right' id="refresh"><i class="fa fa-floppy-o" aria-hidden="true"></i> Save</span>
+                                <span class='btn btn-success pull-right' id="refresh">
+                                    <i class="fa fa-floppy-o" aria-hidden="true"></i> 
+                                    Save Change
+                                </span>
 
                                 
-                                
+                                <span class="pull-right" style="padding-top: 10px;">Note: 
+                                    <span style="margin-left: 10px"><i class="fa fa-check-circle-o text-success" aria-hidden="true"></i> Approved</span> 
+                                    <span style="margin-left: 10px"></span> 
+                                    <span><i class="fa fa-times-circle-o text-danger" aria-hidden="true"></i> Not approve</span>  
+                                    <span style="margin-left: 20px"></span> 
+                                </span>
+      
                             </div>
 
                         </div>
@@ -188,11 +193,9 @@
 
                 </div>
                 
-
                 <div class="clearfix"></div>
 
             </div>
- 
     </div>
 @elseif(Auth::guard('teacher')->check())
 
@@ -232,41 +235,89 @@
 
                                         <td>{{$score->SecondaryLevel->name}}</td>
                                         <td style="text-align:center">
-                                        <a href="" class="saveChange" data-name="quarter_1"  data-type="number" data-pk="{{ $score->id }}" data-title="Quarter 1">{{ $score->quarter_1 }}
-                                        </a>
-
-                                        <td style="text-align:center">
-                                                <a href="" class="saveChange" data-name="quarter_2"  data-type="number" data-pk="{{ $score->id }}" data-title="Quarter 2">{{ $score->quarter_2 }}
+                                            @if($score->quarter_1 !== null && $score->approve_score_q1==1)
+                                                <i class="fa fa-check-circle-o text-success" aria-hidden="true"></i>
+                                                {{ $score->quarter_1 }}
+                                            @elseif($score->quarter_1 !== null && $score->approve_score_q1==0)
+                                                <i class="fa fa-times-circle-o text-danger" aria-hidden="true"></i> 
+                                                <a href="" class="saveChange" data-name="quarter_1"  data-type="number" data-pk="{{ $score->id }}" data-title="Quarter 1">{{ $score->quarter_1 }}
                                                 </a>
-                                            </td>
-                                            <td style="font-weight:bold; text-align:center" >
-                                            {{ number_format(ceil(($score->quarter_1+$score->quarter_2)/2), 2, '.', ',') }}
-                                            <td style="text-align:center">
-                                                <a href="" class="saveChange" data-name="quarter_3"  data-type="number" data-pk="{{ $score->id }}" data-title="Quarter 3">{{ $score->quarter_3 }}
-                                                </a>
-                                            </td>
-                                            <td style="text-align:center">
-                                                <a href="" class="saveChange" data-name="quarter_4"  data-type="number" data-pk="{{ $score->id }}" data-title="Quarter 4">{{ $score->quarter_4 }}
-                                                </a>
-                                            </td>
-  
-                                        <td style="text-align:center; font-weight:bold;">
-                                            {{ number_format(ceil(($score->quarter_3+$score->quarter_4)/2), 2, '.', ',') }}
-                                        </td style="text-align:center">
-                                        <td style="text-align:center; font-weight:bold;">
-                                                {{ number_format(ceil(($score->quarter_1+$score->quarter_2+$score->quarter_3+$score->quarter_4)/4), 2, '.', ',') }}
+                                            @else
+                                                <a href="" class="saveChange" data-name="quarter_1"  data-type="number" data-pk="{{ $score->id }}" data-title="Quarter 1">{{ $score->quarter_1 }}
+                                                </a> 
+                                            @endif    
                                         </td>
 
-                                        {{--Semester 1--}}
+                                        <td style="text-align:center"> 
+                                            @if($score->quarter_2 !== null && $score->approve_score_q2==1)
+                                                <i class="fa fa-check-circle-o text-success" aria-hidden="true"></i>
+                                                {{ $score->quarter_2 }}
+                                                
+                                            @elseif($score->quarter_2 !== null && $score->approve_score_q2==0)
+                                                <i class="fa fa-times-circle-o text-danger" aria-hidden="true"></i>  
+                                                <a href="" class="saveChange" data-name="quarter_2"  data-type="number" data-pk="{{ $score->id }}" data-title="Quarter 2">{{ $score->quarter_2 }}
+                                                </a>
+                                            @else
+                                                <a href="" class="saveChange" data-name="quarter_2"  data-type="number" data-pk="{{ $score->id }}" data-title="Quarter 4">{{ $score->quarter_2 }}
+                                                </a> 
+                                            @endif
+
+                                        </td>        
+                                            
+                                                
+                                        <td style="font-weight:bold; text-align:center" >
+                                            @if($score->quarter_1 !== null && $score->quarter_2 !== null  && $score->approve_score_q1==1 && $score->approve_score_q2==1)
+                                                <i class="fa fa-check-circle-o text-success" aria-hidden="true"></i>
+                                                {{ number_format(ceil(($score->quarter_1+$score->quarter_2)/2), 2, '.', ',') }}
+                                            @else
+                                                <i class="fa fa-times-circle-o text-danger" aria-hidden="true"></i>
+                                                {{ number_format(ceil(($score->quarter_1+$score->quarter_2)/2), 2, '.', ',') }}
+                                            @endif
+
+                                        </td>
+                                            
+                                      
+                                            
+                                        <td style="text-align:center">
+                                            @if($score->quarter_3 !== null && $score->approve_score_q3==1)
+                                                <i class="fa fa-check-circle-o text-success" aria-hidden="true"></i>
+                                                {{ $score->quarter_3 }}
+                                            @elseif($score->quarter_3 !== null && $score->approve_score_q3==0)
+                                                <i class="fa fa-times-circle-o text-danger" aria-hidden="true"></i> 
+                                                <a href="" class="saveChange" data-name="quarter_3"  data-type="number" data-pk="{{ $score->id }}" data-title="Quarter 3">{{ $score->quarter_3 }} 
+                                            @else
+                                                <a href="" class="saveChange" data-name="quarter_3"  data-type="number" data-pk="{{ $score->id }}" data-title="Quarter 3">{{ $score->quarter_3 }}
+                                                </a> 
+                                            @endif
+                                        </td>
+                                        <td style="text-align:center">
+                                            @if($score->quarter_4 !== null && $score->approve_score_q4==1)
+                                                <i class="fa fa-check-circle-o text-success" aria-hidden="true"></i>
+                                                {{ $score->quarter_4 }}
+                                            @elseif($score->quarter_4 !== null && $score->approve_score_q4==0)
+                                                <i class="fa fa-times-circle-o text-danger" aria-hidden="true"></i> 
+                                                <a href="" class="saveChange" data-name="quarter_4"  data-type="number" data-pk="{{ $score->id }}" data-title="Quarter 4">{{ $score->quarter_4 }}  
+                                            @else
+                                                <a href="" class="saveChange" data-name="quarter_4"  data-type="number" data-pk="{{ $score->id }}" data-title="Quarter 4">{{ $score->quarter_4 }}
+                                                </a> 
+                                            @endif         
+                                        </td>
+  
+                                        <td style="text-align:center; font-weight:bold;">
+                                            @if($score->quarter_3 !== null && $score->quarter_4 !== null  && $score->approve_score_q3==1 && $score->approve_score_q4==1)
+                                                <i class="fa fa-check-circle-o text-success" aria-hidden="true"></i>
+                                                {{ number_format(ceil(($score->quarter_3+$score->quarter_4)/2), 2, '.', ',') }}
+                                            @else
+                                                {{ number_format(ceil(($score->quarter_3+$score->quarter_4)/2), 2, '.', ',') }}
+                                                <i class="fa fa-times-circle-o text-danger" aria-hidden="true"></i>
+                                            @endif
+                                        </td>
+
+                                        <td style="text-align:center; font-weight:bold;">
+                                            {{ number_format(ceil(($score->quarter_1+$score->quarter_2+$score->quarter_3+$score->quarter_4)/4), 2, '.', ',') }}
+                                        </td>
                                         
                                         <td>
-                                            
-                                                {{-- <span>
-                                                    <a href="{{ route('secondary.score.edit',['score_id'=>$score->id, 'grade_id'=>$grade_id->id,'student_id'=>$students->id]) }}" class="btn btn-default btn-sm">Edit</a>
-                                                </span> --}}
-                                                {{-- <span>
-                                                    <a href="{{ route('secondary.score.delete', ['score_id'=>$score->id]) }}" class="btn btn-danger btn-sm"><i class="fa fa-trash-o" aria-hidden="true"></i> </a>
-                                                </span> --}}
 
                                         </td>
                                     </tr>
@@ -277,13 +328,18 @@
                         </table>
 
                         <div >
+                            <span class="pull-left">Note: 
+                                <span style="margin-left: 10px"><i class="fa fa-check-circle-o text-success" aria-hidden="true"></i> Approved</span> 
+                                <span style="margin-left: 10px"></span> 
+                                <span><i class="fa fa-times-circle-o text-danger" aria-hidden="true"></i> Not approved </span>  
+                            </span>
 
-
-
-                            <span class='btn btn-success' id="refresh"><i class="fa fa-floppy-o" aria-hidden="true"></i> Save</span>
-
+                            <span class='btn btn-success pull-right' id="refresh">
+                                <i class="fa fa-floppy-o" aria-hidden="true"></i> 
+                                Save Change
+                            </span>
                             
-                            
+ 
                         </div>
 
                     </div>
