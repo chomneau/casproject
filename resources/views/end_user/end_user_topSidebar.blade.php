@@ -39,8 +39,8 @@
                             
                             <img src="{{ asset(Auth()->user()->studentProfile->photo) }}" >
                         </div>
-                        <div class="peer">
-                            <span class="fsz-sm c-grey-900" style="color: aliceblue">
+                        <div class="peer" >
+                            <span class="fsz-sm" style="color: aliceblue">
                                 {{ auth()->user()->studentProfile->first_name }} <i class="fa fa-angle-down" aria-hidden="true"></i>
                             </span>
                         </div>
