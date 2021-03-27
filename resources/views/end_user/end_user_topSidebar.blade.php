@@ -1,8 +1,8 @@
 <style>
     .circular--portrait {
     position: relative;
-    width: 60px;
-    height: 60px;
+    width: 40px;
+    height: 40px;
     overflow: hidden;
     border-radius: 50%;
     border: 2px solid rgb(56, 240, 240);
