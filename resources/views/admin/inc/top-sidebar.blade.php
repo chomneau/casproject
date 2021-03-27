@@ -70,14 +70,14 @@
                                             <span>Change Password</span>
                                     </a>
 
-                                    <a href="{{ route('logout') }}"
+                                    <a href="{{ route('teacher.logout') }}"
                                     onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();">
                                      <i class="fa fa-sign-out" aria-hidden="true"></i>
                                      Logout
                                     </a>
 
-                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                 <form id="logout-form" action="{{ route('teacher.logout') }}" method="POST" style="display: none;">
                                      {{ csrf_field() }}
                                  </form>
                               

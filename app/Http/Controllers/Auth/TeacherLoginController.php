@@ -42,7 +42,10 @@ class TeacherLoginController extends Controller
 
 
     
-    public function logout(){
+    public function teacherLogout(){
+
+        return "Hello logout";
+        
         Auth::guard('teacher')->logout();
         return redirect('/teacher/login');
     }

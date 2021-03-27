@@ -629,6 +629,8 @@ Route::post('score/update/{grade_id}/{student_id}', 'UpdateGPAController@updateG
 
 Route::prefix('teacher')->group(function () {
 
+    Route::post('/logout/again', 'TeacherLoginController@teacherLogout')->name('teacher.logout');
+
      //mid-term menu admin
      Route::get('/midterm/{student_id}', 'MidtermTeacherController@midTermOption')->name('teacher.midterm.option');
 

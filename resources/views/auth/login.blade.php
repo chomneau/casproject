@@ -55,7 +55,7 @@
                             <div class="col-md-8 col-md-offset-4">
                                 <button type="submit" class="btnSubmit">
                                     <strong><i class="fa fa-lock" aria-hidden="true"></i></strong>
-                                    Login
+                                    Login NOw
                                 </button>
 
                                 <a class="btn btn-link" href="{{ route('password.request') }}">
