@@ -20,7 +20,7 @@
                 <li class="dropdown">
                     <a href="" class="dropdown-toggle no-after peers fxw-nw ai-c lh-1" data-toggle="dropdown">
                         <div class="peer mR-10">
-                            <img class="w-2r bdrs-50p" src="{{ asset(Auth()->user()->studentProfile->photo) }}" width="90" height="90" class="img-circle" style="border-radius:50%; border: 1px solid rgb(113, 222, 222);">
+                            <img class="w-2r bdrs-50p" src="{{ asset(Auth()->user()->studentProfile->photo) }}" width="90" height="auto" class="img-circle" style="border-radius:50%; border: 1px solid rgb(113, 222, 222);">
                         </div>
                         <div class="peer">
                             <span class="fsz-sm c-grey-900" style="color: aliceblue">
