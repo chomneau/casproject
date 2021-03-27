@@ -1,17 +1,25 @@
-<div class="sidebar">
+<div class="sidebar" >
     <div class="sidebar-inner">
-        <div class="sidebar-logo">
+        <div class="sidebar-logo" style="background-color: #036e92">
             <div class="peers ai-c fxw-nw">
                 <div class="peer peer-greed">
                     <a class="sidebar-link td-n" href="{{ route('home.profile') }}">
                         <div class="peers ai-c fxw-nw">
                             <div class="peer">
-                                <div class="logo"><img src="{{ asset('assets/static/images/logo.png') }}" alt=""></div>
+                                <div class="logo">
+                                   
+                                </div>
                             </div>
-                            <div class="peer peer-greed">
-                                <h5 class="lh-1 mB-0 logo-text">
+                            <div class="peer peer-greed" >
+                                <h4 class="lh-1 mB-0 logo-text text-white d-none d-md-block d-lg-block">
+                                    <i style="color:#55CBF2" class="fas fa-user-graduate"></i>
+                                     CAS SYSTEM
+                                </h4>
 
-                                    <i style="color:#55CBF2" class="fas fa-user-graduate"></i> Student Profile</h5>
+                                <h6 class="lh-1 mB-0 logo-text text-white d-block d-sm-none">
+                                    <i style="color:#55CBF2" class="fas fa-user-graduate"></i>
+                                     CAS SYSTEM
+                                </h6>
                             </div>
                         </div>
                     </a>
@@ -141,6 +149,16 @@
                                 <i style="color:#55CBF2" class="ti-angle-right"></i>
                             </span>
                             
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('student.highschool.cgpaByGradeList', ['student_id'=>$students->id]) }}">                            
+                                <span style="font-weight: bold;">
+                                    CGPA by grade
+                                </span>
+                                <span class="arrow">
+                                    <i style="color:#55CBF2" class="ti-angle-right"></i>
+                                </span>
                         </a>
                     </li>
                     <li>

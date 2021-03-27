@@ -1,5 +1,5 @@
 @include('end_user.head_style')
-<body class="app">
+<body class="app" style="overflow-y: scroll; height:700px;">
     <div id="loader">
         <div class="spinner"></div>
     </div>
@@ -15,7 +15,7 @@
     {{-- sidebar --}}
     @include('end_user.end_user_sidebar')
 
-    <div class="page-container">
+    <div class="page-container"  >
         {{-- top sidebar --}}
     @include('end_user.end_user_topSidebar')
     @include('end_user.student_profile')

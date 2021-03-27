@@ -44,13 +44,13 @@ class HomeController extends Controller
         $this->middleware('auth');
 
 
-        $this->grade = Grade::all();
+        $this->grade = Grade::orderBy('order', 'asc')->get();
         View::share('grade', $this->grade);
 
-        $this->kgrade = KLevel::all();
+        $this->kgrade = KLevel::orderBy('order', 'asc')->get();
         View::share('kgrade', $this->kgrade);
 
-        $this->secondaryGrade = SecondaryLevel::all();
+        $this->secondaryGrade = SecondaryLevel::orderBy('order', 'asc')->get();
         View::share('secondaryGrade', $this->secondaryGrade);
 
         $this->subject = Subject::all();

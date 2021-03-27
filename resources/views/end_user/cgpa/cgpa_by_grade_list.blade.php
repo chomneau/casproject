@@ -15,7 +15,7 @@
     {{-- sidebar --}}
     @include('end_user.end_user_sidebar')
 
-    <div class="page-container">
+    <div class="page-container" >
     
     {{-- top sidebar --}}
     @include('end_user.end_user_topSidebar')

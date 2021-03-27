@@ -6,7 +6,7 @@
                     <div class="bgc-white bd bdrs-3 p-20 mB-20">
 
                          
-                        <h3>
+                        <h3 class="text-center">
                             STUDENT REPORT CARD FOR GRADE K              
                         </h3>
 
@@ -25,7 +25,9 @@
                                     <div class="card">
                                         
                                         <div>
+                                            <a href="{{ route('student.gradeK.reportCard.detail', ['student_id'=>$students->id, 'grade_id'=>$grade_ks->id]) }}" target="_blank">
                                             <img src="{{ asset('images/report-card.png')}}" alt="" width="130" height="100%" />
+                                            </a>
                                         </div>
                                         <div class="content" style="margin-top: 10px">
                                             <p> 

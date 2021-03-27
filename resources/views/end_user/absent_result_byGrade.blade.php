@@ -8,7 +8,7 @@
             const loader = document.getElementById('loader');
             setTimeout(() => {
             loader.classList.add('fadeOut');
-            }, 300);
+            }, 200);
         });
     </script>
 
@@ -20,9 +20,9 @@
     {{-- top sidebar --}}
     @include('end_user.end_user_topSidebar')
 
-    <main class="main-content bgc-grey-100">
-        <div id="mainContent">
-            <div class="container-fluid">
+    <main class="main-content bgc-grey-100" style="overflow-y: scroll; height:700px;" >
+        <div id="mainContent" >
+            <div class="container-fluid" >
         
                 @include('end_user.absent_menu')
 
@@ -31,7 +31,9 @@
             </div>
 
         </div>
-    </main>     
+    </main>  
+    
+</div>
 
 
     
