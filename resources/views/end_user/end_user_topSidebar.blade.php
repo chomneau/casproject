@@ -1,3 +1,19 @@
+<style>
+    .circular--portrait {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 2px solid rgb(56, 240, 240);
+    }
+
+    .circular--portrait img {
+    width: 100%;
+    height: auto;
+    }
+</style>
+
 <div class="header navbar">
     <div class="header navbar" style="background-color: #036e92">
         <div class="header-container">
@@ -19,8 +35,9 @@
 
                 <li class="dropdown">
                     <a href="" class="dropdown-toggle no-after peers fxw-nw ai-c lh-1" data-toggle="dropdown">
-                        <div class="peer mR-10">
-                            <img class="w-2r bdrs-50p" src="{{ asset(Auth()->user()->studentProfile->photo) }}" width="90" height="auto" class="img-circle" style="border-radius:50%; border: 1px solid rgb(113, 222, 222);">
+                        <div class="peer mR-10 circular--portrait">
+                            
+                            <img src="{{ asset(Auth()->user()->studentProfile->photo) }}" >
                         </div>
                         <div class="peer">
                             <span class="fsz-sm c-grey-900" style="color: aliceblue">
